@@ -1,0 +1,47 @@
+[gd_scene load_steps=9 format=3 uid="uid://bxxfjarpl4gmw"]
+
+[ext_resource type="Texture2D" uid="uid://cej3yoosomfd2" path="res://addons/proto-csgs/textures/dark/texture_13.png" id="1_ohi84"]
+[ext_resource type="PackedScene" uid="uid://ccflw61cmd8sp" path="res://entities/player.tscn" id="2_qacac"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8tk28"]
+
+[sub_resource type="Sky" id="Sky_13lak"]
+sky_material = SubResource("ProceduralSkyMaterial_8tk28")
+
+[sub_resource type="Environment" id="Environment_g5bs6"]
+background_mode = 2
+sky = SubResource("Sky_13lak")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16y3e"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("1_ohi84")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8tk28"]
+material = SubResource("StandardMaterial3D_16y3e")
+size = Vector2(15, 15)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_13lak"]
+data = PackedVector3Array(7.5, 0, 7.5, -7.5, 0, 7.5, 7.5, 0, -7.5, -7.5, 0, 7.5, -7.5, 0, -7.5, 7.5, 0, -7.5)
+
+[node name="IntroFall" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_g5bs6")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.111469, -0.823871, 0.555708, 0, 0.559193, 0.829038, -0.993768, 0.0924119, -0.0623326, 0, 5, 0)
+shadow_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_8tk28")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_13lak")
+
+[node name="Player" parent="." instance=ExtResource("2_qacac")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+linear_damp = 3.0

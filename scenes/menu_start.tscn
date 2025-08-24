@@ -1,0 +1,51 @@
+[gd_scene load_steps=2 format=3 uid="uid://bn4n2yrnem13i"]
+
+[ext_resource type="Script" uid="uid://bp3w7c70c720w" path="res://scripts/menu_main.gd" id="1_ccu5i"]
+
+[node name="menu_start" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ccu5i")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "cirtemosi
+by udu3324"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+text = "play"
+
+[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "settings"
+
+[node name="Button3" type="Button" parent="MarginContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+text = "credits"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer2/VBoxContainer/Button" to="." method="_on_button_start_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer2/VBoxContainer/Button2" to="." method="_on_button_settings_pressed"]
