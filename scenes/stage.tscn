@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://deosjk0k7g3ym"]
+
+[ext_resource type="Script" uid="uid://cus4gkng2m21t" path="res://scripts/stage.gd" id="1_vcsse"]
+[ext_resource type="PackedScene" uid="uid://bn4n2yrnem13i" path="res://scenes/menu/start.tscn" id="2_2so7o"]
+[ext_resource type="PackedScene" uid="uid://b4b5oapw2kjx0" path="res://scenes/menu/pause.tscn" id="3_st0q7"]
+[ext_resource type="PackedScene" uid="uid://bq3w0tdsdqfts" path="res://scenes/gui/equipment.tscn" id="4_1hwpr"]
+[ext_resource type="PackedScene" uid="uid://dc6xmfi6ci3yi" path="res://scenes/gui/health_bar.tscn" id="5_dexii"]
+
+[node name="Stage" type="Node"]
+script = ExtResource("1_vcsse")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MenuStart" parent="CanvasLayer" instance=ExtResource("2_2so7o")]
+visible = false
+
+[node name="MenuPause" parent="CanvasLayer" instance=ExtResource("3_st0q7")]
+visible = false
+
+[node name="Equipment" parent="CanvasLayer" instance=ExtResource("4_1hwpr")]
+visible = false
+
+[node name="HealthBar" parent="CanvasLayer" instance=ExtResource("5_dexii")]
+visible = false

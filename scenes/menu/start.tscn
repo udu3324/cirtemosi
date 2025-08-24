@@ -1,19 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://bn4n2yrnem13i"]
+[gd_scene load_steps=4 format=3 uid="uid://bn4n2yrnem13i"]
 
-[ext_resource type="Script" uid="uid://bp3w7c70c720w" path="res://scripts/menu_main.gd" id="1_ccu5i"]
+[ext_resource type="Script" uid="uid://bp3w7c70c720w" path="res://scripts/menu_main.gd" id="1_4hqgu"]
+[ext_resource type="Theme" uid="uid://yn3b7rdisnj8" path="res://assets/theme/new_theme.tres" id="2_ci5k1"]
 
-[node name="menu_start" type="Control"]
+[sub_resource type="Theme" id="Theme_ci5k1"]
+default_font_size = 114
+
+[node name="MenuStart" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ccu5i")
+script = ExtResource("1_4hqgu")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -26,8 +30,8 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
-text = "cirtemosi
-by udu3324"
+theme = SubResource("Theme_ci5k1")
+text = "cirtemosi"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer2"]
 layout_mode = 2
@@ -35,16 +39,19 @@ size_flags_horizontal = 4
 size_flags_vertical = 6
 
 [node name="Button" type="Button" parent="MarginContainer/VBoxContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(270.2, 0)
 layout_mode = 2
+theme = ExtResource("2_ci5k1")
 text = "play"
 
 [node name="Button2" type="Button" parent="MarginContainer/VBoxContainer2/VBoxContainer"]
-custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+theme = ExtResource("2_ci5k1")
 text = "settings"
 
 [node name="Button3" type="Button" parent="MarginContainer/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_ci5k1")
 text = "credits"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer2/VBoxContainer/Button" to="." method="_on_button_start_pressed"]
