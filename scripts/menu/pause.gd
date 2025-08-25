@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 
 func _handle_input():
 	# if user pressed exit key, toggle pause menu
-	if Input.is_action_just_pressed("ui_cancel"):
+	if Input.is_action_just_pressed("ui_cancel") and !Globals.startVisible:
 		self.visible = !self.is_visible_in_tree();
 
 # pause the game if the node detects that its visibility changed

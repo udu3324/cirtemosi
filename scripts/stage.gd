@@ -17,7 +17,7 @@ func _ready() -> void:
 	menuStart.visible = true
 
 func _process(delta: float) -> void:
-	pass
+	Globals.startVisible = menuStart.visible
 
 func _on_settings_open():
 	pass
