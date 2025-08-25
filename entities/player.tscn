@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ccflw61cmd8sp"]
 
-[ext_resource type="Script" uid="uid://bwb21mkc4krsj" path="res://scripts/player.gd" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://bwb21mkc4krsj" path="res://scripts/entities/player.gd" id="1_3vyb7"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_g2els"]
 
@@ -9,7 +9,7 @@ points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607,
 
 [node name="Player" type="RigidBody3D"]
 lock_rotation = true
-linear_damp = 2.0
+linear_damp = 3.0
 script = ExtResource("1_3vyb7")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -22,9 +22,9 @@ shape = SubResource("ConvexPolygonShape3D_qhqgy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="PitchPivot" type="Node3D" parent="TwistPivot"]
-transform = Transform3D(0.707107, -0.408607, 0.577096, 0, 0.816138, 0.577858, -0.707107, -0.408607, 0.577096, 0, 0, 0)
+transform = Transform3D(0.707107, -0.408607, 0.577096, 0, 0.816138, 0.577857, -0.707107, -0.408607, 0.577096, 0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="TwistPivot/PitchPivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15)
 projection = 1
 size = 5.762

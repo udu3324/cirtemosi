@@ -1,7 +1,6 @@
 extends RigidBody3D
 
 @onready var camera = $TwistPivot/PitchPivot/Camera3D
-var heathBar = preload("res://scenes/gui/health_bar.tscn")
 
 # ty https://www.youtube.com/watch?v=sVsn9NqpVhg
 
@@ -12,9 +11,9 @@ func _ready() -> void:
 # called every frame, delta is elapsed time since prev. frame
 # delta allows variations between machines
 func _process(delta: float) -> void:
-	handle_movement(delta)
+	_handle_movement(delta)
 
-func handle_movement(delta: float) -> void:
+func _handle_movement(delta: float) -> void:
 	# var input = Input.get_action_strength("ui_up")
 	# apply_central_force(input * Vector3.FORWARD * 1200.0 * delta)
 	
@@ -32,6 +31,9 @@ func handle_movement(delta: float) -> void:
 	# unused/ignored axis
 	vertical.y = 0
 	horizontal.y = 0
+	
+	vertical = vertical.normalized()
+	horizontal = horizontal.normalized()
 	
 	# works with both keyboard and joystick controls 🔥
 	var dir = (vertical * input.z + horizontal * input.x).normalized()

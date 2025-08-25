@@ -1,15 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://bxxfjarpl4gmw"]
+[gd_scene load_steps=5 format=3 uid="uid://bxxfjarpl4gmw"]
 
 [ext_resource type="Texture2D" uid="uid://cej3yoosomfd2" path="res://addons/proto-csgs/textures/dark/texture_13.png" id="1_ohi84"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8tk28"]
-
-[sub_resource type="Sky" id="Sky_13lak"]
-sky_material = SubResource("ProceduralSkyMaterial_8tk28")
-
-[sub_resource type="Environment" id="Environment_g5bs6"]
-background_mode = 2
-sky = SubResource("Sky_13lak")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16y3e"]
 resource_local_to_scene = true
@@ -25,13 +16,6 @@ size = Vector2(15, 15)
 data = PackedVector3Array(7.5, 0, 7.5, -7.5, 0, 7.5, 7.5, 0, -7.5, -7.5, 0, 7.5, -7.5, 0, -7.5, 7.5, 0, -7.5)
 
 [node name="IntroFall" type="Node3D"]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_g5bs6")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.111469, -0.823871, 0.555708, 0, 0.559193, 0.829038, -0.993768, 0.0924119, -0.0623326, 0, 5, 0)
-shadow_enabled = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_8tk28")

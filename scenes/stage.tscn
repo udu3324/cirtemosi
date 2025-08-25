@@ -13,14 +13,14 @@ script = ExtResource("1_vcsse")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="MenuStart" parent="CanvasLayer" instance=ExtResource("2_2so7o")]
-visible = false
-
-[node name="MenuPause" parent="CanvasLayer" instance=ExtResource("3_st0q7")]
-visible = false
-
 [node name="Equipment" parent="CanvasLayer" instance=ExtResource("4_1hwpr")]
 visible = false
 
 [node name="HealthBar" parent="CanvasLayer" instance=ExtResource("5_dexii")]
+visible = false
+
+[node name="MenuStart" parent="CanvasLayer" instance=ExtResource("2_2so7o")]
+visible = false
+
+[node name="MenuPause" parent="CanvasLayer" instance=ExtResource("3_st0q7")]
 visible = false
