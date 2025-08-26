@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://dc6xmfi6ci3yi"]
+[gd_scene format=3 uid="uid://8uapt3fxhrtt"]
 
-[node name="HealthBar" type="Control"]
+[node name="StaminaBar" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,7 +16,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 15
-theme_override_constants/margin_bottom = 15
+theme_override_constants/margin_bottom = 58
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -24,7 +24,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 8
 
 [node name="ProgressBar" type="ProgressBar" parent="MarginContainer/GridContainer"]
-custom_minimum_size = Vector2(400, 28)
+custom_minimum_size = Vector2(280, 28)
 layout_mode = 2
 value = 100.0
 show_percentage = false

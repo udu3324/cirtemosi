@@ -23,6 +23,8 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	input.x = Input.get_axis("ui_left", "ui_right")
 	input.z = Input.get_axis("ui_up", "ui_down")
 	
+	var sprinting = Input.is_action_pressed("sprint")
+	
 	if input == Vector3.ZERO:
 		return
 	
@@ -55,14 +57,17 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	var dir2 = dir.slide(slope_normal).normalized()
 	
 	# multi * 30 for running | 17 for regular
-	apply_central_force(dir2 * 17)
+	var force = 20 if sprinting else 13
+	apply_central_force(dir2 * force)
 	
 	# apply an extra y axis force depending on the slope angle
 	var slope_angle = acos(slope_normal.dot(Vector3.UP))
 	if slope_angle > 0.0 and slope_angle < deg_to_rad(60):
 		# multi * 10 for running | 5 for regular
-		var boost = (slope_angle / deg_to_rad(45)) * 5
+		var force_slope = 10 if sprinting else 5
+		var boost = (slope_angle / deg_to_rad(45)) * force_slope
 		apply_central_force(Vector3.UP * boost)
 		# print_debug("adding upward force to assist slope movement", boost)
 		# print_debug("angle is", slope_angle)
 	
+	# apply_central_force(Vector3(0, 5, 0))

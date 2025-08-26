@@ -4,6 +4,7 @@ extends Node
 @onready var menuPause = $CanvasLayer/MenuPause
 
 @onready var health = $CanvasLayer/HealthBar
+@onready var stamina = $CanvasLayer/StaminaBar
 
 var level
 var player
@@ -30,6 +31,7 @@ func _on_exit_start():
 	menuStart.visible = true
 	
 	health.visible = false
+	stamina.visible = false
 	
 	get_tree().paused = false
 
@@ -39,6 +41,7 @@ func _on_level_1():
 	
 	_add_player(Vector3(0, 2, 0))
 	health.visible = true
+	stamina.visible = true
 	
 	_add_environment()
 	
