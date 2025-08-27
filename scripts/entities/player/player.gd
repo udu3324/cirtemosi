@@ -11,8 +11,7 @@ func _ready() -> void:
 # called every frame, delta is elapsed time since prev. frame
 # delta allows variations between machines
 func _process(delta: float) -> void:
-	# _handle_movement(delta)
-	pass
+	Globals.player_pos = self.position
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	# var input = Input.get_action_strength("ui_up")

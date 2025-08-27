@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cft3ug40it2mc"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_t4enh"]
+vertices = PackedVector3Array(-4.5, 0.5, -4.5, -4.5, 0.5, 4.5, 4.5, 0.5, 4.5, 4.5, 0.5, -4.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[node name="NavigationArea" type="NavigationRegion3D"]
+navigation_mesh = SubResource("NavigationMesh_t4enh")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+use_collision = true
+size = Vector3(10, 1, 10)

@@ -2,6 +2,8 @@ extends Node
 
 var startVisible: bool = false
 
+var player_pos: Vector3 = Vector3(0, 0, 0)
+
 var health_max: float = 100.0
 
 var health: float = 100.0
