@@ -15,5 +15,5 @@ sky = SubResource("Sky_13lak")
 environment = SubResource("Environment_3oxcl")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.111469, -0.823871, 0.555708, 0, 0.559193, 0.829038, -0.993768, 0.0924119, -0.0623326, 0, 5, 0)
+transform = Transform3D(-0.111469, -0.823871, 0.555708, 0, 0.559193, 0.829038, -0.993768, 0.0924119, -0.0623326, 0, 0, 0)
 shadow_enabled = true

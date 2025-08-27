@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://ccflw61cmd8sp"]
 
-[ext_resource type="Script" uid="uid://bwb21mkc4krsj" path="res://scripts/entities/player.gd" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://bwb21mkc4krsj" path="res://scripts/entities/player/player.gd" id="1_3vyb7"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_merdl"]
 friction = 0.45

@@ -18,6 +18,7 @@ func _on_button_settings_pressed() -> void:
 
 func _process(_delta: float) -> void:
 	_handle_input()
+	# $MarginContainer2/Panel.add_theme_stylebox_override("", style)
 
 func _handle_input():
 	#todo arrow that goes up/down

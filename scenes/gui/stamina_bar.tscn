@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://8uapt3fxhrtt"]
+[gd_scene load_steps=2 format=3 uid="uid://8uapt3fxhrtt"]
+
+[ext_resource type="Script" uid="uid://dbdg8nwhudqli" path="res://scripts/entities/player/stamina.gd" id="1_vpkm6"]
 
 [node name="StaminaBar" type="Control"]
 layout_mode = 3
@@ -7,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_vpkm6")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -26,5 +29,6 @@ size_flags_vertical = 8
 [node name="ProgressBar" type="ProgressBar" parent="MarginContainer/GridContainer"]
 custom_minimum_size = Vector2(280, 28)
 layout_mode = 2
-value = 100.0
+max_value = 80.0
+value = 80.0
 show_percentage = false

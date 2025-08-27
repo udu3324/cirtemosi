@@ -45,6 +45,10 @@ func _on_level_1():
 	
 	_add_environment()
 	
+	# do not always apply this to every scenario!!!
+	Globals.stamina = Globals.stamina_max
+	Globals.health = Globals.health_max
+	
 	print_debug("added level 1")
 
 func _add_player(pos: Vector3):

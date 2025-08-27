@@ -24,9 +24,14 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	input.z = Input.get_axis("ui_up", "ui_down")
 	
 	var sprinting = Input.is_action_pressed("sprint")
+	if Globals.stamina < 0:
+		sprinting = false
 	
 	if input == Vector3.ZERO:
 		return
+	
+	if sprinting:
+		Globals.stamina = Globals.stamina - Globals.stamina_usage
 	
 	# map keyboard controls to relatively move based on camera (45deg/cardinal movement only)
 	var camera_basis = camera.global_transform.basis
