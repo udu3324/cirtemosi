@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://hdswoffxynxi"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ksgin"]
+radius = 3.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_v787e"]
+radius = 3.0
+height = 6.0
+
+[node name="EnemtZone" type="Area3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_ksgin")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("SphereMesh_v787e")

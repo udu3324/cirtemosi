@@ -1,12 +1,12 @@
 extends RigidBody3D
 
 @onready var agent = $NavigationAgent3D
+@onready var enemt_zone: Area3D = get_parent().get_node("EnemtZone")
 
 var target_reached = true
 var roaming = false
 
 func _ready() -> void:
-	print_debug("agent pos is", global_transform.origin)
 	_generate_roam_point_target()
 
 func _process(delta: float) -> void:
@@ -17,7 +17,6 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	# too close, stop
 	if agent.distance_to_target() < 0.5:
 		pass
-	
 	
 	# below is all the physics stuff, it does not need to be touched i promise :100:
 	
@@ -59,14 +58,17 @@ func _generate_roam_point_target():
 	if roaming:
 		return
 	
-	var random_pos = global_transform.origin + Vector3(
-		randf_range(-2.0, 5.0),
-		0.0,
-		randf_range(-5.0, 5.0)
-	)
+	var radius = enemt_zone.get_child(0).shape.radius
 	
-	print_debug("creating a new roam target", random_pos)
+	var angle = randf() * TAU
+	var r = sqrt(randf()) * radius
 	
-	agent.set_target_position(random_pos)
+	var local_pos = Vector3(r * cos(angle), 0, r * sin(angle))
+	var world_pos = enemt_zone.global_transform.origin + local_pos
+	world_pos.y = global_transform.origin.y
+	
+	print_debug("creating a new roam target", world_pos)
+	
+	agent.set_target_position(world_pos)
 	
 	roaming = true
