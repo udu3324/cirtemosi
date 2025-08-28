@@ -6,22 +6,20 @@ var target_reached = true
 var roaming = false
 
 func _ready() -> void:
-	pass
+	print_debug("agent pos is", global_transform.origin)
+	_generate_roam_point_target()
 
 func _process(delta: float) -> void:
 	pass
 
 # thank you bramwell!! https://www.youtube.com/watch?v=2W4JP48oZ8U
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
-	agent.set_target_position(Globals.player_pos)
-	
-	# too far, start roaming
-	if agent.distance_to_target() > 5:
-		return
-	
 	# too close, stop
-	if agent.distance_to_target() < 1.5 and !roaming:
-		return
+	if agent.distance_to_target() < 0.5:
+		pass
+	
+	
+	# below is all the physics stuff, it does not need to be touched i promise :100:
 	
 	var dir = (agent.get_next_path_position() - global_transform.origin).normalized()
 	
@@ -58,10 +56,17 @@ func _on_navigation_agent_3d_target_reached() -> void:
 	_generate_roam_point_target()
 
 func _generate_roam_point_target():
-	var random_pos := Vector3.ZERO
-	random_pos.x = randf_range(-5.0, 5.0)
-	random_pos.y = randf_range(-5.0, 5.0)
+	if roaming:
+		return
 	
-	random_pos = random_pos + global_transform.origin
+	var random_pos = global_transform.origin + Vector3(
+		randf_range(-2.0, 5.0),
+		0.0,
+		randf_range(-5.0, 5.0)
+	)
+	
+	print_debug("creating a new roam target", random_pos)
 	
 	agent.set_target_position(random_pos)
+	
+	roaming = true
