@@ -26,9 +26,13 @@ script = ExtResource("1_6fnh4")
 path_max_distance = 10.01
 simplify_path = true
 avoidance_enabled = true
+debug_enabled = true
+debug_path_custom_color = Color(0.615096, 0, 0.112132, 1)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_6fnh4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConvexPolygonShape3D_j0uy1")
+
+[connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_target_reached"]
