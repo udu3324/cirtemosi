@@ -1,7 +1,7 @@
 extends RigidBody3D
 
 @onready var agent = $NavigationAgent3D
-@onready var enemt_zone: Area3D = get_parent().get_node("EnemtZone")
+@onready var enemt_zone: Area3D = get_parent().get_child(0)
 
 var target_reached = true
 var roaming = false
@@ -17,6 +17,10 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	# too close, stop
 	if agent.distance_to_target() < 0.5:
 		pass
+		
+	# dont need to move if its finised reaching target
+	if agent.is_navigation_finished():
+		return
 	
 	# below is all the physics stuff, it does not need to be touched i promise :100:
 	
@@ -37,12 +41,12 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	if state.linear_velocity.length() > 2:
 		state.linear_velocity = state.linear_velocity.normalized() * 3.5
 	
-	apply_central_force(dir2 * 7)
+	apply_central_force(dir2 * 16)
 	
 	# apply an extra y axis force depending on the slope angle
 	var slope_angle = acos(slope_normal.dot(Vector3.UP))
 	if slope_angle > 0.0 and slope_angle < deg_to_rad(60):
-		var boost = (slope_angle / deg_to_rad(45)) * 5
+		var boost = (slope_angle / deg_to_rad(45)) * 7
 		apply_central_force(Vector3.UP * boost)
 
 
@@ -51,6 +55,8 @@ func _on_navigation_agent_3d_target_reached() -> void:
 	roaming = false
 	
 	print_debug("reached target!")
+	
+	await get_tree().create_timer(randi_range(1, 5)).timeout
 	
 	_generate_roam_point_target()
 
