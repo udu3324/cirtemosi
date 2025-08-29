@@ -49,9 +49,9 @@ shape = SubResource("ConvexPolygonShape3D_5od5s")
 mesh = SubResource("PlaneMesh_8tk28")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.235179, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.69629, 0.235179, 4.06348)
 use_collision = true
-size = Vector3(6, 1, 1)
+size = Vector3(5.60742, 1, 0.873047)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 visible = false

@@ -4,7 +4,11 @@ extends RigidBody3D
 @onready var enemt_zone: Area3D = get_parent().get_child(0)
 
 var target_reached = true
+
 var roaming = false
+var chasing = false
+
+var stuck_time := 0.0
 
 func _ready() -> void:
 	_generate_roam_point_target()
@@ -12,15 +16,43 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+func _physics_process(delta: float) -> void:
+	if agent.is_navigation_finished():
+		stuck_time = 0.0
+	else:
+		stuck_time += delta
+	
+	if stuck_time > 6.0:
+		# print_debug("agent found stuck, regenerating new path")
+		
+		roaming = false
+		chasing = false
+		
+		_generate_roam_point_target()
+	
+
 # thank you bramwell!! https://www.youtube.com/watch?v=2W4JP48oZ8U
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
-	# too close, stop
-	if agent.distance_to_target() < 0.5:
-		pass
+	
+	# agent is close enough to player!
+	if global_transform.origin.distance_to(Globals.player_pos) < 5:
+		agent.set_target_position(Globals.player_pos)
+		chasing = true
+		roaming = false
+	
+	# agent is too far from player, reset chase
+	if global_transform.origin.distance_to(Globals.player_pos) > 5 and chasing:
+		chasing = false
+		enemt_zone.global_transform.origin = global_transform.origin
+		_generate_roam_point_target()
 		
 	# dont need to move if its finised reaching target
 	if agent.is_navigation_finished():
 		return
+	
+	# agent is chasing and is too close to player!
+	if global_transform.origin.distance_to(Globals.player_pos) < 1.3 and chasing:
+		pass # not sure if i need this
 	
 	# below is all the physics stuff, it does not need to be touched i promise :100:
 	
@@ -41,7 +73,8 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	if state.linear_velocity.length() > 2:
 		state.linear_velocity = state.linear_velocity.normalized() * 3.5
 	
-	apply_central_force(dir2 * 16)
+	var force = 16 if chasing else 10
+	apply_central_force(dir2 * force)
 	
 	# apply an extra y axis force depending on the slope angle
 	var slope_angle = acos(slope_normal.dot(Vector3.UP))
@@ -50,20 +83,19 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 		apply_central_force(Vector3.UP * boost)
 
 
-func _on_navigation_agent_3d_target_reached() -> void:	
-	# target_reached = true
-	roaming = false
+func _on_navigation_agent_3d_target_reached() -> void:
+	if chasing:
+		return
 	
-	print_debug("reached target!")
+	# print_debug("reached target!")
+	
+	roaming = false
 	
 	await get_tree().create_timer(randi_range(1, 5)).timeout
 	
 	_generate_roam_point_target()
 
 func _generate_roam_point_target():
-	if roaming:
-		return
-	
 	var radius = enemt_zone.get_child(0).shape.radius
 	
 	var angle = randf() * TAU
@@ -73,8 +105,7 @@ func _generate_roam_point_target():
 	var world_pos = enemt_zone.global_transform.origin + local_pos
 	world_pos.y = global_transform.origin.y
 	
-	print_debug("creating a new roam target", world_pos)
+	# print_debug("creating a new roam target", world_pos)
 	
 	agent.set_target_position(world_pos)
-	
 	roaming = true
