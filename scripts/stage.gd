@@ -36,6 +36,22 @@ func _on_exit_start():
 	get_tree().paused = false
 
 func _on_level_1():
+	level = preload("res://levels/level1.tscn").instantiate()
+	$Node3D.add_child(level)
+	
+	_add_player(Vector3(0, 2, 0))
+	health.visible = true
+	stamina.visible = true
+	
+	#_add_environment(preload("res://scenes/enviornment/CaveEnv.tscn"))
+	
+	# do not always apply this to every scenario!!!
+	Globals.stamina = Globals.stamina_max
+	Globals.health = Globals.health_max
+	
+	print_debug("added level 1")
+
+func _on_level_test():
 	level = preload("res://levels/test/test_scene_1.tscn").instantiate()
 	$Node3D.add_child(level)
 	
@@ -43,13 +59,13 @@ func _on_level_1():
 	health.visible = true
 	stamina.visible = true
 	
-	_add_environment()
+	_add_environment(preload("res://scenes/enviornment/OutsideEnv.tscn"))
 	
 	# do not always apply this to every scenario!!!
 	Globals.stamina = Globals.stamina_max
 	Globals.health = Globals.health_max
 	
-	print_debug("added level 1")
+	print_debug("added test level")
 
 func _add_player(pos: Vector3):
 	player = preload("res://entities/player.tscn").instantiate()
@@ -58,8 +74,8 @@ func _add_player(pos: Vector3):
 	
 	print_debug("added player")
 
-func _add_environment():
-	enviornment = preload("res://scenes/enviornment/OutsideEnv.tscn").instantiate()
+func _add_environment(sceneFile: Resource):
+	enviornment = sceneFile.instantiate()
 	$Node3D.add_child(enviornment)
 	
 	print_debug("added enviornment")
