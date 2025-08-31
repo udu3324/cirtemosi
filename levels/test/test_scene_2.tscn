@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://bxxfjarpl4gmw"]
 
-[ext_resource type="Texture2D" uid="uid://cej3yoosomfd2" path="res://addons/proto-csgs/textures/dark/texture_13.png" id="1_5od5s"]
-[ext_resource type="PackedScene" uid="uid://dwqj4buhblxh8" path="res://entities/enemt/enemt.tscn" id="2_ptlot"]
+[ext_resource type="Texture2D" uid="uid://cej3yoosomfd2" path="res://addons/proto-csgs/textures/dark/texture_13.png" id="1_2tk2w"]
+[ext_resource type="PackedScene" uid="uid://dwqj4buhblxh8" path="res://entities/enemt/enemt.tscn" id="2_7u683"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_ohi84"]
 vertices = PackedVector3Array(4, 1.23518, -2.75, 3.5, 1.48518, -3.75, 2.5, 1.23518, -4, 1.5, 0.985179, -2.75, 2.75, 0.985179, -1.75, -7, 0.485179, 7, -2, 0.485179, 7, -2, 0.485179, 5, -1.75, 0.485179, 3, 0.5, 0.485179, -2.75, 3, 0.485179, 3, 3, 0.485179, -0.5, 0.5, 0.485179, -3.5, -7, 0.485179, -7, 2.75, 0.485179, -5.25, 2.75, 0.485179, -7, 3.5, 0.485179, -0.5, 5.25, 0.485179, 3.25, 5.25, 0.485179, -2.5, 5.25, 0.485179, -3.5, 7, 0.485179, -7, 5.25, 0.485179, 4.75, 7, 0.485179, 7, 4.75, 0.485179, 5.25)
@@ -16,7 +16,7 @@ points = PackedVector3Array(-2.5, -0.5, -1.25, -2.5, 0.5, -1.25, 2.5, -0.5, -1.2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16y3e"]
 resource_local_to_scene = true
-albedo_texture = ExtResource("1_5od5s")
+albedo_texture = ExtResource("1_2tk2w")
 uv1_offset = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 
@@ -62,7 +62,7 @@ mesh = SubResource("PlaneMesh_8tk28")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_13lak")
 
-[node name="Enemt" parent="." instance=ExtResource("2_ptlot")]
+[node name="Enemt" parent="." instance=ExtResource("2_7u683")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, -4)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]

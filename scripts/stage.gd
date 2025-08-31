@@ -36,7 +36,7 @@ func _on_exit_start():
 	get_tree().paused = false
 
 func _on_level_1():
-	level = preload("res://levels/test_scene_1.tscn").instantiate()
+	level = preload("res://levels/test/test_scene_1.tscn").instantiate()
 	$Node3D.add_child(level)
 	
 	_add_player(Vector3(0, 2, 0))

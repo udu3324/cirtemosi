@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cj7ruth0bsa3m"]
+[gd_scene load_steps=7 format=3 uid="uid://cj7ruth0bsa3m"]
 
 [ext_resource type="Script" uid="uid://ro62b2obk1sm" path="res://scripts/entities/enemy_test/enemt.gd" id="1_6fnh4"]
+[ext_resource type="PackedScene" uid="uid://hwdfjrl2816h" path="res://assets/model/entities/enemt/enemt_model.tscn" id="2_3vipa"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lq6yy"]
 friction = 0.45
@@ -31,9 +32,15 @@ debug_enabled = true
 debug_path_custom_color = Color(0.615096, 0, 0.112132, 1)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("CapsuleMesh_6fnh4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConvexPolygonShape3D_j0uy1")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+
+[node name="enemt" parent="." instance=ExtResource("2_3vipa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.287062, 0)
 
 [connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_target_reached"]

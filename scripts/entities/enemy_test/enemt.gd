@@ -3,6 +3,8 @@ extends RigidBody3D
 @onready var agent = $NavigationAgent3D
 @onready var enemt_zone: Area3D = get_parent().get_child(0)
 
+@onready var model = $enemt
+
 var target_reached = true
 
 var roaming = false
@@ -54,6 +56,13 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	if global_transform.origin.distance_to(Globals.player_pos) < 1.3 and chasing:
 		pass # not sure if i need this
 	
+	# below is rotational stuff, dont mess with it too
+	if chasing:
+		_face_to_vector3(Globals.player_pos)
+	
+	if roaming:
+		_face_to_velocity()
+	
 	# below is all the physics stuff, it does not need to be touched i promise :100:
 	
 	var dir = (agent.get_next_path_position() - global_transform.origin).normalized()
@@ -81,6 +90,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	if slope_angle > 0.0 and slope_angle < deg_to_rad(60):
 		var boost = (slope_angle / deg_to_rad(45)) * 7
 		apply_central_force(Vector3.UP * boost)
+		
 
 
 func _on_navigation_agent_3d_target_reached() -> void:
@@ -109,3 +119,22 @@ func _generate_roam_point_target():
 	
 	agent.set_target_position(world_pos)
 	roaming = true
+	
+
+func _face_to_vector3(point: Vector3) -> void:
+	# get the relative position of the point from the agent
+	var to_point = (point - global_position).normalized()
+	
+	# get the angle from the point
+	var angle_y = atan2(to_point.x, to_point.z) + (PI / 2) # add a 90deg offset
+	
+	model.rotation.y = lerp_angle(model.rotation.y, angle_y, 0.5)
+
+func _face_to_velocity() -> void:
+	# a velocity point that points to the movement direction
+	var linear_pos = linear_velocity.normalized()
+	
+	# get the angle from the point
+	var angle_y = atan2(linear_pos.x, linear_pos.z) + (PI / 2) # add a 90deg offset
+	
+	model.rotation.y = lerp_angle(model.rotation.y, angle_y, 0.1)

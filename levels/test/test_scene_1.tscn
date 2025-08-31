@@ -2,7 +2,7 @@
 
 [ext_resource type="Material" uid="uid://dhp1vk7afkguu" path="res://assets/prefab/prefab_dark_meter.tres" id="1_3ju41"]
 [ext_resource type="Texture2D" uid="uid://b5pviiur126b0" path="res://assets/prefab/playtesting.png" id="2_k5kv5"]
-[ext_resource type="PackedScene" uid="uid://bxxfjarpl4gmw" path="res://levels/test_scene_2.tscn" id="3_6a74u"]
+[ext_resource type="PackedScene" uid="uid://bxxfjarpl4gmw" path="res://levels/test/test_scene_2.tscn" id="3_6a74u"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_6a74u"]
 _surfaces = [{

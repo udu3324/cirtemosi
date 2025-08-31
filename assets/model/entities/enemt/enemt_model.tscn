@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://hwdfjrl2816h"]
+
+[ext_resource type="PackedScene" uid="uid://8rdthkatin6s" path="res://assets/model/entities/enemt/enemt.blend" id="1_ooyl3"]
+
+[node name="enemt" instance=ExtResource("1_ooyl3")]
+
+[node name="Right" parent="." index="0"]
+transform = Transform3D(0.5, 0, 0, 0, 0.262294, 0.425678, 0, -0.425678, 0.262294, -0.39112, 0.0804313, -0.671413)
+
+[node name="Head" parent="." index="1"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.00166163, 0.779702, -0.00648047)
+
+[node name="EyeBG" parent="." index="2"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.00166163, 0.678249, -0.00648047)
+
+[node name="HeadBG" parent="." index="3"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.00166163, 1.16908, -0.00648047)
+
+[node name="Left" parent="." index="4"]
+transform = Transform3D(0.5, 0, 0, 0, 0.195845, -0.460049, 0, 0.460049, 0.195845, -0.39112, 0.0895524, 0.62605)
