@@ -16,6 +16,16 @@ func _process(delta: float) -> void:
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	# var input = Input.get_action_strength("ui_up")
 	# apply_central_force(input * Vector3.FORWARD * 1200.0 * delta)
+	if Globals.player_physics_reset_event:
+		linear_velocity = Vector3.ZERO
+		angular_velocity = Vector3.ZERO
+		Globals.player_physics_reset_event = false
+	
+	if Globals.player_pushback_event != Vector3.ZERO:
+		print_debug("recieved pushback event")
+		apply_central_force(Globals.player_pushback_event * 100)
+		
+		Globals.player_pushback_event = Vector3.ZERO
 	
 	var input := Vector3.ZERO
 	
@@ -26,10 +36,10 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	if Globals.stamina < 0:
 		sprinting = false
 	
-	if input == Vector3.ZERO:
+	if input == Vector3.ZERO or !Globals.player_can_move:
 		return
 	
-	if sprinting:
+	if sprinting and !Globals.player_is_stunned:
 		Globals.stamina = Globals.stamina - Globals.stamina_usage
 	
 	# map keyboard controls to relatively move based on camera (45deg/cardinal movement only)
@@ -62,6 +72,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	
 	# multi * 30 for running | 17 for regular
 	var force = 20 if sprinting else 13
+	force = 7 if Globals.player_is_stunned else force
 	apply_central_force(dir2 * force)
 	
 	# apply an extra y axis force depending on the slope angle
@@ -69,6 +80,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	if slope_angle > 0.0 and slope_angle < deg_to_rad(60):
 		# multi * 10 for running | 5 for regular
 		var force_slope = 10 if sprinting else 5
+		force_slope = 3 if Globals.player_is_stunned else force_slope
 		var boost = (slope_angle / deg_to_rad(45)) * force_slope
 		apply_central_force(Vector3.UP * boost)
 		# print_debug("adding upward force to assist slope movement", boost)
