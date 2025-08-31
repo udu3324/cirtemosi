@@ -52,13 +52,15 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	if agent.is_navigation_finished():
 		return
 	
-	# agent is chasing and is too close to player!
-	if global_transform.origin.distance_to(Globals.player_pos) < 1.3 and chasing:
-		pass # not sure if i need this
 	
-	# below is rotational stuff, dont mess with it too
+	
+	# rotate based on if chasing or roaming
 	if chasing:
 		_face_to_vector3(Globals.player_pos)
+	
+	# agent is chasing and is too close to player!
+	if global_transform.origin.distance_to(Globals.player_pos) < 1.3 and chasing:
+		return
 	
 	if roaming:
 		_face_to_velocity()
