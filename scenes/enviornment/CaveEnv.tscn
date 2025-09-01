@@ -12,6 +12,7 @@ sky_material = SubResource("ProceduralSkyMaterial_lo8p6")
 [sub_resource type="Environment" id="Environment_72jl1"]
 background_mode = 2
 sky = SubResource("Sky_35bhh")
+ambient_light_energy = 5.23
 
 [node name="CaveEnv" type="Node3D"]
 

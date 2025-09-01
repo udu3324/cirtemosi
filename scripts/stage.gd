@@ -19,6 +19,33 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	Globals.startVisible = menuStart.visible
+	
+	#print_debug(Globals.player_pos)
+	
+	if Globals.player_level_traverse_event == "":
+		return
+	
+	print_debug("recieved traverse event", Globals.player_level_traverse_event)
+	
+	if Globals.player_level_traverse_event == "1->2":
+		for node in $Node3D.get_children():
+			$Node3D.remove_child(node)
+		
+		level = preload("res://levels/level2.tscn").instantiate()
+		$Node3D.add_child(level)
+	
+		_add_player(Vector3(0, 2, 0))
+	
+	if Globals.player_level_traverse_event == "2->1":
+		for node in $Node3D.get_children():
+			$Node3D.remove_child(node)
+		
+		level = preload("res://levels/level1.tscn").instantiate()
+		$Node3D.add_child(level)
+	
+		_add_player(Vector3(0, 1.5, -9.0))
+	
+	Globals.player_level_traverse_event = ""
 
 func _on_settings_open():
 	pass
