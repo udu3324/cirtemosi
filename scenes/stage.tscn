@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://deosjk0k7g3ym"]
+[gd_scene load_steps=10 format=3 uid="uid://deosjk0k7g3ym"]
 
 [ext_resource type="Script" uid="uid://cus4gkng2m21t" path="res://scripts/stage.gd" id="1_vcsse"]
 [ext_resource type="PackedScene" uid="uid://bn4n2yrnem13i" path="res://scenes/menu/start.tscn" id="2_2so7o"]
@@ -6,6 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://b4b5oapw2kjx0" path="res://scenes/menu/pause.tscn" id="3_st0q7"]
 [ext_resource type="PackedScene" uid="uid://bq3w0tdsdqfts" path="res://scenes/gui/equipment.tscn" id="4_1hwpr"]
 [ext_resource type="PackedScene" uid="uid://dc6xmfi6ci3yi" path="res://scenes/gui/health_bar.tscn" id="5_dexii"]
+[ext_resource type="PackedScene" uid="uid://ka8twtd3h5x8" path="res://scenes/menu/loading.tscn" id="7_1hwpr"]
+[ext_resource type="Shader" uid="uid://dpkrpjqqqrfdj" path="res://assets/shader/invert.gdshader" id="7_st0q7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_st0q7"]
+shader = ExtResource("7_st0q7")
+shader_parameter/intensity = 0.073
 
 [node name="Stage" type="Node"]
 script = ExtResource("1_vcsse")
@@ -29,7 +35,10 @@ visible = false
 [node name="MenuStart" parent="CanvasLayer" instance=ExtResource("2_2so7o")]
 visible = false
 
-[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer"]
+[node name="Loading" parent="CanvasLayer" instance=ExtResource("7_1hwpr")]
+visible = false
+
+[node name="Watermark" type="MarginContainer" parent="CanvasLayer"]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -41,6 +50,7 @@ grow_horizontal = 0
 grow_vertical = 0
 theme_override_constants/margin_right = 10
 
-[node name="Label" type="Label" parent="CanvasLayer/MarginContainer2"]
+[node name="Label" type="Label" parent="CanvasLayer/Watermark"]
+material = SubResource("ShaderMaterial_st0q7")
 layout_mode = 2
-text = "half functional development build v0.0.2"
+text = "half functional development build v0.0.3"

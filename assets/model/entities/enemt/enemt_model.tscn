@@ -1,6 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://hwdfjrl2816h"]
+[gd_scene load_steps=5 format=3 uid="uid://hwdfjrl2816h"]
 
 [ext_resource type="PackedScene" uid="uid://8rdthkatin6s" path="res://assets/model/entities/enemt/enemt.blend" id="1_ooyl3"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ooyl3"]
+lifetime_randomness = 0.35
+velocity_pivot = Vector3(7.79, 3.62, 0)
+direction = Vector3(3.73, 1.665, 0)
+spread = 27.0
+initial_velocity_min = 6.0
+initial_velocity_max = 6.0
+gravity = Vector3(0, -6.04, 0)
+linear_accel_min = -16.66
+linear_accel_max = -2.23517e-06
+scale_min = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ooyl3"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_uis3r"]
+material = SubResource("StandardMaterial3D_ooyl3")
+radius = 0.25
+height = 0.5
 
 [node name="enemt" instance=ExtResource("1_ooyl3")]
 
@@ -18,3 +38,8 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.00166163, 1.16908, -0
 
 [node name="Left" parent="." index="4"]
 transform = Transform3D(0.5, 0, 0, 0, 0.195845, -0.460049, 0, 0.460049, 0.195845, -0.39112, 0.0895524, 0.62605)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2611, 0)
+process_material = SubResource("ParticleProcessMaterial_ooyl3")
+draw_pass_1 = SubResource("SphereMesh_uis3r")

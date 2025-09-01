@@ -7,13 +7,13 @@
 interpolation_color_space = 2
 colors = PackedColorArray(0.416636, 0.850372, 0.788965, 1, 0.500111, 0.348045, 0.704439, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_le6wa"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ci5k1"]
 gradient = SubResource("Gradient_ci5k1")
 fill = 1
 fill_from = Vector2(0, 0.991453)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x6jmw"]
-texture = SubResource("GradientTexture2D_le6wa")
+texture = SubResource("GradientTexture2D_ci5k1")
 modulate_color = Color(0.136459, 0.257292, 0.298444, 1)
 
 [sub_resource type="Theme" id="Theme_ci5k1"]

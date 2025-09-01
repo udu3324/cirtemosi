@@ -191,10 +191,10 @@ func _attempt_attack():
 		Globals.player_pushback_event = force_push * randi_range(2, 5)
 		Globals.player_physics_reset_event = true
 		
+		Globals.health -= 5
 		
 		await _timeout_player()
 		
-		Globals.health -= 5
 	
 	# wait still for recovery
 	await get_tree().create_timer(1.5).timeout

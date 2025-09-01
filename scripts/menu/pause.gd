@@ -13,8 +13,14 @@ func _process(delta: float) -> void:
 
 func _handle_input():
 	# if user pressed exit key, toggle pause menu
-	if Input.is_action_just_pressed("ui_cancel") and !Globals.startVisible:
+	if Input.is_action_just_pressed("ui_cancel") and !Globals.startVisible and !Globals.loadingVisible:
 		self.visible = !self.is_visible_in_tree();
+		
+		# punish player for pausing
+		if !self.visible:
+			Globals.stamina_regeneration = false
+			await get_tree().create_timer(1).timeout
+			Globals.stamina_regeneration = true
 
 # pause the game if the node detects that its visibility changed
 func _on_visibility_changed() -> void:

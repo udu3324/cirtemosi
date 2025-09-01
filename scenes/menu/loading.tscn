@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://ka8twtd3h5x8"]
+
+[ext_resource type="Script" uid="uid://d3q0gr1qysqay" path="res://scripts/menu/loading.gd" id="1_p100p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4o653"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_4o653"]
+default_font_size = 65
+
+[node name="Loading" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p100p")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4o653")
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 71.0
+grow_vertical = 0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Label" type="Label" parent="MarginContainer2"]
+layout_mode = 2
+theme = SubResource("Theme_4o653")
+theme_override_colors/font_color = Color(0.525101, 0.525101, 0.525101, 1)
+text = "loading..."
