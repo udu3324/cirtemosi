@@ -1,5 +1,7 @@
 extends Node
 
+@onready var masterAudio = $AudioStreamPlayer
+
 @onready var menuStart = $CanvasLayer/MenuStart
 @onready var menuPause = $CanvasLayer/MenuPause
 @onready var menuLoading = $CanvasLayer/Loading
@@ -17,8 +19,12 @@ func _ready() -> void:
 	
 	menuStart.connect("level_1", _on_level_1)
 	menuStart.visible = true
+	
+	masterAudio.play()
+	masterAudio.volume_db = -5.0
 
 func _process(delta: float) -> void:
+	
 	Globals.startVisible = menuStart.visible
 	Globals.loadingVisible = menuLoading.visible
 	
@@ -97,6 +103,9 @@ func _on_exit_start():
 	stamina.visible = false
 	
 	get_tree().paused = false
+	
+	var audioFade = create_tween()
+	audioFade.tween_property(masterAudio, "volume_db", -5.0, 2)
 
 func _on_level_1():
 	level = preload("res://levels/level1.tscn").instantiate()
@@ -111,6 +120,9 @@ func _on_level_1():
 	# do not always apply this to every scenario!!!
 	Globals.stamina = Globals.stamina_max
 	Globals.health = Globals.health_max
+	
+	var audioFade = create_tween()
+	audioFade.tween_property(masterAudio, "volume_db", 0, 2)
 	
 	print_debug("added level 1")
 
@@ -151,9 +163,15 @@ func _show_loading():
 	var tween = create_tween()
 	tween.tween_property(menuLoading, "modulate:a", 1.0, 1)
 	
+	var audioFade = create_tween()
+	audioFade.tween_property(masterAudio, "volume_db", -10.0, 2)
+	
 	await get_tree().create_timer(1).timeout # tween length
 
 func _hide_loading():
+	var audioFade = create_tween()
+	audioFade.tween_property(masterAudio, "volume_db", 0, 2)
+	
 	await get_tree().create_timer(1).timeout # tween length
 	Globals.player_can_move = true
 	menuLoading.visible = false
