@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cj7ruth0bsa3m"]
+[gd_scene load_steps=8 format=3 uid="uid://cj7ruth0bsa3m"]
 
 [ext_resource type="Script" uid="uid://ro62b2obk1sm" path="res://scripts/entities/enemy_test/enemt.gd" id="1_6fnh4"]
 [ext_resource type="PackedScene" uid="uid://hwdfjrl2816h" path="res://assets/model/entities/enemt/enemt_model.tscn" id="2_3vipa"]
+[ext_resource type="AudioStream" uid="uid://dhh3atht3yg5t" path="res://assets/audio/fx/enemt_slash.wav" id="3_776iv"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lq6yy"]
 friction = 0.45
@@ -42,5 +43,8 @@ shape = SubResource("ConvexPolygonShape3D_j0uy1")
 
 [node name="enemt" parent="." instance=ExtResource("2_3vipa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.287062, 0)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_776iv")
 
 [connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_target_reached"]

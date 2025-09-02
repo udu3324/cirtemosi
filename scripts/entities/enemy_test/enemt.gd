@@ -7,6 +7,8 @@ extends RigidBody3D
 @onready var right_hand = $enemt/Right
 @onready var left_hand = $enemt/Left
 
+@onready var audio_slash = $AudioStreamPlayer3D
+
 var target_reached = true
 
 var pause_logic = false
@@ -163,6 +165,9 @@ func _attempt_attack():
 	# animate
 	# right_hand.position.x -= 0.3
 	# right_hand.rotation.y = lerp_angle(right_hand.rotation.y, right_hand.rotation.y - deg_to_rad(80), 0.1)
+	
+	audio_slash.pitch_scale = randf_range(0.7, 0.9)
+	audio_slash.play()
 	
 	var tweenR = create_tween()
 	tweenR.tween_property(right_hand, "position:x", - 0.53, 0.07).as_relative()
