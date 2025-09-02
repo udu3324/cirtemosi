@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b4b5oapw2kjx0"]
+[gd_scene load_steps=8 format=3 uid="uid://b4b5oapw2kjx0"]
 
 [ext_resource type="Script" uid="uid://jkoj5768g0vi" path="res://scripts/menu/pause.gd" id="1_1mvc1"]
 [ext_resource type="Shader" uid="uid://2exyvu6qdr86" path="res://assets/shader/blur.gdshader" id="1_4wejy"]
 [ext_resource type="Theme" uid="uid://yn3b7rdisnj8" path="res://assets/theme/new_theme.tres" id="1_nesnr"]
+[ext_resource type="FontFile" uid="uid://1qiyr01tsexv" path="res://assets/font/NebulaSans-Bold.ttf" id="3_1mso8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4wejy"]
 shader = ExtResource("1_4wejy")
@@ -13,6 +14,7 @@ shader = ExtResource("1_4wejy")
 shader_parameter/blur_size = Vector2(0.5, 0.5)
 
 [sub_resource type="Theme" id="Theme_4wejy"]
+default_font = ExtResource("3_1mso8")
 default_font_size = 80
 
 [node name="MenuPause" type="Control"]
@@ -78,9 +80,9 @@ theme = ExtResource("1_nesnr")
 text = "exit"
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/BackButton" to="." method="_on_button_unpause_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/BackButton" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/BackButton" to="." method="_on_button_unpause_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/SettingsButton" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/ExitButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

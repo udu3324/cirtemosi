@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://deosjk0k7g3ym"]
+[gd_scene load_steps=12 format=3 uid="uid://deosjk0k7g3ym"]
 
 [ext_resource type="Script" uid="uid://cus4gkng2m21t" path="res://scripts/stage.gd" id="1_vcsse"]
 [ext_resource type="PackedScene" uid="uid://bn4n2yrnem13i" path="res://scenes/menu/start.tscn" id="2_2so7o"]
@@ -8,10 +8,14 @@
 [ext_resource type="PackedScene" uid="uid://dc6xmfi6ci3yi" path="res://scenes/gui/health_bar.tscn" id="5_dexii"]
 [ext_resource type="PackedScene" uid="uid://ka8twtd3h5x8" path="res://scenes/menu/loading.tscn" id="7_1hwpr"]
 [ext_resource type="Shader" uid="uid://dpkrpjqqqrfdj" path="res://assets/shader/invert.gdshader" id="7_st0q7"]
+[ext_resource type="FontFile" uid="uid://cw8aclc2u6jmc" path="res://assets/font/NebulaSans-Book.ttf" id="9_dexii"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_st0q7"]
 shader = ExtResource("7_st0q7")
 shader_parameter/intensity = 0.073
+
+[sub_resource type="Theme" id="Theme_yd2gm"]
+default_font = ExtResource("9_dexii")
 
 [node name="Stage" type="Node"]
 script = ExtResource("1_vcsse")
@@ -53,4 +57,5 @@ theme_override_constants/margin_right = 10
 [node name="Label" type="Label" parent="CanvasLayer/Watermark"]
 material = SubResource("ShaderMaterial_st0q7")
 layout_mode = 2
+theme = SubResource("Theme_yd2gm")
 text = "half functional development build v0.0.3"

@@ -16,6 +16,10 @@ script = ExtResource("1_p1d34")
 
 [node name="CaveEnv" parent="." instance=ExtResource("1_raxm7")]
 
+[node name="LightCover" type="CSGBox3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -7.58237, 34, -26.6438)
+size = Vector3(41.9968, 1, 65.3029)
+
 [node name="ForegroundBottom" type="Node" parent="."]
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="ForegroundBottom"]
@@ -34,6 +38,34 @@ size = Vector3(5.19421, 4.55004, 1)
 transform = Transform3D(0.211071, -0.788929, 0.577096, 0.577096, 0.577097, 0.577857, -0.788929, 0.211071, 0.577096, 16.3804, 7.64711, 7.66623)
 size = Vector3(5.19421, 13.4718, 1)
 
+[node name="CSGBox3D18" type="CSGBox3D" parent="ForegroundBottom"]
+transform = Transform3D(0.211071, -0.788929, 0.577096, 0.577096, 0.577097, 0.577857, -0.788929, 0.211071, 0.577096, -12.5971, 18.5429, -13.8845)
+size = Vector3(5.19421, 13.4718, 1)
+
+[node name="CSGBox3D19" type="CSGBox3D" parent="ForegroundBottom"]
+transform = Transform3D(0.211071, -0.788929, 0.577096, 0.577096, 0.577097, 0.577857, -0.788929, 0.211071, 0.577096, -11.222, 19.0175, -15.7347)
+size = Vector3(5.19421, 13.4718, 1)
+
+[node name="CSGBox3D22" type="CSGBox3D" parent="ForegroundBottom"]
+transform = Transform3D(0.128688, -0.806473, 0.577096, 0.633468, 0.514586, 0.577857, -0.762992, 0.291209, 0.577096, 3.38011, 4.24338, -15.5433)
+size = Vector3(5.19421, 13.4718, 1)
+
+[node name="CSGBox3D23" type="CSGBox3D" parent="ForegroundBottom"]
+transform = Transform3D(0.128688, -0.806473, 0.577096, 0.633468, 0.514586, 0.577857, -0.762992, 0.291209, 0.577096, 4.16541, 4.76658, -16.8524)
+size = Vector3(5.19421, 13.4718, 1)
+
+[node name="CSGBox3D24" type="CSGBox3D" parent="ForegroundBottom"]
+transform = Transform3D(0.737984, -0.34977, 0.577096, -0.0663482, 0.813437, 0.577857, -0.671549, -0.464739, 0.577096, 2.73568, 8.09159, -18.7521)
+size = Vector3(5.19421, 5.29657, 1)
+
+[node name="CSGBox3D20" type="CSGBox3D" parent="ForegroundBottom"]
+transform = Transform3D(0.00598927, -0.816654, 0.577096, 0.703626, 0.41351, 0.577857, -0.710545, 0.402599, 0.577096, -4.20668, 16.0438, -19.7724)
+size = Vector3(5.19421, 13.4718, 1)
+
+[node name="CSGBox3D21" type="CSGBox3D" parent="ForegroundBottom"]
+transform = Transform3D(0.804835, 0.13856, 0.577096, -0.522308, 0.627116, 0.577857, -0.281839, -0.766503, 0.577096, 1.60993, 14.0765, -23.6191)
+size = Vector3(5.19421, 13.4718, 1)
+
 [node name="CSGBox3D10" type="CSGBox3D" parent="ForegroundBottom"]
 transform = Transform3D(0.668222, -0.469509, 0.577096, 0.0721386, 0.812943, 0.577858, -0.740456, -0.344507, 0.577096, 0.934401, 6.70174, 10.1963)
 size = Vector3(5.19421, 6.93603, 1)
@@ -49,10 +81,6 @@ size = Vector3(3.49292, 2.74364, 1)
 [node name="CSGBox3D15" type="CSGBox3D" parent="ForegroundBottom"]
 transform = Transform3D(0.211071, -0.788929, 0.577096, 0.577096, 0.577097, 0.577857, -0.788929, 0.211071, 0.577096, 10.387, 10.0987, 11.2047)
 size = Vector3(3.49292, 2.74364, 1)
-
-[node name="LightCover" type="CSGBox3D" parent="."]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -7.58237, 34, -26.6438)
-size = Vector3(41.9968, 1, 65.3029)
 
 [node name="Cave" type="Node" parent="."]
 

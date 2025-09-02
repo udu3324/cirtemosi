@@ -16,13 +16,13 @@ var player_physics_reset_event: bool = false
 var player_level_traverse_event: String = ""
 
 # player stats
-var health_max: float = 100.0
+const health_max: float = 100.0
 
 var health: float = 100.0
 
-var stamina_max: float = 80.0
-var stamina_usage: float = 0.7
-var stamina_recovery: float = 0.05
+const stamina_max: float = 80.0
+const stamina_usage: float = 0.7
+const stamina_recovery: float = 0.05
 var stamina_regeneration: bool = true
 
 var stamina: float = 80.0

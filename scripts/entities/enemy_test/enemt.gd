@@ -205,14 +205,14 @@ func _attempt_attack():
 	var tweenR2 = create_tween()
 	tweenR2.tween_property(right_hand, "rotation:y", - deg_to_rad(80), 0.13).as_relative()
 	tweenR2.tween_property(right_hand, "rotation:z", - deg_to_rad(25), 0.13).as_relative()
-	tweenR2.tween_property(right_hand, "position:x", 0.53, 0.17).as_relative()
 	tweenR2.tween_property(right_hand, "position:z", - 0.2, 0.17).as_relative()
+	tweenR2.tween_property(right_hand, "position:x", 0.53, 0.17).as_relative()
 	await get_tree().create_timer(0.03).timeout
 	var tweenL2 = create_tween()
 	tweenL2.tween_property(left_hand, "rotation:y", deg_to_rad(80), 0.03).as_relative()
 	tweenL2.tween_property(left_hand, "rotation:z", deg_to_rad(45), 0.03).as_relative()
-	tweenL2.tween_property(left_hand, "position:x", 0.55, 0.09).as_relative()
 	tweenL2.tween_property(left_hand, "position:z", 0.2, 0.09).as_relative()
+	tweenL2.tween_property(left_hand, "position:x", 0.55, 0.09).as_relative()
 	
 	# wait a little more to recover + animate to the next one smoothly
 	await get_tree().create_timer(0.27).timeout

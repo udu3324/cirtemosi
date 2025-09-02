@@ -1,4 +1,7 @@
-[gd_resource type="Theme" format=3 uid="uid://yn3b7rdisnj8"]
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://yn3b7rdisnj8"]
+
+[ext_resource type="FontFile" uid="uid://cw8aclc2u6jmc" path="res://assets/font/NebulaSans-Book.ttf" id="1_bem6d"]
 
 [resource]
+default_font = ExtResource("1_bem6d")
 default_font_size = 29
