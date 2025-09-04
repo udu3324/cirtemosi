@@ -1,8 +1,9 @@
-[gd_scene load_steps=25 format=4 uid="uid://bhmmx5pl0neys"]
+[gd_scene load_steps=27 format=4 uid="uid://bhmmx5pl0neys"]
 
 [ext_resource type="Material" uid="uid://dhp1vk7afkguu" path="res://assets/prefab/prefab_dark_meter.tres" id="1_3ju41"]
 [ext_resource type="Texture2D" uid="uid://b5pviiur126b0" path="res://assets/prefab/playtesting.png" id="2_k5kv5"]
 [ext_resource type="PackedScene" uid="uid://bxxfjarpl4gmw" path="res://levels/test/test_scene_2.tscn" id="3_6a74u"]
+[ext_resource type="PackedScene" uid="uid://cakuu0iss3nta" path="res://levels/test/test_scene_3.tscn" id="4_mxorj"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_6a74u"]
 _surfaces = [{
@@ -101,6 +102,9 @@ _surfaces = [{
 }]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_m852n"]
+data = PackedVector3Array(-8, -0.5, 1.5, -8, -0.5, -1.5, -8, 0.5, -1.5, 8, -0.5, -1.5, -8, -0.5, -1.5, -8, -0.5, 1.5, -8, 0.5, -1.5, -8, -0.5, -1.5, 8, -0.5, -1.5, -8, 0.5, -1.5, -8, 0.5, 1.5, -8, -0.5, 1.5, -8, -0.5, 1.5, -8, 0.5, 1.5, 8, 0.5, 1.5, 8, 0.5, 1.5, -8, 0.5, 1.5, -8, 0.5, -1.5, -8, -0.5, 1.5, 8, -0.5, 1.5, 8, -0.5, -1.5, 8, 0.5, 1.5, 8, -0.5, 1.5, -8, -0.5, 1.5, 8, -0.5, -1.5, 8, -0.5, 1.5, 8, 0.5, 1.5, 8, -0.5, -1.5, 8, 0.5, -1.5, -8, 0.5, -1.5, -8, 0.5, -1.5, 8, 0.5, -1.5, 8, 0.5, 1.5, 8, 0.5, 1.5, 8, 0.5, -1.5, 8, -0.5, -1.5)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_0djdk"]
 data = PackedVector3Array(-8, -0.5, 1.5, -8, -0.5, -1.5, -8, 0.5, -1.5, 8, -0.5, -1.5, -8, -0.5, -1.5, -8, -0.5, 1.5, -8, 0.5, -1.5, -8, -0.5, -1.5, 8, -0.5, -1.5, -8, 0.5, -1.5, -8, 0.5, 1.5, -8, -0.5, 1.5, -8, -0.5, 1.5, -8, 0.5, 1.5, 8, 0.5, 1.5, 8, 0.5, 1.5, -8, 0.5, 1.5, -8, 0.5, -1.5, -8, -0.5, 1.5, 8, -0.5, 1.5, 8, -0.5, -1.5, 8, 0.5, 1.5, 8, -0.5, 1.5, -8, -0.5, 1.5, 8, -0.5, -1.5, 8, -0.5, 1.5, 8, 0.5, 1.5, 8, -0.5, -1.5, 8, 0.5, -1.5, -8, 0.5, -1.5, -8, 0.5, -1.5, 8, 0.5, -1.5, 8, 0.5, 1.5, 8, 0.5, 1.5, 8, 0.5, -1.5, 8, -0.5, -1.5)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_ephor"]
@@ -301,6 +305,16 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SecretTest/CSGBakedMeshInstance3D6/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_m852n")
 
+[node name="CSGBakedMeshInstance3D8" type="MeshInstance3D" parent="SecretTest"]
+transform = Transform3D(-6.42346e-09, 0, -1, 0, 1, 0, 0.146952, 0, -4.37114e-08, -12.5, -0.5, 2.5396)
+mesh = SubResource("ArrayMesh_t4fqd")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SecretTest/CSGBakedMeshInstance3D8"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SecretTest/CSGBakedMeshInstance3D8/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_0djdk")
+
 [node name="CSGBox3D7" type="CSGBox3D" parent="SecretTest"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, -0.5, 0)
 size = Vector3(9, 1, 9)
@@ -380,3 +394,6 @@ omni_range = 1.31984
 
 [node name="IntroFall" parent="." instance=ExtResource("3_6a74u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
+
+[node name="TestScene3" parent="." instance=ExtResource("4_mxorj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 10)

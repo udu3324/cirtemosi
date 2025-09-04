@@ -15,3 +15,9 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
 		print_debug("entering to level 2")
 		Globals.player_level_traverse_event = "3->2"
+
+
+func _on_area_3d_2_body_entered(body: Node3D) -> void:
+	if body.name == "Player":
+		print_debug("entering to testing level")
+		Globals.player_level_traverse_event = "testing"

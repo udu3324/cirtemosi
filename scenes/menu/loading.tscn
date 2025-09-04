@@ -1,10 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://ka8twtd3h5x8"]
+[gd_scene load_steps=4 format=3 uid="uid://ka8twtd3h5x8"]
 
 [ext_resource type="Script" uid="uid://d3q0gr1qysqay" path="res://scripts/menu/loading.gd" id="1_p100p"]
 [ext_resource type="FontFile" uid="uid://1qiyr01tsexv" path="res://assets/font/NebulaSans-Bold.ttf" id="2_xqxwx"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4o653"]
-bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Theme" id="Theme_4o653"]
 default_font = ExtResource("2_xqxwx")
@@ -27,9 +24,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="MarginContainer"]
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_4o653")
+color = Color(0, 0, 0, 1)
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 layout_mode = 1

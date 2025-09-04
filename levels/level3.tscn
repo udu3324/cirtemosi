@@ -1,10 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://buhn06bwytmyh"]
+[gd_scene load_steps=7 format=3 uid="uid://buhn06bwytmyh"]
 
 [ext_resource type="Script" uid="uid://ef8rjkc5rehh" path="res://scripts/scenes/level_3.gd" id="1_kvvkh"]
 [ext_resource type="PackedScene" uid="uid://duydi7lytqxks" path="res://scenes/enviornment/CaveEnv.tscn" id="1_r8unp"]
+[ext_resource type="Texture2D" uid="uid://bp82imlehhbru" path="res://assets/prefab/playtesting2.png" id="3_aaqj5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aaqj5"]
 size = Vector3(4.7608, 8, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0fm5q"]
+transparency = 2
+alpha_scissor_threshold = 0.596
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("3_aaqj5")
+uv1_scale = Vector3(-1, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cpie4"]
+size = Vector3(9, 6.38489, 1)
 
 [node name="Level3" type="Node3D"]
 script = ExtResource("1_kvvkh")
@@ -118,4 +129,29 @@ spot_angle_attenuation = 0.026278
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 4.9674, 34, -29.2858)
 size = Vector3(41.9968, 1, 65.3029)
 
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(-0.488213, 0.0520542, 0.871171, 0.106021, 0.994364, 0, -0.866261, 0.0923625, -0.49098, 3.93125, 0.741372, -9.61147)
+use_collision = true
+size = Vector3(4.28323, 1, 5.01685)
+material = SubResource("StandardMaterial3D_0fm5q")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(-0.488213, 0.0520542, 0.871171, 0.106021, 0.994364, 0, -0.866261, 0.0923625, -0.49098, -11.7628, 4.14952, -37.4582)
+use_collision = true
+size = Vector3(60.0366, 1, 5.01685)
+
+[node name="Area3D2" type="Area3D" parent="."]
+transform = Transform3D(0.873135, 0, 0.487479, 0, 1, 0, -0.487479, 0, 0.873135, 2.83057, 0, -11.5123)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2"]
+transform = Transform3D(1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, -0.165394, 2.69244, -5.70542)
+shape = SubResource("BoxShape3D_cpie4")
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="."]
+transform = Transform3D(0.82973, -0.0183308, 0.557864, 1.49012e-08, 0.999461, 0.0328412, -0.558165, -0.0272493, 0.829282, 11.9969, 3.46946, 2.32774)
+light_energy = 16.0
+spot_range = 48.6821
+spot_angle = 13.4805
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="Area3D2" to="." method="_on_area_3d_2_body_entered"]
