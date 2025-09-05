@@ -1,9 +1,10 @@
-[gd_scene load_steps=27 format=4 uid="uid://bhmmx5pl0neys"]
+[gd_scene load_steps=28 format=4 uid="uid://bhmmx5pl0neys"]
 
 [ext_resource type="Material" uid="uid://dhp1vk7afkguu" path="res://assets/prefab/prefab_dark_meter.tres" id="1_3ju41"]
 [ext_resource type="Texture2D" uid="uid://b5pviiur126b0" path="res://assets/prefab/playtesting.png" id="2_k5kv5"]
 [ext_resource type="PackedScene" uid="uid://bxxfjarpl4gmw" path="res://levels/test/test_scene_2.tscn" id="3_6a74u"]
 [ext_resource type="PackedScene" uid="uid://cakuu0iss3nta" path="res://levels/test/test_scene_3.tscn" id="4_mxorj"]
+[ext_resource type="PackedScene" uid="uid://b6t1s1ntpjpeu" path="res://scenes/items/starter_weapon.tscn" id="5_0djdk"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_6a74u"]
 _surfaces = [{
@@ -397,3 +398,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
 
 [node name="TestScene3" parent="." instance=ExtResource("4_mxorj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 10)
+
+[node name="StarterWeapon" parent="." instance=ExtResource("5_0djdk")]
+transform = Transform3D(0.442016, 0.865423, -0.235935, -0.763469, 0.501043, 0.407518, 0.470889, 0, 0.882193, -1.3116, 0.35192, -2.94264)

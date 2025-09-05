@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6t1s1ntpjpeu"]
+
+[ext_resource type="Script" uid="uid://dntrtmqjwxrbd" path="res://scripts/items/starter_weapon.gd" id="1_f1mxd"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kfsd5"]
+radius = 0.483412
+
+[node name="StarterWeapon" type="Node3D"]
+script = ExtResource("1_f1mxd")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
+transform = Transform3D(0.07, 0, 0, 0, -3.0598e-09, 0.07, 0, -0.07, -3.0598e-09, -0.364539, 0.0364539, 0)
+polygon = PackedVector2Array(0, 0, 1, 1, 7.00631, 0.74107, 7, 3, 8.23771, 2.78737, 8.2185, 0.438968, 10.9469, 0.417144, 10.9472, -0.531522, 8.21712, -0.553375, 8.20109, -2.68923, 7, -3, 6.99402, -0.909267, 1, -1)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_kfsd5")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

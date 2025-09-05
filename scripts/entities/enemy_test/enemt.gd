@@ -199,7 +199,10 @@ func _attempt_attack():
 		Globals.health -= 5
 		
 		await _timeout_player()
-		
+	
+	# in case if scene has been unloaded
+	if get_tree() == null:
+		return
 	
 	# wait still for recovery
 	await get_tree().create_timer(1.5).timeout

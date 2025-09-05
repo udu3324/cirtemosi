@@ -8,6 +8,7 @@ extends Node
 
 @onready var health = $CanvasLayer/HealthBar
 @onready var stamina = $CanvasLayer/StaminaBar
+@onready var equipment = $CanvasLayer/Equipment
 
 var level
 var player
@@ -106,6 +107,8 @@ func _on_exit_start():
 	
 	health.visible = false
 	stamina.visible = false
+	equipment.visible = false
+	
 	
 	get_tree().paused = false
 	
@@ -115,14 +118,16 @@ func _on_exit_start():
 func _on_level_1():
 	await _show_loading()
 	
-	level = preload("res://levels/level1.tscn").instantiate()
+	level = preload("res://levels/test/test_scene_1.tscn").instantiate()
 	$Node3D.add_child(level)
 	
 	_add_player(Vector3(0, 2, 0))
 	health.visible = true
 	stamina.visible = true
+	equipment.visible = true
 	
-	#_add_environment(preload("res://scenes/enviornment/CaveEnv.tscn"))
+	# only for the test env
+	_add_environment(preload("res://scenes/enviornment/OutsideEnv.tscn"))
 	
 	# do not always apply this to every scenario!!!
 	Globals.stamina = Globals.stamina_max
@@ -140,6 +145,7 @@ func _on_level_test():
 	_add_player(Vector3(0, 2, 0))
 	health.visible = true
 	stamina.visible = true
+	equipment.visible = true
 	
 	_add_environment(preload("res://scenes/enviornment/OutsideEnv.tscn"))
 	

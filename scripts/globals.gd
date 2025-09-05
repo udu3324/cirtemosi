@@ -26,3 +26,6 @@ const stamina_recovery: float = 0.05
 var stamina_regeneration: bool = true
 
 var stamina: float = 80.0
+
+var slot_active: int = 1
+var equipment = ["", "", ""]

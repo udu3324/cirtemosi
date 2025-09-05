@@ -1,4 +1,9 @@
-[gd_scene format=3 uid="uid://bq3w0tdsdqfts"]
+[gd_scene load_steps=5 format=3 uid="uid://bq3w0tdsdqfts"]
+
+[ext_resource type="Script" uid="uid://dl8elgc1agdy7" path="res://scripts/entities/player/equipment.gd" id="1_7vuh4"]
+[ext_resource type="Texture2D" uid="uid://c387us1br1vj5" path="res://assets/gui/empty_equipment.png" id="1_tycu4"]
+[ext_resource type="Texture2D" uid="uid://blbsuveu7vfj3" path="res://assets/gui/temp_sword.png" id="2_yup5a"]
+[ext_resource type="Texture2D" uid="uid://d20716lil0fwl" path="res://assets/gui/selected.png" id="3_7vuh4"]
 
 [node name="Equipment" type="Control"]
 layout_mode = 3
@@ -7,3 +12,79 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_7vuh4")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Slot1" type="CenterContainer" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+
+[node name="SlotTexture" type="TextureRect" parent="MarginContainer/HBoxContainer/Slot1"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("1_tycu4")
+expand_mode = 2
+
+[node name="SelectionGlint" type="TextureRect" parent="MarginContainer/HBoxContainer/Slot1"]
+visible = false
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("3_7vuh4")
+expand_mode = 2
+
+[node name="Sword" type="TextureRect" parent="MarginContainer/HBoxContainer/Slot1"]
+visible = false
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("2_yup5a")
+expand_mode = 2
+
+[node name="Slot2" type="CenterContainer" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+
+[node name="SlotTexture" type="TextureRect" parent="MarginContainer/HBoxContainer/Slot2"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("1_tycu4")
+expand_mode = 2
+
+[node name="SelectionGlint" type="TextureRect" parent="MarginContainer/HBoxContainer/Slot2"]
+visible = false
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("3_7vuh4")
+expand_mode = 2
+
+[node name="Slot3" type="CenterContainer" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+
+[node name="SlotTexture" type="TextureRect" parent="MarginContainer/HBoxContainer/Slot3"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("1_tycu4")
+expand_mode = 2
+
+[node name="SelectionGlint" type="TextureRect" parent="MarginContainer/HBoxContainer/Slot3"]
+visible = false
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("3_7vuh4")
+expand_mode = 2
