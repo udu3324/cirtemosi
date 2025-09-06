@@ -40,3 +40,12 @@ size = 5.762
 [node name="AudioListener3D" type="AudioListener3D" parent="."]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
 current = true
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="StarterWeaponNode" type="Node3D" parent="Node3D"]
+transform = Transform3D(0.0663675, 0.0222565, 9.72863e-10, -2.81211e-16, -3.0598e-09, 0.07, 0.0222565, -0.0663675, -2.90102e-09, -0.478401, 0.0364539, 0.206589)
+
+[node name="StarterWeapon" type="CSGPolygon3D" parent="Node3D/StarterWeaponNode"]
+transform = Transform3D(1, 0, 0, 0, 1, -7.10543e-15, -1.77636e-15, 3.55271e-15, 1, -11.2296, 0.78884, 5.96046e-08)
+polygon = PackedVector2Array(0, 0, 1, 1, 7.00631, 0.74107, 7, 3, 8.23771, 2.78737, 8.2185, 0.438968, 10.9469, 0.417144, 10.9472, -0.531522, 8.21712, -0.553375, 8.20109, -2.68923, 7, -3, 6.99402, -0.909267, 1, -1)

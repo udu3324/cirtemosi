@@ -1,6 +1,9 @@
 extends RigidBody3D
 
 @onready var camera = $TwistPivot/PitchPivot/Camera3D
+@onready var model = $Node3D
+
+@onready var starter_weapon = $Node3D/StarterWeaponNode
 
 # ty https://www.youtube.com/watch?v=sVsn9NqpVhg
 
@@ -12,6 +15,9 @@ func _ready() -> void:
 # delta allows variations between machines
 func _process(delta: float) -> void:
 	Globals.player_pos = self.position
+	
+	_render_equipment()
+	_handle_equipment()
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	# var input = Input.get_action_strength("ui_up")
@@ -87,3 +93,38 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 		# print_debug("angle is", slope_angle)
 	
 	# apply_central_force(Vector3(0, 5, 0))
+	_face_to_velocity()
+
+func _face_to_velocity() -> void:
+	# a velocity point that points to the movement direction
+	var linear_pos = linear_velocity.normalized()
+	
+	# get the angle from the point
+	var angle_y = atan2(linear_pos.x, linear_pos.z) + (PI / 2) # add a 90deg offset
+	
+	model.rotation.y = lerp_angle(model.rotation.y, angle_y, 0.1)
+	# var tween = create_tween()
+	# tween.tween_property(model, "rotation:y", angle_y, 0.1)
+
+func _render_equipment() -> void:
+	if Globals.slot_active == 1 and Globals.equipment[0] == "starter_weapon":
+		starter_weapon.visible = true
+	else:
+		starter_weapon.visible = false
+
+var attack_tween: Tween
+func _handle_equipment() -> void:
+	if Input.is_action_just_pressed("attack"):
+		if Globals.slot_active == 1 and Globals.equipment[0] == "starter_weapon":
+			if attack_tween and attack_tween.is_running():
+				attack_tween.kill()
+				starter_weapon.rotation.y = 0
+			
+			attack_tween = create_tween()
+			attack_tween.tween_property(starter_weapon, "rotation:y", deg_to_rad(-95), 0.3).as_relative()
+			
+			await attack_tween.finished
+			
+			attack_tween = create_tween()
+			attack_tween.tween_property(starter_weapon, "rotation:y", deg_to_rad(95), 0.4).as_relative()
+			

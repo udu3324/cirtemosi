@@ -14,6 +14,16 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
+	_render_glint()
+	
+	# unhide weapons
+	if Globals.equipment[0] == "starter_weapon":
+		starter_weapon.visible = true
+	else:
+		starter_weapon.visible = false
+	
+
+func _render_glint():
 	# hide all glints
 	glint1.visible = false
 	glint2.visible = false
@@ -33,7 +43,3 @@ func _process(delta: float) -> void:
 			Globals.slot_active += 1
 		else:
 			Globals.slot_active = 1
-	
-	# unhide weapons
-	if Globals.equipment[0] == "starter_weapon":
-		starter_weapon.visible = true
