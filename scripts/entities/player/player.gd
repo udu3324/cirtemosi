@@ -112,19 +112,66 @@ func _render_equipment() -> void:
 	else:
 		starter_weapon.visible = false
 
-var attack_tween: Tween
+var attacking = false
 func _handle_equipment() -> void:
 	if Input.is_action_just_pressed("attack"):
 		if Globals.slot_active == 1 and Globals.equipment[0] == "starter_weapon":
-			if attack_tween and attack_tween.is_running():
-				attack_tween.kill()
-				starter_weapon.rotation.y = 0
+			if attacking:
+				return
 			
-			attack_tween = create_tween()
+			attacking = true
+			
+			# start animation
+			var attack_tween = create_tween()
 			attack_tween.tween_property(starter_weapon, "rotation:y", deg_to_rad(-95), 0.3).as_relative()
 			
 			await attack_tween.finished
 			
+			# check if player hit an enemy
+			
+			# get all enemy nodes
+			var enemies = []
+			for node in _get_all_nodes(get_tree().root):
+				#print_debug(node)
+				if node.name == "EnemyCollisionMesh":
+					#print_debug("found enemy", node)
+					enemies.append(node)
+			
+			# for each enemy
+			for enemy in enemies:
+				var distance = position.distance_to(enemy.global_transform.origin)
+				
+				# print("player ", position, " | enemy ", enemy.global_transform.origin, " | distance ", distance)
+				
+				# check if distance is good
+				if distance > 3.0:
+					break
+				
+				var forward = -model.global_transform.basis.x.normalized()
+				var to_enemy = ( enemy.global_transform.origin - model.global_transform.origin).normalized()
+				
+				var angle = rad_to_deg(forward.angle_to(to_enemy))
+				
+				# check if angle is in range
+				if angle > 60: # currently very generous right now
+					break
+				
+				print_debug("enemy was hit!")
+				enemy.get_parent().health -= 10
+			
+			# stop animation
 			attack_tween = create_tween()
 			attack_tween.tween_property(starter_weapon, "rotation:y", deg_to_rad(95), 0.4).as_relative()
 			
+			await attack_tween.finished
+			
+			attacking = false
+
+func _get_all_nodes(node) -> Array:
+	var nodes = []
+	
+	for child in node.get_children():
+		nodes.append(child)
+		nodes += _get_all_nodes(child)
+	
+	return nodes

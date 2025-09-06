@@ -43,6 +43,11 @@ current = true
 
 [node name="Node3D" type="Node3D" parent="."]
 
+[node name="CSGBox3D" type="CSGBox3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.558105, 0.863878, 0)
+visible = false
+size = Vector3(2.11621, 0.205566, 1)
+
 [node name="StarterWeaponNode" type="Node3D" parent="Node3D"]
 transform = Transform3D(0.0663675, 0.0222565, 9.72863e-10, -2.81211e-16, -3.0598e-09, 0.07, 0.0222565, -0.0663675, -2.90102e-09, -0.478401, 0.0364539, 0.206589)
 

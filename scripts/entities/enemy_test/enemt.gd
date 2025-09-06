@@ -2,6 +2,7 @@ extends RigidBody3D
 
 @onready var agent = $NavigationAgent3D
 @onready var enemt_zone: Area3D = get_parent().get_child(0)
+@onready var health_bar = $SubViewport/MarginContainer/HealthBar
 
 @onready var model = $enemt
 @onready var right_hand = $enemt/Right
@@ -16,13 +17,15 @@ var pause_logic = false
 var roaming = false
 var chasing = false
 
+var health = 100.0
+
 var stuck_time := 0.0
 
 func _ready() -> void:
 	_generate_roam_point_target()
 
 func _process(delta: float) -> void:
-	pass
+	health_bar.value = health
 
 func _physics_process(delta: float) -> void:
 	if agent.is_navigation_finished():
@@ -53,9 +56,11 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 		chasing = false
 		enemt_zone.global_transform.origin = global_transform.origin
 		_generate_roam_point_target()
-		
+	
+	#print("chasing ", chasing, "|pause_logic ", pause_logic, "|is_navigation_finished ", agent.is_navigation_finished())
+	
 	# dont need to move if its finised reaching target
-	if agent.is_navigation_finished():
+	if agent.is_navigation_finished() and !chasing:
 		return
 	
 	# attempting attack waits / etc
@@ -154,6 +159,7 @@ func _face_to_velocity() -> void:
 	var tween = create_tween()
 	tween.tween_property(model, "rotation:y", angle_y, 0.1)
 
+var tween: Tween = create_tween()
 func _attempt_attack():
 	pause_logic = true
 	
@@ -162,6 +168,9 @@ func _attempt_attack():
 	# wait still for a bit to give player a change (also rng)
 	await get_tree().create_timer(randf_range(0.1, 0.5)).timeout
 	
+	if tween.is_running():
+		tween.stop()
+	
 	# animate
 	# right_hand.position.x -= 0.3
 	# right_hand.rotation.y = lerp_angle(right_hand.rotation.y, right_hand.rotation.y - deg_to_rad(80), 0.1)
@@ -169,17 +178,18 @@ func _attempt_attack():
 	audio_slash.pitch_scale = randf_range(0.7, 0.9)
 	audio_slash.play()
 	
-	var tweenR = create_tween()
-	tweenR.tween_property(right_hand, "position:x", - 0.53, 0.07).as_relative()
-	tweenR.tween_property(right_hand, "position:z", 0.2, 0.07).as_relative()
-	tweenR.tween_property(right_hand, "rotation:y", deg_to_rad(80), 0.03).as_relative()
-	tweenR.tween_property(right_hand, "rotation:z", deg_to_rad(25), 0.03).as_relative()
+	tween = create_tween()
+	tween.tween_property(right_hand, "position:x", - 0.53, 0.07).as_relative()
+	tween.tween_property(right_hand, "position:z", 0.2, 0.07).as_relative()
+	tween.tween_property(right_hand, "rotation:y", deg_to_rad(80), 0.03).as_relative()
+	tween.tween_property(right_hand, "rotation:z", deg_to_rad(25), 0.03).as_relative()
 	await get_tree().create_timer(0.03).timeout
-	var tweenL = create_tween()
-	tweenL.tween_property(left_hand, "position:x", - 0.55, 0.09).as_relative()
-	tweenL.tween_property(left_hand, "position:z", - 0.2, 0.09).as_relative()
-	tweenL.tween_property(left_hand, "rotation:y", - deg_to_rad(80), 0.03).as_relative()
-	tweenL.tween_property(left_hand, "rotation:z", - deg_to_rad(45), 0.03).as_relative()
+	tween = create_tween()
+	tween.tween_property(left_hand, "position:x", - 0.55, 0.09).as_relative()
+	tween.tween_property(left_hand, "position:z", - 0.2, 0.09).as_relative()
+	tween.tween_property(left_hand, "rotation:y", - deg_to_rad(80), 0.03).as_relative()
+	tween.tween_property(left_hand, "rotation:z", - deg_to_rad(45), 0.03).as_relative()
+	await tween.finished
 	
 	# this wait gives time for player to dodge
 	# await get_tree().create_timer(0.17).timeout
@@ -205,25 +215,26 @@ func _attempt_attack():
 		return
 	
 	# wait still for recovery
-	await get_tree().create_timer(1.5).timeout
+	await get_tree().create_timer(randf_range(0.5, 1.5)).timeout
 	
 	# animate back
 	# right_hand.position.x += 0.3
 	# right_hand.rotation.y = lerp_angle(right_hand.rotation.y, right_hand.rotation.y + deg_to_rad(80), 0.1)
-	var tweenR2 = create_tween()
-	tweenR2.tween_property(right_hand, "rotation:y", - deg_to_rad(80), 0.13).as_relative()
-	tweenR2.tween_property(right_hand, "rotation:z", - deg_to_rad(25), 0.13).as_relative()
-	tweenR2.tween_property(right_hand, "position:z", - 0.2, 0.17).as_relative()
-	tweenR2.tween_property(right_hand, "position:x", 0.53, 0.17).as_relative()
+	tween = create_tween()
+	tween.tween_property(right_hand, "rotation:y", - deg_to_rad(80), 0.13).as_relative()
+	tween.tween_property(right_hand, "rotation:z", - deg_to_rad(25), 0.13).as_relative()
+	tween.tween_property(right_hand, "position:z", - 0.2, 0.17).as_relative()
+	tween.tween_property(right_hand, "position:x", 0.53, 0.17).as_relative()
 	await get_tree().create_timer(0.03).timeout
-	var tweenL2 = create_tween()
-	tweenL2.tween_property(left_hand, "rotation:y", deg_to_rad(80), 0.03).as_relative()
-	tweenL2.tween_property(left_hand, "rotation:z", deg_to_rad(45), 0.03).as_relative()
-	tweenL2.tween_property(left_hand, "position:z", 0.2, 0.09).as_relative()
-	tweenL2.tween_property(left_hand, "position:x", 0.55, 0.09).as_relative()
+	tween = create_tween()
+	tween.tween_property(left_hand, "rotation:y", deg_to_rad(80), 0.03).as_relative()
+	tween.tween_property(left_hand, "rotation:z", deg_to_rad(45), 0.03).as_relative()
+	tween.tween_property(left_hand, "position:z", 0.2, 0.09).as_relative()
+	tween.tween_property(left_hand, "position:x", 0.55, 0.09).as_relative()
+	await tween.finished
 	
 	# wait a little more to recover + animate to the next one smoothly
-	await get_tree().create_timer(0.27).timeout
+	# await get_tree().create_timer(0.15).timeout
 	
 	# continue
 	pause_logic = false
