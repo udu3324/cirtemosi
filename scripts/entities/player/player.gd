@@ -28,7 +28,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 		Globals.player_physics_reset_event = false
 	
 	if Globals.player_pushback_event != Vector3.ZERO:
-		print_debug("recieved pushback event")
+		#print_debug("recieved pushback event")
 		apply_central_force(Globals.player_pushback_event * 100)
 		
 		Globals.player_pushback_event = Vector3.ZERO
@@ -156,7 +156,7 @@ func _handle_equipment() -> void:
 				if angle > 60: # currently very generous right now
 					break
 				
-				print_debug("enemy was hit!")
+				#print_debug("enemy was hit!")
 				enemy.get_parent().health -= 10
 			
 			# stop animation

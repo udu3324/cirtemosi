@@ -5,8 +5,16 @@ extends RigidBody3D
 @onready var health_bar = $SubViewport/MarginContainer/HealthBar
 
 @onready var model = $enemt
-@onready var right_hand = $enemt/Right
-@onready var left_hand = $enemt/Left
+@onready var head = $enemt/Head2
+@onready var right_hand = $enemt/Right2
+@onready var left_hand = $enemt/Left2
+@onready var particles = $enemt/GPUParticles3D
+
+@onready var head_collision = $enemt/Head2/CollisionShape3D
+@onready var right_hand_collision = $enemt/Right2/CollisionShape3D
+@onready var left_hand_collision = $enemt/Left2/CollisionShape3D
+
+@onready var main_body_collision = $CollisionShape3D2
 
 @onready var audio_slash = $AudioStreamPlayer3D
 
@@ -18,6 +26,7 @@ var roaming = false
 var chasing = false
 
 var health = 100.0
+var dead = false
 
 var stuck_time := 0.0
 
@@ -26,9 +35,30 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	health_bar.value = health
-
+	
+	if health == 0.0 and !dead:
+		self.sleeping = true
+		self.freeze = true
+		dead = true
+		particles.emitting = false
+		
+		#print_debug("enemy is dead")
+		
+		left_hand_collision.disabled = false
+		left_hand.sleeping = false
+		left_hand.freeze = false
+		
+		right_hand_collision.disabled = false
+		right_hand.sleeping = false
+		right_hand.freeze = false
+		
+		main_body_collision.disabled = true
+		head_collision.disabled = false
+		head.sleeping = false
+		head.freeze = false
+	
 func _physics_process(delta: float) -> void:
-	if agent.is_navigation_finished():
+	if agent.is_navigation_finished() and !dead:
 		stuck_time = 0.0
 	else:
 		stuck_time += delta
