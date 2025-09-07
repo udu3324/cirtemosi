@@ -109,6 +109,8 @@ func _on_exit_start():
 	stamina.visible = false
 	equipment.visible = false
 	
+	Globals.equipment = ["", "", ""]
+	Globals.slot_active = 1
 	
 	get_tree().paused = false
 	
@@ -118,7 +120,7 @@ func _on_exit_start():
 func _on_level_1():
 	await _show_loading()
 	
-	level = preload("res://levels/test/test_scene_1.tscn").instantiate()
+	level = preload("res://levels/level1.tscn").instantiate()
 	$Node3D.add_child(level)
 	
 	_add_player(Vector3(0, 2, 0))
@@ -127,7 +129,7 @@ func _on_level_1():
 	equipment.visible = true
 	
 	# only for the test env
-	_add_environment(preload("res://scenes/enviornment/OutsideEnv.tscn"))
+	# _add_environment(preload("res://scenes/enviornment/OutsideEnv.tscn"))
 	
 	# do not always apply this to every scenario!!!
 	Globals.stamina = Globals.stamina_max
