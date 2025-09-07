@@ -141,11 +141,11 @@ func _handle_equipment() -> void:
 			for enemy in enemies:
 				var distance = position.distance_to(enemy.global_transform.origin)
 				
-				# print("player ", position, " | enemy ", enemy.global_transform.origin, " | distance ", distance)
+				#print("player ", position, " | enemy ", enemy.global_transform.origin, " | distance ", distance)
 				
 				# check if distance is good
-				if distance > 3.0:
-					break
+				if distance > 1.5:
+					continue
 				
 				var forward = -model.global_transform.basis.x.normalized()
 				var to_enemy = ( enemy.global_transform.origin - model.global_transform.origin).normalized()
@@ -154,7 +154,7 @@ func _handle_equipment() -> void:
 				
 				# check if angle is in range
 				if angle > 60: # currently very generous right now
-					break
+					continue
 				
 				#print_debug("enemy was hit!")
 				enemy.get_parent().health -= 10

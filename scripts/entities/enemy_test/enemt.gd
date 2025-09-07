@@ -36,9 +36,13 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	health_bar.value = health
 	
+	if health != 100.0 and health != 0.0:
+		health_bar.visible = true
+	
 	if health == 0.0 and !dead:
 		self.sleeping = true
 		self.freeze = true
+		
 		dead = true
 		particles.emitting = false
 		
@@ -56,7 +60,10 @@ func _process(delta: float) -> void:
 		head_collision.disabled = false
 		head.sleeping = false
 		head.freeze = false
+		
+		return
 	
+
 func _physics_process(delta: float) -> void:
 	if agent.is_navigation_finished() and !dead:
 		stuck_time = 0.0

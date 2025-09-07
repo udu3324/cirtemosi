@@ -65,6 +65,7 @@ theme_override_constants/margin_top = 95
 theme_override_constants/margin_right = 175
 
 [node name="HealthBar" parent="SubViewport/MarginContainer" instance=ExtResource("4_np4h2")]
+visible = false
 custom_minimum_size = Vector2(100, 30)
 layout_mode = 2
 
