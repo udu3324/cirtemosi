@@ -9,6 +9,7 @@ extends Node
 @onready var health = $CanvasLayer/HealthBar
 @onready var stamina = $CanvasLayer/StaminaBar
 @onready var equipment = $CanvasLayer/Equipment
+@onready var relics = $CanvasLayer/Relics
 
 var level
 var player
@@ -130,6 +131,7 @@ func _on_exit_start():
 	health.visible = false
 	stamina.visible = false
 	equipment.visible = false
+	relics.visible = false
 	
 	Globals.equipment = ["", "", ""]
 	Globals.slot_active = 1
@@ -149,6 +151,7 @@ func _on_level_1():
 	health.visible = true
 	stamina.visible = true
 	equipment.visible = true
+	relics.visible = true
 	
 	# only for the test env
 	# _add_environment(preload("res://scenes/enviornment/OutsideEnv.tscn"))
@@ -170,6 +173,7 @@ func _on_level_test():
 	health.visible = true
 	stamina.visible = true
 	equipment.visible = true
+	relics.visible = true
 	
 	_add_environment(preload("res://scenes/enviornment/OutsideEnv.tscn"))
 	

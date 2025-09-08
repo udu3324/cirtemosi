@@ -1,0 +1,79 @@
+[gd_scene load_steps=6 format=3 uid="uid://dl3txvou7nvh"]
+
+[ext_resource type="Texture2D" uid="uid://b2d3i2apa0e28" path="res://assets/relics/relic_1_hidden_icon.png" id="1_ws5rw"]
+[ext_resource type="Texture2D" uid="uid://diqi6ipp6qmgy" path="res://assets/relics/relic_2_hidden_icon.png" id="2_7ycdy"]
+[ext_resource type="Texture2D" uid="uid://dcys6jvvpk8ui" path="res://assets/relics/relic_3_hidden_icon.png" id="3_ewefw"]
+[ext_resource type="Texture2D" uid="uid://bfwbueficfl5f" path="res://assets/relics/relic_4_hidden_icon.png" id="4_pol85"]
+[ext_resource type="Texture2D" uid="uid://1mmu3bchdc3u" path="res://assets/relics/relic_5_hidden_icon.png" id="5_14hj4"]
+
+[node name="Relics" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -50.0
+offset_right = 266.0
+grow_vertical = 0
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_bottom = 90
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/CenterContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("1_ws5rw")
+expand_mode = 2
+
+[node name="CenterContainer2" type="CenterContainer" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/CenterContainer2"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("2_7ycdy")
+expand_mode = 2
+
+[node name="CenterContainer3" type="CenterContainer" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/CenterContainer3"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("3_ewefw")
+expand_mode = 2
+
+[node name="CenterContainer4" type="CenterContainer" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/CenterContainer4"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("4_pol85")
+expand_mode = 2
+
+[node name="CenterContainer5" type="CenterContainer" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/CenterContainer5"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("5_14hj4")
+expand_mode = 2

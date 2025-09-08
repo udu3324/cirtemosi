@@ -205,7 +205,7 @@ func _attempt_attack():
 	# _face_to_vector3(Globals.player_pos)
 	
 	# wait still for a bit to give player a change (also rng)
-	await get_tree().create_timer(randf_range(0.1, 0.5)).timeout
+	await get_tree().create_timer(randf_range(0.03, 0.3)).timeout
 	
 	if tween.is_running():
 		tween.stop()
@@ -228,7 +228,8 @@ func _attempt_attack():
 	tween.tween_property(left_hand, "position:z", - 0.2, 0.09).as_relative()
 	tween.tween_property(left_hand, "rotation:y", - deg_to_rad(80), 0.03).as_relative()
 	tween.tween_property(left_hand, "rotation:z", - deg_to_rad(45), 0.03).as_relative()
-	await tween.finished
+	#await tween.finished
+	await get_tree().create_timer(randf_range(0, 0.1)).timeout
 	
 	# this wait gives time for player to dodge
 	# await get_tree().create_timer(0.17).timeout
