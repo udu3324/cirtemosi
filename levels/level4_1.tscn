@@ -1,9 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://dc7nu5ov6qwsg"]
+[gd_scene load_steps=5 format=3 uid="uid://dc7nu5ov6qwsg"]
 
 [ext_resource type="Script" uid="uid://htv48ik563d1" path="res://scripts/scenes/level_4_1.gd" id="1_v1dub"]
+[ext_resource type="PackedScene" uid="uid://dwqj4buhblxh8" path="res://entities/enemt/enemt.tscn" id="2_8li1p"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8li1p"]
 size = Vector3(1, 6, 6)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_a7d5b"]
+vertices = PackedVector3Array(-2.78296, 0.499999, -13.5785, -3.03296, 0.499999, -13.0785, -2.28296, 0.499999, -11.5785, 1.46704, 0.499999, -11.0785, 1.96704, 0.499999, -14.8285, 0.467035, 0.499999, -14.8285, 1.46704, 0.499999, -7.57847, 4.96704, 0.499999, -7.07847, 10.717, 0.499999, -12.3285, 15.217, 0.499999, -2.82847, 15.717, 0.499999, -5.57847, 4.96704, 0.499999, -3.32847, 4.46704, 0.499999, -2.57847, 1.46704, 0.499999, -2.32847, 1.21704, 0.499999, 0.921533, 0.467035, 0.499999, 1.42153, -1.03296, 0.499999, 1.42153, -0.782965, 0.499999, 6.67153, 13.717, 0.499999, 2.67153, 15.217, 0.499999, -1.32847, 8.46704, 0.499999, 5.92153, 11.967, 0.499999, 3.92153, 3.71704, 0.499999, 6.67153, -9.28296, 0.499999, 1.42153, -9.53296, 0.499999, 2.42153, -6.03296, 0.499999, 6.67153)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 5), PackedInt32Array(2, 5, 4), PackedInt32Array(2, 4, 3), PackedInt32Array(6, 3, 7), PackedInt32Array(7, 3, 4), PackedInt32Array(7, 4, 8), PackedInt32Array(10, 9, 8), PackedInt32Array(8, 9, 7), PackedInt32Array(7, 9, 11), PackedInt32Array(13, 12, 14), PackedInt32Array(17, 16, 15), PackedInt32Array(9, 19, 18), PackedInt32Array(17, 15, 14), PackedInt32Array(21, 20, 18), PackedInt32Array(18, 20, 9), PackedInt32Array(9, 20, 12), PackedInt32Array(9, 12, 11), PackedInt32Array(17, 14, 22), PackedInt32Array(22, 14, 20), PackedInt32Array(20, 14, 12), PackedInt32Array(24, 23, 25), PackedInt32Array(25, 23, 17), PackedInt32Array(17, 23, 16)]
 
 [node name="Level4_1" type="Node3D"]
 script = ExtResource("1_v1dub")
@@ -68,5 +73,26 @@ size = Vector3(12, 2, 11)
 transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, 1.38902, -0.171799, -5)
 use_collision = true
 size = Vector3(3.22516, 2, 3)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_a7d5b")
+
+[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+visible = false
+use_collision = true
+polygon = PackedVector2Array(6.15501, 14.1588, 10.974, 12.5213, 13.5472, 9.24628, 16.1672, 5.5034, 15.4654, 1.24586, 13.8279, -3.05845, 8.58788, -6.19312, 1.75712, -7.22241, -6.05615, -7.12884, -9.65868, -3.19881, -10.033, -1.18701, 0.91497, -0.906294, 1.1489, 2.74302, 4.58226, 3.11457, 4.70464, 6.95376, 1.05533, 7.14091, 1.1489, 10.9774, -2.45362, 11.2581, -3.5297, 13.5506, 1.00854, 15.3285)
+
+[node name="Enemt" parent="." instance=ExtResource("2_8li1p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, -10)
+
+[node name="Enemt2" parent="." instance=ExtResource("2_8li1p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 1, -6)
+
+[node name="Enemt3" parent="." instance=ExtResource("2_8li1p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, -2)
+
+[node name="Enemt4" parent="." instance=ExtResource("2_8li1p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 3)
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

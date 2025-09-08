@@ -1,6 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://dc6xmfi6ci3yi"]
+[gd_scene load_steps=5 format=3 uid="uid://dc6xmfi6ci3yi"]
 
 [ext_resource type="Script" uid="uid://c7c76okuuop8e" path="res://scripts/entities/player/health.gd" id="1_g3ka3"]
+[ext_resource type="Texture2D" uid="uid://4wpd31t5y0gn" path="res://assets/stats/health_icon.png" id="2_sg1dr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sg1dr"]
+bg_color = Color(0.741176, 0.188235, 0.156863, 0.309804)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bk5rd"]
+bg_color = Color(0.741176, 0.188235, 0.156863, 0.588235)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="HealthBar" type="Control"]
 layout_mode = 3
@@ -29,5 +44,13 @@ size_flags_vertical = 8
 [node name="ProgressBar" type="ProgressBar" parent="MarginContainer/GridContainer"]
 custom_minimum_size = Vector2(400, 28)
 layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_sg1dr")
+theme_override_styles/fill = SubResource("StyleBoxFlat_bk5rd")
 value = 100.0
 show_percentage = false
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/GridContainer/ProgressBar"]
+offset_right = 30.0
+offset_bottom = 30.0
+texture = ExtResource("2_sg1dr")
+expand_mode = 1

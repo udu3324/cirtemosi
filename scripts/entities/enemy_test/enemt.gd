@@ -36,7 +36,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	health_bar.value = health
 	
-	if health != 100.0 and health != 0.0:
+	if health == 100.0 or health == 0.0:
+		health_bar.visible = false
+	else:
 		health_bar.visible = true
 	
 	if health == 0.0 and !dead:
