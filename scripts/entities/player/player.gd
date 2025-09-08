@@ -123,6 +123,7 @@ func _handle_equipment() -> void:
 			
 			# start animation
 			var attack_tween = create_tween()
+			attack_tween.tween_property(starter_weapon, "position:x", -0.2, 0.1).as_relative()
 			attack_tween.tween_property(starter_weapon, "rotation:y", deg_to_rad(-95), 0.3).as_relative()
 			
 			await attack_tween.finished
@@ -162,7 +163,7 @@ func _handle_equipment() -> void:
 			# stop animation
 			attack_tween = create_tween()
 			attack_tween.tween_property(starter_weapon, "rotation:y", deg_to_rad(95), 0.4).as_relative()
-			
+			attack_tween.tween_property(starter_weapon, "position:x", 0.2, 0.1).as_relative()
 			await attack_tween.finished
 			
 			attacking = false

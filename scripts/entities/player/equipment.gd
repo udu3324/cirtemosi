@@ -24,10 +24,14 @@ func _process(delta: float) -> void:
 	
 
 func _render_glint():
+	
 	# hide all glints
 	glint1.visible = false
 	glint2.visible = false
 	glint3.visible = false
+	
+	if Globals.equipment == ["", "", ""]:
+		return
 	
 	# set a specific glint
 	if Globals.slot_active == 1:

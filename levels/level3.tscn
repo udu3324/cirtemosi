@@ -151,6 +151,7 @@ spot_range = 11.5053
 [node name="SpotLight3D3" type="SpotLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 5.65971, 16.8481, -8.48112)
 light_color = Color(0.252028, 0.252028, 0.252028, 1)
+light_energy = 2.6
 spot_range = 41.64
 spot_angle = 47.0548
 spot_angle_attenuation = 0.026278
