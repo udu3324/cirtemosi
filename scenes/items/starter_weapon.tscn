@@ -17,4 +17,11 @@ polygon = PackedVector2Array(0, 0, 1, 1, 7.00631, 0.74107, 7, 3, 8.23771, 2.7873
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_kfsd5")
 
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35616, 0)
+light_color = Color(0.0923266, 0.10246, 0.10268, 1)
+light_energy = 0.568
+shadow_enabled = true
+omni_range = 0.831037
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

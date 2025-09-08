@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://40hbudsqa3hu"]
+
+[ext_resource type="PackedScene" uid="uid://duydi7lytqxks" path="res://scenes/enviornment/CaveEnv.tscn" id="1_rxes3"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_mvh35"]
+
+[node name="Level4" type="Node3D"]
+
+[node name="Dummy" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.7517, 1, 0)
+mesh = SubResource("CapsuleMesh_mvh35")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -20, 0, 0)
+use_collision = true
+polygon = PackedVector2Array(-13.9361, 9.72695, 0.947796, 16.1574, 12.3636, 12.6893, 16.8432, 5.53634, 13.5549, -3.79754, 4.93547, -7.14623, -4.8977, -7.35448, -10.9015, -3.20613, -11.2628, 2.57402, -13.9361, 6.90913, -15.7424, 9.5102)
+
+[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+use_collision = true
+polygon = PackedVector2Array(4.4032, 43.201, -6.85971, 34.1139, -2.8921, 22.723, 8.24282, 13.5079, 26.4171, 12.356, 44.3353, 19.5233, 45.4872, 26.3067, 37.936, 28.8664, 24.3693, 34.4979, 20.5296, 38.4655, 12.8504, 42.6891)
+
+[node name="CSGPolygon3D3" type="CSGPolygon3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 11, 6.55671e-07, 15)
+use_collision = true
+polygon = PackedVector2Array(-7.13375, 11.2221, -6.23784, 16.3416, 8.73671, 16.9816, 17.9518, 12.502, 19.9996, 1.62306, 8.73671, -6.44016, -8.28564, -4.0084, -13.4051, 3.15891, -8.54161, 6.87055, -8.41363, 10.4542)
+
+[node name="CSGPolygon3D4" type="CSGPolygon3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -24, -1.04907e-06, -24)
+use_collision = true
+polygon = PackedVector2Array(-9.12218, -5.50803, 0.604877, -4.22815, 7.77218, -1.92437, 12.1238, 4.34702, 12.8917, 11.3863, 11.8678, 15.8659, 7.90017, 14.714, 5.72438, 10.2345, -1.44293, 7.80269, -5.02658, 3.5791, -8.48225, 1.27532, -12.0659, -2.6923, -10.914, -5.63601)
+
+[node name="CaveEnv" parent="." instance=ExtResource("1_rxes3")]

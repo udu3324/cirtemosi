@@ -81,12 +81,34 @@ func _process(delta: float) -> void:
 	
 		_add_player(Vector3(-13.5, 2.5, -25.5))
 	
-	# lol
-	if traversing_to == "testing":
+	if traversing_to == "testing": #lol
 		for node in $Node3D.get_children():
 			$Node3D.remove_child(node)
 		
 		_on_level_test()
+	
+	if traversing_to == "3->4.1": #next
+		for node in $Node3D.get_children():
+			$Node3D.remove_child(node)
+		
+		level = preload("res://levels/level4.tscn").instantiate()
+		$Node3D.add_child(level)
+		
+		var sub_level = preload("res://levels/level4_1.tscn").instantiate()
+		$Node3D.add_child(sub_level)
+		sub_level.global_position = Vector3(-20, 0, 0)
+	
+		_add_player(Vector3(-28, 2.5, -5.5))
+	
+	# level 4.1 triggers
+	if traversing_to == "4.1->3": #back
+		for node in $Node3D.get_children():
+			$Node3D.remove_child(node)
+		
+		level = preload("res://levels/level3.tscn").instantiate()
+		$Node3D.add_child(level)
+	
+		_add_player(Vector3(15, 2, -14))
 	
 	# base wait time for loading screen
 	await get_tree().create_timer(3.0).timeout 
