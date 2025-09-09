@@ -26,15 +26,42 @@ var roaming = false
 var chasing = false
 
 var health = 100.0
+var attack_event = null
 var dead = false
 
 var stuck_time := 0.0
 
+var tween: Tween = create_tween()
+var left_rest_pos
+var left_rest_rot
+var right_rest_pos
+var right_rest_rot
+
 func _ready() -> void:
 	_generate_roam_point_target()
+	left_rest_pos = left_hand.position
+	left_rest_rot = left_hand.rotation
+	
+	right_rest_pos = right_hand.position
+	right_rest_rot = right_hand.rotation
 
 func _process(delta: float) -> void:
 	health_bar.value = health
+	
+	if attack_event != null:
+		
+		print_debug("recieved attack event")
+		#var linear_pos = linear_velocity.normalized()
+	
+		# get the angle from the point \ also assume angle is facing player cause yeah
+		#var angle_y = atan2(linear_pos.x, linear_pos.z) - (PI / 2)
+		
+		var direction = Vector3(sin(attack_event), 0, cos(attack_event))
+		
+		apply_central_force(direction * randi_range(100, 400))
+		
+		attack_event = null
+		
 	
 	if health == 100.0 or dead:
 		health_bar.visible = false
@@ -198,7 +225,6 @@ func _face_to_velocity() -> void:
 	var tween = create_tween()
 	tween.tween_property(model, "rotation:y", angle_y, 0.1)
 
-var tween: Tween = create_tween()
 func _attempt_attack():
 	pause_logic = true
 	
@@ -261,16 +287,12 @@ func _attempt_attack():
 	# right_hand.position.x += 0.3
 	# right_hand.rotation.y = lerp_angle(right_hand.rotation.y, right_hand.rotation.y + deg_to_rad(80), 0.1)
 	tween = create_tween()
-	tween.tween_property(right_hand, "rotation:y", - deg_to_rad(80), 0.13).as_relative()
-	tween.tween_property(right_hand, "rotation:z", - deg_to_rad(25), 0.13).as_relative()
-	tween.tween_property(right_hand, "position:z", - 0.2, 0.17).as_relative()
-	tween.tween_property(right_hand, "position:x", 0.53, 0.17).as_relative()
+	tween.tween_property(right_hand, "rotation", right_rest_rot, 0.13)
+	tween.tween_property(right_hand, "position", right_rest_pos, 0.17)
 	await get_tree().create_timer(0.03).timeout
 	tween = create_tween()
-	tween.tween_property(left_hand, "rotation:y", deg_to_rad(80), 0.03).as_relative()
-	tween.tween_property(left_hand, "rotation:z", deg_to_rad(45), 0.03).as_relative()
-	tween.tween_property(left_hand, "position:z", 0.2, 0.09).as_relative()
-	tween.tween_property(left_hand, "position:x", 0.55, 0.09).as_relative()
+	tween.tween_property(left_hand, "rotation", left_rest_rot, 0.13)
+	tween.tween_property(left_hand, "position", left_rest_pos, 0.17)
 	await tween.finished
 	
 	# wait a little more to recover + animate to the next one smoothly

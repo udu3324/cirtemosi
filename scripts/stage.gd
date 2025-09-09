@@ -19,7 +19,7 @@ func _ready() -> void:
 	menuPause.connect("settings_open", _on_settings_open)
 	menuPause.connect("exit_to_start", _on_exit_start)
 	
-	menuStart.connect("level_1", _on_level_1)
+	menuStart.connect("level_1", _on_level_test)
 	menuStart.visible = true
 	
 	masterAudio.play()

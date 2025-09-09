@@ -159,6 +159,7 @@ func _handle_equipment() -> void:
 				
 				#print_debug("enemy was hit!")
 				enemy.get_parent().health -= 10
+				enemy.get_parent().attack_event = model.rotation.y - (PI / 2)
 			
 			# stop animation
 			attack_tween = create_tween()
