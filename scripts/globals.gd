@@ -14,6 +14,7 @@ var player_pushback_event: Vector3 = Vector3.ZERO
 var player_physics_reset_event: bool = false
 
 var player_level_traverse_event: String = ""
+var player_death_event: String = ""
 
 # player stats
 const health_max: float = 100.0

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bi7g0ksfk61d0"]
+
+[node name="FloorDeath" type="Node3D"]
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+polygon = PackedVector2Array(-0.532224, -0.556694, 1.60891, -0.630104, 1.73126, 1.35197, -0.789159, 1.73126)

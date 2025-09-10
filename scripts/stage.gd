@@ -19,7 +19,7 @@ func _ready() -> void:
 	menuPause.connect("settings_open", _on_settings_open)
 	menuPause.connect("exit_to_start", _on_exit_start)
 	
-	menuStart.connect("level_1", _on_level_test)
+	menuStart.connect("level_1", _on_level_1)
 	menuStart.visible = true
 	
 	masterAudio.play()
@@ -32,9 +32,27 @@ func _process(delta: float) -> void:
 	
 	#print_debug(Globals.player_pos)
 	
-	if Globals.player_level_traverse_event == "":
-		return
+	if Globals.player_death_event != "":
+		_handle_death_event()
 	
+	if Globals.player_level_traverse_event != "":
+		_handle_level_traverse_event()
+	
+	
+	
+
+func _handle_death_event():
+	print_debug("recieved death event", Globals.player_death_event)
+	
+	if Globals.player_death_event == "floor_death":
+		
+		# todo
+		
+		pass
+	
+	Globals.player_death_event = ""
+
+func _handle_level_traverse_event():
 	print_debug("recieved traverse event", Globals.player_level_traverse_event)
 	
 	# clear global so it doesn't run again
@@ -114,12 +132,10 @@ func _process(delta: float) -> void:
 	# base wait time for loading screen
 	await get_tree().create_timer(3.0).timeout 
 	
-	
 	await _hide_loading()
-	
 
 func _on_settings_open():
-	pass
+	pass #todo
 
 func _on_exit_start():
 	for node in $Node3D.get_children():

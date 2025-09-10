@@ -30,7 +30,7 @@ script = ExtResource("1_kvvkh")
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -2.44778, 34, -21.8706)
 size = Vector3(62.9701, 1, 65.3029)
 
-[node name="Cave" type="Node" parent="."]
+[node name="Cave" type="Node3D" parent="."]
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Cave"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 8.5)
@@ -67,7 +67,7 @@ transform = Transform3D(0.853851, -0.520518, 0, 0.520518, 0.853851, 0, 0, 0, 1, 
 use_collision = true
 size = Vector3(1.86472, 1.75118, 10)
 
-[node name="Cave2" type="Node" parent="."]
+[node name="Cave2" type="Node3D" parent="."]
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Cave2"]
 transform = Transform3D(0.829198, 0.0952962, -0.550772, -0.114174, 0.993461, -3.26799e-09, 0.547171, 0.062884, 0.834656, 15.4862, 1.54724, -18.9067)
@@ -94,7 +94,7 @@ transform = Transform3D(0.712672, -0.434453, -0.550772, 0.520518, 0.853851, 2.64
 use_collision = true
 size = Vector3(1.86472, 1.75118, 7.17432)
 
-[node name="Foreground" type="Node" parent="."]
+[node name="Foreground" type="Node3D" parent="."]
 
 [node name="BottomForeground" type="CSGPolygon3D" parent="Foreground"]
 transform = Transform3D(0.707107, -0.408607, 0.577096, 0, 0.816138, 0.577858, -0.707107, -0.408607, 0.577096, 12.3478, 8.20128, 5.69476)
@@ -104,7 +104,7 @@ polygon = PackedVector2Array(-11.445, 4.65977, -6.65454, -2.77285, -5.54752, -2.
 transform = Transform3D(-0.707107, 0.408607, 0.577096, 7.1349e-08, -0.816138, 0.577857, 0.707107, 0.408607, 0.577096, 10.824, 11.2448, 4.171)
 polygon = PackedVector2Array(-17.3002, -8.51513, -22.3287, -4.76837, -24.3522, 1.23061, -24.6845, 9.53865, -17.3754, 10.2111, -16.5882, 5.56197, -17.3205, 4.74707, -17.156, -0.610989, -16.2835, -4.43483, -14.0582, 3.56287, -12.1939, -2.9365, -11.1783, 1.05243, -10.6429, 0.128852, -9.51337, -2.66111, -7.89666, -0.634623, -7.78134, 0.540089, -6.55702, -0.413156, -5.13417, 0.534419, -3.11885, -0.660524, 0.230239, -1.08452, 2.95017, 0.430114, 4.08255, 1.81199, 5.91868, -0.648066, 6.38807, 0.585849, 7.73384, -1.15294, 9.4146, -0.354598, 10.9718, 3.64157, 18.7196, -0.1879, 18.6287, -8.73999)
 
-[node name="Rock" type="Node" parent="."]
+[node name="Rock" type="Node3D" parent="."]
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Rock"]
 transform = Transform3D(0.492743, -0.115122, 0.862526, 0.422547, 0.898158, -0.121515, -0.760696, 0.424334, 0.491206, 4.49265, 1.16635, -4.38511)
@@ -126,7 +126,7 @@ transform = Transform3D(-0.190893, -0.375926, 0.906774, 0.477542, 0.771513, 0.42
 use_collision = true
 size = Vector3(0.65332, 1.70105, 1.60303)
 
-[node name="Lights" type="Node" parent="."]
+[node name="Lights" type="Node3D" parent="."]
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115644, 2.43602, 16.6918)
@@ -206,6 +206,14 @@ transform = Transform3D(0.817205, 0, -0.576347, 0, 1, 0, 0.576347, 0, 0.817205, 
 transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_0fm5q")
 
+[node name="Area3D4" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -2.37805, -7)
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Area3D4"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -2, -8.74228e-08)
+polygon = PackedVector2Array(-13.915, 15.8837, 2.11915, 16.9394, 17.9553, 6.51393, 27.589, -8.99234, 18.3606, -21.2807, -2.10715, -21.4602, -19.4329, -11.4059, -25.1782, 9.24137)
+
 [connection signal="body_entered" from="lol/Area3D2" to="." method="_on_area_3d_2_body_entered"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Area3D3" to="." method="_on_area_3d_3_body_entered"]
+[connection signal="body_entered" from="Area3D4" to="." method="_on_area_3d_4_body_entered"]

@@ -289,6 +289,11 @@ func _attempt_attack():
 	tween = create_tween()
 	tween.tween_property(right_hand, "rotation", right_rest_rot, 0.13)
 	tween.tween_property(right_hand, "position", right_rest_pos, 0.17)
+	
+	# in case if scene has been unloaded or game was paused
+	if get_tree() == null:
+		return
+	
 	await get_tree().create_timer(0.03).timeout
 	tween = create_tween()
 	tween.tween_property(left_hand, "rotation", left_rest_rot, 0.13)

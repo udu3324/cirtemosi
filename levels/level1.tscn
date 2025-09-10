@@ -11,7 +11,7 @@ script = ExtResource("1_pdtm5")
 
 [node name="CaveEnv" parent="." instance=ExtResource("1_sjb42")]
 
-[node name="ForegroundTop" type="Node" parent="."]
+[node name="ForegroundTop" type="Node3D" parent="."]
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="ForegroundTop"]
 transform = Transform3D(0.436492, -0.444019, 0.78251, 0.712795, 0.701372, 0.000374854, -0.548997, 0.557606, 0.622638, -2.76616, 10.1174, 1.10351)
@@ -57,7 +57,7 @@ size = Vector3(5.04276, 3.29663, 1)
 transform = Transform3D(0.399715, -0.341191, 0.850774, 0.648768, 0.760986, 0.000374812, -0.647555, 0.551805, 0.525532, 6.06199, 12.588, -1.89724)
 size = Vector3(10.2419, 4.92053, 1)
 
-[node name="ForegroundBottomSunBlock" type="Node" parent="."]
+[node name="ForegroundBottomSunBlock" type="Node3D" parent="."]
 
 [node name="CSGBox3D28" type="CSGBox3D" parent="ForegroundBottomSunBlock"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3042, 21.9657, -4.64424)
@@ -75,7 +75,7 @@ size = Vector3(10.2181, 0.745895, 5.4827)
 transform = Transform3D(0.732769, 0, 0.680478, 0, 1, 0, -0.680478, 0, 0.732769, 1.6826, 17.6752, 4.11852)
 size = Vector3(10.2181, 0.745895, 5.4827)
 
-[node name="ForegroundBottom" type="Node" parent="."]
+[node name="ForegroundBottom" type="Node3D" parent="."]
 
 [node name="CSGBox3D24" type="CSGBox3D" parent="ForegroundBottom"]
 transform = Transform3D(0.0607813, -0.814411, 0.577096, 0.67429, 0.459797, 0.577858, -0.735961, 0.354007, 0.577096, 8.75735, 5.10972, -0.785912)
@@ -158,7 +158,7 @@ transform = Transform3D(-4.37114e-08, -0.994286, 0.10675, 1, -4.34616e-08, 4.666
 use_collision = true
 size = Vector3(2.89908, 2.01752, 0.001)
 
-[node name="Lights" type="Node" parent="."]
+[node name="Lights" type="Node3D" parent="."]
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Lights"]
 transform = Transform3D(0.993791, 3.25424e-09, -0.111261, 0.104226, 0.349929, 0.93096, 0.0389334, -0.936776, 0.347757, 0.171949, 9.77802, 0.785365)
@@ -197,7 +197,7 @@ light_energy = 10.906
 spot_range = 7.55239
 spot_angle = 41.0846
 
-[node name="Barriers" type="Node" parent="."]
+[node name="Barriers" type="Node3D" parent="."]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Barriers"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0959, 2.59947, -0.106664)
@@ -259,7 +259,7 @@ visible = false
 use_collision = true
 size = Vector3(0.168945, 2.479, 3.19582)
 
-[node name="Level" type="Node" parent="."]
+[node name="Level" type="Node3D" parent="."]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Level"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
