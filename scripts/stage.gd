@@ -6,6 +6,7 @@ extends Node
 @onready var menuPause = $CanvasLayer/MenuPause
 @onready var menuLoading = $CanvasLayer/Loading
 
+@onready var vignette = $CanvasLayer/Vignette/MarginContainer/ColorRect
 @onready var health = $CanvasLayer/HealthBar
 @onready var stamina = $CanvasLayer/StaminaBar
 @onready var equipment = $CanvasLayer/Equipment
@@ -19,7 +20,7 @@ func _ready() -> void:
 	menuPause.connect("settings_open", _on_settings_open)
 	menuPause.connect("exit_to_start", _on_exit_start)
 	
-	menuStart.connect("level_1", _on_level_1)
+	menuStart.connect("level_1", _on_level_test)
 	menuStart.visible = true
 	
 	masterAudio.play()
@@ -32,16 +33,34 @@ func _process(delta: float) -> void:
 	
 	#print_debug(Globals.player_pos)
 	
+	if Globals.player_vignette_event:
+		_handle_vignette_event()
+	
 	if Globals.player_death_event != "":
 		_handle_death_event()
 	
 	if Globals.player_level_traverse_event != "":
 		_handle_level_traverse_event()
 	
-	
-	
+	if !masterAudio.playing:
+		masterAudio.play()
 
-func _handle_death_event():
+func _handle_vignette_event():
+	Globals.player_vignette_event = false
+	
+	# vignette has been triggered while its already running
+	if vignette.material.get_shader_parameter("opacity") != 0.0:
+		return
+	
+	var tween = create_tween()
+	tween.tween_property(vignette.material, "shader_parameter/opacity", 1.0, 0.3)
+	
+	await get_tree().create_timer(0.8).timeout
+	
+	tween = create_tween()
+	tween.tween_property(vignette.material, "shader_parameter/opacity", 0.0, 1.0)
+
+func _handle_death_event(): #todo
 	print_debug("recieved death event", Globals.player_death_event)
 	
 	if Globals.player_death_event == "floor_death":
@@ -134,8 +153,8 @@ func _handle_level_traverse_event():
 	
 	await _hide_loading()
 
-func _on_settings_open():
-	pass #todo
+func _on_settings_open(): #todo
+	pass
 
 func _on_exit_start():
 	for node in $Node3D.get_children():

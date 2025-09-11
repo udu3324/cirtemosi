@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxa8pathifmtb"]
+
+[ext_resource type="Shader" uid="uid://cbge20fhkqbiq" path="res://assets/shader/vignette.gdshader" id="1_jwbas"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4gook"]
+shader = ExtResource("1_jwbas")
+shader_parameter/radius = 0.506
+shader_parameter/softness = 1.0
+shader_parameter/intensity = 2.0
+shader_parameter/contrast = 2.2
+shader_parameter/vignette_color = Color(0.307011, 1.19124e-06, 0.0092353, 1)
+shader_parameter/opacity = 0.0
+
+[node name="Vignette" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+material = SubResource("ShaderMaterial_4gook")
+layout_mode = 2

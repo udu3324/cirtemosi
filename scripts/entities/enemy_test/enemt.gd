@@ -273,6 +273,7 @@ func _attempt_attack():
 		Globals.player_physics_reset_event = true
 		
 		Globals.health -= 5
+		Globals.player_vignette_event = true
 		
 		await _timeout_player()
 	

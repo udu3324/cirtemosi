@@ -10,6 +10,7 @@ var player_pos: Vector3 = Vector3(0, 0, 0)
 var player_can_move: bool = true
 var player_is_stunned: bool = false
 
+var player_vignette_event: bool = false
 var player_pushback_event: Vector3 = Vector3.ZERO
 var player_physics_reset_event: bool = false
 

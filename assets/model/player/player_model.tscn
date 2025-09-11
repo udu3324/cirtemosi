@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8w5gxxe8nkgn"]
+
+[ext_resource type="PackedScene" uid="uid://d0c5jnb0jf6lg" path="res://assets/model/player/player_rev2.blend" id="1_mlkbq"]
+
+[node name="player_rev2" instance=ExtResource("1_mlkbq")]
