@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://ccflw61cmd8sp"]
+[gd_scene load_steps=7 format=3 uid="uid://ccflw61cmd8sp"]
 
 [ext_resource type="Script" uid="uid://bwb21mkc4krsj" path="res://scripts/entities/player/player.gd" id="1_3vyb7"]
 [ext_resource type="PackedScene" uid="uid://c8w5gxxe8nkgn" path="res://assets/model/player/player_model.tscn" id="2_b0kkn"]
+[ext_resource type="PackedScene" uid="uid://df8vjquwjxneg" path="res://assets/model/item/weapons/starter_weapon/starter_weapon.blend" id="3_e4p34"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_merdl"]
 friction = 0.45
@@ -54,8 +55,7 @@ visible = false
 size = Vector3(2.11621, 0.205566, 1)
 
 [node name="StarterWeaponNode" type="Node3D" parent="Node3D"]
-transform = Transform3D(0.0666042, -0.0215101, -0.00109459, -0.0215205, -0.0666073, -0.000571624, -0.000865888, 0.000880411, -0.0699891, -0.304452, 0.0364539, 0.419072)
+transform = Transform3D(0.0651479, 0.00482862, 0.0251483, 0.0192087, 0.0362464, -0.0567206, -0.0169345, 0.0596898, 0.032409, -0.0484747, -0.459138, 0.543064)
 
-[node name="StarterWeapon" type="CSGPolygon3D" parent="Node3D/StarterWeaponNode"]
-transform = Transform3D(1, 0, 0, 0, 1, -7.10543e-15, -1.77636e-15, 3.55271e-15, 1, -11.2296, 0.78884, 5.96046e-08)
-polygon = PackedVector2Array(0, 0, 1, 1, 7.00631, 0.74107, 7, 3, 8.23771, 2.78737, 8.2185, 0.438968, 10.9469, 0.417144, 10.9472, -0.531522, 8.21712, -0.553375, 8.20109, -2.68923, 7, -3, 6.99402, -0.909267, 1, -1)
+[node name="starter_weapon2" parent="Node3D/StarterWeaponNode" instance=ExtResource("3_e4p34")]
+transform = Transform3D(14.2857, 0, 0, 0, 14.2857, 0, 0, 0, 14.2857, -5, 0, 0)

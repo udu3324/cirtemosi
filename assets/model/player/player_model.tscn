@@ -1,5 +1,101 @@
-[gd_scene load_steps=2 format=3 uid="uid://c8w5gxxe8nkgn"]
+[gd_scene load_steps=7 format=4 uid="uid://c8w5gxxe8nkgn"]
 
 [ext_resource type="PackedScene" uid="uid://d0c5jnb0jf6lg" path="res://assets/model/player/player_rev2.blend" id="1_mlkbq"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7xs8s"]
+resource_name = "Leg"
+cull_mode = 2
+albedo_color = Color(0.367095, 0.277836, 0.335343, 1)
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_46u0d"]
+_surfaces = [{
+"aabb": AABB(-0.173055, -0.176173, -0.149422, 0.350642, 0.614775, 0.298843),
+"format": 34896613377,
+"index_count": 72,
+"index_data": PackedByteArray("AAABAAIAAAAFAAEAAgAEAAAACAAFAAAAAAAEAAgACAAJAAUACAAHAAkABwAFAAkACAAEAAcABQAKAAEACgAFAAcABAAGAAcACgAHAAYABAADAAYAAwAKAAYABAALAAMAAwALAAoABAACAAsAAQAKAAwADAACAAEACwAMAAoADAANAAIACwACAA0ACwANAAwA"),
+"lods": [0.0472889, PackedByteArray("AAABAAIAAwACAAEAAgAEAAAABAACAAMAAAAFAAEABAAFAAAAAwABAAYABAADAAYABQAGAAEABAAGAAcABgAFAAcABAAHAAUA")],
+"name": "Leg",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 14,
+"vertex_data": PackedByteArray("/////wAAAAAAAP////8AAAAA//8AAAAAeX4AAPFFAAB2izEETkUAAP///////wAAeX4AAFTTAAB2izEEBtQAAIWWLhB9QwAAhZYuEATWAACJcT0ECNQAAIlxPQRMRQAAnmZFEAjWAACeZkUQekMAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_pvrwk"]
+resource_name = "player_rev2_Cube_002"
+_surfaces = [{
+"aabb": AABB(-0.173055, -0.176173, -0.149422, 0.350642, 0.614775, 0.298843),
+"attribute_data": PackedByteArray("bNv9v////p////2/bNv+nx+7/b+eu/6fH7v+n5+7/b/atvzfbNv7/9q2+/9s2/zfH7v9v2zb/p9s2/2/H7v+n2zb/p+eu/6f///+nx+7/p////2/H7v9v2zb/b+fu/2/dLz9v3S8/p+nuv//p7r336e69993vPv/p7r//3e8/N90vP2/dLz+n3e8+/93vPzfNr7+nxTC/p90vP6fdLz9vza+/b8Uwv2/"),
+"format": 34896613399,
+"index_count": 72,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAGAAPABkAGAAMAA8ABAAFAAYABAAHAAUACAAaAAoACAAbABoAHAAdAB4AHAAfAB0AIAANAA4AIAAhAA0AIgALAAkAIgAjAAsAEgAkACUAEAAkABIAJAAQABMAEwAQACYAJAATABEAFgAVACcAFAAVABYAFQAUACgAKAAUACkAFQAoABcA"),
+"lods": [0.0472889, PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEQAQABMAFAAVABYAFQAUABcA")],
+"material": SubResource("StandardMaterial3D_7xs8s"),
+"name": "Leg",
+"primitive": 3,
+"uv_scale": Vector4(1.75, 2.00022, 0, 0),
+"vertex_count": 42,
+"vertex_data": PackedByteArray("/////wAA//8AAP///////wAA//8AAP////////////92izEETkXpDXl+AABU07YPdosxBAbU3w95fgAA8UW9DXl+AADxRc/xAAD/////Hdl5fgAAVNMD8AAA//8AABnadosxBE5F0sn////////ezf////8AABTNdosxBAbUFMz///////+uAXl+AABU04UVAAD/////AAB2izEEBtQkQgAA//8AAGADdosxBE5F3gL/////AAD4/3l+AADxRW4BhZYuEH1DIsqFli4QBNZjzIlxPQQI1CvwiXE9BExF9fGJcT0ETEW04p5mRRAI1tvfiXE9BAjUY9+eZkUQekMl44WWLhB9Q0LQhZYuEATWmNGeZkUQCNbx3J5mRRB6Q4zeiXE9BAjUhi+eZkUQCNbHyYWWLhAE1hu2hZYuEH1DqfuJcT0ETEX/Ap5mRRB6Q5f8/3//v/9//7//f/+//3//v6KPCUgLjsRG5o2nRsiPKEgQyELw1s9K3cvG2PHn0J/cPCVYOeop3zAsK2QwJCGCOjQF4/8nBZn+/3/Jev4EuPoXSpo6ZVHCM3R/ngg0ZkUgpCSDOZ0gqDrnxrTxK8gh8CzQLeGMzTTjGc2N45DQ3+BYJj4yfCT2MtrTxdpw1cfZEgWk/AwFB/zzBKf5PDpzSYtPfjWvSfs6")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_46u0d")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_66fw6"]
+_surfaces = [{
+"aabb": AABB(-0.173055, -0.176173, -0.149422, 0.350642, 0.614775, 0.298843),
+"format": 34896613377,
+"index_count": 72,
+"index_data": PackedByteArray("AAABAAIAAAAFAAEAAgAEAAAACAAFAAAAAAAEAAgACAAJAAUACAAHAAkABwAFAAkACAAEAAcABQAKAAEACgAFAAcABAAGAAcACgAHAAYABAADAAYAAwAKAAYABAALAAMAAwALAAoABAACAAsAAQAKAAwADAACAAEACwAMAAoADAANAAIACwACAA0ACwANAAwA"),
+"lods": [0.047563, PackedByteArray("AAABAAIAAwACAAEAAgAEAAAABAACAAMAAAAFAAEABAAFAAAAAwABAAYABAADAAYABQAGAAEABAAGAAcABgAFAAcABAAHAAUA")],
+"name": "Leg",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 14,
+"vertex_data": PackedByteArray("/////wAAAAAAAP////8AAAAA//8AAAAAeX4AAOMyAAB2izEEDTIAAP///////wAAeX4AABfAAAB2izEEocAAAIWWLhCpLwAAhZYuECzCAACJcT0EosAAAIlxPQQKMgAAnmZFEC/CAACeZkUQpC8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_smw8l"]
+resource_name = "player_rev2_Cube_003"
+_surfaces = [{
+"aabb": AABB(-0.173055, -0.176173, -0.149422, 0.350642, 0.614775, 0.298843),
+"attribute_data": PackedByteArray("bNv9v////p////2/bNv+nx+7/b+fu/6fH7v+n5+7/b/atvzfbNv7/9q2+/9s2/zfH7v9v2zb/p9s2/2/H7v+n2zb/p+fu/6f///+nx+7/p////2/H7v9v2zb/b+fu/2/dLz9v3S8/p+nuv//p7r336e69993vPv/p7r//3e8/N90vP2/dLz+n3e8+/93vPzfNr7+nxTC/p90vP6fdLz9vza+/b8Uwv2/"),
+"format": 34896613399,
+"index_count": 72,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAGAAPABkAGAAMAA8ABAAFAAYABAAHAAUACAAaAAoACAAbABoAHAAdAB4AHAAfAB0AIAANAA4AIAAhAA0AIgALAAkAIgAjAAsAEgAkACUAEAAkABIAJAAQABMAEwAQACYAJAATABEAFgAVACcAFAAVABYAFQAUACgAKAAUACkAFQAoABcA"),
+"lods": [0.047563, PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEQAQABMAFAAVABYAFQAUABcA")],
+"material": SubResource("StandardMaterial3D_7xs8s"),
+"name": "Leg",
+"primitive": 3,
+"uv_scale": Vector4(1.75, 2.00024, 0, 0),
+"vertex_count": 42,
+"vertex_data": PackedByteArray("/////wAA//8AAP///////wAA//8AAP////////////92izEEDTKXDXl+AAAXwHMPdosxBKHAng95fgAA4zJpDXl+AADjMiXyAAD/////Kth5fgAAF8BI8AAA//8AACHZdosxBA0ydcn///////+qzv////8AANvNdosxBKHAwcv///////9tTHl+AAAXwAIVAAD///////92izEEocAAQgAA//8AAGgCdosxBA0yCwL/////AAD5/3l+AADjMgQBhZYuEKkvx8mFli4QLMISzIlxPQSiwHHwiXE9BAoyTPKJcT0ECjI9455mRRAvwkngiXE9BKLAzd+eZkUQpC+w44WWLhCpLxTRhZYuECzCddKeZkUQL8L6255mRRCkL43diXE9BKLACz6eZkUQL8IxNoWWLhAswkG2hZYuEKkv5/yJcT0ECjIjAp5mRRCkLxL8/3//v/9//7//f/+//3//v+mPQkhHjvRGII7VRhCQYUhMyPjvx8703fzGm/Haz0jd8SUlOa8oWDHvKd0wsiFZOuoGg/ZbBw3+/3+GeAkHkviKSdc56lDNMnJ/aQbvZcAeUiVSOSYhgToZx3bxZ8jW76XQz+D0zePif80+4wvRgOAxJbAyUiNoM+DSYtt21GTaEwc6+SQHYPrzBhn3njkHSQlPmDQAAP9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_66fw6")
+
 [node name="player_rev2" instance=ExtResource("1_mlkbq")]
+
+[node name="LegLeft" type="Node3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.491247, 0)
+
+[node name="LeftLeg" type="MeshInstance3D" parent="LegLeft" index="0"]
+transform = Transform3D(0.837826, 0, 0, 0, 0.837826, 0, 0, 0, 0.837826, 0, -0.374, -0.151)
+mesh = SubResource("ArrayMesh_pvrwk")
+skeleton = NodePath("")
+
+[node name="LegRight" type="Node3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.513049, 0)
+
+[node name="RightLeg" type="MeshInstance3D" parent="LegRight" index="0"]
+transform = Transform3D(0.837826, 0, 0, 0, 0.837826, 0, 0, 0, 0.837826, 0, -0.367, 0.141)
+mesh = SubResource("ArrayMesh_smw8l")
+skeleton = NodePath("")
+
+[node name="LeftLeg" parent="." index="2"]
+visible = false
+
+[node name="RightLeg" parent="." index="3"]
+visible = false

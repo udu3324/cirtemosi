@@ -4,6 +4,12 @@ extends RigidBody3D
 @onready var model = $Node3D
 
 @onready var starter_weapon = $Node3D/StarterWeaponNode
+@onready var left_leg = $Node3D/player_rev2/LegLeft
+@onready var right_leg = $Node3D/player_rev2/LegRight
+
+
+var animating_legs = false
+var animating_leg_time = 0.0
 
 # ty https://www.youtube.com/watch?v=sVsn9NqpVhg
 
@@ -16,8 +22,30 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	Globals.player_pos = self.position
 	
+	if Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right") or Input.is_action_pressed("ui_up") or Input.is_action_pressed("ui_down"):
+		_animate_legs(delta)
+	else:
+		_stop_leg_animation()
+	
 	_render_equipment()
 	_handle_equipment()
+
+func _animate_legs(delta):
+	animating_legs = true
+	animating_leg_time += delta * 5.0 # speed
+	
+	left_leg.rotation.z = sin(animating_leg_time) * 0.5
+	right_leg.rotation.z = -sin(animating_leg_time) * 0.5
+	left_leg.rotation.z = -sin(animating_leg_time) * 0.5
+	right_leg.rotation.z = sin(animating_leg_time) * 0.5
+
+func _stop_leg_animation():
+	if animating_legs:
+		animating_legs = false
+		
+		# todo
+	
+	
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	# var input = Input.get_action_strength("ui_up")
