@@ -281,6 +281,9 @@ func _attempt_attack():
 	if get_tree() == null:
 		return
 	
+	if dead:
+		return
+	
 	# wait still for recovery
 	await get_tree().create_timer(randf_range(0.5, 1.5)).timeout
 	

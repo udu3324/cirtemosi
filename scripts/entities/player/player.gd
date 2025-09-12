@@ -3,12 +3,14 @@ extends RigidBody3D
 @onready var camera = $TwistPivot/PitchPivot/Camera3D
 @onready var model = $Node3D
 
-@onready var starter_weapon = $Node3D/StarterWeaponNode
+@onready var starter_weapon = $Node3D/player_rev2/ArmLeft/LeftArm/StarterWeaponNode
 @onready var left_leg = $Node3D/player_rev2/LegLeft
 @onready var right_leg = $Node3D/player_rev2/LegRight
-
+@onready var left_arm = $Node3D/player_rev2/ArmLeft
+@onready var right_arm = $Node3D/player_rev2/ArmRight
 
 var animating_legs = false
+var animate_leg_reset = false
 var animating_leg_time = 0.0
 
 # ty https://www.youtube.com/watch?v=sVsn9NqpVhg
@@ -32,7 +34,10 @@ func _process(delta: float) -> void:
 
 func _animate_legs(delta):
 	animating_legs = true
-	animating_leg_time += delta * 5.0 # speed
+	
+	var leg_speed = 20.0 if Input.is_action_pressed("sprint") else 10.0
+	
+	animating_leg_time += delta * leg_speed # speed
 	
 	left_leg.rotation.z = sin(animating_leg_time) * 0.5
 	right_leg.rotation.z = -sin(animating_leg_time) * 0.5
@@ -40,12 +45,25 @@ func _animate_legs(delta):
 	right_leg.rotation.z = sin(animating_leg_time) * 0.5
 
 func _stop_leg_animation():
-	if animating_legs:
-		animating_legs = false
-		
-		# todo
+	if !animating_legs:
+		return
 	
+	if animate_leg_reset:
+		return
 	
+	animating_legs = false
+	animate_leg_reset = true
+	
+	await get_tree().create_timer(0.8).timeout
+	
+	# todo
+	var tween = create_tween()
+	tween.tween_property(left_leg, "rotation:z", 0.0, 0.3)
+	tween.tween_property(right_leg, "rotation:z", 0.0, 0.3)
+	
+	await tween.finished
+	
+	animate_leg_reset = false
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	# var input = Input.get_action_strength("ui_up")
@@ -151,8 +169,12 @@ func _handle_equipment() -> void:
 			
 			# start animation
 			var attack_tween = create_tween()
-			attack_tween.tween_property(starter_weapon, "position:x", -0.2, 0.1).as_relative()
-			attack_tween.tween_property(starter_weapon, "rotation:y", deg_to_rad(-95), 0.3).as_relative()
+			attack_tween.tween_property(left_arm, "rotation:z", deg_to_rad(75), 0.2)
+			attack_tween.tween_property(left_arm, "position:x", 0.1, 0.1)
+			attack_tween.tween_property(left_arm, "rotation:x", deg_to_rad(85), 0.1)
+			attack_tween.tween_property(left_arm, "rotation:y", deg_to_rad(-35), 0.3)
+			#attack_tween.tween_property(starter_weapon, "position:x", -0.2, 0.1).as_relative()
+			#attack_tween.tween_property(starter_weapon, "rotation:y", deg_to_rad(-95), 0.3).as_relative()
 			
 			await attack_tween.finished
 			
@@ -191,8 +213,12 @@ func _handle_equipment() -> void:
 			
 			# stop animation
 			attack_tween = create_tween()
-			attack_tween.tween_property(starter_weapon, "rotation:y", deg_to_rad(95), 0.4).as_relative()
-			attack_tween.tween_property(starter_weapon, "position:x", 0.2, 0.1).as_relative()
+			#attack_tween.tween_property(starter_weapon, "rotation:y", deg_to_rad(95), 0.4).as_relative()
+			#attack_tween.tween_property(starter_weapon, "position:x", 0.2, 0.1).as_relative()
+			attack_tween.tween_property(left_arm, "rotation:y", 0, 0.2)
+			attack_tween.tween_property(left_arm, "rotation:x", 0, 0.2)
+			attack_tween.tween_property(left_arm, "position:x", 0, 0.2)
+			attack_tween.tween_property(left_arm, "rotation:z", 0, 0.2)
 			await attack_tween.finished
 			
 			attacking = false

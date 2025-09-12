@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=4 uid="uid://c8w5gxxe8nkgn"]
+[gd_scene load_steps=13 format=4 uid="uid://c8w5gxxe8nkgn"]
 
 [ext_resource type="PackedScene" uid="uid://d0c5jnb0jf6lg" path="res://assets/model/player/player_rev2.blend" id="1_mlkbq"]
+[ext_resource type="PackedScene" uid="uid://df8vjquwjxneg" path="res://assets/model/item/weapons/starter_weapon/starter_weapon.blend" id="2_32bkt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7xs8s"]
 resource_name = "Leg"
@@ -76,26 +77,124 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_66fw6")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_orr68"]
+resource_name = "Skin"
+cull_mode = 2
+albedo_color = Color(1, 0.963827, 0.990902, 1)
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_1d8fp"]
+_surfaces = [{
+"aabb": AABB(-0.211601, -0.526724, -0.151418, 0.423202, 0.701724, 0.3119),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEAAwAEAAEABQAAAAIAAwAAAAUABAAGAAIABQACAAYAAwAHAAQAAwAFAAcABwAGAAQABwAFAAYA"),
+"name": "Skin",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAP//AACLIv//AAAAAIsi//93UwAAAAAAAIesAABz3f//AAAAAP//AAD//wAAc93//3dTAAD//wAAh6wAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_opkwe"]
+resource_name = "player_rev2_Cube_005"
+_surfaces = [{
+"aabb": AABB(-0.211601, -0.526724, -0.151418, 0.423202, 0.701724, 0.3119),
+"attribute_data": PackedByteArray("/1////+f/7//n////1//v/9f/7//n/9//5//v/9f/3//X/9//5//P/+f/3//X/8//1//P/+fAAD/n/8//18AAP8f/3//X/8//1//f/8f/z//n/9//9//P//f/3//n/8/"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_orr68"),
+"name": "Skin",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAAAP//Z9qLIv//AABn2osi//93U2faAAAAAIesZ9oAAAAAh6zI93Pd//8AAIP3iyL//wAATff//wAAh6z19///AACHrJnQc93//3dTmdBz3f//AACZ0P//AAD//5nQ//8AAP//Wb+LIv//d1PswXPd//93U/XDAAAAAP//wL0AAAAAh6z/v///AAD///+///8AAIes/78AAAAA////v3Pd//8AAP//iyL//3dT//+LIv//AAD//3Pd//93U///qN48z6jePM+o3jzPqN48z5FFU0ODQx1F4UGKRtZGN0JSNMYjUjTGI1I0xiNSNMYjjPEAD3HxKg5d8YkNnvGKDwAA/38AAP9/AAD/fwAA/3//f/+//3//v/9//7//f/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_1d8fp")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_frxak"]
+_surfaces = [{
+"aabb": AABB(-0.211601, -0.526724, -0.151418, 0.423202, 0.701724, 0.3119),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEAAwAEAAEABQAAAAIAAwAAAAUABAAGAAIABQACAAYAAwAHAAQAAwAFAAcABwAGAAQABwAFAAYA"),
+"name": "Skin",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAP//AACLIv//AAAAAIsi//93UwAAAAAAAIesAABz3f//AAAAAP//AAD//wAAc93//3dTAAD//wAAh6wAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_c1ly8"]
+resource_name = "player_rev2_Cube_007"
+_surfaces = [{
+"aabb": AABB(-0.211601, -0.526724, -0.151418, 0.423202, 0.701724, 0.3119),
+"attribute_data": PackedByteArray("/1////+f/7//n////1//v/9f/7//n/9//5//v/9f/3//X/9//5//P/+f/3//X/8//1//P/+fAAD/n/8//18AAP8f/3//X/8//1//f/8f/z//n/9//9//P//f/3//n/8/"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_orr68"),
+"name": "Skin",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAAAP//Z9qLIv//AABn2osi//93U2faAAAAAIesZ9oAAAAAh6zI93Pd//8AAIP3iyL//wAATff//wAAh6z19///AACHrJnQc93//3dTmdBz3f//AACZ0P//AAD//5nQ//8AAP//Wb+LIv//d1PswXPd//93U/XDAAAAAP//wL0AAAAAh6z/v///AAD///+///8AAIes/78AAAAA////v3Pd//8AAP//iyL//3dT//+LIv//AAD//3Pd//93U///qN48z6jePM+o3jzPqN48z5FFU0ODQx1F4UGKRtZGN0JSNMYjUjTGI1I0xiNSNMYjjPEAD3HxKg5d8YkNnvGKDwAA/38AAP9/AAD/fwAA/3//f/+//3//v/9//7//f/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_frxak")
+
 [node name="player_rev2" instance=ExtResource("1_mlkbq")]
 
 [node name="LegLeft" type="Node3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.491247, 0)
 
 [node name="LeftLeg" type="MeshInstance3D" parent="LegLeft" index="0"]
-transform = Transform3D(0.837826, 0, 0, 0, 0.837826, 0, 0, 0, 0.837826, 0, -0.374, -0.151)
+transform = Transform3D(0.837826, 0, 0, 0, 0.837826, 0, 0, 0, 0.837826, 0, -0.367, -0.151)
 mesh = SubResource("ArrayMesh_pvrwk")
 skeleton = NodePath("")
 
 [node name="LegRight" type="Node3D" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.513049, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.491, 0)
 
 [node name="RightLeg" type="MeshInstance3D" parent="LegRight" index="0"]
 transform = Transform3D(0.837826, 0, 0, 0, 0.837826, 0, 0, 0, 0.837826, 0, -0.367, 0.141)
 mesh = SubResource("ArrayMesh_smw8l")
 skeleton = NodePath("")
 
-[node name="LeftLeg" parent="." index="2"]
+[node name="ArmLeft" type="Node3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.989, -0.372)
+
+[node name="LeftArm" type="MeshInstance3D" parent="ArmLeft" index="0"]
+transform = Transform3D(-0.640257, 0, -5.85138e-08, 0, 0.699702, 0, 5.85137e-08, 0, -0.699702, 0, -0.0385735, -0.0515683)
+mesh = SubResource("ArrayMesh_opkwe")
+skeleton = NodePath("")
+
+[node name="StarterWeaponNode" type="Node3D" parent="ArmLeft/LeftArm" index="0"]
+transform = Transform3D(0.0651479, 0.00482857, 0.0251483, 0.0192087, 0.0362464, -0.0567206, -0.0169345, 0.0596898, 0.032409, -0.118741, -0.409064, 0.118247)
+
+[node name="starter_weapon2" parent="ArmLeft/LeftArm/StarterWeaponNode" index="0" instance=ExtResource("2_32bkt")]
+transform = Transform3D(14.1433, 0, -2.01238, 0, 14.2857, 0, 2.01238, 0, 14.1433, -5, 0, 0)
+
+[node name="ArmRight" type="Node3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.988706, 0.371828)
+
+[node name="RightArm" type="MeshInstance3D" parent="ArmRight" index="0"]
+transform = Transform3D(0.640257, 0, 0, 0, 0.699702, 0, 0, 0, 0.699702, 0, -0.039, 0.052)
+mesh = SubResource("ArrayMesh_c1ly8")
+skeleton = NodePath("")
+
+[node name="LeftLeg" parent="." index="4"]
 visible = false
 
-[node name="RightLeg" parent="." index="3"]
+[node name="RightLeg" parent="." index="5"]
+visible = false
+
+[node name="LeftArm" parent="." index="7"]
+visible = false
+
+[node name="RightArm" parent="." index="8"]
 visible = false
