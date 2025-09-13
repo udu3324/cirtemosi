@@ -16,7 +16,9 @@ extends RigidBody3D
 
 @onready var main_body_collision = $CollisionShape3D2
 
-@onready var audio_slash = $AudioStreamPlayer3D
+@onready var audio_player = $AudioStreamPlayer3D
+var slash = preload("res://assets/audio/fx/enemt_slash.wav")
+var dies = preload("res://assets/audio/fx/enemt_dead.wav")
 
 var target_reached = true
 
@@ -74,6 +76,8 @@ func _process(delta: float) -> void:
 		
 		dead = true
 		particles.emitting = false
+		
+		_play_fx(dies, 1.0)
 		
 		#print_debug("enemy is dead")
 		
@@ -243,8 +247,7 @@ func _attempt_attack():
 	if dead:
 		return
 	
-	audio_slash.pitch_scale = randf_range(0.7, 0.9)
-	audio_slash.play()
+	_play_fx(slash, randf_range(0.7, 0.9))
 	
 	tween = create_tween()
 	tween.tween_property(right_hand, "position:x", - 0.53, 0.07).as_relative()
@@ -317,3 +320,14 @@ func _timeout_player():
 	await get_tree().create_timer(2).timeout
 	#Globals.player_can_move = true
 	Globals.player_is_stunned = false
+
+# this function creates disposable audio streams for each fx for the player
+func _play_fx(sound: AudioStream, pitch: float):
+	var player = audio_player.duplicate()
+	player.stream = sound
+	player.pitch_scale = pitch
+	
+	audio_player.get_parent().add_child(player)
+	player.play()
+	
+	player.connect("finished", Callable(player, "queue_free"))

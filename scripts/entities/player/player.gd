@@ -9,6 +9,11 @@ extends RigidBody3D
 @onready var left_arm = $Node3D/player_rev2/ArmLeft
 @onready var right_arm = $Node3D/player_rev2/ArmRight
 
+@onready var audio_player = $Node3D/player_rev2/ArmLeft/LeftArm/StarterWeaponNode/AudioStreamPlayer3D
+
+var swoosh = preload("res://assets/audio/fx/player_attempt_hit.wav")
+var hit_starter_weapon = preload("res://assets/audio/fx/starter_weapon_hit.wav")
+
 var animating = false
 var animate_reset = false
 var animating_time = 0.0
@@ -180,6 +185,8 @@ func _handle_equipment() -> void:
 			
 			attacking = true
 			
+			_play_fx(swoosh, randf_range(0.6, 1.0))
+			
 			# start animation
 			var attack_tween = create_tween()
 			attack_tween.parallel().tween_property(starter_weapon, "rotation:y", deg_to_rad(85), 0.5)
@@ -210,6 +217,10 @@ func _handle_equipment() -> void:
 				if distance > 1.5:
 					continue
 				
+				# they already dead
+				if enemy.get_parent().dead:
+					continue
+				
 				var forward = -model.global_transform.basis.x.normalized()
 				var to_enemy = ( enemy.global_transform.origin - model.global_transform.origin).normalized()
 				
@@ -222,6 +233,8 @@ func _handle_equipment() -> void:
 				#print_debug("enemy was hit!")
 				enemy.get_parent().health -= 10
 				enemy.get_parent().attack_event = model.rotation.y - (PI / 2)
+				
+				_play_fx(hit_starter_weapon, 0.8)
 			
 			# stop animation
 			attack_tween = create_tween()
@@ -243,3 +256,14 @@ func _get_all_nodes(node) -> Array:
 		nodes += _get_all_nodes(child)
 	
 	return nodes
+
+# this function creates disposable audio streams for each fx for the player
+func _play_fx(sound: AudioStream, pitch: float):
+	var player = audio_player.duplicate()
+	player.stream = sound
+	player.pitch_scale = pitch
+	
+	audio_player.get_parent().add_child(player)
+	player.play()
+	
+	player.connect("finished", Callable(player, "queue_free"))

@@ -179,6 +179,9 @@ transform = Transform3D(0.0651479, 0.00482857, 0.0251483, 0.0192087, 0.0362464, 
 [node name="starter_weapon2" parent="ArmLeft/LeftArm/StarterWeaponNode" index="0" instance=ExtResource("2_32bkt")]
 transform = Transform3D(14.1433, 0, -2.01238, 0, 14.2857, 0, 2.01238, 0, 14.1433, -5, 0, 0)
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="ArmLeft/LeftArm/StarterWeaponNode" index="1"]
+transform = Transform3D(22.0279, 0.248344, 1.31015, -4.76837e-07, 20.4261, 0.0971065, -9.53674e-07, 9.53674e-07, 20.6713, -1.26203, -5.66318, 9.77081)
+
 [node name="ArmRight" type="Node3D" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.988706, 0.371828)
 

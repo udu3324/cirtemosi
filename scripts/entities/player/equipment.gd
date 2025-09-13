@@ -6,6 +6,8 @@ extends Control
 
 @onready var starter_weapon = $MarginContainer/HBoxContainer/Slot1/Sword
 
+@onready var audio_swap = $AudioStreamPlayer2D
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -47,3 +49,5 @@ func _render_glint():
 			Globals.slot_active += 1
 		else:
 			Globals.slot_active = 1
+		
+		audio_swap.play()

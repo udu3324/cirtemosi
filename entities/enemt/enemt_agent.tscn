@@ -33,7 +33,6 @@ script = ExtResource("1_6fnh4")
 path_max_distance = 10.01
 simplify_path = true
 avoidance_enabled = true
-debug_enabled = true
 debug_path_custom_color = Color(0.615096, 0, 0.112132, 1)
 
 [node name="EnemyCollisionMesh" type="MeshInstance3D" parent="."]

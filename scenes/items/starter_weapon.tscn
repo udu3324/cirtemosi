@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6t1s1ntpjpeu"]
+[gd_scene load_steps=5 format=3 uid="uid://b6t1s1ntpjpeu"]
 
 [ext_resource type="Script" uid="uid://dntrtmqjwxrbd" path="res://scripts/items/starter_weapon.gd" id="1_f1mxd"]
 [ext_resource type="PackedScene" uid="uid://df8vjquwjxneg" path="res://assets/model/item/weapons/starter_weapon/starter_weapon.blend" id="2_kfsd1"]
+[ext_resource type="AudioStream" uid="uid://6aptpugod2ue" path="res://assets/audio/fx/item_pick_special.wav" id="3_51yxq"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_kfsd5"]
 radius = 0.483412
@@ -27,5 +28,8 @@ shadow_enabled = true
 omni_range = 0.831037
 
 [node name="starter_weapon" parent="." instance=ExtResource("2_kfsd1")]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_51yxq")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
