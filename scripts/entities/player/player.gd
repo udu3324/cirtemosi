@@ -229,7 +229,7 @@ func _handle_equipment() -> void:
 			attack_tween.parallel().tween_property(left_arm, "rotation:y", 0, 0.5)
 			attack_tween.parallel().tween_property(left_arm, "rotation:z", 0, 0.5)
 			attack_tween.parallel().tween_property(left_arm, "position:x", 0, 0.25)
-			attack_tween.parallel().tween_property(left_arm, "rotation:y", 0, 0.25)
+			attack_tween.chain().tween_property(left_arm, "rotation:y", 0, 0.25)
 
 			await attack_tween.finished
 			

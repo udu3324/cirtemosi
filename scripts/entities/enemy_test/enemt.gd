@@ -240,6 +240,9 @@ func _attempt_attack():
 	# right_hand.position.x -= 0.3
 	# right_hand.rotation.y = lerp_angle(right_hand.rotation.y, right_hand.rotation.y - deg_to_rad(80), 0.1)
 	
+	if dead:
+		return
+	
 	audio_slash.pitch_scale = randf_range(0.7, 0.9)
 	audio_slash.play()
 	
