@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://deosjk0k7g3ym"]
+[gd_scene load_steps=17 format=3 uid="uid://deosjk0k7g3ym"]
 
 [ext_resource type="Script" uid="uid://cus4gkng2m21t" path="res://scripts/stage.gd" id="1_vcsse"]
 [ext_resource type="PackedScene" uid="uid://dl3txvou7nvh" path="res://scenes/gui/relics.tscn" id="2_0hg5s"]
@@ -9,9 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://bq3w0tdsdqfts" path="res://scenes/gui/equipment.tscn" id="4_1hwpr"]
 [ext_resource type="PackedScene" uid="uid://dc6xmfi6ci3yi" path="res://scenes/gui/health_bar.tscn" id="5_dexii"]
 [ext_resource type="PackedScene" uid="uid://ka8twtd3h5x8" path="res://scenes/menu/loading.tscn" id="7_1hwpr"]
+[ext_resource type="PackedScene" uid="uid://dm777hgio3kcg" path="res://scenes/menu/reset.tscn" id="7_e38vs"]
 [ext_resource type="Shader" uid="uid://dpkrpjqqqrfdj" path="res://assets/shader/invert.gdshader" id="7_st0q7"]
 [ext_resource type="FontFile" uid="uid://cw8aclc2u6jmc" path="res://assets/font/NebulaSans-Book.ttf" id="9_dexii"]
 [ext_resource type="AudioStream" uid="uid://bynf8ef1ln3lg" path="res://assets/audio/soundtrack/cirtemosi-start-remixed.ogg" id="10_yd2gm"]
+[ext_resource type="AudioStream" uid="uid://1hjl3ugmc7x3" path="res://assets/audio/fx/menu_pick.wav" id="14_xfx4c"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_st0q7"]
 shader = ExtResource("7_st0q7")
@@ -39,6 +41,9 @@ visible = false
 visible = false
 
 [node name="HealthBar" parent="CanvasLayer" instance=ExtResource("5_dexii")]
+visible = false
+
+[node name="MenuReset" parent="CanvasLayer" instance=ExtResource("7_e38vs")]
 visible = false
 
 [node name="MenuPause" parent="CanvasLayer" instance=ExtResource("3_st0q7")]
@@ -70,3 +75,7 @@ text = "half functional development build v0.0.4"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_yd2gm")
+
+[node name="MenuFX" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("14_xfx4c")

@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bn4n2yrnem13i"]
+[gd_scene load_steps=8 format=3 uid="uid://bn4n2yrnem13i"]
 
 [ext_resource type="Script" uid="uid://bp3w7c70c720w" path="res://scripts/menu/start.gd" id="1_4hqgu"]
 [ext_resource type="Theme" uid="uid://yn3b7rdisnj8" path="res://assets/theme/new_theme.tres" id="2_ci5k1"]
 [ext_resource type="FontFile" uid="uid://1qiyr01tsexv" path="res://assets/font/NebulaSans-Bold.ttf" id="2_le6wa"]
-[ext_resource type="AudioStream" uid="uid://1hjl3ugmc7x3" path="res://assets/audio/fx/menu_pick.wav" id="4_x6jmw"]
 
 [sub_resource type="Gradient" id="Gradient_ci5k1"]
 interpolation_color_space = 2
@@ -88,9 +87,9 @@ focus_previous = NodePath("../SettingsButton")
 theme = ExtResource("2_ci5k1")
 text = "credits"
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_x6jmw")
-
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer2/VBoxContainer/PlayButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer2/VBoxContainer/PlayButton" to="." method="_on_button_start_pressed"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer2/VBoxContainer/SettingsButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer2/VBoxContainer/SettingsButton" to="." method="_on_button_settings_pressed"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer2/VBoxContainer/CreditsButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer2/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]

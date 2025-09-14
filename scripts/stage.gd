@@ -2,9 +2,14 @@ extends Node
 
 @onready var masterAudio = $AudioStreamPlayer
 
+
 @onready var menuStart = $CanvasLayer/MenuStart
 @onready var menuPause = $CanvasLayer/MenuPause
+@onready var menuReset = $CanvasLayer/MenuReset
+
 @onready var menuLoading = $CanvasLayer/Loading
+
+@onready var audio_menu_pick = $MenuFX
 
 @onready var vignette = $CanvasLayer/Vignette/MarginContainer/ColorRect
 @onready var health = $CanvasLayer/HealthBar
@@ -17,10 +22,14 @@ var player
 var enviornment
 
 func _ready() -> void:
+	
 	menuPause.connect("settings_open", _on_settings_open)
 	menuPause.connect("exit_to_start", _on_exit_start)
 	
-	menuStart.connect("level_1", _on_level_test)
+	menuReset.connect("exit_to_start", _on_exit_start)
+	
+	
+	menuStart.connect("level_1", _on_level_1)
 	menuStart.visible = true
 	
 	masterAudio.play()
@@ -30,6 +39,7 @@ func _process(delta: float) -> void:
 	
 	Globals.startVisible = menuStart.visible
 	Globals.loadingVisible = menuLoading.visible
+	Globals.resetVisible = menuReset.visible
 	
 	#print_debug(Globals.player_pos)
 	
@@ -44,12 +54,20 @@ func _process(delta: float) -> void:
 	
 	if !masterAudio.playing:
 		masterAudio.play()
+	
+	if Globals.menu_pick_fx_event:
+		audio_menu_pick.play()
+		Globals.menu_pick_fx_event = false
 
 func _handle_vignette_event():
 	Globals.player_vignette_event = false
 	
 	# vignette has been triggered while its already running
 	if vignette.material.get_shader_parameter("opacity") != 0.0:
+		return
+	
+	# dont trigger if already dead
+	if Globals.health <= 0.0:
 		return
 	
 	var tween = create_tween()
@@ -64,12 +82,23 @@ func _handle_death_event(): #todo
 	print_debug("recieved death event", Globals.player_death_event)
 	
 	if Globals.player_death_event == "floor_death":
-		
-		# todo
-		
-		pass
+		Globals.player_can_move = false
+		Globals.player_physics_processing = false
+		_show_reset_screen()
+	elif Globals.player_death_event == "ran_out_of_hp":
+		_show_reset_screen()
 	
 	Globals.player_death_event = ""
+
+func _show_reset_screen():
+	menuReset.modulate.a = 0.0
+	menuReset.visible = true
+	
+	var tween = create_tween()
+	tween.tween_property(menuReset, "modulate:a", 1.0, 1)
+	
+	var audioFade = create_tween()
+	audioFade.tween_property(masterAudio, "volume_db", -10.0, 2)
 
 func _handle_level_traverse_event():
 	print_debug("recieved traverse event", Globals.player_level_traverse_event)
@@ -161,6 +190,7 @@ func _on_exit_start():
 		$Node3D.remove_child(node)
 	
 	menuPause.visible = false
+	menuReset.visible = false
 	menuStart.visible = true
 	
 	health.visible = false
@@ -251,6 +281,9 @@ func _hide_loading():
 	
 	var tween = create_tween()
 	tween.tween_property(menuLoading, "modulate:a", 0.0, 1)
+	
+	Globals.player_physics_processing = true
+	Globals.player_physics_reset_event = true
 	
 	await get_tree().create_timer(1).timeout # tween length
 	Globals.player_can_move = true

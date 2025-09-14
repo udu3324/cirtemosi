@@ -3,11 +3,15 @@ extends Node
 # gui
 var startVisible: bool = false
 var loadingVisible: bool = false
+var resetVisible: bool = false
+
+var menu_pick_fx_event: bool = false
 
 # player movement
 var player_pos: Vector3 = Vector3(0, 0, 0)
 
 var player_can_move: bool = true
+var player_physics_processing: bool = true
 var player_is_stunned: bool = false
 
 var player_vignette_event: bool = false
@@ -16,6 +20,7 @@ var player_physics_reset_event: bool = false
 
 var player_level_traverse_event: String = ""
 var player_death_event: String = ""
+var player_self_destruct_event: bool = false
 
 # player stats
 const health_max: float = 100.0

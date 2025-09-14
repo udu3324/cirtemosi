@@ -43,6 +43,9 @@ func _render_glint():
 	elif Globals.slot_active == 3:
 		glint3.visible = true
 	
+	if !Globals.player_can_move:
+		return
+	
 	# switch glint on action
 	if Input.is_action_just_pressed("switch"):
 		if Globals.slot_active < 3:

@@ -8,6 +8,15 @@ extends RigidBody3D
 @onready var right_leg = $Node3D/player_rev2/LegRight
 @onready var left_arm = $Node3D/player_rev2/ArmLeft
 @onready var right_arm = $Node3D/player_rev2/ArmRight
+@onready var torso = $Node3D/player_rev2/Torso2
+@onready var head = $Node3D/player_rev2/Head2
+
+@onready var left_leg_collision = $Node3D/player_rev2/LegLeft/CollisionShape3D
+@onready var right_leg_collision = $Node3D/player_rev2/LegRight/CollisionShape3D
+@onready var left_arm_collision = $Node3D/player_rev2/ArmLeft/CollisionShape3D
+@onready var right_arm_collision = $Node3D/player_rev2/ArmRight/CollisionShape3D
+@onready var torso_collision = $Node3D/player_rev2/Torso2/CollisionShape3D
+@onready var head_collision = $Node3D/player_rev2/Head2/CollisionShape3D
 
 @onready var audio_player = $Node3D/player_rev2/ArmLeft/LeftArm/StarterWeaponNode/AudioStreamPlayer3D
 
@@ -17,6 +26,8 @@ var hit_starter_weapon = preload("res://assets/audio/fx/starter_weapon_hit.wav")
 var animating = false
 var animate_reset = false
 var animating_time = 0.0
+
+var run_hp_ranout_once = false
 
 # ty https://www.youtube.com/watch?v=sVsn9NqpVhg
 
@@ -29,6 +40,23 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	Globals.player_pos = self.position
 	
+	if Globals.player_physics_processing:
+		self.sleeping = false
+		self.freeze = false
+	else:
+		self.sleeping = true
+		self.freeze = true
+	
+	if Globals.health == 0.0 and !run_hp_ranout_once:
+		Globals.player_death_event = "ran_out_of_hp"
+		
+		run_hp_ranout_once = true
+		
+		_self_destruct()
+	
+	if Globals.health == 0.0:
+		return
+	
 	if Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right") or Input.is_action_pressed("ui_up") or Input.is_action_pressed("ui_down"):
 		_animate_moving(delta)
 	else:
@@ -37,7 +65,41 @@ func _process(delta: float) -> void:
 	_render_equipment()
 	_handle_equipment()
 
+func _self_destruct():
+	self.sleeping = true
+	self.freeze = true
+	
+	left_arm_collision.disabled = false
+	left_arm.sleeping = false
+	left_arm.freeze = false
+	
+	right_arm_collision.disabled = false
+	right_arm.sleeping = false
+	right_arm.freeze = false
+	
+	left_leg_collision.disabled = false
+	left_leg.sleeping = false
+	left_leg.freeze = false
+	
+	right_leg_collision.disabled = false
+	right_leg.sleeping = false
+	right_leg.freeze = false
+	
+	head_collision.disabled = false
+	head.sleeping = false
+	head.freeze = false
+	
+	torso_collision.disabled = false
+	torso.sleeping = false
+	torso.freeze = false
+	
+	Globals.player_can_move = false
+
 func _animate_moving(delta):
+	
+	if !Globals.player_can_move:
+		return
+	
 	animating = true
 	
 	var leg_speed = 20.0 if Input.is_action_pressed("sprint") else 10.0
@@ -178,6 +240,9 @@ func _render_equipment() -> void:
 
 var attacking = false
 func _handle_equipment() -> void:
+	if !Globals.player_can_move:
+		return
+	
 	if Input.is_action_just_pressed("attack"):
 		if Globals.slot_active == 1 and Globals.equipment[0] == "starter_weapon":
 			if attacking:

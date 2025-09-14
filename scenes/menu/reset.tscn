@@ -1,0 +1,82 @@
+[gd_scene load_steps=8 format=3 uid="uid://dm777hgio3kcg"]
+
+[ext_resource type="Script" uid="uid://c6mcq6qfuysf6" path="res://scripts/menu/reset.gd" id="1_tdxmu"]
+[ext_resource type="Shader" uid="uid://2exyvu6qdr86" path="res://assets/shader/blur.gdshader" id="2_a6w3g"]
+[ext_resource type="FontFile" uid="uid://1qiyr01tsexv" path="res://assets/font/NebulaSans-Bold.ttf" id="3_gdo2g"]
+[ext_resource type="Theme" uid="uid://yn3b7rdisnj8" path="res://assets/theme/new_theme.tres" id="4_op2vv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ckroe"]
+shader = ExtResource("2_a6w3g")
+shader_parameter/blur_size = Vector2(2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u5t5s"]
+shader = ExtResource("2_a6w3g")
+shader_parameter/blur_size = Vector2(0.5, 0.5)
+
+[sub_resource type="Theme" id="Theme_8exri"]
+default_font = ExtResource("3_gdo2g")
+default_font_size = 80
+
+[node name="MenuReset" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tdxmu")
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer2"]
+material = SubResource("ShaderMaterial_ckroe")
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+material = SubResource("ShaderMaterial_u5t5s")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_8exri")
+text = "its alright. try again."
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme = ExtResource("4_op2vv")
+disabled = true
+text = "to last checkpoint
+"
+
+[node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_op2vv")
+text = "exit"
+
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/VBoxContainer/BackButton" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/VBoxContainer/ExitButton" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
