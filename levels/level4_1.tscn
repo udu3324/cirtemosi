@@ -52,6 +52,193 @@ light_energy = 5.8
 shadow_enabled = true
 spot_range = 11.5053
 
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -4.76719, 13.9036, -6.19621)
+light_color = Color(0.252028, 0.252028, 0.252028, 1)
+light_energy = 2.6
+spot_range = 27.6016
+spot_angle = 47.0548
+spot_angle_attenuation = 0.026278
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 10.6274, 10.6475, -10.0814)
+light_color = Color(0.14902, 0.270588, 0.317647, 1)
+light_energy = 2.6
+spot_range = 27.6016
+spot_angle = 47.0548
+spot_angle_attenuation = 0.026278
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 9.15058, 10.6475, 0.450843)
+light_color = Color(0.147609, 0.272364, 0.316287, 1)
+light_energy = 2.6
+spot_range = 27.6016
+spot_angle = 47.0548
+spot_angle_attenuation = 0.026278
+
+[node name="SpotLight3D6" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.51645, 10.6475, 5.78644)
+light_color = Color(0.147609, 0.272364, 0.316287, 1)
+light_energy = 2.6
+spot_range = 27.6016
+spot_angle = 47.0548
+spot_angle_attenuation = 0.026278
+
+[node name="Enemies" type="Node3D" parent="."]
+
+[node name="Enemt" parent="Enemies" instance=ExtResource("2_8li1p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, -10)
+
+[node name="Enemt2" parent="Enemies" instance=ExtResource("2_8li1p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 1, -6)
+
+[node name="Enemt3" parent="Enemies" instance=ExtResource("2_8li1p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, -2)
+
+[node name="Enemt4" parent="Enemies" instance=ExtResource("2_8li1p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 3)
+
+[node name="Barriers" type="Node3D" parent="."]
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Barriers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 3.18341, 0.924194)
+visible = false
+use_collision = true
+size = Vector3(28, 1.81384, 0.249756)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="Barriers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 3.18341, -5.07581)
+visible = false
+use_collision = true
+size = Vector3(5, 1.81384, 0.249756)
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="Barriers"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28, 3.18341, -2.07581)
+visible = false
+use_collision = true
+size = Vector3(5, 1.81384, 0.249756)
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="Barriers"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -22, 3.18341, -3.22009)
+visible = false
+use_collision = true
+size = Vector3(2.71143, 1.81384, 0.249756)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Barriers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.9506, 3.18341, -2.07581)
+visible = false
+use_collision = true
+size = Vector3(10.1482, 1.81384, 0.249756)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Barriers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 3.19104, -11.0758)
+visible = false
+use_collision = true
+size = Vector3(12, 1.79858, 0.249756)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Barriers"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.973458, 3.1864, -8.73425)
+visible = false
+use_collision = true
+size = Vector3(3.99951, 1.80786, 0.249756)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Barriers"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.973458, 3.18658, -1.25214)
+visible = false
+use_collision = true
+size = Vector3(3.90369, 1.8075, 0.249756)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Barriers"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -12.0265, 3.17542, -2.62659)
+visible = false
+use_collision = true
+size = Vector3(1.15479, 1.82983, 0.249756)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Barriers"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -12.0265, 3.19373, -10.1388)
+visible = false
+use_collision = true
+size = Vector3(1.67694, 1.79321, 0.249756)
+
+[node name="TopRocks" type="Node3D" parent="."]
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="TopRocks"]
+transform = Transform3D(-0.426207, 0.84824, 0.314385, 0.787204, 0.518995, -0.333098, -0.445711, 0.105517, -0.888937, -0.246844, 1.40253, -0.158932)
+use_collision = true
+size = Vector3(1.3739, 1.31836, 1)
+
+[node name="CSGBox3D17" type="CSGBox3D" parent="TopRocks"]
+transform = Transform3D(-0.252655, 0.764144, 0.593508, 0.787204, 0.518995, -0.333098, -0.562562, 0.383053, -0.732664, 0.0172097, 1.35069, -2.85799)
+use_collision = true
+size = Vector3(0.832245, 1.1261, 0.706543)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="TopRocks"]
+transform = Transform3D(0.726803, -0.682821, 0.0742499, 0.683013, 0.707107, -0.183013, 0.0724626, 0.183728, 0.980303, -1.80121, 1.87117, 0.0768979)
+use_collision = true
+size = Vector3(2, 1.97266, 1)
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="TopRocks"]
+transform = Transform3D(0.19653, -0.472123, 0.920192, -0.983546, 0.0910594, 0.400137, -0.312173, -0.584121, -0.681378, -4.93103, 1.99137, -0.111323)
+use_collision = true
+size = Vector3(1.3739, 1.31836, 1)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="TopRocks"]
+transform = Transform3D(-0.739209, 0.182403, -0.747215, -0.600787, 0.00546438, 0.967959, 0.175425, 0.787328, 0.166392, -3.9122, 1.8839, -0.272382)
+use_collision = true
+size = Vector3(2, 1.97266, 1)
+
+[node name="CSGBox3D23" type="CSGBox3D" parent="TopRocks"]
+transform = Transform3D(0.609986, -0.575848, 0.544349, 0.787204, 0.518995, -0.333098, -0.0907008, 0.631698, 0.769889, -7.5476, 2.04167, 0.105923)
+use_collision = true
+size = Vector3(1.3739, 1.31836, 1)
+
+[node name="CSGBox3D25" type="CSGBox3D" parent="TopRocks"]
+transform = Transform3D(0.609986, -0.575848, 0.544349, 0.347974, -0.422514, -0.836896, 0.711921, 0.699915, -0.0573483, -2.95002, 2.04167, 0.00546777)
+use_collision = true
+size = Vector3(1.3739, 1.31836, 1)
+
+[node name="CSGBox3D29" type="CSGBox3D" parent="TopRocks"]
+transform = Transform3D(0.462723, 0.853778, -0.238642, 0.0474264, -0.292649, -0.955042, -0.885233, 0.430603, -0.175907, -9.70738, 1.84047, -9.30413)
+use_collision = true
+size = Vector3(1.3739, 1.31836, 1)
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="TopRocks"]
+transform = Transform3D(-0.340784, -0.49638, -0.826458, -0.983546, 0.0910594, 0.400137, -0.141217, 0.563653, -0.792462, -0.0106217, 1.65877, -7.21415)
+use_collision = true
+size = Vector3(1.3739, 1.31836, 1)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="TopRocks"]
+transform = Transform3D(0.297271, 0.745426, 0.289713, -0.498312, -0.0377743, 1.05666, 0.775541, -0.309999, 0.567891, -0.373736, 1.86017, -8.45828)
+use_collision = true
+size = Vector3(2, 1.76465, 1)
+
+[node name="CSGBox3D27" type="CSGBox3D" parent="TopRocks"]
+transform = Transform3D(0.270454, 0.676217, -0.685263, 0.264757, -0.736585, -0.62237, -0.925613, -0.0131051, -0.378245, -0.228731, 1.57761, -9.71205)
+use_collision = true
+size = Vector3(1.3739, 1.31836, 1)
+
+[node name="CSGBox3D26" type="CSGBox3D" parent="TopRocks"]
+transform = Transform3D(-0.808832, 0.206327, 0.550654, -0.434828, -0.840263, -0.323856, 0.395874, -0.501386, 0.769348, 0.37455, 1.33005, -3.40793)
+use_collision = true
+size = Vector3(1.21527, 1.31836, 0.828613)
+
+[node name="CSGBox3D24" type="CSGBox3D" parent="TopRocks"]
+transform = Transform3D(0.57458, -0.813428, 0.0905057, 0.787204, 0.518995, -0.333098, 0.223979, 0.262638, 0.938538, -6.48851, 2.09519, 0.183847)
+use_collision = true
+size = Vector3(2.16656, 1.86035, 1)
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="TopRocks"]
+transform = Transform3D(0.0894449, -0.630661, 0.661991, -0.983546, 0.0910594, 0.400137, -0.357877, -0.407879, -0.934236, -8.92618, 1.99137, -9.89568)
+use_collision = true
+size = Vector3(1.3739, 1.31836, 1)
+
+[node name="CSGBox3D28" type="CSGBox3D" parent="TopRocks"]
+transform = Transform3D(0.615768, -0.691055, 0.378513, 0.787204, 0.518995, -0.333098, 0.0337419, 0.503079, 0.863581, -10.3141, 2.09519, -9.12979)
+use_collision = true
+size = Vector3(2.16656, 1.86035, 1)
+
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 3, -7)
 
@@ -69,6 +256,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0.5, -5)
 use_collision = true
 size = Vector3(12, 2, 11)
 
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0.5, -0.5)
+use_collision = true
+size = Vector3(11, 2, 2)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0.5, -2)
+use_collision = true
+size = Vector3(5, 2, 5)
+
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
 transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, 1.38902, -0.171799, -5)
 use_collision = true
@@ -83,24 +280,22 @@ visible = false
 use_collision = true
 polygon = PackedVector2Array(6.15501, 14.1588, 10.974, 12.5213, 13.5472, 9.24628, 16.1672, 5.5034, 15.4654, 1.24586, 13.8279, -3.05845, 8.58788, -6.19312, 1.75712, -7.22241, -6.05615, -7.12884, -9.65868, -3.19881, -10.033, -1.18701, 0.91497, -0.906294, 1.1489, 2.74302, 4.58226, 3.11457, 4.70464, 6.95376, 1.05533, 7.14091, 1.1489, 10.9774, -2.45362, 11.2581, -3.5297, 13.5506, 1.00854, 15.3285)
 
-[node name="Enemt" parent="." instance=ExtResource("2_8li1p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, -10)
+[node name="TopSideForeground" type="CSGPolygon3D" parent="."]
+transform = Transform3D(0.707107, -0.408607, 0.577096, 0, 0.816138, 0.577858, -0.707107, -0.408607, 0.577096, 7.33277, 8.20128, 0.229442)
+polygon = PackedVector2Array(-13.2666, -4.6835, -10.5689, -0.865102, -10.592, 1.16877, -9.94276, 3.18502, -10.5343, 6.42494, -9.72689, 7.56191, -8.58448, 8.50885, -8.02027, 8.52359, -6.7527, 8.26417, -5.54149, 6.02829, -4.98588, 4.03709, -4.13361, 8.19534, -2.10412, 8.71667, 0.893138, 13.1865, -0.42231, 17.8065, -12.5911, 16.0853, -17.8272, 15.2869, -23.7372, 10.8999, -24.1519, 5.22934, -22.1674, 4.53467, -21.4324, 8.15875, -19.3872, 8.21686, -17.3809, 6.85377, -15.7963, 5.26334, -16.956, 4.07334, -20.0387, 4.08185, -26.284, 5.47867, -22.9323, -3.69083)
 
-[node name="Enemt2" parent="." instance=ExtResource("2_8li1p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 1, -6)
+[node name="TopSideForeground2" type="CSGPolygon3D" parent="."]
+transform = Transform3D(0.707107, -0.408607, 0.577096, 0, 0.816138, 0.577858, -0.707107, -0.408607, 0.577096, 3.59457, 4.55962, -3.40213)
+polygon = PackedVector2Array(-13.7481, 1.05722, -12.5911, 16.0853, -17.8272, 15.2869, -20.981, 15.3401, -25.7081, 14.9062, -31.0855, 13.0974, -29.2212, 4.38162, -25.8735, 1.83041, -20.3934, 3.10345, -22.7237, 5.58888, -25.9959, 8.3547, -25.1183, 11.783, -21.7118, 13.0762, -18.3276, 12.1273, -17.295, 9.80349, -16.7612, 7.59145, -15.7963, 5.26334, -16.956, 4.07334, -20.0387, 4.08185, -25.2506, 1.29434)
 
-[node name="Enemt3" parent="." instance=ExtResource("2_8li1p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, -2)
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2268, 2.21028, -1.14228)
+light_color = Color(0.206195, 0.259432, 0.496489, 1)
+omni_range = 2.80792
 
-[node name="Enemt4" parent="." instance=ExtResource("2_8li1p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 3)
-
-[node name="SpotLight3D3" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -4.76719, 13.9036, -6.19621)
-light_color = Color(0.252028, 0.252028, 0.252028, 1)
-light_energy = 2.6
-spot_range = 27.6016
-spot_angle = 47.0548
-spot_angle_attenuation = 0.026278
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.6893, 2.21028, -0.893152)
+light_color = Color(0.206195, 0.259432, 0.496489, 1)
+omni_range = 3.28832
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
