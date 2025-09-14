@@ -31,10 +31,6 @@ var run_hp_ranout_once = false
 
 # ty https://www.youtube.com/watch?v=sVsn9NqpVhg
 
-# runs when node enters scene tree for the first time
-func _ready() -> void:
-	pass
-
 # called every frame, delta is elapsed time since prev. frame
 # delta allows variations between machines
 func _process(delta: float) -> void:
