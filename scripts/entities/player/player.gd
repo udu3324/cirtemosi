@@ -151,6 +151,10 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	
 	if Globals.player_pushback_event != Vector3.ZERO:
 		#print_debug("recieved pushback event")
+		
+		if Globals.health <= 0:
+			return
+		
 		apply_central_force(Globals.player_pushback_event * 100)
 		
 		Globals.player_pushback_event = Vector3.ZERO

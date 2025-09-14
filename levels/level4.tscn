@@ -1,16 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://40hbudsqa3hu"]
+[gd_scene load_steps=3 format=3 uid="uid://40hbudsqa3hu"]
 
 [ext_resource type="Script" uid="uid://dglf5r2r6vt88" path="res://scripts/scenes/level_4.gd" id="1_cqjvr"]
 [ext_resource type="PackedScene" uid="uid://duydi7lytqxks" path="res://scenes/enviornment/CaveEnv.tscn" id="1_rxes3"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_mvh35"]
-
 [node name="Level4" type="Node3D"]
 script = ExtResource("1_cqjvr")
-
-[node name="Dummy" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.7517, 1, 0)
-mesh = SubResource("CapsuleMesh_mvh35")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -20, 0, 0)
@@ -40,5 +34,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -2.37805, -7)
 [node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -2, -8.74228e-08)
 polygon = PackedVector2Array(-48.2858, -45.1708, 9.23582, -56.5374, 68.1351, -39.4876, 76.9184, 13.9007, 46.6076, 43.8671, -22.1083, 46.2781, -66.8855, 31.295, -72.2244, -14.6878)
+
+[node name="CSGBox3D28" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.55528, 21.9657, -19.9115)
+size = Vector3(98.5168, 0.745895, 103.655)
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

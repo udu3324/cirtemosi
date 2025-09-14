@@ -10,3 +10,5 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		Globals.equipment[0] = "starter_weapon"
 		
 		audio_player.play()
+		
+		Globals.hint_attack_switch_control_event = true

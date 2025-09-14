@@ -17,6 +17,8 @@ extends Node
 @onready var equipment = $CanvasLayer/Equipment
 @onready var relics = $CanvasLayer/Relics
 
+@onready var hints = $CanvasLayer/ControllerHints/MarginContainer/VBoxContainer
+
 var level
 var player
 var enviornment
@@ -58,6 +60,36 @@ func _process(delta: float) -> void:
 	if Globals.menu_pick_fx_event:
 		audio_menu_pick.play()
 		Globals.menu_pick_fx_event = false
+	
+	_handle_input_controller_hints()
+
+func _handle_input_controller_hints():
+	if Input.is_action_pressed("ui_up"):
+		hints.get_child(0).visible = false
+	
+	if Input.is_action_pressed("ui_left"):
+		hints.get_child(1).visible = false
+	
+	if Input.is_action_pressed("ui_down"):
+		hints.get_child(2).visible = false
+	
+	if Input.is_action_pressed("ui_right"):
+		hints.get_child(3).visible = false
+	
+	if Input.is_action_pressed("sprint"):
+		hints.get_child(4).visible = false
+	
+	if Input.is_action_pressed("attack"):
+		hints.get_child(5).visible = false
+	
+	if Input.is_action_pressed("switch"):
+		hints.get_child(6).visible = false
+	
+	if Globals.hint_attack_switch_control_event:
+		hints.get_child(5).visible = true
+		hints.get_child(6).visible = true
+		
+		Globals.hint_attack_switch_control_event = false
 
 func _handle_vignette_event():
 	Globals.player_vignette_event = false
@@ -87,6 +119,11 @@ func _handle_death_event(): #todo
 		_show_reset_screen()
 	elif Globals.player_death_event == "ran_out_of_hp":
 		_show_reset_screen()
+		
+		await get_tree().create_timer(1).timeout
+		
+		Globals.player_can_move = false
+		Globals.player_physics_processing = false
 	
 	Globals.player_death_event = ""
 
@@ -229,6 +266,12 @@ func _on_level_1():
 	_hide_loading()
 	
 	print_debug("added level 1")
+	
+	hints.get_child(0).visible = true
+	hints.get_child(1).visible = true
+	hints.get_child(2).visible = true
+	hints.get_child(3).visible = true
+	hints.get_child(4).visible = true
 
 func _on_level_test():
 	level = preload("res://levels/test/test_scene_1.tscn").instantiate()

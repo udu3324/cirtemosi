@@ -1,0 +1,244 @@
+[gd_scene load_steps=12 format=3 uid="uid://bmke0v5hfsca3"]
+
+[ext_resource type="Script" uid="uid://cmyasc1t8l0la" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="1_62qjb"]
+[ext_resource type="FontFile" uid="uid://1qiyr01tsexv" path="res://assets/font/NebulaSans-Bold.ttf" id="2_5sk0n"]
+
+[sub_resource type="Texture2D" id="Texture2D_f7cls"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("1_62qjb")
+path = "ui_up"
+show_mode = 0
+force_controller_icon_style = -1
+force_type = 0
+force_device = 16
+metadata/_custom_type_script = "uid://cmyasc1t8l0la"
+
+[sub_resource type="Texture2D" id="Texture2D_jrcy4"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("1_62qjb")
+path = "ui_left"
+show_mode = 0
+force_controller_icon_style = -1
+force_type = 0
+force_device = 16
+metadata/_custom_type_script = "uid://cmyasc1t8l0la"
+
+[sub_resource type="Texture2D" id="Texture2D_4cmnk"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("1_62qjb")
+path = "ui_down"
+show_mode = 0
+force_controller_icon_style = -1
+force_type = 0
+force_device = 16
+metadata/_custom_type_script = "uid://cmyasc1t8l0la"
+
+[sub_resource type="Texture2D" id="Texture2D_621cq"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("1_62qjb")
+path = "ui_right"
+show_mode = 0
+force_controller_icon_style = -1
+force_type = 0
+force_device = 16
+metadata/_custom_type_script = "uid://cmyasc1t8l0la"
+
+[sub_resource type="Texture2D" id="Texture2D_62qjb"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("1_62qjb")
+path = "sprint"
+show_mode = 0
+force_controller_icon_style = -1
+force_type = 0
+force_device = 16
+metadata/_custom_type_script = "uid://cmyasc1t8l0la"
+
+[sub_resource type="Texture2D" id="Texture2D_5sk0n"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("1_62qjb")
+path = "attack"
+show_mode = 0
+force_controller_icon_style = -1
+force_type = 0
+force_device = 16
+metadata/_custom_type_script = "uid://cmyasc1t8l0la"
+
+[sub_resource type="Texture2D" id="Texture2D_qeg41"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("1_62qjb")
+path = "key/l"
+show_mode = 0
+force_controller_icon_style = -1
+force_type = 0
+force_device = 16
+metadata/_custom_type_script = "uid://cmyasc1t8l0la"
+
+[sub_resource type="Texture2D" id="Texture2D_1wh0d"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("1_62qjb")
+path = "switch"
+show_mode = 0
+force_controller_icon_style = -1
+force_type = 0
+force_device = 16
+metadata/_custom_type_script = "uid://cmyasc1t8l0la"
+
+[sub_resource type="Texture2D" id="Texture2D_mt45e"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("1_62qjb")
+path = "key/p"
+show_mode = 0
+force_controller_icon_style = -1
+force_type = 0
+force_device = 16
+metadata/_custom_type_script = "uid://cmyasc1t8l0la"
+
+[node name="ControllerHints" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+modulate = Color(1, 1, 1, 0.497)
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Up" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Up"]
+layout_mode = 2
+texture = SubResource("Texture2D_f7cls")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Up"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5sk0n")
+theme_override_font_sizes/font_size = 20
+text = "Up"
+
+[node name="Left" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Left"]
+layout_mode = 2
+texture = SubResource("Texture2D_jrcy4")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Left"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5sk0n")
+theme_override_font_sizes/font_size = 20
+text = "Left"
+
+[node name="Down" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Down"]
+layout_mode = 2
+texture = SubResource("Texture2D_4cmnk")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Down"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5sk0n")
+theme_override_font_sizes/font_size = 20
+text = "Down"
+
+[node name="Right" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Right"]
+layout_mode = 2
+texture = SubResource("Texture2D_621cq")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Right"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5sk0n")
+theme_override_font_sizes/font_size = 20
+text = "Right"
+
+[node name="Sprint" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Sprint"]
+layout_mode = 2
+texture = SubResource("Texture2D_62qjb")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Sprint"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5sk0n")
+theme_override_font_sizes/font_size = 20
+text = "Sprint"
+
+[node name="Attack" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Attack"]
+layout_mode = 2
+texture = SubResource("Texture2D_5sk0n")
+expand_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/Attack"]
+layout_mode = 2
+texture = SubResource("Texture2D_qeg41")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Attack"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5sk0n")
+theme_override_font_sizes/font_size = 20
+text = "Attack/Use"
+
+[node name="Switch" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Switch"]
+layout_mode = 2
+texture = SubResource("Texture2D_1wh0d")
+expand_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/Switch"]
+layout_mode = 2
+texture = SubResource("Texture2D_mt45e")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Switch"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5sk0n")
+theme_override_font_sizes/font_size = 20
+text = "Switch Equipment Slot"

@@ -234,6 +234,9 @@ func _attempt_attack():
 	
 	# _face_to_vector3(Globals.player_pos)
 	
+	if get_tree() == null:
+		return
+	
 	# wait still for a bit to give player a change (also rng)
 	await get_tree().create_timer(randf_range(0.03, 0.3)).timeout
 	
@@ -254,6 +257,10 @@ func _attempt_attack():
 	tween.tween_property(right_hand, "position:z", 0.2, 0.07).as_relative()
 	tween.tween_property(right_hand, "rotation:y", deg_to_rad(80), 0.03).as_relative()
 	tween.tween_property(right_hand, "rotation:z", deg_to_rad(25), 0.03).as_relative()
+	
+	if get_tree() == null:
+		return
+	
 	await get_tree().create_timer(0.03).timeout
 	tween = create_tween()
 	tween.tween_property(left_hand, "position:x", - 0.55, 0.09).as_relative()
