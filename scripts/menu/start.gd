@@ -1,6 +1,7 @@
 extends Control
 
 signal level_1
+signal credits
 
 @onready var playButton = $MarginContainer/VBoxContainer2/VBoxContainer/PlayButton
 @onready var settingsButton = $MarginContainer/VBoxContainer2/VBoxContainer/SettingsButton
@@ -20,7 +21,7 @@ func _on_button_settings_pressed() -> void:
 
 func _on_credits_button_pressed() -> void:
 	Globals.menu_pick_fx_event = true
-	#todo
+	emit_signal("credits")
 
 func _process(_delta: float) -> void:
 	_handle_input()

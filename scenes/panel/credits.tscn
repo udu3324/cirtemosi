@@ -1,0 +1,206 @@
+[gd_scene load_steps=8 format=3 uid="uid://7mtb1ueg20wh"]
+
+[ext_resource type="Script" uid="uid://bcou7yvmwjxpy" path="res://scripts/panels/credits.gd" id="1_2ob5j"]
+[ext_resource type="Shader" uid="uid://2exyvu6qdr86" path="res://assets/shader/blur.gdshader" id="1_uvlxm"]
+[ext_resource type="Script" uid="uid://cmyasc1t8l0la" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="2_2ob5j"]
+[ext_resource type="FontFile" uid="uid://1qiyr01tsexv" path="res://assets/font/NebulaSans-Bold.ttf" id="3_ek4n1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w5xjm"]
+shader = ExtResource("1_uvlxm")
+shader_parameter/blur_size = Vector2(1, 1)
+
+[sub_resource type="Texture2D" id="Texture2D_w5xjm"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_2ob5j")
+path = "mouse/left"
+show_mode = 0
+force_controller_icon_style = -1
+force_type = 0
+force_device = 16
+metadata/_custom_type_script = "uid://cmyasc1t8l0la"
+
+[sub_resource type="Texture2D" id="Texture2D_eflam"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_2ob5j")
+path = "key/l"
+show_mode = 0
+force_controller_icon_style = -1
+force_type = 0
+force_device = 16
+metadata/_custom_type_script = "uid://cmyasc1t8l0la"
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2ob5j")
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer2"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.575)
+
+[node name="Panel" type="Panel" parent="MarginContainer2"]
+material = SubResource("ShaderMaterial_w5xjm")
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+modulate = Color(0.634, 0.634, 0.634, 0.436)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -60.625
+offset_right = 314.995
+grow_vertical = 0
+theme_override_constants/margin_bottom = 14
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 0)
+text = ".."
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("Texture2D_w5xjm")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "or"
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("Texture2D_eflam")
+expand_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "to exit"
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -203.5
+offset_top = -884.0
+offset_right = 203.5
+offset_bottom = 884.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_ek4n1")
+theme_override_font_sizes/font_size = 71
+text = "Credits"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_ek4n1")
+theme_override_font_sizes/font_size = 26
+text = "
+
+
+ - Development - 
+
+Programming
+Danny
+
+Music/Fx/Mixing
+Danny
+
+3d/2d Assets
+Danny
+
+
+
+
+
+
+
+
+
+ - Extra Assets & Addons - 
+
+Controller Icons
+rsubtil
+
+Prototype Textures
+Manonox
+
+Nebula Sans
+The Nebula Team
+
+
+
+
+
+
+
+
+
+ - Honorable Mentions -
+
+These games below have really
+inspired me to make this.
+
+Tunic
+Andrew Shouldice
+
+Undertale
+Toby Fox
+
+
+
+
+
+
+
+
+
+Thank you for playing!
+
+
+
+
+
+
+
+
+
+❤️
+Made for Shiba
+with Love
+-
+Hack Club
+
+"
+horizontal_alignment = 1

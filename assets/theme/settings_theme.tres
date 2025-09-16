@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cphxxvor1mpa3"]
+
+[ext_resource type="FontFile" uid="uid://1qiyr01tsexv" path="res://assets/font/NebulaSans-Bold.ttf" id="1_vylor"]
+
+[resource]
+default_font = ExtResource("1_vylor")
+default_font_size = 0
