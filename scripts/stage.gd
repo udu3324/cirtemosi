@@ -7,11 +7,6 @@ extends Node
 @onready var menuPause = $CanvasLayer/MenuPause
 @onready var menuReset = $CanvasLayer/MenuReset
 
-@onready var credits = $CanvasLayer/Credits
-@onready var creditsScroll = $CanvasLayer/Credits/CenterContainer
-
-@onready var settings = $CanvasLayer/Settings
-
 @onready var menuLoading = $CanvasLayer/Loading
 
 @onready var audio_menu_pick = $MenuFX
@@ -30,21 +25,16 @@ var enviornment
 
 func _ready() -> void:
 	
-	menuPause.connect("settings_open", _on_settings_open)
-	menuPause.connect("exit_to_start", _on_exit_start)
-	
 	menuReset.connect("exit_to_start", _on_exit_start)
 	
 	
 	menuStart.connect("level_1", _on_level_1)
 	menuStart.visible = true
 	
-	menuStart.connect("credits", _on_credits_show)
-	
 	masterAudio.play()
 	masterAudio.volume_db = -5.0
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	
 	Globals.startVisible = menuStart.visible
 	Globals.loadingVisible = menuLoading.visible
@@ -70,9 +60,6 @@ func _process(delta: float) -> void:
 	
 	_handle_input_controller_hints()
 	
-	if Globals.credits_trigger_exit:
-		_on_credits_hide()
-		Globals.credits_trigger_exit = false
 
 func _handle_input_controller_hints():
 	if Input.is_action_pressed("ui_up"):
@@ -230,49 +217,12 @@ func _handle_level_traverse_event():
 	
 	await _hide_loading()
 
-func _on_settings_open(): #todo
-	settings.visible = true
-
-var credits_opacity
-var credits_audio_fade
-var credits_scroll
-
-func _on_credits_show():
-	print_debug("showing credits")
-	
-	credits.visible = true
-	
-	creditsScroll.modulate.a = 0.0
-	creditsScroll.position.y = DisplayServer.window_get_size().y
-	DisplayServer.window_get_size().y
-	
-	credits_opacity = create_tween()
-	credits_opacity.tween_property(creditsScroll, "modulate:a", 1.0, 3)
-	
-	credits_audio_fade = create_tween()
-	credits_audio_fade.tween_property(masterAudio, "volume_db", -10.0, 2)
-	
-	credits_scroll = create_tween()
-	credits_scroll.tween_property(creditsScroll, "position:y", -creditsScroll.size.y, 40)
-	
-	await credits_scroll.finished
-	await get_tree().create_timer(1).timeout
-	
-	_on_credits_hide()
-
-func _on_credits_hide():
-	creditsScroll.modulate.a = 0.0
-	masterAudio.volume_db = -5.0
-	
-	credits.visible = false
-	
-	credits_opacity.kill()
-	credits_scroll.kill()
-	credits_audio_fade.kill()
-
 func _on_exit_start():
 	for node in $Node3D.get_children():
 		$Node3D.remove_child(node)
+	
+	for hint in hints.get_children():
+		hint.visible = false
 	
 	menuPause.visible = false
 	menuReset.visible = false

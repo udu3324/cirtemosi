@@ -14,7 +14,7 @@
 [ext_resource type="Shader" uid="uid://dpkrpjqqqrfdj" path="res://assets/shader/invert.gdshader" id="7_st0q7"]
 [ext_resource type="FontFile" uid="uid://cw8aclc2u6jmc" path="res://assets/font/NebulaSans-Book.ttf" id="9_dexii"]
 [ext_resource type="AudioStream" uid="uid://bynf8ef1ln3lg" path="res://assets/audio/soundtrack/cirtemosi-start-remixed.ogg" id="10_yd2gm"]
-[ext_resource type="PackedScene" uid="uid://7mtb1ueg20wh" path="res://scenes/panel/Credits.tscn" id="11_ddp0b"]
+[ext_resource type="PackedScene" uid="uid://7mtb1ueg20wh" path="res://scenes/panel/credits.tscn" id="11_ddp0b"]
 [ext_resource type="PackedScene" uid="uid://duh1vqd3cx2dh" path="res://scenes/panel/settings.tscn" id="11_t30jk"]
 [ext_resource type="AudioStream" uid="uid://1hjl3ugmc7x3" path="res://assets/audio/fx/menu_pick.wav" id="14_xfx4c"]
 

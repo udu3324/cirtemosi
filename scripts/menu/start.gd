@@ -1,11 +1,12 @@
 extends Control
 
 signal level_1
-signal credits
 
 @onready var playButton = $MarginContainer/VBoxContainer2/VBoxContainer/PlayButton
 @onready var settingsButton = $MarginContainer/VBoxContainer2/VBoxContainer/SettingsButton
 @onready var creditsButton = $MarginContainer/VBoxContainer2/VBoxContainer/CreditsButton
+
+var currently_selected
 
 func _ready() -> void:
 	playButton.grab_focus()
@@ -17,11 +18,11 @@ func _on_button_start_pressed() -> void:
 
 func _on_button_settings_pressed() -> void:
 	Globals.menu_pick_fx_event = true
-	#todo
+	Globals.settings_trigger_enter = true
 
 func _on_credits_button_pressed() -> void:
 	Globals.menu_pick_fx_event = true
-	emit_signal("credits")
+	Globals.credits_trigger_enter = true
 
 func _process(_delta: float) -> void:
 	_handle_input()
@@ -39,7 +40,15 @@ func _handle_input():
 	
 	if Input.is_action_just_pressed("ui_up") or Input.is_action_just_pressed("ui_down"):
 		Globals.menu_pick_fx_event = true
-
+		
+		# for some reason, i have to store the node instead of grabbing it in realtime
+		currently_selected = get_viewport().gui_get_focus_owner()
+	
+	if Input.is_action_just_pressed("ui_right"):
+		currently_selected.pressed.emit()
+	
+	if get_viewport().gui_get_focus_owner() == null:
+		playButton.grab_focus()
 
 func _on_button_mouse_entered() -> void:
 	Globals.menu_pick_fx_event = true

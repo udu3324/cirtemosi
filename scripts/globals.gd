@@ -9,8 +9,12 @@ var menu_pick_fx_event: bool = false
 
 var hint_attack_switch_control_event: bool = false
 
+var credits_trigger_enter: bool = false
 var credits_trigger_exit: bool = false
+
+var settings_trigger_enter: bool = false
 var settings_trigger_exit: bool = false
+
 
 # player movement
 var player_pos: Vector3 = Vector3(0, 0, 0)
@@ -27,6 +31,7 @@ var player_level_traverse_event: String = ""
 var player_death_event: String = ""
 var player_self_destruct_event: bool = false
 
+
 # player stats
 const health_max: float = 100.0
 
@@ -41,3 +46,8 @@ var stamina: float = 80.0
 
 var slot_active: int = 1
 var equipment = ["", "", ""]
+
+
+# settings
+var screen_relative_movement = true
+var easy_mode = false

@@ -1,6 +1,6 @@
 extends Control
 
-signal settings_open
+
 signal exit_to_start
 
 var loaded = false
@@ -8,7 +8,7 @@ var loaded = false
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	_handle_input()
 
 func _handle_input():
@@ -28,16 +28,14 @@ func _on_visibility_changed() -> void:
 	if !is_inside_tree():
 		return
 	
-	var visible = self.is_visible_in_tree()
-	
-	get_tree().paused = visible
+	get_tree().paused = is_visible_in_tree()
 
 func _on_button_unpause_pressed() -> void:
 	print_debug("pressing unpause button")
 	hide()
 
 func _on_settings_button_pressed() -> void:
-	emit_signal("settings_open")
+	Globals.settings_trigger_enter = true
 
 func _on_exit_button_pressed() -> void:
 	emit_signal("exit_to_start")

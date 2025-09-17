@@ -47,7 +47,7 @@ func _ready() -> void:
 	right_rest_pos = right_hand.position
 	right_rest_rot = right_hand.rotation
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	health_bar.value = health
 	
 	if attack_event != null:
@@ -215,8 +215,8 @@ func _face_to_vector3(point: Vector3) -> void:
 	var angle_y = atan2(to_point.x, to_point.z) + (PI / 2) # add a 90deg offset
 	
 	# model.rotation.y = lerp_angle(model.rotation.y, angle_y, 0.5)
-	var tween = create_tween()
-	tween.tween_property(model, "rotation:y", angle_y, 0.1)
+	var rotate_tween = create_tween()
+	rotate_tween.tween_property(model, "rotation:y", angle_y, 0.1)
 
 func _face_to_velocity() -> void:
 	# a velocity point that points to the movement direction
@@ -226,8 +226,8 @@ func _face_to_velocity() -> void:
 	var angle_y = atan2(linear_pos.x, linear_pos.z) + (PI / 2) # add a 90deg offset
 	
 	# model.rotation.y = lerp_angle(model.rotation.y, angle_y, 0.1)
-	var tween = create_tween()
-	tween.tween_property(model, "rotation:y", angle_y, 0.1)
+	var rotate_tween = create_tween()
+	rotate_tween.tween_property(model, "rotation:y", angle_y, 0.1)
 
 func _attempt_attack():
 	pause_logic = true
