@@ -182,7 +182,7 @@ expand_mode = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_2jlhx")
 theme_override_font_sizes/font_size = 20
-text = "to toggle button"
+text = "to toggle a setting"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2

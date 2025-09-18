@@ -1,6 +1,10 @@
 extends Control
 
 
+@onready var backButton = $MarginContainer/VBoxContainer/VBoxContainer/BackButton
+@onready var settingsButton = $MarginContainer/VBoxContainer/VBoxContainer/SettingsButton
+@onready var exitButton = $MarginContainer/VBoxContainer/VBoxContainer/ExitButton
+
 signal exit_to_start
 
 var loaded = false
@@ -10,10 +14,21 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	_handle_input()
+	
+	if !visible:
+		return
+	
+	if get_viewport().gui_get_focus_owner() == null:
+		print_debug("grabbing focus for pause")
+		backButton.grab_focus()
+	
+	if Input.is_action_just_pressed("ui_right"):
+		print_debug("pressed")
+		get_viewport().gui_get_focus_owner().pressed.emit()
 
 func _handle_input():
 	# if user pressed exit key, toggle pause menu
-	if Input.is_action_just_pressed("ui_cancel") and !Globals.startVisible and !Globals.loadingVisible and !Globals.resetVisible:
+	if Input.is_action_just_pressed("ui_cancel") and !Globals.startVisible and !Globals.loadingVisible and !Globals.resetVisible and !Globals.settingsVisible:
 		self.visible = !self.is_visible_in_tree();
 		
 		# punish player for pausing

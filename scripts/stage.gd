@@ -25,6 +25,7 @@ var enviornment
 
 func _ready() -> void:
 	
+	menuPause.connect("exit_to_start", _on_exit_start)
 	menuReset.connect("exit_to_start", _on_exit_start)
 	
 	
@@ -39,8 +40,6 @@ func _process(_delta: float) -> void:
 	Globals.startVisible = menuStart.visible
 	Globals.loadingVisible = menuLoading.visible
 	Globals.resetVisible = menuReset.visible
-	
-	#print_debug(Globals.player_pos)
 	
 	if Globals.player_vignette_event:
 		_handle_vignette_event()
@@ -226,7 +225,7 @@ func _on_exit_start():
 	
 	menuPause.visible = false
 	menuReset.visible = false
-	menuStart.visible = true
+	
 	
 	health.visible = false
 	stamina.visible = false
@@ -240,6 +239,12 @@ func _on_exit_start():
 	
 	var audioFade = create_tween()
 	audioFade.tween_property(masterAudio, "volume_db", -5.0, 2)
+	
+	
+	# wait a while until making start visible as it will trigger a input from before to press a button
+	# this is probably frame dependent.... #todo a better method
+	await get_tree().create_timer(0.01).timeout
+	menuStart.visible = true
 
 func _on_level_1():
 	await _show_loading()

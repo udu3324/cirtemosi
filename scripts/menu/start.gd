@@ -45,6 +45,7 @@ func _handle_input():
 		currently_selected = get_viewport().gui_get_focus_owner()
 	
 	if Input.is_action_just_pressed("ui_right"):
+		print_debug("pressed it")
 		currently_selected.pressed.emit()
 	
 	if get_viewport().gui_get_focus_owner() == null:

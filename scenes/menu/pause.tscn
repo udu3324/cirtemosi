@@ -66,16 +66,20 @@ size_flags_vertical = 4
 [node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../SettingsButton")
 theme = ExtResource("1_nesnr")
 text = "go back"
 
 [node name="SettingsButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../BackButton")
+focus_neighbor_bottom = NodePath("../ExitButton")
 theme = ExtResource("1_nesnr")
 text = "settings"
 
 [node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../SettingsButton")
 theme = ExtResource("1_nesnr")
 text = "exit"
 
