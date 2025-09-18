@@ -285,7 +285,7 @@ func _attempt_attack():
 		Globals.player_pushback_event = force_push * randi_range(2, 5)
 		Globals.player_physics_reset_event = true
 		
-		Globals.health -= 5
+		Globals.health -= 3 if Globals.easy_mode else 5 
 		Globals.player_vignette_event = true
 		
 		await _timeout_player()

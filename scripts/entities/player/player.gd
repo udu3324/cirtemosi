@@ -205,7 +205,10 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	# multi * 30 for running | 17 for regular
 	var force = 20 if sprinting else 13
 	force = 7 if Globals.player_is_stunned else force
-	apply_central_force(dir2 * force)
+	if Globals.screen_relative_movement:
+		apply_central_force(dir2 * force)
+	else:
+		apply_central_force(input.normalized() * force)
 	
 	# apply an extra y axis force depending on the slope angle
 	var slope_angle = acos(slope_normal.dot(Vector3.UP))

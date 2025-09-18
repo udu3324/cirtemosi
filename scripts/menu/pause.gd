@@ -19,7 +19,7 @@ func _handle_input():
 		# punish player for pausing
 		if !self.visible:
 			Globals.stamina_regeneration = false
-			await get_tree().create_timer(1).timeout
+			await get_tree().create_timer(Globals.stamina_recovery_time).timeout
 			Globals.stamina_regeneration = true
 
 # pause the game if the node detects that its visibility changed

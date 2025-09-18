@@ -69,3 +69,6 @@ func _on_screen_relative_movement_toggled(toggled_on: bool) -> void:
 
 func _on_easy_mode_toggled(toggled_on: bool) -> void:
 	Globals.easy_mode = toggled_on
+	
+	Globals.stamina_recovery_amount = 0.5 if Globals.easy_mode else 0.05
+	Globals.stamina_recovery_time = 0.5 if Globals.easy_mode else 1.0

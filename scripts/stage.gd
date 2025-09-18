@@ -331,5 +331,5 @@ func _hide_loading():
 	menuLoading.visible = false
 	
 	# punish stamina regeneration after traversing
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(Globals.stamina_recovery_time).timeout
 	Globals.stamina_regeneration = true
