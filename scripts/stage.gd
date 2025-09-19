@@ -31,7 +31,7 @@ func _ready() -> void:
 	menuReset.connect("exit_to_start", _on_exit_start)
 	
 	
-	menuStart.connect("level_1", _on_level_1)
+	menuStart.connect("level_1", _on_level_test)
 	menuStart.visible = true
 	
 	masterAudio.play()
@@ -289,6 +289,8 @@ func _on_level_1():
 func _on_level_test():
 	level = preload("res://levels/test/test_scene_1.tscn").instantiate()
 	$Node3D.add_child(level)
+	
+	remove_child(level_start)
 	
 	_add_player(Vector3(0, 2, 0))
 	health.visible = true

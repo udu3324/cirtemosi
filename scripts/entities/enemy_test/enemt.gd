@@ -17,6 +17,9 @@ extends RigidBody3D
 @onready var main_body_collision = $CollisionShape3D2
 
 @onready var audio_player = $AudioStreamPlayer3D
+
+var drops_relic_1: bool = false
+
 var slash = preload("res://assets/audio/fx/enemt_slash.wav")
 var dies = preload("res://assets/audio/fx/enemt_dead.wav")
 
@@ -93,6 +96,17 @@ func _process(_delta: float) -> void:
 		head_collision.disabled = false
 		head.sleeping = false
 		head.freeze = false
+		
+		
+		if drops_relic_1:
+			print_debug("dropping relic 1")
+			
+			var relic = preload("res://scenes/items/relic_1.tscn").instantiate()
+			var relic_pos = global_position
+			relic_pos.y += 1
+			
+			relic.position = relic_pos
+			get_parent().get_parent().add_child(relic)
 		
 		return
 	

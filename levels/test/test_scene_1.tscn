@@ -139,7 +139,7 @@ points = PackedVector3Array(-4.59434, -0.0952195, -6.09405, 4.54672, 0.0952195, 
 
 [node name="TestScene1" type="Node3D"]
 
-[node name="Spawn" type="Node" parent="."]
+[node name="Spawn" type="Node3D" parent="."]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Spawn"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
@@ -243,7 +243,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.70386, 1.19114, -2.74762)
 size = Vector3(0.297363, 2.03072, 2.92249)
 material = ExtResource("1_3ju41")
 
-[node name="TestSlopes" type="Node" parent="."]
+[node name="TestSlopes" type="Node3D" parent="."]
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="TestSlopes"]
 transform = Transform3D(-2, 0, 8.74228e-08, 0, 0.2, 0, -1.74846e-07, 0, -1, 2.5, 0.085, -3)
@@ -289,7 +289,7 @@ surface_material_override/0 = ExtResource("1_3ju41")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TestSlopes/MeshInstance3D7/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_hnwnm")
 
-[node name="SecretTest" type="Node" parent="."]
+[node name="SecretTest" type="Node3D" parent="."]
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="SecretTest"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, -0.5, 0)
@@ -342,7 +342,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_3ju41")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SecretTest/MeshInstance3D3/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_t2hxe")
 
-[node name="Barriers" type="Node" parent="."]
+[node name="Barriers" type="Node3D" parent="."]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Barriers"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 5, -4.6)
