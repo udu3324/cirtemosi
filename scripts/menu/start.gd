@@ -2,9 +2,9 @@ extends Control
 
 signal level_1
 
-@onready var playButton = $MarginContainer/VBoxContainer2/VBoxContainer/PlayButton
-@onready var settingsButton = $MarginContainer/VBoxContainer2/VBoxContainer/SettingsButton
-@onready var creditsButton = $MarginContainer/VBoxContainer2/VBoxContainer/CreditsButton
+@onready var playButton = $MarginContainer/VBoxContainer2/MarginContainer/VBoxContainer/PlayButton
+@onready var settingsButton = $MarginContainer/VBoxContainer2/MarginContainer/VBoxContainer/SettingsButton
+@onready var creditsButton = $MarginContainer/VBoxContainer2/MarginContainer/VBoxContainer/CreditsButton
 
 var currently_selected
 
@@ -45,7 +45,7 @@ func _handle_input():
 		currently_selected = get_viewport().gui_get_focus_owner()
 	
 	if Input.is_action_just_pressed("ui_right"):
-		print_debug("pressed it")
+		#print_debug("pressed it")
 		currently_selected.pressed.emit()
 	
 	if get_viewport().gui_get_focus_owner() == null:

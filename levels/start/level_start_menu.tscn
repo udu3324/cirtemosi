@@ -1,0 +1,182 @@
+[gd_scene load_steps=7 format=3 uid="uid://dyu47n36p534y"]
+
+[ext_resource type="PackedScene" uid="uid://dwqj4buhblxh8" path="res://entities/enemt/enemt.tscn" id="1_cok45"]
+[ext_resource type="Script" uid="uid://hnivem68ukbv" path="res://scripts/scenes/level_start_menu.gd" id="1_lq4wq"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cok45"]
+sky_top_color = Color(0.113725, 0.113725, 0.113725, 1)
+sky_horizon_color = Color(0.113725, 0.113725, 0.113725, 1)
+ground_bottom_color = Color(0.114897, 0.114897, 0.114897, 1)
+ground_horizon_color = Color(0.113725, 0.113725, 0.113725, 1)
+
+[sub_resource type="Sky" id="Sky_35bhh"]
+sky_material = SubResource("ProceduralSkyMaterial_cok45")
+
+[sub_resource type="Environment" id="Environment_lq4wq"]
+background_mode = 2
+sky = SubResource("Sky_35bhh")
+ambient_light_source = 1
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_cok45"]
+vertices = PackedVector3Array(5.679, 0.5, 0.1789999, 4.179, 0.5, -3.821, 0.4289999, 0.5, -5.571, -4.071, 0.5, -4.071, -5.571, 0.5, -0.5710001, -4.071, 0.5, 3.929, -0.3210001, 0.5, 5.679, 3.929, 0.5, 4.179)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 2), PackedInt32Array(6, 5, 7), PackedInt32Array(7, 5, 0), PackedInt32Array(0, 5, 4), PackedInt32Array(0, 4, 2)]
+
+[node name="LevelStartMenu" type="Node3D"]
+script = ExtResource("1_lq4wq")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_lq4wq")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_cok45")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+use_collision = true
+radius = 6.071
+height = 1.0
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+visible = false
+use_collision = true
+size = Vector3(11, 1, 11)
+
+[node name="Foreground" type="CSGPolygon3D" parent="."]
+transform = Transform3D(0.707107, -0.408607, 0.577096, 0, 0.816138, 0.577858, -0.707107, -0.408607, 0.577096, 22.465796, -1.6676013, -4.650243)
+polygon = PackedVector2Array(-18.47925, 12.060616, -17.909992, 10.884062, -17.233528, 12.1316805, -17.16361, 11.339105, -16.776825, 10.6378765, -16.166826, 11.318872, -15.759238, 11.365318, -14.757877, 9.442435, -15.139052, 7.9237633, -15.998422, 7.4005957, -17.177076, 7.6919813, -17.968256, 7.055688, -18.740099, 7.733444, -19.873524, 8.047653, -20.778124, 7.4790363, -21.728125, 6.9329443, -22.568764, 7.927601, -22.528973, 10.102151, -21.944004, 11.689345, -20.33014, 9.450808, -20.429491, 12.939108, -19.18066, 11.741672, -17.97283, 16.147234, -30.651546, 15.381968, -29.785963, 4.488638, -12.571907, 4.9629173, -12.757229, 15.586192, -17.037502, 15.235454, -19.3009, 14.504972)
+
+[node name="Enemt" parent="." instance=ExtResource("1_cok45")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.70710677, -0.40860704, 0.5770964, 0, 0.8161376, 0.5778576, -0.70710677, -0.40860704, 0.5770964, 4.762636, 8.065182, 8.243113)
+projection = 1
+size = 8.237069
+
+[node name="Rocks" type="Node3D" parent="."]
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="Rocks"]
+transform = Transform3D(-0.340784, -0.49638, -0.826458, -0.983546, 0.0910594, 0.400137, -0.141217, 0.563653, -0.792462, -3.8944147, 0.4014424, 0.23023367)
+use_collision = true
+size = Vector3(1.3739, 1.31836, 1)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Rocks"]
+transform = Transform3D(0.297271, 0.745426, 0.289713, -0.498312, -0.0377743, 1.05666, 0.775541, -0.309999, 0.567891, -4.257529, 0.60284245, -1.013896)
+use_collision = true
+size = Vector3(2, 1.76465, 1)
+
+[node name="CSGBox3D27" type="CSGBox3D" parent="Rocks"]
+transform = Transform3D(0.270454, 0.676217, -0.685263, 0.264757, -0.736585, -0.62237, -0.925613, -0.0131051, -0.378245, -4.112524, 0.32028246, -2.2676668)
+use_collision = true
+size = Vector3(1.3739, 1.31836, 1)
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="Rocks"]
+transform = Transform3D(0.082921505, 0.44615078, 0.89110863, 0.787204, 0.51899487, -0.3330979, -0.6110927, 0.7291048, -0.30817682, 4.14966, 0.16453636, -3.1029422)
+use_collision = true
+size = Vector3(1.3739, 1.31836, 1)
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="Rocks"]
+transform = Transform3D(0.082921505, 0.44615078, 0.89110863, 0.787204, 0.51899487, -0.3330979, -0.6110927, 0.7291048, -0.30817682, 3.019148, 0.16453636, -3.3634331)
+use_collision = true
+size = Vector3(1.3739, 1.31836, 1)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Rocks"]
+transform = Transform3D(0.3963142, -0.5692484, -0.72034144, 0.683013, 0.707107, -0.18301299, 0.6135381, -0.41947147, 0.6690408, 3.2104366, 0.40858626, -4.2103367)
+use_collision = true
+size = Vector3(2, 1.97266, 1)
+
+[node name="CSGBox3D20" type="CSGBox3D" parent="Rocks"]
+transform = Transform3D(0.52777815, -0.287578, 0.79921836, 0.787204, 0.518995, -0.33309796, -0.31899923, 0.8049497, 0.5002961, 3.6954145, -0.07350373, -1.996546)
+use_collision = true
+size = Vector3(1.3739, 1.31836, 1)
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="Rocks"]
+transform = Transform3D(-0.720691, 0.693161, -0.0114859, 0.65156, 0.671593, -0.352749, -0.236798, -0.261707, -0.935647, 0.20465729, 0.20780063, 4.391087)
+use_collision = true
+size = Vector3(1.84595, 1.80054, 1)
+
+[node name="CSGBox3D19" type="CSGBox3D" parent="Rocks"]
+transform = Transform3D(-0.591304, 0.623612, 0.511339, 0.677567, 0.728022, -0.104343, -0.437336, 0.284768, -0.853021, -1.0504947, 0.18356061, 3.780997)
+use_collision = true
+size = Vector3(1.28845, 2.53875, 1)
+
+[node name="Rocks2" type="Node3D" parent="."]
+transform = Transform3D(-0.48235, 1.3563906e-09, -0.8759786, -7.722553e-08, -1, 4.097514e-08, -0.87597865, 8.741225e-08, 0.48234993, 0, 0, 0)
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="Rocks2"]
+transform = Transform3D(-0.340784, -0.49638, -0.826458, -0.983546, 0.0910594, 0.400137, -0.141217, 0.563653, -0.792462, -3.8944147, 0.4014424, 0.23023367)
+use_collision = true
+size = Vector3(1.3739, 1.31836, 1)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Rocks2"]
+transform = Transform3D(0.297271, 0.745426, 0.289713, -0.498312, -0.0377743, 1.05666, 0.775541, -0.309999, 0.567891, -4.257529, 0.60284245, -1.013896)
+use_collision = true
+size = Vector3(2, 1.76465, 1)
+
+[node name="CSGBox3D27" type="CSGBox3D" parent="Rocks2"]
+transform = Transform3D(0.270454, 0.676217, -0.685263, 0.264757, -0.736585, -0.62237, -0.925613, -0.0131051, -0.378245, -4.112524, 0.32028246, -2.2676668)
+use_collision = true
+size = Vector3(1.3739, 1.31836, 1)
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="Rocks2"]
+transform = Transform3D(0.082921505, 0.44615078, 0.89110863, 0.787204, 0.51899487, -0.3330979, -0.6110927, 0.7291048, -0.30817682, 4.14966, 0.16453636, -3.1029422)
+use_collision = true
+size = Vector3(1.3739, 1.31836, 1)
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="Rocks2"]
+transform = Transform3D(0.082921505, 0.44615078, 0.89110863, 0.787204, 0.51899487, -0.3330979, -0.6110927, 0.7291048, -0.30817682, 3.019148, 0.16453636, -3.3634331)
+use_collision = true
+size = Vector3(1.3739, 1.31836, 1)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Rocks2"]
+transform = Transform3D(0.3963142, -0.5692484, -0.72034144, 0.683013, 0.707107, -0.18301299, 0.6135381, -0.41947147, 0.6690408, 3.2104366, 0.40858626, -4.2103367)
+use_collision = true
+size = Vector3(2, 1.97266, 1)
+
+[node name="CSGBox3D20" type="CSGBox3D" parent="Rocks2"]
+transform = Transform3D(0.52777815, -0.287578, 0.79921836, 0.787204, 0.518995, -0.33309796, -0.31899923, 0.8049497, 0.5002961, 3.6954145, -0.07350373, -1.996546)
+use_collision = true
+size = Vector3(1.3739, 1.31836, 1)
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="Rocks2"]
+transform = Transform3D(-0.720691, 0.693161, -0.0114859, 0.65156, 0.671593, -0.352749, -0.236798, -0.261707, -0.935647, 0.20465729, 0.20780063, 4.391087)
+use_collision = true
+size = Vector3(1.84595, 1.80054, 1)
+
+[node name="CSGBox3D19" type="CSGBox3D" parent="Rocks2"]
+transform = Transform3D(-0.591304, 0.623612, 0.511339, 0.677567, 0.728022, -0.104343, -0.437336, 0.284768, -0.853021, -1.0504947, 0.18356061, 3.780997)
+use_collision = true
+size = Vector3(1.28845, 2.53875, 1)
+
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(0.83727825, 0.32834467, -0.4372127, 0.073008984, 0.72532153, 0.6845279, 0.54188085, -0.60506076, 0.58332384, -4.955679, 5.635742, 6.444809)
+light_color = Color(0.9094977, 0.6235762, 0.15839294, 1)
+light_energy = 0.489
+spot_range = 27.606691
+spot_angle = 37.34625
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(0.88739103, 0.42315203, 0.18297401, 0.20237547, -0.71415496, 0.67009467, 0.41422373, -0.5576066, -0.7193703, 3.7376099, 5.64447, -8.999252)
+light_color = Color(0.0286635, 0.40331224, 0.54911834, 1)
+light_energy = 2.787
+spot_range = 28.908733
+spot_angle = 36.801674
+
+[node name="CSGBox3D28" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.55528, 21.9657, -19.9115)
+size = Vector3(98.5168, 0.745895, 103.655)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0311608, 4.994811, 15.694717)
+light_color = Color(0.3876915, 0.0019233047, 0.74443203, 1)
+light_energy = 0.3
+omni_range = 17.954357
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.137591, 13.191234, 4.1257)
+light_color = Color(0.00065900624, 0.30385956, 0.9648785, 1)
+light_energy = 0.3
+omni_range = 17.954357

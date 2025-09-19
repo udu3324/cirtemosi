@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://deosjk0k7g3ym"]
+[gd_scene load_steps=21 format=3 uid="uid://deosjk0k7g3ym"]
 
 [ext_resource type="Script" uid="uid://cus4gkng2m21t" path="res://scripts/stage.gd" id="1_vcsse"]
 [ext_resource type="PackedScene" uid="uid://dl3txvou7nvh" path="res://scenes/gui/relics.tscn" id="2_0hg5s"]
 [ext_resource type="PackedScene" uid="uid://bn4n2yrnem13i" path="res://scenes/menu/start.tscn" id="2_2so7o"]
+[ext_resource type="PackedScene" uid="uid://dyu47n36p534y" path="res://levels/start/level_start_menu.tscn" id="2_d4wp7"]
 [ext_resource type="PackedScene" uid="uid://bxa8pathifmtb" path="res://scenes/gui/vignette.tscn" id="2_jl6nj"]
 [ext_resource type="PackedScene" uid="uid://8uapt3fxhrtt" path="res://scenes/gui/stamina_bar.tscn" id="3_2so7o"]
 [ext_resource type="PackedScene" uid="uid://b4b5oapw2kjx0" path="res://scenes/menu/pause.tscn" id="3_st0q7"]
@@ -27,6 +28,8 @@ default_font = ExtResource("9_dexii")
 
 [node name="Stage" type="Node"]
 script = ExtResource("1_vcsse")
+
+[node name="LevelStartMenu" parent="." instance=ExtResource("2_d4wp7")]
 
 [node name="Node3D" type="Node3D" parent="."]
 

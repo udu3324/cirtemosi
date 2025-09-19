@@ -31,6 +31,7 @@ grow_vertical = 2
 script = ExtResource("1_4hqgu")
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -49,9 +50,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 115
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 0
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer2"]
 layout_mode = 2
@@ -60,12 +63,17 @@ size_flags_vertical = 6
 theme = SubResource("Theme_ci5k1")
 text = "cirtemosi"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer2"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer2"]
 layout_mode = 2
-size_flags_horizontal = 4
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_bottom = 165
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer2/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
 size_flags_vertical = 6
 
-[node name="PlayButton" type="Button" parent="MarginContainer/VBoxContainer2/VBoxContainer"]
+[node name="PlayButton" type="Button" parent="MarginContainer/VBoxContainer2/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(270.2, 0)
 layout_mode = 2
 focus_next = NodePath("../SettingsButton")
@@ -73,23 +81,23 @@ focus_previous = NodePath("../CreditsButton")
 theme = ExtResource("2_ci5k1")
 text = "play"
 
-[node name="SettingsButton" type="Button" parent="MarginContainer/VBoxContainer2/VBoxContainer"]
+[node name="SettingsButton" type="Button" parent="MarginContainer/VBoxContainer2/MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_next = NodePath("../CreditsButton")
 focus_previous = NodePath("../PlayButton")
 theme = ExtResource("2_ci5k1")
 text = "settings"
 
-[node name="CreditsButton" type="Button" parent="MarginContainer/VBoxContainer2/VBoxContainer"]
+[node name="CreditsButton" type="Button" parent="MarginContainer/VBoxContainer2/MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_next = NodePath("../PlayButton")
 focus_previous = NodePath("../SettingsButton")
 theme = ExtResource("2_ci5k1")
 text = "credits"
 
-[connection signal="mouse_entered" from="MarginContainer/VBoxContainer2/VBoxContainer/PlayButton" to="." method="_on_button_mouse_entered"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer2/VBoxContainer/PlayButton" to="." method="_on_button_start_pressed"]
-[connection signal="mouse_entered" from="MarginContainer/VBoxContainer2/VBoxContainer/SettingsButton" to="." method="_on_button_mouse_entered"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer2/VBoxContainer/SettingsButton" to="." method="_on_button_settings_pressed"]
-[connection signal="mouse_entered" from="MarginContainer/VBoxContainer2/VBoxContainer/CreditsButton" to="." method="_on_button_mouse_entered"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer2/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer2/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer2/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_button_start_pressed"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer2/MarginContainer/VBoxContainer/SettingsButton" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer2/MarginContainer/VBoxContainer/SettingsButton" to="." method="_on_button_settings_pressed"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer2/MarginContainer/VBoxContainer/CreditsButton" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer2/MarginContainer/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]

@@ -19,6 +19,8 @@ extends Node
 
 @onready var hints = $CanvasLayer/ControllerHints/MarginContainer/VBoxContainer
 
+@onready var level_start = $LevelStartMenu
+
 var level
 var player
 var enviornment
@@ -217,6 +219,8 @@ func _handle_level_traverse_event():
 	await _hide_loading()
 
 func _on_exit_start():
+	Globals.player_pos = Vector3(0, 0, 0)
+	
 	for node in $Node3D.get_children():
 		$Node3D.remove_child(node)
 	
@@ -237,6 +241,9 @@ func _on_exit_start():
 	
 	get_tree().paused = false
 	
+	print_debug("adding back the child")
+	add_child(level_start)
+	
 	var audioFade = create_tween()
 	audioFade.tween_property(masterAudio, "volume_db", -5.0, 2)
 	
@@ -251,6 +258,9 @@ func _on_level_1():
 	
 	level = preload("res://levels/level1.tscn").instantiate()
 	$Node3D.add_child(level)
+	
+	remove_child(level_start)
+	
 	
 	_add_player(Vector3(0, 2, 0))
 	health.visible = true
