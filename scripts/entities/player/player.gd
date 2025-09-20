@@ -246,84 +246,77 @@ func _handle_equipment() -> void:
 	if !Globals.player_can_move:
 		return
 	
-	if Input.is_action_just_pressed("attack"):
-		if Globals.slot_active == 1 and Globals.equipment[0] == "starter_weapon":
-			if attacking:
-				return
-			
-			attacking = true
-			
-			_play_fx(swoosh, randf_range(0.6, 1.0))
-			
-			# start animation
-			var attack_tween = create_tween()
-			attack_tween.parallel().tween_property(starter_weapon, "rotation:y", deg_to_rad(85), 0.5)
-			attack_tween.parallel().tween_property(left_arm, "rotation:y", deg_to_rad(25), 0.25)
-			attack_tween.parallel().tween_property(left_arm, "rotation:z", deg_to_rad(105), 0.25)
-			attack_tween.parallel().tween_property(left_arm, "position:x", 0.2, 0.5)
-			attack_tween.parallel().tween_property(left_arm, "rotation:y", deg_to_rad(-75), 0.5)
-			
-			await attack_tween.finished
-			
-			# check if player hit an enemy
-			
-			# get all enemy nodes
-			var enemies = []
-			for node in _get_all_nodes(get_tree().root):
-				#print_debug(node)
-				if node.name == "EnemyCollisionMesh":
-					#print_debug("found enemy", node)
-					enemies.append(node)
-			
-			# for each enemy
-			for enemy in enemies:
-				var distance = position.distance_to(enemy.global_transform.origin)
-				
-				#print("player ", position, " | enemy ", enemy.global_transform.origin, " | distance ", distance)
-				
-				# check if distance is good
-				if distance > 1.5:
-					continue
-				
-				# they already dead
-				if enemy.get_parent().dead:
-					continue
-				
-				var forward = -model.global_transform.basis.x.normalized()
-				var to_enemy = ( enemy.global_transform.origin - model.global_transform.origin).normalized()
-				
-				var angle = rad_to_deg(forward.angle_to(to_enemy))
-				
-				# check if angle is in range
-				if angle > 60: # currently very generous right now
-					continue
-				
-				#print_debug("enemy was hit!")
-				enemy.get_parent().health -= 10
-				enemy.get_parent().attack_event = model.rotation.y - (PI / 2)
-				
-				_play_fx(hit_starter_weapon, 0.8)
-			
-			# stop animation
-			attack_tween = create_tween()
-			attack_tween.parallel().tween_property(starter_weapon, "rotation:y", 0, 0.25)
-			attack_tween.parallel().tween_property(left_arm, "rotation:y", 0, 0.5)
-			attack_tween.parallel().tween_property(left_arm, "rotation:z", 0, 0.5)
-			attack_tween.parallel().tween_property(left_arm, "position:x", 0, 0.25)
-			attack_tween.chain().tween_property(left_arm, "rotation:y", 0, 0.25)
-
-			await attack_tween.finished
-			
-			attacking = false
-
-func _get_all_nodes(node) -> Array:
-	var nodes = []
+	if !Input.is_action_just_pressed("attack"):
+		return
 	
-	for child in node.get_children():
-		nodes.append(child)
-		nodes += _get_all_nodes(child)
+	if attacking:
+		return
 	
-	return nodes
+	if Globals.slot_active == 1 and Globals.equipment[0] == "starter_weapon":
+		attacking = true
+		
+		_play_fx(swoosh, randf_range(0.6, 1.0))
+		
+		# start animation
+		var attack_tween = create_tween()
+		attack_tween.parallel().tween_property(starter_weapon, "rotation:y", deg_to_rad(85), 0.5)
+		attack_tween.parallel().tween_property(left_arm, "rotation:y", deg_to_rad(25), 0.25)
+		attack_tween.parallel().tween_property(left_arm, "rotation:z", deg_to_rad(105), 0.25)
+		attack_tween.parallel().tween_property(left_arm, "position:x", 0.2, 0.5)
+		attack_tween.parallel().tween_property(left_arm, "rotation:y", deg_to_rad(-75), 0.5)
+		
+		await attack_tween.finished
+		
+		# check if player hit an enemy
+		
+		# get all enemy nodes
+		var enemies = []
+		for node in Globals._get_all_nodes(get_tree().root):
+			#print_debug(node)
+			if node.name == "EnemyCollisionMesh":
+				#print_debug("found enemy", node)
+				enemies.append(node)
+		
+		# for each enemy
+		for enemy in enemies:
+			var distance = position.distance_to(enemy.global_transform.origin)
+			
+			#print("player ", position, " | enemy ", enemy.global_transform.origin, " | distance ", distance)
+			
+			# check if distance is good
+			if distance > 1.5:
+				continue
+			
+			# they already dead
+			if enemy.get_parent().dead:
+				continue
+			
+			var forward = -model.global_transform.basis.x.normalized()
+			var to_enemy = ( enemy.global_transform.origin - model.global_transform.origin).normalized()
+			
+			var angle = rad_to_deg(forward.angle_to(to_enemy))
+			
+			# check if angle is in range
+			if angle > 60: # currently very generous right now
+				continue
+			
+			#print_debug("enemy was hit!")
+			enemy.get_parent().health -= 10
+			enemy.get_parent().attack_event = model.rotation.y - (PI / 2)
+			
+			_play_fx(hit_starter_weapon, 0.8)
+		
+		# stop animation
+		attack_tween = create_tween()
+		attack_tween.parallel().tween_property(starter_weapon, "rotation:y", 0, 0.25)
+		attack_tween.parallel().tween_property(left_arm, "rotation:y", 0, 0.5)
+		attack_tween.parallel().tween_property(left_arm, "rotation:z", 0, 0.5)
+		attack_tween.parallel().tween_property(left_arm, "position:x", 0, 0.25)
+		attack_tween.chain().tween_property(left_arm, "rotation:y", 0, 0.25)
+
+		await attack_tween.finished
+		
+		attacking = false
 
 # this function creates disposable audio streams for each fx for the player
 func _play_fx(sound: AudioStream, pitch: float):

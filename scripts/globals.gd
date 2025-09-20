@@ -50,7 +50,22 @@ var stamina: float = 80.0
 var slot_active: int = 1
 var equipment = ["", "", ""]
 
+var relics = [false, false, false, false, false, false, false]
 
 # settings
 var screen_relative_movement = true
 var easy_mode = false
+
+
+# global storage
+var root_node_3d: Node3D
+
+# global funcs
+func _get_all_nodes(node) -> Array:
+	var nodes = []
+	
+	for child in node.get_children():
+		nodes.append(child)
+		nodes += _get_all_nodes(child)
+	
+	return nodes

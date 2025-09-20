@@ -1,10 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://dl3txvou7nvh"]
+[gd_scene load_steps=14 format=3 uid="uid://dl3txvou7nvh"]
 
+[ext_resource type="Script" uid="uid://0ydrnlj86cuo" path="res://scripts/gui/relics.gd" id="1_ewefw"]
 [ext_resource type="Texture2D" uid="uid://b2d3i2apa0e28" path="res://assets/relics/relic_1_hidden_icon.png" id="1_ws5rw"]
 [ext_resource type="Texture2D" uid="uid://diqi6ipp6qmgy" path="res://assets/relics/relic_2_hidden_icon.png" id="2_7ycdy"]
 [ext_resource type="Texture2D" uid="uid://dcys6jvvpk8ui" path="res://assets/relics/relic_3_hidden_icon.png" id="3_ewefw"]
+[ext_resource type="Texture2D" uid="uid://cflawfwwc0shf" path="res://assets/relics/relic_1_icon.png" id="3_pol85"]
+[ext_resource type="Shader" uid="uid://ya1pd4bihrik" path="res://assets/shader/outline.gdshader" id="3_xgwlu"]
 [ext_resource type="Texture2D" uid="uid://bfwbueficfl5f" path="res://assets/relics/relic_4_hidden_icon.png" id="4_pol85"]
 [ext_resource type="Texture2D" uid="uid://1mmu3bchdc3u" path="res://assets/relics/relic_5_hidden_icon.png" id="5_14hj4"]
+[ext_resource type="Texture2D" uid="uid://cppqhljgmm1lt" path="res://assets/relics/relic_2_icon.png" id="5_khq2i"]
+[ext_resource type="Texture2D" uid="uid://ctwb6rjmjrvf1" path="res://assets/relics/relic_3_icon.png" id="7_xgwlu"]
+[ext_resource type="Texture2D" uid="uid://bvt8f11g3y3v7" path="res://assets/relics/relic_4_icon.png" id="9_vdml7"]
+[ext_resource type="Texture2D" uid="uid://le6ob21br1el" path="res://assets/relics/relic_5_icon.png" id="11_54kn2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vdml7"]
+shader = ExtResource("3_xgwlu")
+shader_parameter/line_color = Color(0, 0, 0, 0.624)
+shader_parameter/line_thickness = 22.9570010904575
 
 [node name="Relics" type="Control"]
 layout_mode = 3
@@ -13,6 +25,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ewefw")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -38,6 +51,18 @@ layout_mode = 2
 texture = ExtResource("1_ws5rw")
 expand_mode = 2
 
+[node name="Relic1" type="CenterContainer" parent="MarginContainer/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Relic1"]
+material = SubResource("ShaderMaterial_vdml7")
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("3_pol85")
+expand_mode = 2
+
 [node name="CenterContainer2" type="CenterContainer" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
@@ -46,6 +71,17 @@ layout_mode = 2
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = ExtResource("2_7ycdy")
+expand_mode = 2
+
+[node name="Relic2" type="CenterContainer" parent="MarginContainer/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Relic2"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("5_khq2i")
 expand_mode = 2
 
 [node name="CenterContainer3" type="CenterContainer" parent="MarginContainer/HBoxContainer"]
@@ -58,6 +94,17 @@ layout_mode = 2
 texture = ExtResource("3_ewefw")
 expand_mode = 2
 
+[node name="Relic3" type="CenterContainer" parent="MarginContainer/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Relic3"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("7_xgwlu")
+expand_mode = 2
+
 [node name="CenterContainer4" type="CenterContainer" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
@@ -68,6 +115,17 @@ layout_mode = 2
 texture = ExtResource("4_pol85")
 expand_mode = 2
 
+[node name="Relic4" type="CenterContainer" parent="MarginContainer/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Relic4"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("9_vdml7")
+expand_mode = 2
+
 [node name="CenterContainer5" type="CenterContainer" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
@@ -76,4 +134,15 @@ layout_mode = 2
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = ExtResource("5_14hj4")
+expand_mode = 2
+
+[node name="Relic5" type="CenterContainer" parent="MarginContainer/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Relic5"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("11_54kn2")
 expand_mode = 2

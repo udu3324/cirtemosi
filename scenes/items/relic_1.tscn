@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=4 uid="uid://x6cwwyhtt76x"]
+[gd_scene load_steps=9 format=4 uid="uid://x6cwwyhtt76x"]
 
 [ext_resource type="Texture2D" uid="uid://bslqfljkqo8do" path="res://assets/model/item/relics/textures/relic_1.png" id="1_fca75"]
+[ext_resource type="Script" uid="uid://do467grquanre" path="res://scripts/items/relic_1.gd" id="1_vgrjw"]
+[ext_resource type="AudioStream" uid="uid://6aptpugod2ue" path="res://assets/audio/fx/item_pick_special.wav" id="3_tcbs2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bxok"]
 resource_name = "Rock"
@@ -46,7 +48,10 @@ shadow_mesh = SubResource("ArrayMesh_uqrgc")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_tcbs2"]
 points = PackedVector3Array(-0.19483094, 0.060751792, 0.03212502, 0.20636977, 0.09475981, -0.009499997, 0.18532725, 0.12893872, -0.0026486262, -0.007184863, 0.09424721, -0.2288581, 0.08143881, -0.19926678, 0.07902281, 0.07578332, 0.17150652, 0.19137466, -0.055572476, -0.13964759, -0.14746998, -0.11799599, -0.09159235, 0.156539, 0.14160869, -0.0827347, -0.117556475, -0.1326049, 0.17219348, 0.14353138, 0.013473302, 0.20028406, -0.04427329, -0.13644527, -0.1787035, -0.043540906, -0.15962312, 0.08136332, -0.11332724, -0.007352153, -0.036351807, 0.21253684, 0.17611305, -0.0627382, 0.044734634, 0.068415016, -0.0016857237, -0.22962503, 0.10283611, -0.20128487, 0.0042115645, -0.028172415, -0.04326251, -0.23141666, 0.15109918, 0.06716609, 0.12821172, -0.15904531, -0.022365984, -0.12675299, -0.11034492, -0.008516171, 0.19671358, -0.11576113, 0.14095607, -0.084198005, 0.20562443, 0.09440012, -0.043780945, -0.055842243, -0.119474635, 0.17756009, -0.19449729, 0.12302173, 0.059803486, 0.1444294, 0.17072774, 0.011153921, 0.19119248, -0.022192579, -0.06418495, 0.18032196, 0.09561973, 0.09473535, 0.020196402, -0.111220434, 0.17531587, 0.006514281, 0.09959293, -0.22556679, -0.056007616, 0.08166366, 0.19890544, 0.033763777, -0.10394874, -0.15945765)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_tcbs2"]
+
 [node name="Relic1" type="RigidBody3D"]
+script = ExtResource("1_vgrjw")
 
 [node name="Sphere" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_vgrjw")
@@ -58,3 +63,13 @@ shape = SubResource("ConvexPolygonShape3D_tcbs2")
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 light_color = Color(0.94806176, 0.25582922, 0.48695064, 1)
 omni_range = 1.55143
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_tcbs2")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_tcbs2")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

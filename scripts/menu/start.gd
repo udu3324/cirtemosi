@@ -6,7 +6,7 @@ signal level_1
 @onready var settingsButton = $MarginContainer/VBoxContainer2/MarginContainer/VBoxContainer/SettingsButton
 @onready var creditsButton = $MarginContainer/VBoxContainer2/MarginContainer/VBoxContainer/CreditsButton
 
-var currently_selected
+@onready var currently_selected = playButton
 
 func _ready() -> void:
 	playButton.grab_focus()

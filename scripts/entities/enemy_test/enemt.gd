@@ -55,7 +55,7 @@ func _process(_delta: float) -> void:
 	
 	if attack_event != null:
 		
-		print_debug("recieved attack event")
+		#print_debug("recieved attack event")
 		#var linear_pos = linear_velocity.normalized()
 	
 		# get the angle from the point \ also assume angle is facing player cause yeah
@@ -98,18 +98,19 @@ func _process(_delta: float) -> void:
 		head.freeze = false
 		
 		
-		if drops_relic_1:
+		if drops_relic_1 and !Globals.relics[0]:
 			print_debug("dropping relic 1")
 			
 			var relic = preload("res://scenes/items/relic_1.tscn").instantiate()
-			var relic_pos = global_position
+			var relic_pos = global_transform.origin
 			relic_pos.y += 1
+			relic_pos.x += 0.2
+			relic_pos.z += 0.2
 			
-			relic.position = relic_pos
-			get_parent().get_parent().add_child(relic)
+			relic.global_transform.origin = relic_pos
+			Globals.root_node_3d.add_child(relic)
 		
 		return
-	
 
 func _physics_process(delta: float) -> void:
 	if agent.is_navigation_finished() and !dead:

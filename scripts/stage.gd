@@ -26,12 +26,13 @@ var player
 var enviornment
 
 func _ready() -> void:
+	Globals.root_node_3d = $Node3D
 	
 	menuPause.connect("exit_to_start", _on_exit_start)
 	menuReset.connect("exit_to_start", _on_exit_start)
 	
 	
-	menuStart.connect("level_1", _on_level_test)
+	menuStart.connect("level_1", _on_level_1)
 	menuStart.visible = true
 	
 	masterAudio.play()
@@ -60,7 +61,6 @@ func _process(_delta: float) -> void:
 		Globals.menu_pick_fx_event = false
 	
 	_handle_input_controller_hints()
-	
 
 func _handle_input_controller_hints():
 	if Input.is_action_pressed("ui_up"):
@@ -239,6 +239,8 @@ func _on_exit_start():
 	Globals.equipment = ["", "", ""]
 	Globals.slot_active = 1
 	
+	Globals.relics = [false, false, false, false, false, false, false]
+	
 	get_tree().paused = false
 	
 	print_debug("adding back the child")
@@ -260,7 +262,6 @@ func _on_level_1():
 	$Node3D.add_child(level)
 	
 	remove_child(level_start)
-	
 	
 	_add_player(Vector3(0, 2, 0))
 	health.visible = true
