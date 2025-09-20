@@ -10,6 +10,7 @@ extends Node
 @onready var menuLoading = $CanvasLayer/Loading
 
 @onready var audio_menu_pick = $MenuFX
+@onready var booh = preload("res://assets/audio/fx/menu_pick.wav")
 
 @onready var vignette = $CanvasLayer/Vignette/MarginContainer/ColorRect
 @onready var health = $CanvasLayer/HealthBar
@@ -44,6 +45,9 @@ func _process(_delta: float) -> void:
 	Globals.loadingVisible = menuLoading.visible
 	Globals.resetVisible = menuReset.visible
 	
+	if !masterAudio.playing:
+		masterAudio.play()
+	
 	if Globals.player_vignette_event:
 		_handle_vignette_event()
 	
@@ -53,11 +57,8 @@ func _process(_delta: float) -> void:
 	if Globals.player_level_traverse_event != "":
 		_handle_level_traverse_event()
 	
-	if !masterAudio.playing:
-		masterAudio.play()
-	
 	if Globals.menu_pick_fx_event:
-		audio_menu_pick.play()
+		Globals._play_fx(audio_menu_pick, booh, 0.0, 1.0)
 		Globals.menu_pick_fx_event = false
 	
 	_handle_input_controller_hints()

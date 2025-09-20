@@ -80,7 +80,7 @@ func _process(_delta: float) -> void:
 		dead = true
 		particles.emitting = false
 		
-		_play_fx(dies, 1.0)
+		Globals._play_fx(audio_player, dies, 0.0, 1.0)
 		
 		#print_debug("enemy is dead")
 		
@@ -101,9 +101,11 @@ func _process(_delta: float) -> void:
 		if drops_relic_1 and !Globals.relics[0]:
 			print_debug("dropping relic 1")
 			
+			await get_tree().create_timer(0.5).timeout
+			
 			var relic = preload("res://scenes/items/relic_1.tscn").instantiate()
 			var relic_pos = global_transform.origin
-			relic_pos.y += 1
+			relic_pos.y += 2
 			relic_pos.x += 0.2
 			relic_pos.z += 0.2
 			
@@ -265,7 +267,7 @@ func _attempt_attack():
 	if dead:
 		return
 	
-	_play_fx(slash, randf_range(0.7, 0.9))
+	Globals._play_fx(audio_player, slash, 0.0, randf_range(0.7, 0.9))
 	
 	tween = create_tween()
 	tween.tween_property(right_hand, "position:x", - 0.53, 0.07).as_relative()
@@ -342,14 +344,3 @@ func _timeout_player():
 	await get_tree().create_timer(2).timeout
 	#Globals.player_can_move = true
 	Globals.player_is_stunned = false
-
-# this function creates disposable audio streams for each fx for the player
-func _play_fx(sound: AudioStream, pitch: float):
-	var player = audio_player.duplicate()
-	player.stream = sound
-	player.pitch_scale = pitch
-	
-	audio_player.get_parent().add_child(player)
-	player.play()
-	
-	player.connect("finished", Callable(player, "queue_free"))

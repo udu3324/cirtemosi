@@ -255,7 +255,7 @@ func _handle_equipment() -> void:
 	if Globals.slot_active == 1 and Globals.equipment[0] == "starter_weapon":
 		attacking = true
 		
-		_play_fx(swoosh, randf_range(0.6, 1.0))
+		Globals._play_fx(audio_player, swoosh, 0.0, randf_range(0.6, 1.0))
 		
 		# start animation
 		var attack_tween = create_tween()
@@ -304,7 +304,7 @@ func _handle_equipment() -> void:
 			enemy.get_parent().health -= 10
 			enemy.get_parent().attack_event = model.rotation.y - (PI / 2)
 			
-			_play_fx(hit_starter_weapon, 0.8)
+			Globals._play_fx(audio_player, hit_starter_weapon, 0.0, 0.8)
 		
 		# stop animation
 		attack_tween = create_tween()
@@ -317,14 +317,3 @@ func _handle_equipment() -> void:
 		await attack_tween.finished
 		
 		attacking = false
-
-# this function creates disposable audio streams for each fx for the player
-func _play_fx(sound: AudioStream, pitch: float):
-	var player = audio_player.duplicate()
-	player.stream = sound
-	player.pitch_scale = pitch
-	
-	audio_player.get_parent().add_child(player)
-	player.play()
-	
-	player.connect("finished", Callable(player, "queue_free"))

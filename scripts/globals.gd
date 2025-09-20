@@ -69,3 +69,19 @@ func _get_all_nodes(node) -> Array:
 		nodes += _get_all_nodes(child)
 	
 	return nodes
+
+## @brief this function creates disposable audio streams for each fx for the specified audio player node
+## @param audioStreamPlayer: the node used
+## @param sound: the audiostream through preload()ing a resource
+## @param volume_dbs: default is 0.0, can be louder or quieter
+## @param pitch: default is 1.0, can be higher or lower pitched
+func _play_fx(audioStreamPlayer, sound: AudioStream, volume_dbs: float, pitch: float):
+	var player = audioStreamPlayer.duplicate()
+	player.stream = sound
+	player.volume_db = volume_dbs
+	player.pitch_scale = pitch
+	
+	audioStreamPlayer.get_parent().add_child(player)
+	player.play()
+	
+	player.connect("finished", Callable(player, "queue_free"))
