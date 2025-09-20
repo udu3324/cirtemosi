@@ -33,7 +33,7 @@ func _ready() -> void:
 	menuReset.connect("exit_to_start", _on_exit_start)
 	
 	
-	menuStart.connect("level_1", _on_level_1)
+	menuStart.connect("level_1", _on_level_test)
 	menuStart.visible = true
 	
 	masterAudio.play()
@@ -300,7 +300,7 @@ func _on_level_test():
 	equipment.visible = true
 	relics.visible = true
 	
-	_add_environment(preload("res://scenes/enviornment/OutsideEnv.tscn"))
+	_add_environment(preload("res://scenes/enviornment/CaveEnv.tscn"))
 	
 	# do not always apply this to every scenario!!!
 	Globals.stamina = Globals.stamina_max
