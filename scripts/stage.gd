@@ -149,8 +149,7 @@ func _handle_level_traverse_event():
 	
 	# level 1 triggers
 	if traversing_to == "1->2": #next
-		for node in $Node3D.get_children():
-			$Node3D.remove_child(node)
+		_clear_node_3d_stage()
 		
 		level = preload("res://levels/level2.tscn").instantiate()
 		$Node3D.add_child(level)
@@ -159,8 +158,7 @@ func _handle_level_traverse_event():
 	
 	# level 2 triggers
 	if traversing_to == "2->1": #back
-		for node in $Node3D.get_children():
-			$Node3D.remove_child(node)
+		_clear_node_3d_stage()
 		
 		level = preload("res://levels/level1.tscn").instantiate()
 		$Node3D.add_child(level)
@@ -168,8 +166,7 @@ func _handle_level_traverse_event():
 		_add_player(Vector3(0, 1.5, -9.0))
 	
 	if traversing_to == "2->3": #next
-		for node in $Node3D.get_children():
-			$Node3D.remove_child(node)
+		_clear_node_3d_stage()
 		
 		level = preload("res://levels/level3.tscn").instantiate()
 		$Node3D.add_child(level)
@@ -178,8 +175,7 @@ func _handle_level_traverse_event():
 	
 	# level 3 triggers
 	if traversing_to == "3->2": #back
-		for node in $Node3D.get_children():
-			$Node3D.remove_child(node)
+		_clear_node_3d_stage()
 		
 		level = preload("res://levels/level2.tscn").instantiate()
 		$Node3D.add_child(level)
@@ -187,14 +183,12 @@ func _handle_level_traverse_event():
 		_add_player(Vector3(-13.5, 2.5, -25.5))
 	
 	if traversing_to == "testing": #lol
-		for node in $Node3D.get_children():
-			$Node3D.remove_child(node)
+		_clear_node_3d_stage()
 		
 		_on_level_test()
 	
 	if traversing_to == "3->4.1": #next
-		for node in $Node3D.get_children():
-			$Node3D.remove_child(node)
+		_clear_node_3d_stage()
 		
 		level = preload("res://levels/level4.tscn").instantiate()
 		$Node3D.add_child(level)
@@ -207,8 +201,7 @@ func _handle_level_traverse_event():
 	
 	# level 4.1 triggers
 	if traversing_to == "4.1->3": #back
-		for node in $Node3D.get_children():
-			$Node3D.remove_child(node)
+		_clear_node_3d_stage()
 		
 		level = preload("res://levels/level3.tscn").instantiate()
 		$Node3D.add_child(level)
@@ -223,8 +216,7 @@ func _handle_level_traverse_event():
 func _on_exit_start():
 	Globals.player_pos = Vector3(0, 0, 0)
 	
-	for node in $Node3D.get_children():
-		$Node3D.remove_child(node)
+	_clear_node_3d_stage()
 	
 	for hint in hints.get_children():
 		hint.visible = false
@@ -243,6 +235,7 @@ func _on_exit_start():
 	Globals.slot_active = 1
 	
 	Globals.relics = [false, false, false, false, false, false, false]
+	Globals.shards = 0
 	
 	get_tree().paused = false
 	
@@ -356,3 +349,7 @@ func _hide_loading():
 	# punish stamina regeneration after traversing
 	await get_tree().create_timer(Globals.stamina_recovery_time).timeout
 	Globals.stamina_regeneration = true
+
+func _clear_node_3d_stage():
+	for node in $Node3D.get_children():
+		node.queue_free()

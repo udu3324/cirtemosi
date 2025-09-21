@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://bhmmx5pl0neys"]
+[gd_scene load_steps=30 format=4 uid="uid://bhmmx5pl0neys"]
 
 [ext_resource type="Material" uid="uid://dhp1vk7afkguu" path="res://assets/prefab/prefab_dark_meter.tres" id="1_3ju41"]
 [ext_resource type="Texture2D" uid="uid://b5pviiur126b0" path="res://assets/prefab/playtesting.png" id="2_k5kv5"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cakuu0iss3nta" path="res://levels/test/test_scene_3.tscn" id="4_mxorj"]
 [ext_resource type="PackedScene" uid="uid://b6t1s1ntpjpeu" path="res://scenes/items/starter_weapon.tscn" id="5_0djdk"]
 [ext_resource type="PackedScene" uid="uid://x6cwwyhtt76x" path="res://scenes/items/relic_1.tscn" id="6_toffc"]
+[ext_resource type="PackedScene" uid="uid://kn6hbschf6xo" path="res://scenes/items/shards.tscn" id="7_ddkel"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_6a74u"]
 _surfaces = [{
@@ -405,3 +406,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6146, 0, 10.2364)
 
 [node name="Relic1" parent="." instance=ExtResource("6_toffc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7360172, 0.6679367, -3.1259959)
+
+[node name="Shards" type="Node3D" parent="."]
+
+[node name="Shards" parent="Shards" instance=ExtResource("7_ddkel")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12896883, 0.459216, -3.9149413)
+
+[node name="Shards2" parent="Shards" instance=ExtResource("7_ddkel")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37270278, 0.459216, -3.9027681)
+
+[node name="Shards3" parent="Shards" instance=ExtResource("7_ddkel")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2549671, 0.459216, -3.724417)
+
+[node name="Shards4" parent="Shards" instance=ExtResource("7_ddkel")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0040503144, 0.459216, -3.6225677)
+
+[node name="Shards5" parent="Shards" instance=ExtResource("7_ddkel")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.22983015, 0.459216, -3.925825)
+
+[node name="Shards6" parent="Shards" instance=ExtResource("7_ddkel")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.043325186, 0.459216, -3.8924713)
+
+[node name="Shards7" parent="Shards" instance=ExtResource("7_ddkel")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5236777, 0.459216, -3.9785588)
