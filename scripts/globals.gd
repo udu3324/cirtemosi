@@ -7,7 +7,7 @@ var resetVisible: bool = false
 
 var settingsVisible: bool = false
 
-var menu_pick_fx_event: bool = false
+var menu_pick_fx_event = null # default is null, set to float to trigger
 
 var hint_attack_switch_control_event: bool = false
 

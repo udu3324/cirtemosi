@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bn4n2yrnem13i"]
+[gd_scene load_steps=12 format=3 uid="uid://bn4n2yrnem13i"]
 
 [ext_resource type="Script" uid="uid://bp3w7c70c720w" path="res://scripts/menu/start.gd" id="1_4hqgu"]
 [ext_resource type="Theme" uid="uid://yn3b7rdisnj8" path="res://assets/theme/new_theme.tres" id="2_ci5k1"]
 [ext_resource type="FontFile" uid="uid://1qiyr01tsexv" path="res://assets/font/NebulaSans-Bold.ttf" id="2_le6wa"]
+[ext_resource type="Script" uid="uid://cmyasc1t8l0la" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="4_x6jmw"]
 
 [sub_resource type="Gradient" id="Gradient_ci5k1"]
 interpolation_color_space = 2
@@ -20,6 +21,27 @@ modulate_color = Color(0.136459, 0.257292, 0.298444, 1)
 [sub_resource type="Theme" id="Theme_ci5k1"]
 default_font = ExtResource("2_le6wa")
 default_font_size = 114
+
+[sub_resource type="Texture2D" id="Texture2D_h0mnl"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("4_x6jmw")
+path = "ui_up"
+metadata/_custom_type_script = "uid://cmyasc1t8l0la"
+
+[sub_resource type="Texture2D" id="Texture2D_x6jmw"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("4_x6jmw")
+path = "ui_down"
+metadata/_custom_type_script = "uid://cmyasc1t8l0la"
+
+[sub_resource type="Texture2D" id="Texture2D_enbso"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("4_x6jmw")
+path = "ui_right"
+metadata/_custom_type_script = "uid://cmyasc1t8l0la"
 
 [node name="MenuStart" type="Control"]
 layout_mode = 3
@@ -94,6 +116,52 @@ focus_next = NodePath("../PlayButton")
 focus_previous = NodePath("../SettingsButton")
 theme = ExtResource("2_ci5k1")
 text = "credits"
+
+[node name="MarginContainer3" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -38.0
+offset_right = 160.0
+grow_vertical = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer3"]
+modulate = Color(1, 1, 1, 0.47500002)
+custom_minimum_size = Vector2(0, 53.91)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = -2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer3/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("Texture2D_h0mnl")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer3/HBoxContainer"]
+layout_mode = 2
+text = "or"
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer3/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("Texture2D_x6jmw")
+expand_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer3/HBoxContainer"]
+layout_mode = 2
+text = "to select        "
+
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer3/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("Texture2D_enbso")
+expand_mode = 2
+
+[node name="Label3" type="Label" parent="MarginContainer3/HBoxContainer"]
+layout_mode = 2
+text = "to enter"
 
 [connection signal="mouse_entered" from="MarginContainer/VBoxContainer2/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer2/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_button_start_pressed"]

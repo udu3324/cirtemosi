@@ -14,14 +14,14 @@ func _ready() -> void:
 func _on_button_start_pressed() -> void:
 	hide()
 	emit_signal("level_1")
-	Globals.menu_pick_fx_event = true
+	Globals.menu_pick_fx_event = 0.0
 
 func _on_button_settings_pressed() -> void:
-	Globals.menu_pick_fx_event = true
+	Globals.menu_pick_fx_event = 0.0
 	Globals.settings_trigger_enter = true
 
 func _on_credits_button_pressed() -> void:
-	Globals.menu_pick_fx_event = true
+	Globals.menu_pick_fx_event = 0.0
 	Globals.credits_trigger_enter = true
 
 func _process(_delta: float) -> void:
@@ -39,7 +39,7 @@ func _handle_input():
 		pass
 	
 	if Input.is_action_just_pressed("ui_up") or Input.is_action_just_pressed("ui_down"):
-		Globals.menu_pick_fx_event = true
+		Globals.menu_pick_fx_event = -10.0
 		
 		# for some reason, i have to store the node instead of grabbing it in realtime
 		currently_selected = get_viewport().gui_get_focus_owner()
@@ -52,4 +52,4 @@ func _handle_input():
 		playButton.grab_focus()
 
 func _on_button_mouse_entered() -> void:
-	Globals.menu_pick_fx_event = true
+	Globals.menu_pick_fx_event = -10.0

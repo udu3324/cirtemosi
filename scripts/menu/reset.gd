@@ -12,4 +12,4 @@ func _on_exit_button_pressed() -> void:
 
 
 func _on_button_mouse_entered() -> void:
-	Globals.menu_pick_fx_event = true
+	Globals.menu_pick_fx_event = -10.0

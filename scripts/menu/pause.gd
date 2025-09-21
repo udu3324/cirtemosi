@@ -50,11 +50,11 @@ func _on_button_unpause_pressed() -> void:
 	hide()
 
 func _on_settings_button_pressed() -> void:
-	Globals.settings_trigger_enter = true
+	Globals.settings_trigger_enter = 0.0
 
 func _on_exit_button_pressed() -> void:
 	emit_signal("exit_to_start")
 
 
 func _on_button_mouse_entered() -> void:
-	Globals.menu_pick_fx_event = true
+	Globals.menu_pick_fx_event = -10.0

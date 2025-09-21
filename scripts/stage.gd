@@ -57,9 +57,9 @@ func _process(_delta: float) -> void:
 	if Globals.player_level_traverse_event != "":
 		_handle_level_traverse_event()
 	
-	if Globals.menu_pick_fx_event:
-		Globals._play_fx(audio_menu_pick, booh, 0.0, 1.0)
-		Globals.menu_pick_fx_event = false
+	if Globals.menu_pick_fx_event != null:
+		Globals._play_fx(audio_menu_pick, booh, Globals.menu_pick_fx_event, 1.0)
+		Globals.menu_pick_fx_event = null
 	
 	_handle_input_controller_hints()
 
