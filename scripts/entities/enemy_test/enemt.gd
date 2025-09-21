@@ -19,6 +19,8 @@ extends RigidBody3D
 @onready var audio_player = $AudioStreamPlayer3D
 
 var drops_relic_1: bool = false
+var drops_shards: bool = true
+var rand_shard_range: int = 5
 
 var slash = preload("res://assets/audio/fx/enemt_slash.wav")
 var dies = preload("res://assets/audio/fx/enemt_dead.wav")
@@ -97,22 +99,41 @@ func _process(_delta: float) -> void:
 		head.sleeping = false
 		head.freeze = false
 		
-		
-		if drops_relic_1 and !Globals.relics[0]:
-			print_debug("dropping relic 1")
-			
-			await get_tree().create_timer(0.5).timeout
-			
-			var relic = preload("res://scenes/items/relic_1.tscn").instantiate()
-			var relic_pos = global_transform.origin
-			relic_pos.y += 2
-			relic_pos.x += 0.2
-			relic_pos.z += 0.2
-			
-			relic.global_transform.origin = relic_pos
-			Globals.root_node_3d.add_child(relic)
+		_drop_relic_1()
+		_drop_shards()
 		
 		return
+
+func _drop_relic_1():
+	if drops_relic_1 and !Globals.relics[0]:
+		print_debug("dropping relic 1")
+		
+		await get_tree().create_timer(0.5).timeout
+		
+		var relic = preload("res://scenes/items/relic_1.tscn").instantiate()
+		var relic_pos = global_transform.origin
+		relic_pos.y += 2
+		relic_pos.x += 0.2
+		relic_pos.z += 0.2
+		
+		relic.global_transform.origin = relic_pos
+		Globals.root_node_3d.add_child(relic)
+
+func _drop_shards():
+	if drops_shards:
+		var actual_drop = randi_range(1, rand_shard_range)
+		
+		for i in actual_drop:
+			await get_tree().create_timer(0.1).timeout
+			
+			var shard = preload("res://scenes/items/shards.tscn").instantiate()
+			var shard_pos = global_transform.origin
+			#shard_pos.y += 1
+			shard_pos.x += randf_range(-1.0, 1.0)
+			shard_pos.z += randf_range(-1.0, 1.0)
+			
+			shard.global_transform.origin = shard_pos
+			Globals.root_node_3d.add_child(shard)
 
 func _physics_process(delta: float) -> void:
 	if agent.is_navigation_finished() and !dead:

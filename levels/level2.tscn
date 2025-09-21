@@ -251,6 +251,7 @@ shape = SubResource("BoxShape3D_qyb5k")
 [node name="Enemt" parent="." instance=ExtResource("3_qyb5k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.55347, 2.53032, -5.94244)
 drops_relic_1 = true
+drops_shards = false
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_qyb5k")
