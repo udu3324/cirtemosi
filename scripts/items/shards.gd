@@ -7,7 +7,10 @@ func _ready() -> void:
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.name.contains("Player") and self.visible:
-		print_debug("picking up a shard")
+		#print_debug("picking up a shard")
+		
+		await get_tree().create_timer(randf_range(0.1, 0.5)).timeout
+		
 		self.visible = false
 		
 		Globals.shards += 1

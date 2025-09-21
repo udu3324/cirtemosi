@@ -50,7 +50,7 @@ func _on_button_unpause_pressed() -> void:
 	hide()
 
 func _on_settings_button_pressed() -> void:
-	Globals.settings_trigger_enter = 0.0
+	Globals.settings_trigger_enter = true
 
 func _on_exit_button_pressed() -> void:
 	emit_signal("exit_to_start")

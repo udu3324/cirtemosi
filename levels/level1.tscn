@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://csb64dawc7x4p"]
+[gd_scene load_steps=5 format=3 uid="uid://csb64dawc7x4p"]
 
 [ext_resource type="Script" uid="uid://by1dqsv4hw01p" path="res://scripts/scenes/level_1.gd" id="1_pdtm5"]
 [ext_resource type="PackedScene" uid="uid://duydi7lytqxks" path="res://scenes/enviornment/CaveEnv.tscn" id="1_sjb42"]
+[ext_resource type="PackedScene" uid="uid://kn6hbschf6xo" path="res://scenes/items/shards.tscn" id="3_b3oru"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sjb42"]
 size = Vector3(7.24316, 5.76898, 1)
@@ -357,6 +358,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.5642)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.830476, 0.868394)
 shape = SubResource("BoxShape3D_sjb42")
+
+[node name="Shards" parent="." instance=ExtResource("3_b3oru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9749981, 2.0685785, 0.8653122)
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
