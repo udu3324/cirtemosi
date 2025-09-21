@@ -342,6 +342,7 @@ func _hide_loading():
 	
 	Globals.player_physics_processing = true
 	Globals.player_physics_reset_event = true
+	Globals.player_is_stunned = false
 	
 	await get_tree().create_timer(1).timeout # tween length
 	Globals.player_can_move = true
