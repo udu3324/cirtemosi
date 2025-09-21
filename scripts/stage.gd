@@ -34,7 +34,7 @@ func _ready() -> void:
 	menuReset.connect("exit_to_start", _on_exit_start)
 	
 	
-	menuStart.connect("level_1", _on_level_test)
+	menuStart.connect("level_1", _on_level_1)
 	menuStart.visible = true
 	
 	masterAudio.play()
@@ -307,6 +307,7 @@ func _on_level_test():
 
 func _add_player(pos: Vector3):
 	player = preload("res://entities/player.tscn").instantiate()
+	player.name = "Player" + str(randi())
 	player.position = pos
 	$Node3D.add_child(player)
 	

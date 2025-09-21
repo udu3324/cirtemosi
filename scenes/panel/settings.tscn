@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://duh1vqd3cx2dh"]
+[gd_scene load_steps=14 format=3 uid="uid://duh1vqd3cx2dh"]
 
 [ext_resource type="FontFile" uid="uid://1qiyr01tsexv" path="res://assets/font/NebulaSans-Bold.ttf" id="1_2jlhx"]
 [ext_resource type="Script" uid="uid://bd32lc423vnie" path="res://scripts/panels/settings.gd" id="1_gfhiw"]
@@ -20,11 +20,11 @@ script = ExtResource("4_xqk23")
 path = "ui_up"
 metadata/_custom_type_script = "uid://cmyasc1t8l0la"
 
-[sub_resource type="Texture2D" id="Texture2D_3lnpa"]
+[sub_resource type="Texture2D" id="Texture2D_hwewc"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("4_xqk23")
-path = "key/l"
+path = "key/s"
 metadata/_custom_type_script = "uid://cmyasc1t8l0la"
 
 [sub_resource type="Texture2D" id="Texture2D_evyhc"]
@@ -39,6 +39,13 @@ resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("4_xqk23")
 path = "mouse/left"
+metadata/_custom_type_script = "uid://cmyasc1t8l0la"
+
+[sub_resource type="Texture2D" id="Texture2D_3lnpa"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("4_xqk23")
+path = "key/l"
 metadata/_custom_type_script = "uid://cmyasc1t8l0la"
 
 [node name="Settings" type="Control"]
@@ -164,7 +171,7 @@ text = "or"
 
 [node name="TextureRect2" type="TextureRect" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-texture = SubResource("Texture2D_3lnpa")
+texture = SubResource("Texture2D_hwewc")
 expand_mode = 2
 
 [node name="Label2" type="Label" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer"]

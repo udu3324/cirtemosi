@@ -24,7 +24,6 @@ shape = SubResource("SphereShape3D_kfsd5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35616, 0)
 light_color = Color(0.0923266, 0.10246, 0.10268, 1)
 light_energy = 0.568
-shadow_enabled = true
 omni_range = 0.831037
 
 [node name="starter_weapon" parent="." instance=ExtResource("2_kfsd1")]
