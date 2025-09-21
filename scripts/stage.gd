@@ -17,6 +17,7 @@ extends Node
 @onready var stamina = $CanvasLayer/StaminaBar
 @onready var equipment = $CanvasLayer/Equipment
 @onready var relics = $CanvasLayer/Relics
+@onready var shards = $CanvasLayer/Shards
 
 @onready var hints = $CanvasLayer/ControllerHints/MarginContainer/VBoxContainer
 
@@ -236,6 +237,7 @@ func _on_exit_start():
 	stamina.visible = false
 	equipment.visible = false
 	relics.visible = false
+	shards.visible = false
 	
 	Globals.equipment = ["", "", ""]
 	Globals.slot_active = 1
@@ -269,6 +271,7 @@ func _on_level_1():
 	stamina.visible = true
 	equipment.visible = true
 	relics.visible = true
+	shards.visible = true
 	
 	# only for the test env
 	# _add_environment(preload("res://scenes/enviornment/OutsideEnv.tscn"))
@@ -299,6 +302,7 @@ func _on_level_test():
 	stamina.visible = true
 	equipment.visible = true
 	relics.visible = true
+	shards.visible = true
 	
 	_add_environment(preload("res://scenes/enviornment/CaveEnv.tscn"))
 	

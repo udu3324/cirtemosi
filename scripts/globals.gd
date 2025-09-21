@@ -52,6 +52,8 @@ var equipment = ["", "", ""]
 
 var relics = [false, false, false, false, false, false, false]
 
+var shards: int = 0
+
 # settings
 var screen_relative_movement = true
 var easy_mode = false

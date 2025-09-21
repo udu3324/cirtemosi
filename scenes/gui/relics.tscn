@@ -16,7 +16,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vdml7"]
 shader = ExtResource("3_xgwlu")
 shader_parameter/line_color = Color(0, 0, 0, 0.624)
-shader_parameter/line_thickness = 22.9570010904575
+shader_parameter/line_thickness = 23.0000010925
 
 [node name="Relics" type="Control"]
 layout_mode = 3

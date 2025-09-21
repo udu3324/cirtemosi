@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://cbyf4enci74kj"]
+
+[ext_resource type="Script" uid="uid://weax2inw3uxh" path="res://scripts/gui/shards.gd" id="1_8em0e"]
+[ext_resource type="FontFile" uid="uid://d25dq4tmt7ywp" path="res://assets/font/NebulaSans-Black.ttf" id="1_dnoai"]
+[ext_resource type="Shader" uid="uid://ya1pd4bihrik" path="res://assets/shader/outline.gdshader" id="2_8em0e"]
+[ext_resource type="Texture2D" uid="uid://ch6xqisw74jk0" path="res://assets/shards/shard.png" id="2_p2tld"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c66vh"]
+shader = ExtResource("2_8em0e")
+shader_parameter/line_color = Color(0, 0, 0, 0.62352943)
+shader_parameter/line_thickness = 23.0000010925
+
+[node name="Shards" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8em0e")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 250
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_dnoai")
+theme_override_font_sizes/font_size = 21
+text = "0"
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+material = SubResource("ShaderMaterial_c66vh")
+layout_mode = 2
+texture = ExtResource("2_p2tld")
+expand_mode = 3
