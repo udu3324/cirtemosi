@@ -154,7 +154,7 @@ func _physics_process(delta: float) -> void:
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	
 	# agent is close enough to player!
-	if global_transform.origin.distance_to(Globals.player_pos) < 5 and Globals.player_pos != Vector3(0, 0, 0):
+	if global_transform.origin.distance_to(Globals.player_pos) < 5 and Globals.player_pos != Vector3(0, 0, 0) and !Globals.resetVisible:
 		agent.set_target_position(Globals.player_pos)
 		chasing = true
 		roaming = false
@@ -180,7 +180,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 		_face_to_vector3(Globals.player_pos)
 	
 	# agent is chasing and is too close to player!
-	if global_transform.origin.distance_to(Globals.player_pos) < 1.3 and chasing:
+	if global_transform.origin.distance_to(Globals.player_pos) < 1.3 and chasing and !Globals.resetVisible:
 		_attempt_attack()
 		return
 	

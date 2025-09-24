@@ -115,18 +115,20 @@ func _handle_death_event():
 	print_debug("recieved death event", Globals.player_death_event)
 	
 	if Globals.player_death_event == "floor_death":
+		Globals.player_death_event = ""
+		
 		Globals.player_can_move = false
 		Globals.player_physics_processing = false
 		_show_reset_screen()
 	elif Globals.player_death_event == "ran_out_of_hp":
+		Globals.player_death_event = ""
+		
 		_show_reset_screen()
 		
 		await get_tree().create_timer(1).timeout
 		
 		Globals.player_can_move = false
 		Globals.player_physics_processing = false
-	
-	Globals.player_death_event = ""
 
 func _show_reset_screen():
 	menuReset.modulate.a = 0.0
