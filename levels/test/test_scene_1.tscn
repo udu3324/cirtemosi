@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://bhmmx5pl0neys"]
+[gd_scene load_steps=31 format=4 uid="uid://bhmmx5pl0neys"]
 
 [ext_resource type="Material" uid="uid://dhp1vk7afkguu" path="res://assets/prefab/prefab_dark_meter.tres" id="1_3ju41"]
 [ext_resource type="Texture2D" uid="uid://b5pviiur126b0" path="res://assets/prefab/playtesting.png" id="2_k5kv5"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b6t1s1ntpjpeu" path="res://scenes/items/starter_weapon.tscn" id="5_0djdk"]
 [ext_resource type="PackedScene" uid="uid://x6cwwyhtt76x" path="res://scenes/items/relic_1.tscn" id="6_toffc"]
 [ext_resource type="PackedScene" uid="uid://kn6hbschf6xo" path="res://scenes/items/shards.tscn" id="7_ddkel"]
+[ext_resource type="PackedScene" uid="uid://t0p0267pq1yk" path="res://entities/interface/interface.tscn" id="8_gnbnl"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_6a74u"]
 _surfaces = [{
@@ -429,3 +430,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.043325186, 0.459216, -3.89
 
 [node name="Shards7" parent="Shards" instance=ExtResource("7_ddkel")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5236777, 0.459216, -3.9785588)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, -0.5, -4)
+use_collision = true
+size = Vector3(3, 1, 5)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, -0.5, -11.5)
+use_collision = true
+size = Vector3(11, 1, 10)
+
+[node name="Interface" parent="." instance=ExtResource("8_gnbnl")]
+transform = Transform3D(-0.7888589, 0, -0.6145744, 0, 1, 0, 0.6145744, 0, -0.7888589, -12.652463, 0, -11.520658)

@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://ch2oo5k0etkh5"]
+
+[ext_resource type="PackedScene" uid="uid://crh081lymrtwh" path="res://assets/model/entities/interface/interface.blend" id="1_ewfuj"]
+
+[node name="interface" instance=ExtResource("1_ewfuj")]
+
+[node name="Cylinder" parent="." index="0"]
+visible = false
+
+[node name="Plane" parent="." index="1"]
+visible = false
+
+[node name="Stamp1" parent="." index="3"]
+visible = false
+
+[node name="Stamp3" parent="." index="4"]
+visible = false
+
+[node name="Stamp2" parent="." index="5"]
+visible = false
+
+[node name="Text" parent="." index="6"]
+visible = false
