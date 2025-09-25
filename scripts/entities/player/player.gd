@@ -225,15 +225,43 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	_face_to_velocity()
 
 func _face_to_velocity() -> void:
+	
+	# rotation based on input ----------
+	var input := Vector3.ZERO
+	
+	input.x = Input.get_axis("ui_left", "ui_right")
+	input.z = Input.get_axis("ui_up", "ui_down")
+	
+	var camera_basis = camera.global_transform.basis
+	
+	var vertical = camera_basis.z
+	var horizontal = camera_basis.x
+	
+	# unused/ignored axis
+	vertical.y = 0
+	horizontal.y = 0
+	
+	vertical = vertical.normalized()
+	horizontal = horizontal.normalized()
+	
+	# works with both keyboard and joystick controls 🔥
+	var dir = (vertical * input.z + horizontal * input.x).normalized()
+
+	#print_debug("angle is ", rad_to_deg(atan2(dir.x, dir.z)))
+	model.rotation.y = lerp_angle(model.rotation.y, atan2(dir.x, dir.z) + (PI / 2), 0.1)
+	
+	
+
+	# rotation based on velocity ------------
+	
 	# a velocity point that points to the movement direction
-	var linear_pos = linear_velocity.normalized()
+	#var linear_pos = linear_velocity.normalized()
 	
 	# get the angle from the point
-	var angle_y = atan2(linear_pos.x, linear_pos.z) + (PI / 2) # add a 90deg offset
+	#var angle_y = atan2(linear_pos.x, linear_pos.z) + (PI / 2) # add a 90deg offset
 	
-	model.rotation.y = lerp_angle(model.rotation.y, angle_y, 0.1)
-	# var tween = create_tween()
-	# tween.tween_property(model, "rotation:y", angle_y, 0.1)
+	#model.rotation.y = lerp_angle(model.rotation.y, angle_y, 0.1)
+
 
 func _render_equipment() -> void:
 	if Globals.slot_active == 1 and Globals.equipment[0] == "starter_weapon":
@@ -294,7 +322,7 @@ func _handle_equipment() -> void:
 			var forward = -model.global_transform.basis.x.normalized()
 			var to_enemy = ( enemy.global_transform.origin - model.global_transform.origin).normalized()
 			
-			var angle = rad_to_deg(forward.angle_to(to_enemy))
+			var angle = rad_to_deg(forward.angle_to(to_enemy)) 
 			
 			# check if angle is in range
 			if angle > 60: # currently very generous right now
