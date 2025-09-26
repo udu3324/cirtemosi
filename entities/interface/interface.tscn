@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=4 uid="uid://t0p0267pq1yk"]
+[gd_scene load_steps=14 format=4 uid="uid://t0p0267pq1yk"]
 
 [ext_resource type="Script" uid="uid://hqeqyavk40yx" path="res://scripts/entities/interface/interface.gd" id="1_wypvq"]
+[ext_resource type="Texture2D" uid="uid://ds82up01sf5sh" path="res://assets/gdtex/screen_noise.tres" id="2_f7ilh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wypvq"]
-albedo_color = Color(0, 0, 0, 1)
+albedo_texture = ExtResource("2_f7ilh")
+emission_texture = ExtResource("2_f7ilh")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7mrl6"]
 resource_name = "Cream White"
@@ -203,8 +205,8 @@ script = ExtResource("1_wypvq")
 transform = Transform3D(0.7235892, -0.10916849, 0.681543, 0.35637474, 0.90471, -0.23344536, -0.591114, 0.41180328, 0.6935432, 0, -0.14, 0)
 
 [node name="Screen" type="CSGBox3D" parent="Node3D"]
-transform = Transform3D(0.992527, -0.122025244, 0, 0.12202284, 0.99250764, 0, 0, 0, 0.9999806, 0.374637, 0.7485855, 0.001221)
-size = Vector3(0.16491699, 0.53564453, 0.72509766)
+transform = Transform3D(0.9925337, -0.12202546, 8.940697e-08, 0.122023925, 0.992508, 5.9604645e-08, -7.4505806e-07, 5.9604645e-08, 0.99998105, 0.42429698, 0.75469124, 0.0012209453)
+size = Vector3(0.079559326, 0.53564453, 0.72509766)
 material = SubResource("StandardMaterial3D_wypvq")
 
 [node name="Interface" type="MeshInstance3D" parent="Node3D"]
