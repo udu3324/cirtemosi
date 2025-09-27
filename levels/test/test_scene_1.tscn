@@ -436,5 +436,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, -0.5, -6.5)
 use_collision = true
 size = Vector3(11, 1, 10)
 
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 14.275919, -17.087133)
+use_collision = true
+size = Vector3(11, 1, 10)
+
 [node name="Interface" parent="." instance=ExtResource("8_gnbnl")]
 transform = Transform3D(-0.7888589, 0, -0.6145744, 0, 1, 0, 0.6145744, 0, -0.7888589, -10.652463, 0, -6.5206575)
