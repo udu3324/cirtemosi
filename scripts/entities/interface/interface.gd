@@ -20,11 +20,13 @@ extends Node3D
 @onready var intro: MarginContainer = $SubViewport/InterfaceDialogue/MarginContainer2
 @onready var dialogue: MarginContainer = $SubViewport/InterfaceDialogue/MarginContainer
 @onready var dialogue_list: VBoxContainer = $SubViewport/InterfaceDialogue/MarginContainer/HBoxContainer/List
-@onready var cursor: Label = $SubViewport/InterfaceDialogue/MarginContainer/HBoxContainer/Cursor/Label
+
+@onready var weapon_option: HBoxContainer = $SubViewport/InterfaceDialogue/MarginContainer/HBoxContainer/List/Weapon
+@onready var health_option: HBoxContainer = $SubViewport/InterfaceDialogue/MarginContainer/HBoxContainer/List/Health
+@onready var relic_option: HBoxContainer = $SubViewport/InterfaceDialogue/MarginContainer/HBoxContainer/List/Relic
 
 @onready var relic: TextureRect = $SubViewport/InterfaceDialogue/MarginContainer/HBoxContainer/List/Relic/TextureRect
 
-var cursor_index: int = 0
 var cursor_max_index: int = 2
 
 var terminal_color: Color = Color(0.021, 0.258, 0.021, 1.0)
@@ -41,6 +43,31 @@ var underscore_period: float = 0.0
 var model_rotation_rest
 var model_position_rest
 
+var menus = {
+	"main": {
+		"container": $SubViewport/InterfaceDialogue/MarginContainer/HBoxContainer/List,
+		"cursor": $SubViewport/InterfaceDialogue/MarginContainer/HBoxContainer/Cursor/Label,
+		"index": 0
+	},
+	"weapon": {
+		"container": $SubViewport/InterfaceDialogue/MarginContainer/HBoxContainer/List/SubWeapon,
+		"cursor": $SubViewport/InterfaceDialogue/MarginContainer/HBoxContainer/List/SubWeapon/List/Cursor/Cursor,
+		"index": 0
+	},
+	"health": {
+		"container": $SubViewport/InterfaceDialogue/MarginContainer/HBoxContainer/List/SubHealth,
+		"cursor": $SubViewport/InterfaceDialogue/MarginContainer/HBoxContainer/List/SubHealth/List/Cursor/Cursor,
+		"index": 0
+	},
+	"relic": {
+		"container": $SubViewport/InterfaceDialogue/MarginContainer/HBoxContainer/List/SubRelic,
+		"cursor": $SubViewport/InterfaceDialogue/MarginContainer/HBoxContainer/List/SubRelic/List/Cursor/Cursor,
+		"index": 0
+	},
+}
+
+var active_menu := "main"
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	model_position_rest = model.global_position
@@ -53,10 +80,20 @@ func _ready() -> void:
 	intro.visible = true
 	dialogue.visible = false
 	
+	menus["weapon"]["container"].visible = false
+	menus["health"]["container"].visible = false
+	menus["relic"]["container"].visible = false
+	
 	# dynamic cursor index size, minus 2 for instructions,
 	# divide 2 for submenus, and - 1 for zero index
 	@warning_ignore("integer_division")
 	cursor_max_index = ((dialogue_list.get_child_count() - 2) / 2) - 1
+	
+	for key in menus.keys():
+		if menus[key]["cursor"] != null:
+			menus[key]["cursor"].text = ">"
+	
+	_set_active_menu("main")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -144,9 +181,11 @@ func _handle_input():
 			intro.visible = true
 			dialogue.visible = false
 			
-			# reset cursor
-			cursor_index = 0
-			cursor.text = ">"
+			# reset cursors
+			for key in menus.keys():
+				menus[key]["index"] = 0
+				menus[key]["cursor"].text = ">"
+			_set_active_menu("main")
 			
 			# stop input from turning into an actual interaction
 			await get_tree().create_timer(0.1).timeout
@@ -156,21 +195,32 @@ func _handle_input():
 	if intro.visible:
 		return
 	
-	
-	
 	if Input.is_action_just_pressed("ui_up"):
-		if cursor_index != 0:
-			cursor_index -= 1
-			cursor.text = "\n".repeat(cursor_index) + ">"
+		_move_cursor(-1)
 	
 	if Input.is_action_just_pressed("ui_down"):
-		if cursor_index < cursor_max_index:
-			cursor_index += 1
-			cursor.text = "\n".repeat(cursor_index) + ">"
+		_move_cursor(1)
 	
+	# submenu switching
+	if Input.is_action_just_pressed("ui_right") and active_menu == "main":
+		match menus["main"]["index"]:
+			0: _set_active_menu("weapon")
+			1: _set_active_menu("health")
+			2: _set_active_menu("relic")
 	
-	if Input.is_action_just_pressed("ui_right"):
-		pass
+	if Input.is_action_just_pressed("ui_left") and active_menu != "main":
+		_set_active_menu("main")
+
+func _set_active_menu(menu_name: String):
+	for key in menus.keys():
+		menus[key]["container"].visible = (key == menu_name)
+	active_menu = menu_name
+
+func _move_cursor(direction: int):
+	var menu = menus[active_menu]
+	var max_index = menu["container"].get_child_count() - 1
+	menu["index"] = clamp(menu["index"] + direction, 0, max_index)
+	menu["cursor"].text = "\n".repeat(menu["index"]) + ">"
 
 func _flicker():
 	screen_material.emission_energy_multiplier = randf_range(0.3, 0.8)
@@ -190,7 +240,6 @@ func _flicker():
 		screen_material.albedo_color = Color(0.0, 0.0, 0.0, 1.0)
 		screen_material.emission = Color(0.0, 0.0, 0.0, 1.0)
 		screen_material.emission_enabled = false
-		
 
 func _on_outer_area_3d_body_entered(body: Node3D) -> void:
 	if body.name.contains("Player"):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bykatgxarjmjv"]
+[gd_scene load_steps=21 format=3 uid="uid://bykatgxarjmjv"]
 
 [ext_resource type="Theme" uid="uid://cfwqti11f51ey" path="res://assets/theme/interface_dialogue_theme.tres" id="1_375bt"]
 [ext_resource type="Script" uid="uid://cmyasc1t8l0la" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="1_kg54a"]
@@ -15,10 +15,30 @@ shader = ExtResource("2_nrgg6")
 shader_parameter/line_color = Color(0.24189556, 0.22160575, 0.1741212, 1)
 shader_parameter/line_thickness = 44.6970021231075
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3x1ij"]
+shader = ExtResource("2_nrgg6")
+shader_parameter/line_color = Color(0.24313726, 0.22352941, 0.17254902, 1)
+shader_parameter/line_thickness = 33.4610015893975
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cdeag"]
+shader = ExtResource("2_nrgg6")
+shader_parameter/line_color = Color(0.7025062, 0.72206956, 0.83531237, 1)
+shader_parameter/line_thickness = 33.4610015893975
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5715g"]
+shader = ExtResource("2_nrgg6")
+shader_parameter/line_color = Color(0.24313726, 0.22352941, 0.17254902, 1)
+shader_parameter/line_thickness = 33.4610015893975
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5k813"]
 shader = ExtResource("2_nrgg6")
 shader_parameter/line_color = Color(0.939852, 0.43269923, 0.421553, 1)
 shader_parameter/line_thickness = 23.630001122425
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mh4fy"]
+shader = ExtResource("2_nrgg6")
+shader_parameter/line_color = Color(0.9372549, 0.43137255, 0.41960785, 1)
+shader_parameter/line_thickness = 33.4610015893975
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jpn3t"]
 shader = ExtResource("2_nrgg6")
@@ -104,41 +124,57 @@ theme = ExtResource("1_375bt")
 text = "//,+**{"
 
 [node name="SubWeapon" type="VBoxContainer" parent="MarginContainer/HBoxContainer/List"]
-visible = false
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/List/SubWeapon"]
+[node name="List" type="HBoxContainer" parent="MarginContainer/HBoxContainer/List/SubWeapon"]
 layout_mode = 2
 
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer/List/SubWeapon/HBoxContainer"]
+[node name="Cursor" type="VBoxContainer" parent="MarginContainer/HBoxContainer/List/SubWeapon/List"]
+layout_mode = 2
+
+[node name="Cursor" type="Label" parent="MarginContainer/HBoxContainer/List/SubWeapon/List/Cursor"]
+layout_mode = 2
+theme = ExtResource("4_jpn3t")
+text = ">"
+
+[node name="List" type="VBoxContainer" parent="MarginContainer/HBoxContainer/List/SubWeapon/List"]
+layout_mode = 2
+
+[node name="Info" type="HBoxContainer" parent="MarginContainer/HBoxContainer/List/SubWeapon/List/List"]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer/List/SubWeapon/List/List/Info"]
+material = SubResource("ShaderMaterial_3x1ij")
 layout_mode = 2
 texture = ExtResource("2_6cnyr")
 expand_mode = 2
 
-[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/List/SubWeapon/HBoxContainer"]
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/List/SubWeapon/List/List/Info"]
 layout_mode = 2
 theme = ExtResource("4_jpn3t")
 text = "#,+**?"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/List/SubWeapon"]
+[node name="Upgrade" type="HBoxContainer" parent="MarginContainer/HBoxContainer/List/SubWeapon/List/List"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/List/SubWeapon/HBoxContainer2"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/List/SubWeapon/List/List/Upgrade"]
+material = SubResource("ShaderMaterial_cdeag")
 layout_mode = 2
 texture = ExtResource("5_3x1ij")
 expand_mode = 3
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/List/SubWeapon/HBoxContainer2"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/List/SubWeapon/List/List/Upgrade"]
 layout_mode = 2
 theme = ExtResource("4_jpn3t")
-text = "%%#"
+text = "x30 %%#"
 
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer/List/SubWeapon/HBoxContainer2"]
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer/List/SubWeapon/List/List/Upgrade"]
+material = SubResource("ShaderMaterial_5715g")
 layout_mode = 2
 texture = ExtResource("2_6cnyr")
 expand_mode = 2
 
-[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/List/SubWeapon/HBoxContainer2"]
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/List/SubWeapon/List/List/Upgrade"]
 layout_mode = 2
 theme = ExtResource("4_jpn3t")
 text = "$~#?"
@@ -160,6 +196,59 @@ text = ";%@`~*"
 [node name="SubHealth" type="VBoxContainer" parent="MarginContainer/HBoxContainer/List"]
 layout_mode = 2
 
+[node name="List" type="HBoxContainer" parent="MarginContainer/HBoxContainer/List/SubHealth"]
+layout_mode = 2
+
+[node name="Cursor" type="VBoxContainer" parent="MarginContainer/HBoxContainer/List/SubHealth/List"]
+layout_mode = 2
+
+[node name="Cursor" type="Label" parent="MarginContainer/HBoxContainer/List/SubHealth/List/Cursor"]
+layout_mode = 2
+theme = ExtResource("4_jpn3t")
+text = ">"
+
+[node name="List" type="VBoxContainer" parent="MarginContainer/HBoxContainer/List/SubHealth/List"]
+layout_mode = 2
+
+[node name="Info" type="HBoxContainer" parent="MarginContainer/HBoxContainer/List/SubHealth/List/List"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/List/SubHealth/List/List/Info"]
+material = SubResource("ShaderMaterial_mh4fy")
+layout_mode = 2
+texture = ExtResource("4_5gaxi")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/List/SubHealth/List/List/Info"]
+layout_mode = 2
+theme = ExtResource("4_jpn3t")
+text = "#,`~*?"
+
+[node name="Upgrade" type="HBoxContainer" parent="MarginContainer/HBoxContainer/List/SubHealth/List/List"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/List/SubHealth/List/List/Upgrade"]
+material = SubResource("ShaderMaterial_cdeag")
+layout_mode = 2
+texture = ExtResource("5_3x1ij")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/List/SubHealth/List/List/Upgrade"]
+layout_mode = 2
+theme = ExtResource("4_jpn3t")
+text = "x5 %^#"
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer/List/SubHealth/List/List/Upgrade"]
+material = SubResource("ShaderMaterial_mh4fy")
+layout_mode = 2
+texture = ExtResource("4_5gaxi")
+expand_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/List/SubHealth/List/List/Upgrade"]
+layout_mode = 2
+theme = ExtResource("4_jpn3t")
+text = "$~#?"
+
 [node name="Relic" type="HBoxContainer" parent="MarginContainer/HBoxContainer/List"]
 layout_mode = 2
 
@@ -176,6 +265,28 @@ text = "=+^*!`~.."
 
 [node name="SubRelic" type="VBoxContainer" parent="MarginContainer/HBoxContainer/List"]
 layout_mode = 2
+
+[node name="List" type="HBoxContainer" parent="MarginContainer/HBoxContainer/List/SubRelic"]
+layout_mode = 2
+
+[node name="Cursor" type="VBoxContainer" parent="MarginContainer/HBoxContainer/List/SubRelic/List"]
+layout_mode = 2
+
+[node name="Cursor" type="Label" parent="MarginContainer/HBoxContainer/List/SubRelic/List/Cursor"]
+layout_mode = 2
+theme = ExtResource("4_jpn3t")
+text = ">"
+
+[node name="List" type="VBoxContainer" parent="MarginContainer/HBoxContainer/List/SubRelic/List"]
+layout_mode = 2
+
+[node name="Info" type="HBoxContainer" parent="MarginContainer/HBoxContainer/List/SubRelic/List/List"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/List/SubRelic/List/List/Info"]
+layout_mode = 2
+theme = ExtResource("4_jpn3t")
+text = "#,+^*?"
 
 [node name="Instructions1" type="HBoxContainer" parent="MarginContainer/HBoxContainer/List"]
 modulate = Color(1, 1, 1, 0.5137255)
