@@ -1,5 +1,12 @@
 extends Node3D
 
+
+@export_range (1, 7) var relic_num: int = 1
+@export var relic_outline: Color = Color(0.518, 0.075, 0.122)
+
+@export var relic_hidden: CompressedTexture2D = preload("res://assets/relics/relic_1_hidden_icon.png")
+@export var relic_shown: CompressedTexture2D = preload("res://assets/relics/relic_1_icon.png")
+
 @onready var model = $Node3D
 @onready var screen = $Node3D/Screen
 @onready var screen_material: StandardMaterial3D = screen.material
@@ -10,8 +17,15 @@ extends Node3D
 @onready var underscore: Node3D = $Node3D/Text/Underscore
 
 @onready var panel = $SubViewport/InterfaceDialogue
-@onready var intro = $SubViewport/InterfaceDialogue/MarginContainer2
-@onready var dialogue = $SubViewport/InterfaceDialogue/MarginContainer
+@onready var intro: MarginContainer = $SubViewport/InterfaceDialogue/MarginContainer2
+@onready var dialogue: MarginContainer = $SubViewport/InterfaceDialogue/MarginContainer
+@onready var dialogue_list: VBoxContainer = $SubViewport/InterfaceDialogue/MarginContainer/HBoxContainer/List
+@onready var cursor: Label = $SubViewport/InterfaceDialogue/MarginContainer/HBoxContainer/Cursor/Label
+
+@onready var relic: TextureRect = $SubViewport/InterfaceDialogue/MarginContainer/HBoxContainer/List/Relic/TextureRect
+
+var cursor_index: int = 0
+var cursor_max_index: int = 2
 
 var terminal_color: Color = Color(0.021, 0.258, 0.021, 1.0)
 
@@ -31,11 +45,27 @@ var model_position_rest
 func _ready() -> void:
 	model_position_rest = model.global_position
 	model_rotation_rest = model.rotation
+	
+	relic.texture = relic_hidden
+	relic.material.set_shader_parameter("line_color", relic_outline)
+	
+	# reset dialogue visiblity in case if i forgot :cry:
+	intro.visible = true
+	dialogue.visible = false
+	
+	# dynamic cursor index size, minus 2 for instructions,
+	# divide 2 for submenus, and - 1 for zero index
+	@warning_ignore("integer_division")
+	cursor_max_index = ((dialogue_list.get_child_count() - 2) / 2) - 1
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	 
+	
+	# show the relic if they have it
+	if relic.texture == relic_hidden and Globals.relics[relic_num - 1]:
+		relic.texture = relic_shown
+	
 	# change seed of noise
 	noise_period += delta
 	if noise_period > 0.1:
@@ -110,9 +140,37 @@ func _handle_input():
 			intro.visible = false
 			dialogue.visible = true
 		else:
-			Globals.player_can_move = true
+			
 			intro.visible = true
 			dialogue.visible = false
+			
+			# reset cursor
+			cursor_index = 0
+			cursor.text = ">"
+			
+			# stop input from turning into an actual interaction
+			await get_tree().create_timer(0.1).timeout
+			Globals.player_can_move = true
+	
+	# dont let controls continue to interface if intro still visible
+	if intro.visible:
+		return
+	
+	
+	
+	if Input.is_action_just_pressed("ui_up"):
+		if cursor_index != 0:
+			cursor_index -= 1
+			cursor.text = "\n".repeat(cursor_index) + ">"
+	
+	if Input.is_action_just_pressed("ui_down"):
+		if cursor_index < cursor_max_index:
+			cursor_index += 1
+			cursor.text = "\n".repeat(cursor_index) + ">"
+	
+	
+	if Input.is_action_just_pressed("ui_right"):
+		pass
 
 func _flicker():
 	screen_material.emission_energy_multiplier = randf_range(0.3, 0.8)

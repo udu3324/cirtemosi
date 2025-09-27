@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cfwqti11f51ey"]
+
+[ext_resource type="FontFile" uid="uid://d25dq4tmt7ywp" path="res://assets/font/NebulaSans-Black.ttf" id="1_ra43b"]
+
+[resource]
+default_font = ExtResource("1_ra43b")
+default_font_size = 24

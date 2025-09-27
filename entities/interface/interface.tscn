@@ -253,7 +253,7 @@ omni_range = 1.6216376
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.575, 0)
 
 [node name="Sprite3D" type="Sprite3D" parent="Node3D"]
-transform = Transform3D(1.0000001, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000001, 0, 1.34, -1.11)
+transform = Transform3D(1.0000001, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000001, 0, 1.605, -1.875)
 billboard = 1
 texture = SubResource("ViewportTexture_f7ilh")
 

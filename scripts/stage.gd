@@ -268,6 +268,8 @@ func _on_level_1():
 	relics.visible = true
 	shards.visible = true
 	
+	Globals.player_is_stunned = false
+	
 	# only for the test env
 	# _add_environment(preload("res://scenes/enviornment/OutsideEnv.tscn"))
 	
@@ -298,6 +300,8 @@ func _on_level_test():
 	equipment.visible = true
 	relics.visible = true
 	shards.visible = true
+	
+	Globals.player_is_stunned = false
 	
 	_add_environment(preload("res://scenes/enviornment/CaveEnv.tscn"))
 	
