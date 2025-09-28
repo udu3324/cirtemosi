@@ -21,13 +21,7 @@ extends Node3D
 @onready var dialogue: MarginContainer = $SubViewport/InterfaceDialogue/MarginContainer
 @onready var dialogue_list: VBoxContainer = $SubViewport/InterfaceDialogue/MarginContainer/HBoxContainer/List
 
-@onready var weapon_option: HBoxContainer = $SubViewport/InterfaceDialogue/MarginContainer/HBoxContainer/List/Weapon
-@onready var health_option: HBoxContainer = $SubViewport/InterfaceDialogue/MarginContainer/HBoxContainer/List/Health
-@onready var relic_option: HBoxContainer = $SubViewport/InterfaceDialogue/MarginContainer/HBoxContainer/List/Relic
-
 @onready var relic: TextureRect = $SubViewport/InterfaceDialogue/MarginContainer/HBoxContainer/List/Relic/TextureRect
-
-var cursor_max_index: int = 2
 
 var terminal_color: Color = Color(0.021, 0.258, 0.021, 1.0)
 
@@ -43,25 +37,33 @@ var underscore_period: float = 0.0
 var model_rotation_rest
 var model_position_rest
 
-var menus = {
+@onready var menus = {
 	"main": {
 		"container": $SubViewport/InterfaceDialogue/MarginContainer/HBoxContainer/List,
 		"cursor": $SubViewport/InterfaceDialogue/MarginContainer/HBoxContainer/Cursor/Label,
+		"dialogue_option": null,
+		"index_max": 2,
 		"index": 0
 	},
 	"weapon": {
 		"container": $SubViewport/InterfaceDialogue/MarginContainer/HBoxContainer/List/SubWeapon,
 		"cursor": $SubViewport/InterfaceDialogue/MarginContainer/HBoxContainer/List/SubWeapon/List/Cursor/Cursor,
+		"dialogue_option": $SubViewport/InterfaceDialogue/MarginContainer/HBoxContainer/List/Weapon,
+		"index_max": 1,
 		"index": 0
 	},
 	"health": {
 		"container": $SubViewport/InterfaceDialogue/MarginContainer/HBoxContainer/List/SubHealth,
 		"cursor": $SubViewport/InterfaceDialogue/MarginContainer/HBoxContainer/List/SubHealth/List/Cursor/Cursor,
+		"dialogue_option": $SubViewport/InterfaceDialogue/MarginContainer/HBoxContainer/List/Health,
+		"index_max": 1,
 		"index": 0
 	},
 	"relic": {
 		"container": $SubViewport/InterfaceDialogue/MarginContainer/HBoxContainer/List/SubRelic,
 		"cursor": $SubViewport/InterfaceDialogue/MarginContainer/HBoxContainer/List/SubRelic/List/Cursor/Cursor,
+		"dialogue_option": $SubViewport/InterfaceDialogue/MarginContainer/HBoxContainer/List/Relic,
+		"index_max": 0,
 		"index": 0
 	},
 }
@@ -76,22 +78,13 @@ func _ready() -> void:
 	relic.texture = relic_hidden
 	relic.material.set_shader_parameter("line_color", relic_outline)
 	
-	# reset dialogue visiblity in case if i forgot :cry:
+	# reset dialogue visiblity in case if i forgot to do it in editor :cry:
 	intro.visible = true
 	dialogue.visible = false
 	
 	menus["weapon"]["container"].visible = false
 	menus["health"]["container"].visible = false
 	menus["relic"]["container"].visible = false
-	
-	# dynamic cursor index size, minus 2 for instructions,
-	# divide 2 for submenus, and - 1 for zero index
-	@warning_ignore("integer_division")
-	cursor_max_index = ((dialogue_list.get_child_count() - 2) / 2) - 1
-	
-	for key in menus.keys():
-		if menus[key]["cursor"] != null:
-			menus[key]["cursor"].text = ">"
 	
 	_set_active_menu("main")
 
@@ -187,6 +180,11 @@ func _handle_input():
 				menus[key]["cursor"].text = ">"
 			_set_active_menu("main")
 			
+			# reset opacities
+			for key in menus.keys():
+				if menus[key]["dialogue_option"] != null:
+					menus[key]["dialogue_option"].modulate.a = 1.0
+			
 			# stop input from turning into an actual interaction
 			await get_tree().create_timer(0.1).timeout
 			Globals.player_can_move = true
@@ -210,17 +208,33 @@ func _handle_input():
 	
 	if Input.is_action_just_pressed("ui_left") and active_menu != "main":
 		_set_active_menu("main")
+		
+		for key in menus.keys():
+			if menus[key]["dialogue_option"] != null:
+				menus[key]["dialogue_option"].modulate.a = 1.0
 
 func _set_active_menu(menu_name: String):
+	# scan key with container name to set that one visible
 	for key in menus.keys():
 		menus[key]["container"].visible = (key == menu_name)
+		
+		# and set the opacity for the rest of the options in main menu
+		if menus[key]["dialogue_option"] != null:
+			menus[key]["dialogue_option"].modulate.a = 1.0 if (key == menu_name) else 0.3
+	
+	# now make the rest
+	#for key in menus.keys():
+	#	if menus[key]["dialogue_option"] != null:
+	#		menus[key]["dialogue_option"].modulate.a = 0.3
+	
+	# dialogue list is always visible, dont hide it
+	dialogue_list.visible = true
+	
 	active_menu = menu_name
 
 func _move_cursor(direction: int):
-	var menu = menus[active_menu]
-	var max_index = menu["container"].get_child_count() - 1
-	menu["index"] = clamp(menu["index"] + direction, 0, max_index)
-	menu["cursor"].text = "\n".repeat(menu["index"]) + ">"
+	menus[active_menu]["index"] = clamp(menus[active_menu]["index"] + direction, 0, menus[active_menu]["index_max"])
+	menus[active_menu]["cursor"].text = "\n".repeat(menus[active_menu]["index"]) + ">"
 
 func _flicker():
 	screen_material.emission_energy_multiplier = randf_range(0.3, 0.8)
