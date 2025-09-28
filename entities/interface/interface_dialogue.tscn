@@ -121,7 +121,7 @@ expand_mode = 2
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/List/Weapon"]
 layout_mode = 2
 theme = ExtResource("1_375bt")
-text = "//,+**{"
+text = "><%*;^__."
 
 [node name="SubWeapon" type="VBoxContainer" parent="MarginContainer/HBoxContainer/List"]
 layout_mode = 2
@@ -152,7 +152,7 @@ expand_mode = 2
 [node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/List/SubWeapon/List/List/Info"]
 layout_mode = 2
 theme = ExtResource("4_jpn3t")
-text = "#,+**?"
+text = "*)_.#^_?"
 
 [node name="Upgrade" type="HBoxContainer" parent="MarginContainer/HBoxContainer/List/SubWeapon/List/List"]
 layout_mode = 2
@@ -166,7 +166,7 @@ expand_mode = 3
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/List/SubWeapon/List/List/Upgrade"]
 layout_mode = 2
 theme = ExtResource("4_jpn3t")
-text = "x30 %%#"
+text = "x30 [@*+{["
 
 [node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer/List/SubWeapon/List/List/Upgrade"]
 material = SubResource("ShaderMaterial_5715g")
@@ -177,7 +177,7 @@ expand_mode = 2
 [node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/List/SubWeapon/List/List/Upgrade"]
 layout_mode = 2
 theme = ExtResource("4_jpn3t")
-text = "$~#?"
+text = "$~;,-+*{%?"
 
 [node name="Health" type="HBoxContainer" parent="MarginContainer/HBoxContainer/List"]
 layout_mode = 2
@@ -191,7 +191,7 @@ expand_mode = 2
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/List/Health"]
 layout_mode = 2
 theme = ExtResource("1_375bt")
-text = ";%@`~*"
+text = "@%*-{@"
 
 [node name="SubHealth" type="VBoxContainer" parent="MarginContainer/HBoxContainer/List"]
 layout_mode = 2
@@ -222,7 +222,7 @@ expand_mode = 2
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/List/SubHealth/List/List/Info"]
 layout_mode = 2
 theme = ExtResource("4_jpn3t")
-text = "#,`~*?"
+text = "*)_.#^_?"
 
 [node name="Upgrade" type="HBoxContainer" parent="MarginContainer/HBoxContainer/List/SubHealth/List/List"]
 layout_mode = 2
@@ -236,7 +236,7 @@ expand_mode = 3
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/List/SubHealth/List/List/Upgrade"]
 layout_mode = 2
 theme = ExtResource("4_jpn3t")
-text = "x5 %^#"
+text = "x5 [@*+{["
 
 [node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer/List/SubHealth/List/List/Upgrade"]
 material = SubResource("ShaderMaterial_mh4fy")
@@ -247,7 +247,7 @@ expand_mode = 2
 [node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/List/SubHealth/List/List/Upgrade"]
 layout_mode = 2
 theme = ExtResource("4_jpn3t")
-text = "$~#?"
+text = "#$~[%?"
 
 [node name="Relic" type="HBoxContainer" parent="MarginContainer/HBoxContainer/List"]
 layout_mode = 2
@@ -261,7 +261,7 @@ expand_mode = 2
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/List/Relic"]
 layout_mode = 2
 theme = ExtResource("1_375bt")
-text = "=+^*!`~.."
+text = "+%-*)~`"
 
 [node name="SubRelic" type="VBoxContainer" parent="MarginContainer/HBoxContainer/List"]
 layout_mode = 2
@@ -286,7 +286,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/List/SubRelic/List/List/Info"]
 layout_mode = 2
 theme = ExtResource("4_jpn3t")
-text = "#,+^*?"
+text = "><@*{ *)[ *){?"
 
 [node name="Instructions1" type="HBoxContainer" parent="MarginContainer/HBoxContainer/List"]
 modulate = Color(1, 1, 1, 0.5137255)

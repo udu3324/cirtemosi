@@ -27,5 +27,4 @@ grow_vertical = 2
 [node name="Label" type="Label" parent="MarginContainer"]
 layout_mode = 2
 theme = ExtResource("1_1gm86")
-text = "ok"
 horizontal_alignment = 1

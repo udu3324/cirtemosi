@@ -58,6 +58,16 @@ var shards: int = 0
 var screen_relative_movement = true
 var easy_mode = false
 
+func translate_to_interface(text: String) -> String:
+	var result = ""
+	
+	for c in text.to_lower():
+		if interface_lang_dict.has(c):
+			result += interface_lang_dict[c]
+		else:
+			result += c
+	
+	return result
 
 # global storage
 var root_node_3d: Node3D
@@ -87,3 +97,55 @@ func _play_fx(audioStreamPlayer, sound: AudioStream, volume_dbs: float, pitch: f
 	player.play()
 	
 	player.connect("finished", Callable(player, "queue_free"))
+
+# =========================================
+# WARNING!!!WARNING!!!WARNING!!!WARNING!!!WARNING!!!WARNING!!!
+# WARNING!!!WARNING!!!WARNING!!!WARNING!!!WARNING!!!WARNING!!!
+# WARNING!!!WARNING!!!WARNING!!!WARNING!!!WARNING!!!WARNING!!!
+# WARNING!!!WARNING!!!WARNING!!!WARNING!!!WARNING!!!WARNING!!!
+# WARNING!!!WARNING!!!WARNING!!!WARNING!!!WARNING!!!WARNING!!!
+# WARNING!!!WARNING!!!WARNING!!!WARNING!!!WARNING!!!WARNING!!!
+# WARNING!!!WARNING!!!WARNING!!!WARNING!!!WARNING!!!WARNING!!!
+#
+#   DO NOT SCROLL DOWN UNLESS IF YOU WANT TO SEE THE DICTIONARY
+#   USED FOR SCRAMBLING THE LANGUAGE FOR THE INTERFACE
+#   IT IS A SPOILER WARNING IF YOU WANT TO UNSCRABLE IT YOURSELF
+#
+# WARNING!!!WARNING!!!WARNING!!!WARNING!!!WARNING!!!WARNING!!!
+# WARNING!!!WARNING!!!WARNING!!!WARNING!!!WARNING!!!WARNING!!!
+# WARNING!!!WARNING!!!WARNING!!!WARNING!!!WARNING!!!WARNING!!!
+# WARNING!!!WARNING!!!WARNING!!!WARNING!!!WARNING!!!WARNING!!!
+# WARNING!!!WARNING!!!WARNING!!!WARNING!!!WARNING!!!WARNING!!!
+# WARNING!!!WARNING!!!WARNING!!!WARNING!!!WARNING!!!WARNING!!!
+# WARNING!!!WARNING!!!WARNING!!!WARNING!!!WARNING!!!WARNING!!!
+# =========================================
+
+# interface lang dictionary
+var interface_lang_dict = {
+	"a": "*",
+	"b": "!@",
+	"c": "~`",
+	"d": "{",
+	"e": "%",
+	"f": "#",
+	"g": ",-",
+	"h": "@",
+	"i": "*)",
+	"j": "`~",
+	"k": "-{",
+	"l": "-",
+	"m": "=",
+	"n": "_.",
+	"o": "^_",
+	"p": ";",
+	"q": "'",
+	"r": "+",
+	"s": "[",
+	"t": "{",
+	"u": "$~",
+	"v": "&.",
+	"w": "><",
+	"x": "~[",
+	"y": ",.",
+	"z": "}",
+}

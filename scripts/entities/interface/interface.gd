@@ -1,6 +1,7 @@
 extends Node3D
 
 
+@export_range (10, 500) var healing_size: int = 30
 @export_range (1, 7) var relic_num: int = 1
 @export var relic_outline: Color = Color(0.518, 0.075, 0.122)
 
@@ -23,7 +24,8 @@ extends Node3D
 
 @onready var relic: TextureRect = $SubViewport/InterfaceDialogue/MarginContainer/HBoxContainer/List/Relic/TextureRect
 
-@onready var dialogue_response: Label = $SubViewport2/InterfaceResponse/MarginContainer/Label
+@onready var dialogue_response: Label = $SubViewport2/MarginContainer/Label
+@onready var dialogue_encrypted_response: Label = $SubViewport3/MarginContainer/Label
 
 var terminal_color: Color = Color(0.021, 0.258, 0.021, 1.0)
 
@@ -192,6 +194,7 @@ func _handle_input():
 				menus[key]["cursor"].text = ">"
 			
 			dialogue_response.text = ""
+			dialogue_encrypted_response.text = ""
 			
 			_set_active_menu("main")
 			
@@ -265,19 +268,45 @@ func _handle_terminal_final_enter():
 		"weapon":
 			match index:
 				0:
-					await _animate_text_typing("this is a sword,\nit deals damage", 0.07)
+					if Globals.equipment[Globals.slot_active - 1] == "":
+						await _animate_text_typing("you dont have an\nactive weapon", 0.07)
+					else:
+						await _animate_text_typing("this is a [" + Globals.equipment[Globals.slot_active - 1] + "],\nit deals damage", 0.07)
 				1:
-					await _animate_text_typing("do you even\nhave the shards", 0.3)
+					if Globals.shards >= 30:
+						await _animate_text_typing("your 30 shards are\nbeing transformed now", 0.12)
+						Globals.shards -= 30
+						# todo upgrade weapon
+						await _animate_text_typing("your [" + Globals.equipment[Globals.slot_active] + "] now deals\nore damage than before", 0.7)
+					else:
+						await _animate_text_typing("do you even\nhave the shards", 0.3)
 		"health":
 			match index:
 				0:
-					pass
+					await _animate_text_typing("this is your health.\nyou have [" + str(Globals.health) + "] left", 0.07)
 				1:
-					pass
+					if Globals.health >= Globals.health_max:
+						await _animate_text_typing("you dont need this.", 0.2)
+					elif Globals.shards >= 5:
+						await _animate_text_typing("your 5 shards are\nbeing transformed now", 0.12)
+						
+						Globals.shards -= 5
+						if (Globals.health + healing_size) > Globals.health_max:
+							Globals.health = Globals.health_max
+						else:
+							Globals.health += healing_size
+						
+						await _animate_text_typing("your character is now\nloaded with new health", 0.16)
+					else:
+						await _animate_text_typing("do you even\nhave the shards", 0.3)
 		"relic":
 			match index:
 				0:
-					pass
+					if Globals.relics[relic_num - 1]: # has the relic
+						# todo all relic messages
+						await _animate_text_typing("yet to be the last.\nkey for the first.", 0.15)
+					else:
+						await _animate_text_typing("`~^${$&@*..!@*~_", 0.25)
 	
 	ignore_input = false
 	
@@ -289,16 +318,30 @@ func _handle_terminal_final_enter():
 	menus["main"]["cursor"].text = "\n".repeat(menus["main"]["index"]) + ">"
 
 func _animate_text_typing(typing_string: String, keystroke_time_range: float):
+	
+	var encrypted_typing_string = Globals.translate_to_interface(typing_string)
 	_set_active_menu("main")
 	
 	await get_tree().create_timer(0.3).timeout
 	dialogue_response.text = ""
+	dialogue_encrypted_response.text = ""
 	await get_tree().create_timer(0.2).timeout
 	
-	for i in typing_string.length():
+	_internal_typing_func_dont_use_elsewhere(encrypted_typing_string, dialogue_encrypted_response, keystroke_time_range - 0.05)
+	
+	await get_tree().create_timer(1.0).timeout
+	
+	#_internal_typing_func_dont_use_elsewhere(typing_string, dialogue_response, keystroke_time_range)
+	for i in range(typing_string.length()):
 		await get_tree().create_timer(randf_range(keystroke_time_range, keystroke_time_range + 0.05)).timeout
 		
 		dialogue_response.text += typing_string[i]
+
+func _internal_typing_func_dont_use_elsewhere(typing_string: String, label_node: Label, keystroke_time_range: float):
+	for i in range(typing_string.length()):
+		await get_tree().create_timer(randf_range(keystroke_time_range, keystroke_time_range + 0.05)).timeout
+		
+		label_node.text += typing_string[i]
 
 func _flicker():
 	screen_material.emission_energy_multiplier = randf_range(0.3, 0.8)

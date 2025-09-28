@@ -1,10 +1,10 @@
-[gd_scene load_steps=19 format=4 uid="uid://t0p0267pq1yk"]
+[gd_scene load_steps=20 format=4 uid="uid://t0p0267pq1yk"]
 
 [ext_resource type="Script" uid="uid://hqeqyavk40yx" path="res://scripts/entities/interface/interface.gd" id="1_wypvq"]
 [ext_resource type="Texture2D" uid="uid://ds82up01sf5sh" path="res://assets/gdtex/screen_noise.tres" id="2_f7ilh"]
 [ext_resource type="Material" uid="uid://berws3cfrlr2u" path="res://assets/materials/text_mat.tres" id="3_0kdyb"]
 [ext_resource type="PackedScene" uid="uid://bykatgxarjmjv" path="res://entities/interface/interface_dialogue.tscn" id="4_ssri0"]
-[ext_resource type="PackedScene" uid="uid://bexj1bh0gp606" path="res://entities/interface/interface_response.tscn" id="5_v64g6"]
+[ext_resource type="Theme" uid="uid://cfwqti11f51ey" path="res://assets/theme/interface_dialogue_theme.tres" id="5_v64g6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wypvq"]
 albedo_texture = ExtResource("2_f7ilh")
@@ -202,6 +202,9 @@ viewport_path = NodePath("SubViewport")
 [sub_resource type="ViewportTexture" id="ViewportTexture_v64g6"]
 viewport_path = NodePath("SubViewport2")
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_eewog"]
+viewport_path = NodePath("SubViewport3")
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_ix8ji"]
 radius = 5.440169
 
@@ -299,9 +302,14 @@ transform = Transform3D(1.0000001, 1.4901161e-08, 0, 1.4901161e-08, 1.0000001, 0
 billboard = 1
 texture = SubResource("ViewportTexture_v64g6")
 
+[node name="Sprite3D3" type="Sprite3D" parent="Node3D"]
+transform = Transform3D(1.0000001, 1.4901161e-08, 0, 1.4901161e-08, 1.0000001, 0, 0, 0, 1, 1.16, 1.9368248, 1.625)
+billboard = 1
+texture = SubResource("ViewportTexture_eewog")
+
 [node name="SpotLight3D6" type="SpotLight3D" parent="Node3D"]
 transform = Transform3D(-0.106322914, -0.9941591, -0.018530414, -0.01771769, -0.016738981, 0.999703, -0.994174, 0.10661963, -0.01583445, 0.043937374, 0.00656721, 0.047565646)
-light_energy = 0.234
+light_energy = 0.01
 spot_range = 1.1389221
 spot_angle = 57.897186
 
@@ -377,7 +385,49 @@ transparent_bg = true
 [node name="SubViewport2" type="SubViewport" parent="."]
 transparent_bg = true
 
-[node name="InterfaceResponse" parent="SubViewport2" instance=ExtResource("5_v64g6")]
+[node name="MarginContainer" type="MarginContainer" parent="SubViewport2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="SubViewport2/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("5_v64g6")
+horizontal_alignment = 1
+
+[node name="SubViewport3" type="SubViewport" parent="."]
+transparent_bg = true
+
+[node name="MarginContainer" type="MarginContainer" parent="SubViewport3"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="SubViewport3/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("5_v64g6")
+theme_override_colors/font_color = Color(0, 0.49019608, 0.019607844, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.32156864)
+theme_override_colors/font_outline_color = Color(1.3611978e-07, 0.107432716, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 21
+horizontal_alignment = 1
 
 [connection signal="body_entered" from="OuterArea3D" to="." method="_on_outer_area_3d_body_entered"]
 [connection signal="body_exited" from="OuterArea3D" to="." method="_on_outer_area_3d_body_exited"]
