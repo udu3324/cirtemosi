@@ -23,6 +23,8 @@ extends Node3D
 
 @onready var relic: TextureRect = $SubViewport/InterfaceDialogue/MarginContainer/HBoxContainer/List/Relic/TextureRect
 
+@onready var dialogue_response: Label = $SubViewport2/InterfaceResponse/MarginContainer/Label
+
 var terminal_color: Color = Color(0.021, 0.258, 0.021, 1.0)
 
 var player_is_close: bool = false
@@ -36,6 +38,8 @@ var underscore_period: float = 0.0
 
 var model_rotation_rest
 var model_position_rest
+
+var ignore_input: bool = false
 
 @onready var menus = {
 	"main": {
@@ -164,6 +168,9 @@ func _process(delta: float) -> void:
 		flashing = false
 
 func _handle_input():
+	if ignore_input:
+		return
+	
 	if Input.is_action_just_pressed("attack"):
 		if intro.visible:
 			Globals.player_can_move = false
@@ -183,6 +190,8 @@ func _handle_input():
 			for key in menus.keys():
 				menus[key]["index"] = 0
 				menus[key]["cursor"].text = ">"
+			
+			dialogue_response.text = ""
 			
 			_set_active_menu("main")
 			
@@ -212,8 +221,7 @@ func _handle_input():
 				1: _set_active_menu("health")
 				2: _set_active_menu("relic")
 		else:
-			#print_debug("caught action of ", menus[active_menu]["index"], active_menu)
-			pass
+			_handle_terminal_final_enter()
 	
 	if Input.is_action_just_pressed("ui_left") and active_menu != "main":
 		_set_active_menu("main")
@@ -242,6 +250,55 @@ func _set_active_menu(menu_name: String):
 func _move_cursor(direction: int):
 	menus[active_menu]["index"] = clamp(menus[active_menu]["index"] + direction, 0, menus[active_menu]["index_max"])
 	menus[active_menu]["cursor"].text = "\n".repeat(menus[active_menu]["index"]) + ">"
+
+func _handle_terminal_final_enter():
+	#print_debug("caught action of ", menus[active_menu]["index"], active_menu)
+	ignore_input = true
+	
+	for key in menus.keys():
+		if menus[key]["dialogue_option"] != null:
+			menus[key]["dialogue_option"].modulate.a = 0.3
+	
+	var index = menus[active_menu]["index"]
+	
+	match active_menu:
+		"weapon":
+			match index:
+				0:
+					await _animate_text_typing("this is a sword,\nit deals damage", 0.07)
+				1:
+					await _animate_text_typing("do you even\nhave the shards", 0.3)
+		"health":
+			match index:
+				0:
+					pass
+				1:
+					pass
+		"relic":
+			match index:
+				0:
+					pass
+	
+	ignore_input = false
+	
+	for key in menus.keys():
+		if menus[key]["dialogue_option"] != null:
+			menus[key]["dialogue_option"].modulate.a = 1.0
+	
+	# put back the main cursor
+	menus["main"]["cursor"].text = "\n".repeat(menus["main"]["index"]) + ">"
+
+func _animate_text_typing(typing_string: String, keystroke_time_range: float):
+	_set_active_menu("main")
+	
+	await get_tree().create_timer(0.3).timeout
+	dialogue_response.text = ""
+	await get_tree().create_timer(0.2).timeout
+	
+	for i in typing_string.length():
+		await get_tree().create_timer(randf_range(keystroke_time_range, keystroke_time_range + 0.05)).timeout
+		
+		dialogue_response.text += typing_string[i]
 
 func _flicker():
 	screen_material.emission_energy_multiplier = randf_range(0.3, 0.8)
