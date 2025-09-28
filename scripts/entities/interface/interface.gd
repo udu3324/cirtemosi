@@ -169,6 +169,11 @@ func _handle_input():
 			Globals.player_can_move = false
 			intro.visible = false
 			dialogue.visible = true
+			
+			# reset opacities
+			menus["weapon"]["dialogue_option"].modulate.a = 1.0
+			menus["health"]["dialogue_option"].modulate.a = 1.0
+			menus["relic"]["dialogue_option"].modulate.a = 1.0
 		else:
 			
 			intro.visible = true
@@ -178,12 +183,8 @@ func _handle_input():
 			for key in menus.keys():
 				menus[key]["index"] = 0
 				menus[key]["cursor"].text = ">"
-			_set_active_menu("main")
 			
-			# reset opacities
-			for key in menus.keys():
-				if menus[key]["dialogue_option"] != null:
-					menus[key]["dialogue_option"].modulate.a = 1.0
+			_set_active_menu("main")
 			
 			# stop input from turning into an actual interaction
 			await get_tree().create_timer(0.1).timeout
@@ -193,6 +194,10 @@ func _handle_input():
 	if intro.visible:
 		return
 	
+	# remove the main cursor if in submenu
+	if active_menu != "main" and menus["main"]["cursor"].text != "":
+		menus["main"]["cursor"].text = ""
+	
 	if Input.is_action_just_pressed("ui_up"):
 		_move_cursor(-1)
 	
@@ -200,11 +205,15 @@ func _handle_input():
 		_move_cursor(1)
 	
 	# submenu switching
-	if Input.is_action_just_pressed("ui_right") and active_menu == "main":
-		match menus["main"]["index"]:
-			0: _set_active_menu("weapon")
-			1: _set_active_menu("health")
-			2: _set_active_menu("relic")
+	if Input.is_action_just_pressed("ui_right"):
+		if active_menu == "main":
+			match menus["main"]["index"]:
+				0: _set_active_menu("weapon")
+				1: _set_active_menu("health")
+				2: _set_active_menu("relic")
+		else:
+			#print_debug("caught action of ", menus[active_menu]["index"], active_menu)
+			pass
 	
 	if Input.is_action_just_pressed("ui_left") and active_menu != "main":
 		_set_active_menu("main")
@@ -212,6 +221,9 @@ func _handle_input():
 		for key in menus.keys():
 			if menus[key]["dialogue_option"] != null:
 				menus[key]["dialogue_option"].modulate.a = 1.0
+		
+		# put back the main cursor
+		menus["main"]["cursor"].text = "\n".repeat(menus["main"]["index"]) + ">"
 
 func _set_active_menu(menu_name: String):
 	# scan key with container name to set that one visible
@@ -221,11 +233,6 @@ func _set_active_menu(menu_name: String):
 		# and set the opacity for the rest of the options in main menu
 		if menus[key]["dialogue_option"] != null:
 			menus[key]["dialogue_option"].modulate.a = 1.0 if (key == menu_name) else 0.3
-	
-	# now make the rest
-	#for key in menus.keys():
-	#	if menus[key]["dialogue_option"] != null:
-	#		menus[key]["dialogue_option"].modulate.a = 0.3
 	
 	# dialogue list is always visible, dont hide it
 	dialogue_list.visible = true
@@ -315,7 +322,7 @@ func _on_inner_area_3d_body_exited(body: Node3D) -> void:
 
 
 
-# from enemt.gd
+# from enemt.gd (modified)
 func _face_to_vector3(point: Vector3) -> void:
 	# get the relative position of the point from the agent
 	var to_point = (point - model.global_position).normalized()

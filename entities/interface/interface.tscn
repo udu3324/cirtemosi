@@ -298,6 +298,7 @@ spot_angle = 57.897186
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+visible = false
 size = Vector3(5, 1, 5)
 
 [node name="OuterArea3D" type="Area3D" parent="."]

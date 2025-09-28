@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dc7nu5ov6qwsg"]
+[gd_scene load_steps=6 format=3 uid="uid://dc7nu5ov6qwsg"]
 
 [ext_resource type="Script" uid="uid://htv48ik563d1" path="res://scripts/scenes/level_4_1.gd" id="1_v1dub"]
 [ext_resource type="PackedScene" uid="uid://dwqj4buhblxh8" path="res://entities/enemt/enemt.tscn" id="2_8li1p"]
+[ext_resource type="PackedScene" uid="uid://t0p0267pq1yk" path="res://entities/interface/interface.tscn" id="3_a7d5b"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8li1p"]
 size = Vector3(1, 6, 6)
@@ -297,5 +298,8 @@ omni_range = 2.80792
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.6893, 2.21028, -0.893152)
 light_color = Color(0.206195, 0.259432, 0.496489, 1)
 omni_range = 3.28832
+
+[node name="Interface" parent="." instance=ExtResource("3_a7d5b")]
+transform = Transform3D(-0.9948895, 0, -0.10096955, 0, 1, 0, 0.10096955, 0, -0.9948895, -4.6302567, 1.5000002, -8.8350525)
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
