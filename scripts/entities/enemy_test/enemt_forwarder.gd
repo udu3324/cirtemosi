@@ -2,7 +2,7 @@ extends Node3D
 
 @export var drops_relic_1: bool = false
 @export var drops_shards: bool = true
-@export_range (1, 30) var rand_shard_range: int = 5
+@export_range (1, 100) var rand_shard_range: int = 5
 
 func _ready():
 	get_child(1).drops_relic_1 = drops_relic_1

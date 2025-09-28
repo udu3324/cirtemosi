@@ -50,6 +50,15 @@ var stamina: float = 80.0
 var slot_active: int = 1
 var equipment = ["", "", ""]
 
+var item_info_dict = {
+	"starter_weapon": {
+		"range": 1.5, # meters
+		"cone": 60, # degrees
+		"damage": 20
+	}
+}
+
+
 var relics = [false, false, false, false, false, false, false]
 
 var shards: int = 0

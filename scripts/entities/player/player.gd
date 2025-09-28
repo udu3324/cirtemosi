@@ -280,7 +280,9 @@ func _handle_equipment() -> void:
 	if attacking:
 		return
 	
-	if Globals.slot_active == 1 and Globals.equipment[0] == "starter_weapon":
+	var held_item = Globals.equipment[Globals.slot_active - 1]
+	
+	if held_item == "starter_weapon":
 		attacking = true
 		
 		Globals._play_fx(audio_player, swoosh, 0.0, randf_range(0.6, 1.0))
@@ -312,7 +314,7 @@ func _handle_equipment() -> void:
 			#print("player ", position, " | enemy ", enemy.global_transform.origin, " | distance ", distance)
 			
 			# check if distance is good
-			if distance > 1.5:
+			if distance > Globals.item_info_dict[held_item]["range"]:
 				continue
 			
 			# they already dead
@@ -325,11 +327,11 @@ func _handle_equipment() -> void:
 			var angle = rad_to_deg(forward.angle_to(to_enemy)) 
 			
 			# check if angle is in range
-			if angle > 60: # currently very generous right now
+			if angle > Globals.item_info_dict[held_item]["cone"]:
 				continue
 			
 			#print_debug("enemy was hit!")
-			enemy.get_parent().health -= 10
+			enemy.get_parent().health -= Globals.item_info_dict[held_item]["damage"]
 			enemy.get_parent().attack_event = model.rotation.y - (PI / 2)
 			
 			Globals._play_fx(audio_player, hit_starter_weapon, 0.0, 0.8)

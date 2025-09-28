@@ -276,8 +276,8 @@ func _handle_terminal_final_enter():
 					if Globals.shards >= 30:
 						await _animate_text_typing("your 30 shards are\nbeing transformed now", 0.12)
 						Globals.shards -= 30
-						# todo upgrade weapon
-						await _animate_text_typing("your [" + Globals.equipment[Globals.slot_active] + "] now deals\nore damage than before", 0.7)
+						Globals.item_info_dict[Globals.equipment[Globals.slot_active - 1]]["damage"] += 5
+						await _animate_text_typing("your [" + Globals.equipment[Globals.slot_active - 1] + "] now deals\nmore damage than before", 0.3)
 					else:
 						await _animate_text_typing("do you even\nhave the shards", 0.3)
 		"health":
