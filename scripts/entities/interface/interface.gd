@@ -78,7 +78,6 @@ var active_menu := "main"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	model_position_rest = model.global_position
 	model_rotation_rest = model.rotation
 	
 	relic.texture = relic_hidden
@@ -365,6 +364,10 @@ func _flicker():
 func _on_outer_area_3d_body_entered(body: Node3D) -> void:
 	if body.name.contains("Player"):
 		player_is_close = true
+		
+		# save model position rest here to allow time for node to be relatively positioned
+		if model_position_rest == null:
+			model_position_rest = model.global_position
 
 func _on_outer_area_3d_body_exited(body: Node3D) -> void:
 	if body.name.contains("Player"):
@@ -428,7 +431,7 @@ func _face_to_vector3(point: Vector3) -> void:
 	var to_point = (point - model.global_position).normalized()
 	
 	# get the angle from the point
-	var angle_y = atan2(to_point.x, to_point.z) + (PI / 4) # add a 90deg offset
+	var angle_y = atan2(to_point.x, to_point.z) + (PI / 2) # add a 90deg offset
 	
 	# model.rotation.y = lerp_angle(model.rotation.y, angle_y, 0.5)
 	

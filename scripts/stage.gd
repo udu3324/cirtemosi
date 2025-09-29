@@ -23,12 +23,23 @@ extends Node
 
 @onready var level_start = $LevelStartMenu
 
+@onready var title_card = $CanvasLayer/TitleCard
+@onready var title_crypt = $CanvasLayer/TitleCard/CenterContainer/VBoxContainer/VBoxContainer/TitleEncrypted
+@onready var description_crypt = $CanvasLayer/TitleCard/CenterContainer/VBoxContainer/VBoxContainer/DescriptionEncrypted
+@onready var title_decrypt = $CanvasLayer/TitleCard/CenterContainer/VBoxContainer/TitleDecrypted
+
 var level
 var player
 var enviornment
 
 func _ready() -> void:
 	Globals.root_node_3d = $Node3D
+	
+	Globals.title_card = title_card
+	
+	Globals.title_crypt = title_crypt
+	Globals.description_crypt = description_crypt
+	Globals.title_decrypt = title_decrypt
 	
 	menuPause.connect("exit_to_start", _on_exit_start)
 	menuReset.connect("exit_to_start", _on_exit_start)
@@ -239,6 +250,8 @@ func _on_exit_start():
 	Globals.relics = [false, false, false, false, false, false, false]
 	Globals.shards = 0
 	
+	Globals.card_ruins_shown = false
+	
 	get_tree().paused = false
 	
 	print_debug("adding back the child")
@@ -277,10 +290,14 @@ func _on_level_1():
 	Globals.stamina = Globals.stamina_max
 	Globals.health = Globals.health_max
 	
-	await get_tree().create_timer(2).timeout # additional waiting time
+	await get_tree().create_timer(1).timeout # additional waiting time
 	_hide_loading()
 	
 	print_debug("added level 1")
+	
+	await Globals._show_title_card("The Cave", "you mistakenly came here", 1.0)
+	
+	await get_tree().create_timer(0.7).timeout
 	
 	hints.get_child(0).visible = true
 	hints.get_child(1).visible = true

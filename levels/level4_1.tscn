@@ -1,11 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://dc7nu5ov6qwsg"]
+[gd_scene load_steps=8 format=3 uid="uid://dc7nu5ov6qwsg"]
 
 [ext_resource type="Script" uid="uid://htv48ik563d1" path="res://scripts/scenes/level_4_1.gd" id="1_v1dub"]
 [ext_resource type="PackedScene" uid="uid://dwqj4buhblxh8" path="res://entities/enemt/enemt.tscn" id="2_8li1p"]
 [ext_resource type="PackedScene" uid="uid://t0p0267pq1yk" path="res://entities/interface/interface.tscn" id="3_a7d5b"]
+[ext_resource type="PackedScene" uid="uid://kn6hbschf6xo" path="res://scenes/items/shards.tscn" id="4_6f4tj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8li1p"]
 size = Vector3(1, 6, 6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6f4tj"]
+size = Vector3(1, 4.310547, 11.562607)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_a7d5b"]
 vertices = PackedVector3Array(-2.78296, 0.499999, -13.5785, -3.03296, 0.499999, -13.0785, -2.28296, 0.499999, -11.5785, 1.46704, 0.499999, -11.0785, 1.96704, 0.499999, -14.8285, 0.467035, 0.499999, -14.8285, 1.46704, 0.499999, -7.57847, 4.96704, 0.499999, -7.07847, 10.717, 0.499999, -12.3285, 15.217, 0.499999, -2.82847, 15.717, 0.499999, -5.57847, 4.96704, 0.499999, -3.32847, 4.46704, 0.499999, -2.57847, 1.46704, 0.499999, -2.32847, 1.21704, 0.499999, 0.921533, 0.467035, 0.499999, 1.42153, -1.03296, 0.499999, 1.42153, -0.782965, 0.499999, 6.67153, 13.717, 0.499999, 2.67153, 15.217, 0.499999, -1.32847, 8.46704, 0.499999, 5.92153, 11.967, 0.499999, 3.92153, 3.71704, 0.499999, 6.67153, -9.28296, 0.499999, 1.42153, -9.53296, 0.499999, 2.42153, -6.03296, 0.499999, 6.67153)
@@ -240,12 +244,97 @@ transform = Transform3D(0.615768, -0.691055, 0.378513, 0.787204, 0.518995, -0.33
 use_collision = true
 size = Vector3(2.16656, 1.86035, 1)
 
+[node name="HiddenStackOfShards" type="Node3D" parent="."]
+transform = Transform3D(0.4478488, 0.8843672, -0.13162868, -0.8873875, 0.42162085, -0.18649186, -0.1094299, 0.20032582, 0.97359884, -25.705927, 3.1715455, -2.433773)
+
+[node name="Shards" parent="HiddenStackOfShards" instance=ExtResource("4_6f4tj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26199913, 0, 0)
+
+[node name="Shards2" parent="HiddenStackOfShards" instance=ExtResource("4_6f4tj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.77754366, 0, 0)
+
+[node name="Shards3" parent="HiddenStackOfShards" instance=ExtResource("4_6f4tj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0432317, 0, 0)
+
+[node name="Shards4" parent="HiddenStackOfShards" instance=ExtResource("4_6f4tj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55411243, 0, 0)
+
+[node name="Shards5" parent="HiddenStackOfShards" instance=ExtResource("4_6f4tj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3463764, 0, 0)
+
+[node name="Shards6" parent="HiddenStackOfShards" instance=ExtResource("4_6f4tj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26199913, 0, 0.4080441)
+
+[node name="Shards7" parent="HiddenStackOfShards" instance=ExtResource("4_6f4tj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.777544, 0, 0.4080441)
+
+[node name="Shards8" parent="HiddenStackOfShards" instance=ExtResource("4_6f4tj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.043232, 0, 0.4080441)
+
+[node name="Shards9" parent="HiddenStackOfShards" instance=ExtResource("4_6f4tj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5541134, 0, 0.4080441)
+
+[node name="Shards10" parent="HiddenStackOfShards" instance=ExtResource("4_6f4tj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3463764, 0, 0.4080441)
+
+[node name="Shards11" parent="HiddenStackOfShards" instance=ExtResource("4_6f4tj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26199913, 0, 0.80457306)
+
+[node name="Shards12" parent="HiddenStackOfShards" instance=ExtResource("4_6f4tj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.777544, 0, 0.80457306)
+
+[node name="Shards13" parent="HiddenStackOfShards" instance=ExtResource("4_6f4tj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.043232, 0, 0.80457306)
+
+[node name="Shards14" parent="HiddenStackOfShards" instance=ExtResource("4_6f4tj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5541134, 0, 0.80457306)
+
+[node name="Shards15" parent="HiddenStackOfShards" instance=ExtResource("4_6f4tj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3463764, 0, 0.80457306)
+
+[node name="Shards16" parent="HiddenStackOfShards" instance=ExtResource("4_6f4tj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26199913, 0.37036848, 0.6866667)
+
+[node name="Shards17" parent="HiddenStackOfShards" instance=ExtResource("4_6f4tj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.777544, 0.37036848, 0.6866667)
+
+[node name="Shards18" parent="HiddenStackOfShards" instance=ExtResource("4_6f4tj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.043232, 0.37036848, 0.6866667)
+
+[node name="Shards19" parent="HiddenStackOfShards" instance=ExtResource("4_6f4tj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5541134, 0.37036848, 0.6866667)
+
+[node name="Shards20" parent="HiddenStackOfShards" instance=ExtResource("4_6f4tj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3463764, 0.37036848, 0.6866667)
+
+[node name="Shards21" parent="HiddenStackOfShards" instance=ExtResource("4_6f4tj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26199913, 0.43608236, 0.23668075)
+
+[node name="Shards22" parent="HiddenStackOfShards" instance=ExtResource("4_6f4tj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.777544, 0.43608236, 0.23668075)
+
+[node name="Shards23" parent="HiddenStackOfShards" instance=ExtResource("4_6f4tj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.043232, 0.43608236, 0.23668075)
+
+[node name="Shards24" parent="HiddenStackOfShards" instance=ExtResource("4_6f4tj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5541134, 0.43608236, 0.23668075)
+
+[node name="Shards25" parent="HiddenStackOfShards" instance=ExtResource("4_6f4tj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3463764, 0.43608236, 0.23668075)
+
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 3, -7)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.5)
 shape = SubResource("BoxShape3D_8li1p")
+
+[node name="Area3D2TitleCard" type="Area3D" parent="."]
+transform = Transform3D(0.95375365, 0, -0.3005893, 0, 1, 0, 0.3005893, 0, 0.95375365, -7.838389, 1.9762707, -5.607777)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2TitleCard"]
+transform = Transform3D(1.0000007, 0, 0, 0, 1, 0, 0, 0, 1.0000007, 0.86495304, 1.6552734, 0.6167805)
+shape = SubResource("BoxShape3D_6f4tj")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
@@ -303,3 +392,4 @@ omni_range = 3.28832
 transform = Transform3D(-0.9948895, 0, -0.10096955, 0, 1, 0, 0.10096955, 0, -0.9948895, -4.6302567, 1.5000002, -8.8350525)
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="Area3D2TitleCard" to="." method="_on_area_3d_2_title_card_body_entered"]

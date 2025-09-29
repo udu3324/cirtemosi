@@ -80,5 +80,5 @@ func _on_easy_mode_toggled(toggled_on: bool) -> void:
 	Globals.stamina_recovery_time = 0.5 if Globals.easy_mode else 1.0
 
 func _on_master_volume_value_changed(value: float) -> void:
-	print_debug("volume changed to ", volume_slider.value - 15)
+	#print_debug("volume changed to ", volume_slider.value - 15)
 	AudioServer.set_bus_volume_db(0, volume_slider.value - 15)

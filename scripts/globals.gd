@@ -52,7 +52,7 @@ var equipment = ["", "", ""]
 
 var item_info_dict = {
 	"starter_weapon": {
-		"range": 1.5, # meters
+		"range": 1.7, # meters
 		"cone": 60, # degrees
 		"damage": 20
 	}
@@ -62,6 +62,9 @@ var item_info_dict = {
 var relics = [false, false, false, false, false, false, false]
 
 var shards: int = 0
+
+# title cards
+var card_ruins_shown: bool = false
 
 # settings
 var screen_relative_movement = true
@@ -80,6 +83,12 @@ func translate_to_interface(text: String) -> String:
 
 # global storage
 var root_node_3d: Node3D
+
+var title_card: Control
+
+var title_crypt: Label
+var description_crypt: Label
+var title_decrypt: Label
 
 # global funcs
 func _get_all_nodes(node) -> Array:
@@ -106,6 +115,31 @@ func _play_fx(audioStreamPlayer, sound: AudioStream, volume_dbs: float, pitch: f
 	player.play()
 	
 	player.connect("finished", Callable(player, "queue_free"))
+
+
+func _show_title_card(title: String, description: String, pre_wait: float):
+	
+	await get_tree().create_timer(pre_wait).timeout
+	
+	title_card.modulate.a = 0.0
+	title_card.visible = true
+	
+	title_crypt.text = Globals.translate_to_interface(title)
+	description_crypt.text = Globals.translate_to_interface(description)
+	title_decrypt.text = "- " + title + " -"
+	
+	var tween = create_tween()
+	tween.tween_property(title_card, "modulate:a", 1.0, 1.0)
+	
+	await tween.finished
+	await get_tree().create_timer(3.0).timeout
+	
+	tween = create_tween()
+	tween.tween_property(title_card, "modulate:a", 0.0, 1.0)
+	
+	await tween.finished
+	
+	title_card.visible = false
 
 # =========================================
 # WARNING!!!WARNING!!!WARNING!!!WARNING!!!WARNING!!!WARNING!!!
