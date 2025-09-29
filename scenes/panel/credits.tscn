@@ -14,10 +14,6 @@ resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_2ob5j")
 path = "mouse/left"
-show_mode = 0
-force_controller_icon_style = -1
-force_type = 0
-force_device = 16
 metadata/_custom_type_script = "uid://cmyasc1t8l0la"
 
 [sub_resource type="Texture2D" id="Texture2D_eflam"]
@@ -25,10 +21,6 @@ resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_2ob5j")
 path = "key/l"
-show_mode = 0
-force_controller_icon_style = -1
-force_type = 0
-force_device = 16
 metadata/_custom_type_script = "uid://cmyasc1t8l0la"
 
 [node name="Credits" type="Control"]
@@ -175,6 +167,8 @@ Andrew Shouldice
 Undertale
 Toby Fox
 
+Stray
+BlueTwelve Studio
 
 
 

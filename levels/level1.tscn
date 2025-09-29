@@ -1,16 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://csb64dawc7x4p"]
+[gd_scene load_steps=10 format=3 uid="uid://csb64dawc7x4p"]
 
 [ext_resource type="Script" uid="uid://by1dqsv4hw01p" path="res://scripts/scenes/level_1.gd" id="1_pdtm5"]
-[ext_resource type="PackedScene" uid="uid://duydi7lytqxks" path="res://scenes/enviornment/CaveEnv.tscn" id="1_sjb42"]
+[ext_resource type="PackedScene" uid="uid://b15o4pkoogqs3" path="res://assets/model/enviornment/grass.blend" id="3_61w3m"]
 [ext_resource type="PackedScene" uid="uid://kn6hbschf6xo" path="res://scenes/items/shards.tscn" id="3_b3oru"]
+[ext_resource type="PackedScene" uid="uid://c60c2bj8ut5o4" path="res://assets/model/enviornment/mushroom.blend" id="4_pdpul"]
+[ext_resource type="PackedScene" uid="uid://cgy2lvamut2sl" path="res://assets/model/enviornment/rubble_pile.blend" id="5_8hd6v"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sjb42"]
 size = Vector3(7.24316, 5.76898, 1)
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pdtm5"]
+sky_top_color = Color(0.113725, 0.113725, 0.113725, 1)
+sky_horizon_color = Color(0.113725, 0.113725, 0.113725, 1)
+ground_bottom_color = Color(0.114897, 0.114897, 0.114897, 1)
+ground_horizon_color = Color(0.113725, 0.113725, 0.113725, 1)
+
+[sub_resource type="Sky" id="Sky_35bhh"]
+sky_material = SubResource("ProceduralSkyMaterial_pdtm5")
+
+[sub_resource type="Environment" id="Environment_b3oru"]
+background_mode = 2
+sky = SubResource("Sky_35bhh")
+ambient_light_energy = 5.23
+
 [node name="Level1" type="Node3D"]
 script = ExtResource("1_pdtm5")
-
-[node name="CaveEnv" parent="." instance=ExtResource("1_sjb42")]
 
 [node name="ForegroundTop" type="Node3D" parent="."]
 
@@ -149,6 +163,11 @@ transform = Transform3D(-4.37114e-08, -0.994286, 0.10675, 1, -4.34616e-08, 4.666
 use_collision = true
 size = Vector3(4.8658, 5.61822, 1)
 
+[node name="CSGBox3D21" type="CSGBox3D" parent="ForegroundBottom"]
+transform = Transform3D(-4.37114e-08, -0.994286, 0.10675, 1, -4.34616e-08, 4.66619e-09, 0, 0.10675, 0.994286, -0.12528896, 11.225302, -18.204723)
+use_collision = true
+size = Vector3(2.0105367, 8.954129, 15.086426)
+
 [node name="CSGBox3D19" type="CSGBox3D" parent="ForegroundBottom"]
 transform = Transform3D(-4.37114e-08, -0.994286, 0.10675, 1, -4.34616e-08, 4.66619e-09, 0, 0.10675, 0.994286, 1.69766, 7.50738, -11.6987)
 use_collision = true
@@ -162,7 +181,9 @@ size = Vector3(2.89908, 2.01752, 0.001)
 [node name="Lights" type="Node3D" parent="."]
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Lights"]
-transform = Transform3D(0.993791, 3.25424e-09, -0.111261, 0.104226, 0.349929, 0.93096, 0.0389334, -0.936776, 0.347757, 0.171949, 9.77802, 0.785365)
+transform = Transform3D(0.9937909, 0.0038053063, -0.1111959, 0.10422601, 0.3178838, 0.9423835, 0.0389334, -0.9481218, 0.31551412, 0.171949, 9.77802, 0.785365)
+light_color = Color(0.115771405, 0.6503127, 0.7946844, 1)
+light_energy = 4.064
 spot_range = 10.2273
 spot_angle = 32.3002
 
@@ -360,7 +381,56 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.830476, 0.868394)
 shape = SubResource("BoxShape3D_sjb42")
 
 [node name="Shards" parent="." instance=ExtResource("3_b3oru")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9749981, 2.0685785, 0.8653122)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0024419, 2.0685785, 0.88278997)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_b3oru")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.0944441, -0.99020416, 0.102840036, -0.57635343, 0.029844077, 0.81665564, -0.8117249, -0.13640048, -0.5678889, 0, 2.4778447, 0)
+light_color = Color(0.8694981, 0.96362156, 0.9389185, 1)
+shadow_enabled = true
+
+[node name="Decoration" type="Node3D" parent="."]
+
+[node name="grass" parent="Decoration" instance=ExtResource("3_61w3m")]
+transform = Transform3D(0.88, 0, 0, 0, 1.115, 0, 0, 0, 0.84, 0, 1.1264448, 0)
+
+[node name="mushroom" parent="Decoration" instance=ExtResource("4_pdpul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7011738, 1.4810688, -0.70826167)
+
+[node name="mushroom2" parent="Decoration" instance=ExtResource("4_pdpul")]
+transform = Transform3D(0.9868863, 0.15816154, 0.032256193, -0.15788855, 0.98739725, -0.010857899, -0.03356699, 0.0056226403, 0.99942064, 1.1595973, 1.5360749, -1.5506084)
+
+[node name="mushroom3" parent="Decoration" instance=ExtResource("4_pdpul")]
+transform = Transform3D(0.036696017, 0, -0.99932647, 0, 1, 0, 0.99932647, 0, 0.036696017, -1.4365172, 1.4930748, -0.3795874)
+
+[node name="mushroom4" parent="Decoration" instance=ExtResource("4_pdpul")]
+transform = Transform3D(0.069759175, 0.0001850347, -0.99756384, -0.15788855, 0.98739725, -0.010857899, 0.98498994, 0.15826134, 0.06890923, 0.040363193, 1.5467695, -1.2485721)
+
+[node name="mushroom5" parent="Decoration" instance=ExtResource("4_pdpul")]
+transform = Transform3D(-0.9855602, -0.15689446, 0.063682534, -0.15788852, 0.9873972, -0.010857897, -0.061176434, -0.020755878, -0.997911, -0.5222299, 1.5467695, -2.5353622)
+
+[node name="mushroom6" parent="Decoration" instance=ExtResource("4_pdpul")]
+transform = Transform3D(-0.9574295, -0.09889106, 0.2712001, -0.16782357, 0.9550903, -0.24420808, -0.23487069, -0.2793258, -0.93102765, 0.35342473, 1.4675756, 1.0961396)
+
+[node name="mushroom7" parent="Decoration" instance=ExtResource("4_pdpul")]
+transform = Transform3D(-0.95703954, 0.032963388, 0.2880784, 0.06669203, 0.9919045, 0.10806196, -0.28218433, 0.12263209, -0.95148987, 1.7978208, 1.5467693, 1.0338675)
+
+[node name="mushroom8" parent="Decoration" instance=ExtResource("4_pdpul")]
+transform = Transform3D(0.6587465, -0.09008298, 0.74695253, -0.014026688, 0.991163, 0.1319052, -0.7522346, -0.09736934, 0.65166134, 0.9881823, 1.5467693, 1.2569872)
+
+[node name="rubble_pile" parent="Decoration" instance=ExtResource("5_8hd6v")]
+transform = Transform3D(0.99674803, 0.08029337, -0.0068101683, -0.08058166, 0.99318206, -0.08423781, 0, 0.084512636, 0.9964224, 1.5903144, 1.5025048, -1.1526705)
+
+[node name="rubble_pile2" parent="Decoration" instance=ExtResource("5_8hd6v")]
+transform = Transform3D(0.99674803, 0.08029337, -0.0068101683, -0.08058166, 0.99318206, -0.08423781, 0, 0.084512636, 0.9964224, 1.4280567, 1.5025048, 1.1049573)
+
+[node name="rubble_pile3" parent="Decoration" instance=ExtResource("5_8hd6v")]
+transform = Transform3D(0.99674803, 0.08029337, -0.0068101683, -0.08058166, 0.99318206, -0.08423781, 0, 0.084512636, 0.9964224, -0.3343261, 1.502505, -1.2792695)
+
+[node name="rubble_pile4" parent="Decoration" instance=ExtResource("5_8hd6v")]
+transform = Transform3D(-0.41788658, -0.0079509765, 0.90846443, -0.10192066, 0.9940595, -0.03818259, -0.9027642, -0.10854731, -0.4162145, -1.6983893, 1.5139688, -0.16994)
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
