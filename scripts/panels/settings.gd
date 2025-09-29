@@ -5,6 +5,7 @@ extends Control
 
 @onready var screen_relative_movement_btn = $CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/ScreenRelativeMovement
 @onready var easy_mode_btn = $CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer/EasyMode
+@onready var volume_slider = $CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer3/HBoxContainer/MasterVolume
 
 var mouse_is_inside: bool = false
 
@@ -42,7 +43,10 @@ func _process(_delta: float) -> void:
 	if !self.visible:
 		return
 	
-	if Input.is_action_just_pressed("ui_right"):
+	if get_viewport().gui_get_focus_owner() is HSlider:
+		return
+	
+	if Input.is_action_just_pressed("switch"):
 		var node = get_viewport().gui_get_focus_owner()
 		node.button_pressed = !node.button_pressed
 
@@ -74,3 +78,7 @@ func _on_easy_mode_toggled(toggled_on: bool) -> void:
 	
 	Globals.stamina_recovery_amount = 0.5 if Globals.easy_mode else 0.05
 	Globals.stamina_recovery_time = 0.5 if Globals.easy_mode else 1.0
+
+func _on_master_volume_value_changed(value: float) -> void:
+	print_debug("volume changed to ", volume_slider.value - 15)
+	AudioServer.set_bus_volume_db(0, volume_slider.value - 15)

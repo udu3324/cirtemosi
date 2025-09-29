@@ -44,6 +44,9 @@ func _handle_input():
 		# for some reason, i have to store the node instead of grabbing it in realtime
 		currently_selected = get_viewport().gui_get_focus_owner()
 	
+	if Globals.settingsVisible:
+		return
+	
 	if Input.is_action_just_pressed("ui_right"):
 		#print_debug("pressed it")
 		currently_selected.pressed.emit()

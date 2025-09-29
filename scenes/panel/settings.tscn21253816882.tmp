@@ -31,7 +31,7 @@ metadata/_custom_type_script = "uid://cmyasc1t8l0la"
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("4_xqk23")
-path = "key/p"
+path = "ui_right"
 metadata/_custom_type_script = "uid://cmyasc1t8l0la"
 
 [sub_resource type="Texture2D" id="Texture2D_gfhiw"]
@@ -120,7 +120,6 @@ layout_mode = 2
 
 [node name="ScreenRelativeMovement" type="CheckButton" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-focus_neighbor_bottom = NodePath("../../../VBoxContainer2/HBoxContainer/EasyMode")
 button_pressed = true
 
 [node name="Label" type="Label" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
@@ -141,8 +140,6 @@ layout_mode = 2
 
 [node name="EasyMode" type="CheckButton" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../../../VBoxContainer/HBoxContainer/ScreenRelativeMovement")
-focus_neighbor_bottom = NodePath("../../../VBoxContainer3/HBoxContainer/MasterVolume")
 
 [node name="Label" type="Label" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer"]
 layout_mode = 2
@@ -167,10 +164,7 @@ layout_mode = 2
 [node name="MasterVolume" type="HSlider" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer3/HBoxContainer"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-focus_neighbor_top = NodePath("../../../VBoxContainer2/HBoxContainer/EasyMode")
-max_value = 20.0
-step = 0.1
-value = 15.0
+value = 90.0
 
 [node name="Label" type="Label" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer3/HBoxContainer"]
 layout_mode = 2
@@ -253,6 +247,13 @@ theme_override_fonts/font = ExtResource("1_2jlhx")
 theme_override_font_sizes/font_size = 20
 text = "to exit"
 
+[node name="HSlider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 11.0
+offset_right = 122.0
+offset_bottom = 27.0
+
 [connection signal="toggled" from="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/ScreenRelativeMovement" to="." method="_on_screen_relative_movement_toggled"]
 [connection signal="toggled" from="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer/EasyMode" to="." method="_on_easy_mode_toggled"]
-[connection signal="value_changed" from="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer3/HBoxContainer/MasterVolume" to="." method="_on_master_volume_value_changed"]
+[connection signal="drag_ended" from="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer3/HBoxContainer/MasterVolume" to="." method="_on_master_volume_drag_ended"]

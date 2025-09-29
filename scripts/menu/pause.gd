@@ -18,6 +18,9 @@ func _process(_delta: float) -> void:
 	if !visible:
 		return
 	
+	if Globals.settingsVisible:
+		return
+	
 	if get_viewport().gui_get_focus_owner() == null:
 		print_debug("grabbing focus for pause")
 		backButton.grab_focus()
