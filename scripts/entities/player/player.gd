@@ -248,8 +248,10 @@ func _face_to_velocity() -> void:
 	var dir = (vertical * input.z + horizontal * input.x).normalized()
 
 	#print_debug("angle is ", rad_to_deg(atan2(dir.x, dir.z)))
-	model.rotation.y = lerp_angle(model.rotation.y, atan2(dir.x, dir.z) + (PI / 2), 0.1)
-	
+	if Globals.screen_relative_movement:
+		model.rotation.y = lerp_angle(model.rotation.y, atan2(dir.x, dir.z) + (PI / 2), 0.1)
+	else:
+		model.rotation.y = lerp_angle(model.rotation.y, atan2(input.x, input.z) + (PI / 2), 0.1)
 	
 
 	# rotation based on velocity ------------
