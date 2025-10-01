@@ -63,8 +63,10 @@ var relics = [false, false, false, false, false, false, false]
 
 var shards: int = 0
 
-# title cards
+# story mode variables - reset when the game resets
+# - 4.1
 var card_ruins_shown: bool = false
+var collected_shard_stack: bool = false
 
 # settings
 var screen_relative_movement = true
