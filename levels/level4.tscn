@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://40hbudsqa3hu"]
+[gd_scene load_steps=5 format=3 uid="uid://40hbudsqa3hu"]
 
 [ext_resource type="Script" uid="uid://dglf5r2r6vt88" path="res://scripts/scenes/level_4.gd" id="1_cqjvr"]
 [ext_resource type="PackedScene" uid="uid://duydi7lytqxks" path="res://scenes/enviornment/CaveEnv.tscn" id="1_rxes3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cqjvr"]
+albedo_color = Color(0.4904529, 0.27618694, 0.06348612, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cqjvr"]
+size = Vector3(9.085922, 5.8031006, 9.590973)
 
 [node name="Level4" type="Node3D"]
 script = ExtResource("1_cqjvr")
@@ -10,6 +16,11 @@ script = ExtResource("1_cqjvr")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -20, 0, 0)
 use_collision = true
 polygon = PackedVector2Array(-13.9361, 9.72695, 0.947796, 16.1574, 12.3636, 12.6893, 16.8432, 5.53634, 13.5549, -3.79754, 4.93547, -7.14623, -4.8977, -7.35448, -10.9015, -3.20613, -11.2628, 2.57402, -13.9361, 6.90913, -15.7424, 9.5102)
+
+[node name="Bridge" type="CSGPolygon3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -9.627846, 0, -10.159151)
+use_collision = true
+polygon = PackedVector2Array(-1.8704576, 3.6417255, 0.030448914, 6.083153, 3.1692352, 8.361553, 6.294688, 10.299801, 7.575799, 11.817871, 9.335779, 11.085932, 10.828085, 9.133411, 9.363243, 8.5028, 7.2541027, 6.2569866, 4.777767, 4.7996693, 2.7591705, 3.1319847, 2.3507972, 1.9732475, -0.2145958, 2.1700182)
 
 [node name="CSGPolygon3D2" type="CSGPolygon3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
@@ -25,6 +36,13 @@ polygon = PackedVector2Array(-7.13375, 11.2221, -6.23784, 16.3416, 8.73671, 16.9
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -24, -1.04907e-06, -24)
 use_collision = true
 polygon = PackedVector2Array(-9.12218, -5.50803, 0.604877, -4.22815, 7.77218, -1.92437, 12.1238, 4.34702, 12.8917, 11.3863, 11.8678, 15.8659, 7.90017, 14.714, 5.72438, 10.2345, -1.44293, 7.80269, -5.02658, 3.5791, -8.48225, 1.27532, -12.0659, -2.6923, -10.914, -5.63601)
+depth = 1.85
+
+[node name="CSGPolygon3D5" type="CSGPolygon3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -24, -2.4683702, -24)
+use_collision = true
+polygon = PackedVector2Array(-9.743912, -4.041361, -6.271755, -3.6059608, -3.3395653, -3.9000874, -0.003162384, -2.452057, 3.865324, -1.875185, 5.6344414, -0.22158241, 8.300058, 1.0708466, 9.003866, 3.7782059, 11.588211, 6.7895184, 11.046871, 11.141388, 11.305668, 14.559494, 9.139488, 12.958408, -7.3422813, -1.781004, -12.475174, -3.4291801)
+depth = 2.71
 
 [node name="CaveEnv" parent="." instance=ExtResource("1_rxes3")]
 
@@ -37,6 +55,73 @@ polygon = PackedVector2Array(-48.2858, -45.1708, 9.23582, -56.5374, 68.1351, -39
 
 [node name="CSGBox3D28" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.55528, 21.9657, -19.9115)
+visible = false
 size = Vector3(98.5168, 0.745895, 103.655)
 
+[node name="DrawBridge" type="Node3D" parent="."]
+transform = Transform3D(0.95180875, 0, 0.3066922, 0, 1, 0, -0.3066922, 0, 0.95180875, -25.219475, -0.5, -19.19378)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="DrawBridge"]
+transform = Transform3D(0.9930623, 0, 0.117589414, 0, 1, 0, -0.117589414, 0, 0.9930623, 0, 2.8726196, 0)
+visible = false
+size = Vector3(1, 6, 1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="DrawBridge"]
+transform = Transform3D(0.9930623, 0, 0.117589414, 0, 1, 0, -0.117589414, 0, 0.9930623, 2.979185, 2.75, -0.35276794)
+visible = false
+size = Vector3(1, 6, 1)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="DrawBridge"]
+transform = Transform3D(1, 0, 2.9802322e-08, 0, 0.9237593, -0.38297367, 0, 0.38297367, 0.92375934, 3.6640491, 3.9078977, -0.03986168)
+size = Vector3(0.4073105, 0.9378128, 0.46038818)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="DrawBridge"]
+transform = Transform3D(1, 0, 2.9802322e-08, 0, 0.9237593, -0.38297367, 0, 0.38297367, 0.92375934, 0.25868034, 3.863469, -0.05827713)
+size = Vector3(0.4073105, 1.0340042, 0.46038818)
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="DrawBridge"]
+polygon = PackedVector2Array(-0.59804344, 0.107899666, -0.38044548, 3.1569881, -0.02677536, 5.0968328, -0.0023345947, 5.939989, 0.21676636, 5.5867615, 0.3912468, 5.7557755, 0.79868317, 4.1103024, 0.6534004, 3.141825, 0.85697937, 1.8625965, 0.9543648, 0.011973381)
+
+[node name="CSGPolygon3D3" type="CSGPolygon3D" parent="DrawBridge"]
+polygon = PackedVector2Array(-0.59804344, 0.107899666, -0.02677536, 5.0968328, -0.0023345947, 5.939989, 0.21676636, 5.5867615, 0.3912468, 5.7557755, 0.684782, 4.157042, 0.9191952, 3.3572834, 0.85697937, 1.8625965, 0.9543648, 0.011973381)
+
+[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="DrawBridge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4376125, 0, -5.2154064e-08)
+polygon = PackedVector2Array(-0.5443783, 0.02773714, -0.49066067, 2.92389, -0.29946518, 4.3506136, -0.17405796, 5.593999, -0.013228416, 5.4073353, 0.2059946, 6.105523, 0.3387537, 5.851143, 0.6334162, 5.6678743, 0.85761166, 3.6581755, 0.8661556, 2.4924297, 1.1973639, -0.019692898, -0.15130329, -0.15074635)
+
+[node name="Node3D" type="Node3D" parent="DrawBridge"]
+transform = Transform3D(1, 0, 0, 0, 0.96637607, -0.2571328, 0, 0.2571328, 0.96637607, 2.056885, 0, 5.9604645e-08)
+
+[node name="CSGPolygon3D4" type="CSGPolygon3D" parent="DrawBridge/Node3D"]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 1, -0.23153616, -3.7020072e-08, -0.022525907)
+use_collision = true
+polygon = PackedVector2Array(-0.78873444, 0.19578195, -1.0999832, 5.6142206, -0.9647846, 6.070412, -0.5362034, 6.4960747, 0.59148216, 6.4471054, 0.9784508, 5.746411, 1.0344162, 0.15208459)
+depth = 0.32
+material = SubResource("StandardMaterial3D_cqjvr")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="DrawBridge/Node3D"]
+transform = Transform3D(1.0000001, 0, 0, 0, 0.99999905, 0, 0, 0, 0.9999985, -0.19601059, 2.8335571, 0.095321655)
+visible = false
+size = Vector3(1.7948608, 6.6679688, 0.31652832)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="DrawBridge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6380453, 4.561471, 0.2630158)
+light_color = Color(0.932176, 0.5351234, 0.5530231, 1)
+omni_range = 10.107793
+
+[node name="Area3D2Zoom" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.50721, 0, -17.636942)
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Area3D2Zoom"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.4099479, 0)
+visible = false
+polygon = PackedVector2Array(5.640152, -1.7501183, 3.8089314, -4.6290846, -4.595896, -5.9053535, -7.469042, -5.324667, -7.774294, -4.421711, -4.438837, -2.8591862, -5.264776, 1.4622726, -10.047588, 0.73615074, -9.89043, 2.7601109, -5.00263, 3.3033218, -1.1721859, 4.4730415, 3.8778667, 6.086729, 4.5960293, 4.155592, -0.49739647, 2.2012749, -0.022470474, -1.1261902)
+depth = 3.28
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2Zoom"]
+transform = Transform3D(0.9494967, 0, 0.31377703, 0, 1, 0, -0.31377703, 0, 0.9494967, -1.1742306, 0.8375511, 0.14347267)
+shape = SubResource("BoxShape3D_cqjvr")
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="Area3D2Zoom" to="." method="_on_area_3d_2_zoom_body_entered"]
+[connection signal="body_exited" from="Area3D2Zoom" to="." method="_on_area_3d_2_zoom_body_exited"]

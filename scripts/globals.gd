@@ -20,6 +20,7 @@ var settings_trigger_exit: bool = false
 
 # player movement
 var player_pos: Vector3 = Vector3(0, 0, 0)
+var camera_size: float = 5.762
 
 var player_can_move: bool = true
 var player_physics_processing: bool = true

@@ -1,6 +1,6 @@
 extends RigidBody3D
 
-@onready var camera = $TwistPivot/PitchPivot/Camera3D
+@onready var camera: Camera3D = $TwistPivot/PitchPivot/Camera3D
 @onready var model = $Node3D
 
 @onready var starter_weapon = $Node3D/player_rev2/ArmLeft/LeftArm/StarterWeaponNode
@@ -34,6 +34,8 @@ var run_hp_ranout_once = false
 # called every frame, delta is elapsed time since prev. frame
 # delta allows variations between machines
 func _process(delta: float) -> void:
+	camera.size = Globals.camera_size
+	
 	Globals.player_pos = self.position
 	
 	if Globals.player_physics_processing:

@@ -54,7 +54,7 @@ use_collision = true
 size = Vector3(1.86472, 1.75118, 7.17432)
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="Cave"]
-transform = Transform3D(-0.012025, 8.71901e-08, -0.999928, -7.42178e-09, -1, -8.71071e-08, -0.999928, 6.37378e-09, 0.012025, -17.0455, 1.82707, -6.82598)
+transform = Transform3D(-0.012024997, 8.71901e-08, -0.99992776, -7.4217783e-09, -1, -8.710716e-08, -0.99992776, 6.3737784e-09, 0.012024997, -17.0455, 1.82707, -6.82598)
 light_color = Color(0.784638, 0.0972639, 0.0522048, 1)
 light_energy = 5.8
 shadow_enabled = true
@@ -169,6 +169,12 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -12.02
 visible = false
 use_collision = true
 size = Vector3(1.67694, 1.79321, 0.249756)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Barriers"]
+transform = Transform3D(0.8937475, 0, 0.4485704, 0, 1, 0, -0.4485704, 0, 0.8937475, -6.012391, 2.6726074, 4.506955)
+visible = false
+use_collision = true
+size = Vector3(1, 6.345215, 9.353485)
 
 [node name="TopRocks" type="Node3D" parent="."]
 
@@ -348,27 +354,7 @@ shape = SubResource("BoxShape3D_6f4tj")
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 use_collision = true
-polygon = PackedVector2Array(-13.9361, 9.72695, 0.947796, 16.1574, 12.3636, 12.6893, 16.8432, 5.53634, 15.2131, -3.72266, 5.34635, -8.30221, -6.71047, -8.08462, -10.9015, -3.20613, -11.2628, 2.57402, -13.9361, 6.90913, -15.7424, 9.5102)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0.5, -5)
-use_collision = true
-size = Vector3(12, 2, 11)
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0.5, -0.5)
-use_collision = true
-size = Vector3(11, 2, 2)
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0.5, -2)
-use_collision = true
-size = Vector3(5, 2, 5)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="."]
-transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, 1.38902, -0.171799, -5)
-use_collision = true
-size = Vector3(3.22516, 2, 3)
+polygon = PackedVector2Array(-13.867383, 9.766918, 0.947796, 16.1574, 12.3636, 12.6893, 16.8432, 5.53634, 15.2131, -3.72266, 5.34635, -8.30221, -6.71047, -8.08462, -10.9015, -3.20613, -11.2628, 2.57402, -13.9361, 6.90913, -15.7424, 9.5102)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_a7d5b")
@@ -386,6 +372,33 @@ polygon = PackedVector2Array(-13.2666, -4.6835, -10.5689, -0.865102, -10.592, 1.
 [node name="TopSideForeground2" type="CSGPolygon3D" parent="."]
 transform = Transform3D(0.707107, -0.408607, 0.577096, 0, 0.816138, 0.577858, -0.707107, -0.408607, 0.577096, 3.59457, 4.55962, -3.40213)
 polygon = PackedVector2Array(-13.7481, 1.05722, -12.5911, 16.0853, -17.8272, 15.2869, -20.981, 15.3401, -25.7081, 14.9062, -31.0855, 13.0974, -29.2212, 4.38162, -25.8735, 1.83041, -20.3934, 3.10345, -22.7237, 5.58888, -25.9959, 8.3547, -25.1183, 11.783, -21.7118, 13.0762, -18.3276, 12.1273, -17.295, 9.80349, -16.7612, 7.59145, -15.7963, 5.26334, -16.956, 4.07334, -20.0387, 4.08185, -25.2506, 1.29434)
+
+[node name="Platform" type="Node3D" parent="."]
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Platform"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0.5, -5)
+use_collision = true
+size = Vector3(12, 2, 11)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Platform"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0.5, -5)
+use_collision = true
+size = Vector3(12, 2, 11)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Platform"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0.5, -0.5)
+use_collision = true
+size = Vector3(11, 2, 2)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Platform"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0.5, -2)
+use_collision = true
+size = Vector3(5, 2, 5)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Platform"]
+transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, 1.38902, -0.171799, -5)
+use_collision = true
+size = Vector3(3.22516, 2, 3)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2268, 2.21028, -1.14228)

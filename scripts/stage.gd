@@ -251,6 +251,7 @@ func _on_exit_start():
 	Globals.shards = 0
 	
 	Globals.card_ruins_shown = false
+	Globals.collected_shard_stack = false
 	
 	get_tree().paused = false
 	
