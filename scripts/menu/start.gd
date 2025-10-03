@@ -1,6 +1,7 @@
 extends Control
 
 signal level_1
+signal level_arcade
 
 @onready var playButton = $MarginContainer/VBoxContainer2/MarginContainer/VBoxContainer/PlayButton
 @onready var settingsButton = $MarginContainer/VBoxContainer2/MarginContainer/VBoxContainer/SettingsButton
@@ -14,6 +15,11 @@ func _ready() -> void:
 func _on_button_start_pressed() -> void:
 	hide()
 	emit_signal("level_1")
+	Globals.menu_pick_fx_event = 0.0
+
+func _on_arcade_button_pressed() -> void:
+	hide()
+	emit_signal("level_arcade")
 	Globals.menu_pick_fx_event = 0.0
 
 func _on_button_settings_pressed() -> void:

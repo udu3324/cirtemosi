@@ -46,6 +46,7 @@ func _ready() -> void:
 	
 	
 	menuStart.connect("level_1", _on_level_1)
+	menuStart.connect("level_arcade", _on_level_arcade)
 	menuStart.visible = true
 	
 	masterAudio.play()
@@ -282,8 +283,6 @@ func _on_level_1():
 	relics.visible = true
 	shards.visible = true
 	
-	Globals.player_is_stunned = false
-	
 	# only for the test env
 	# _add_environment(preload("res://scenes/enviornment/OutsideEnv.tscn"))
 	
@@ -298,13 +297,48 @@ func _on_level_1():
 	
 	await Globals._show_title_card("The Cave", "you mistakenly came here", 1.0)
 	
-	await get_tree().create_timer(0.7).timeout
+	await get_tree().create_timer(0.4).timeout
 	
 	hints.get_child(0).visible = true
 	hints.get_child(1).visible = true
 	hints.get_child(2).visible = true
 	hints.get_child(3).visible = true
 	hints.get_child(4).visible = true
+
+func _on_level_arcade():
+	await _show_loading()
+	
+	level = preload("res://levels/arcade/level1.tscn").instantiate()
+	$Node3D.add_child(level)
+	
+	remove_child(level_start)
+	
+	_add_player(Vector3(0, 2, 0))
+	health.visible = true
+	stamina.visible = true
+	equipment.visible = true
+	#relics.visible = true
+	shards.visible = true
+	
+	# do not always apply this to every scenario!!!
+	Globals.stamina = Globals.stamina_max
+	Globals.health = Globals.health_max
+	
+	_hide_loading()
+	
+	print_debug("added arcade level 1")
+	
+	#await Globals._show_title_card("Arcade Mode", "have fun!", 0.3)
+	
+	#await get_tree().create_timer(0.4).timeout
+	
+	hints.get_child(0).visible = true
+	hints.get_child(1).visible = true
+	hints.get_child(2).visible = true
+	hints.get_child(3).visible = true
+	hints.get_child(4).visible = true
+	
+	_hide_loading()
 
 func _on_level_test():
 	level = preload("res://levels/test/test_scene_1.tscn").instantiate()
