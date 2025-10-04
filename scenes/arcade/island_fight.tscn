@@ -1,0 +1,82 @@
+[gd_scene load_steps=8 format=3 uid="uid://cpbolh4oop0cs"]
+
+[ext_resource type="Material" uid="uid://cpolnp4tv2a5f" path="res://assets/materials/layer_1.tres" id="1_2e0uf"]
+[ext_resource type="Material" uid="uid://3h8u8lbslafn" path="res://assets/materials/layer_2.tres" id="2_hm2dx"]
+[ext_resource type="Material" uid="uid://gjv3d21cpe10" path="res://assets/materials/layer_3.tres" id="3_am1vh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2e0uf"]
+albedo_color = Color(0.1728327, 0.17283267, 0.17283267, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hm2dx"]
+albedo_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_ao6ir"]
+vertices = PackedVector3Array(0.94974804, 0.5, -8.949747, 0.94974804, 0.5, -0.9497471, 8.949748, 0.5, -0.9497471, 8.949748, 0.5, -8.949747)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_qwqow"]
+height = 1.5
+radius = 3.192871
+
+[node name="IslandFight" type="Node3D"]
+
+[node name="BarrierCollision" type="Node3D" parent="."]
+
+[node name="BarrierLReal" type="CSGBox3D" parent="BarrierCollision"]
+transform = Transform3D(0.8660253, 0, 0.49999997, 0, 1, 0, -0.49999997, 0, 0.8660253, 1.154, 5.381604, -1.315)
+visible = false
+use_collision = true
+size = Vector3(0.696, 3.073, 3.862)
+
+[node name="BarrierRReal" type="CSGBox3D" parent="BarrierCollision"]
+transform = Transform3D(0.49999997, 0, 0.8660253, 0, 1, 0, -0.8660253, 0, 0.49999997, 8.558, 5.381604, -8.719)
+visible = false
+use_collision = true
+size = Vector3(0.53184915, 3.073, 3.862)
+
+[node name="BarrierModel" type="Node3D" parent="."]
+
+[node name="BarrierL" type="CSGBox3D" parent="BarrierModel"]
+transform = Transform3D(0.8660253, 0, 0.49999997, 0, 1, 0, -0.49999997, 0, 0.8660253, 1.154, 5, -1.315)
+size = Vector3(0.696, 3.073, 3.862)
+material = SubResource("StandardMaterial3D_2e0uf")
+
+[node name="BarrierR" type="CSGBox3D" parent="BarrierModel"]
+transform = Transform3D(0.49999997, 0, 0.8660253, 0, 1, 0, -0.8660253, 0, 0.49999997, 8.558, 5, -8.719)
+size = Vector3(0.53184915, 3.073, 3.862)
+material = SubResource("StandardMaterial3D_hm2dx")
+
+[node name="Floor" type="CSGBox3D" parent="."]
+transform = Transform3D(0, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, 0, 4.9497476, -0.5, -4.9497476)
+use_collision = true
+size = Vector3(9, 1, 9)
+material = ExtResource("1_2e0uf")
+
+[node name="Layer2" type="CSGPolygon3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -1, 0)
+polygon = PackedVector2Array(1.2231493, 1.6667972, 2.2385895, 1.2905962, 3.4354951, 1.0827861, 4.9012785, 1.6622819, 6.3359313, 0.93398005, 7.4086056, 2.1729712, 8.553916, 2.5462759, 7.851851, 4.714077, 8.556901, 6.118539, 8.383911, 7.9353213, 6.9712024, 8.1705885)
+depth = 1.46
+material = ExtResource("2_hm2dx")
+
+[node name="Layer3" type="CSGPolygon3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -2.1515217, 0)
+polygon = PackedVector2Array(7.047225, 7.5993533, 7.8201513, 5.7685866, 7.1093454, 4.414007, 7.081565, 3.0897384, 6.0872755, 1.9136617, 4.1433735, 2.1371675, 2.5882268, 1.8934574, 1.1063738, 2.6882482)
+depth = 1.33
+material = ExtResource("3_am1vh")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_ao6ir")
+
+[node name="Floor2" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(0, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, 0, 4.9497476, -0.5, -4.9497476)
+visible = false
+use_collision = true
+size = Vector3(9, 1, 9)
+material = ExtResource("1_2e0uf")
+
+[node name="Area3DSpawn" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -6)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3DSpawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+shape = SubResource("CylinderShape3D_qwqow")

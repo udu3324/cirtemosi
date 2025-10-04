@@ -308,7 +308,7 @@ func _on_level_1():
 func _on_level_arcade():
 	await _show_loading()
 	
-	level = preload("res://levels/arcade/level1.tscn").instantiate()
+	level = preload("res://levels/arcade/levelbase.tscn").instantiate()
 	$Node3D.add_child(level)
 	
 	remove_child(level_start)

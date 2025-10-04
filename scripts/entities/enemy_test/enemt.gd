@@ -18,8 +18,10 @@ extends RigidBody3D
 
 @onready var audio_player = $AudioStreamPlayer3D
 
+var despawns: bool = true
 var drops_relic_1: bool = false
 var drops_shards: bool = true
+var rng_shard_drops: bool = true
 var rand_shard_range: int = 5
 
 var slash = preload("res://assets/audio/fx/enemt_slash.wav")
@@ -102,6 +104,10 @@ func _process(_delta: float) -> void:
 		_drop_relic_1()
 		_drop_shards()
 		
+		if despawns:
+			await get_tree().create_timer(randi_range(2, 5)).timeout
+			model.queue_free()
+		
 		return
 
 func _drop_relic_1():
@@ -121,7 +127,10 @@ func _drop_relic_1():
 
 func _drop_shards():
 	if drops_shards:
-		var actual_drop = randi_range(1, rand_shard_range)
+		var actual_drop = rand_shard_range
+		
+		if rng_shard_drops:
+			actual_drop = randi_range(1, rand_shard_range)
 		
 		for i in actual_drop:
 			await get_tree().create_timer(0.1).timeout

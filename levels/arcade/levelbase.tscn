@@ -1,0 +1,61 @@
+[gd_scene load_steps=10 format=3 uid="uid://r5un80qecc70"]
+
+[ext_resource type="PackedScene" uid="uid://b6t1s1ntpjpeu" path="res://scenes/items/starter_weapon.tscn" id="1_26cjr"]
+[ext_resource type="Script" uid="uid://ca5uvijwqi1rf" path="res://scripts/arcade/levelbase.gd" id="1_dnp56"]
+[ext_resource type="PackedScene" uid="uid://6ofm1d8n6tgo" path="res://scenes/arcade/island_intermission.tscn" id="2_dnp56"]
+[ext_resource type="PackedScene" uid="uid://cpbolh4oop0cs" path="res://scenes/arcade/island_fight.tscn" id="3_7jpbv"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_muklc"]
+sky_top_color = Color(0.46903396, 0.7563706, 0.8889926, 1)
+sky_horizon_color = Color(1.0147052, 1.0238396, 1.0318143, 1)
+ground_bottom_color = Color(0.44378757, 0.1929883, 0.09226511, 1)
+ground_horizon_color = Color(1.0147052, 1.0238396, 1.0318143, 1)
+
+[sub_resource type="Sky" id="Sky_ayugy"]
+sky_material = SubResource("ProceduralSkyMaterial_muklc")
+
+[sub_resource type="Environment" id="Environment_ao6ir"]
+background_mode = 2
+sky = SubResource("Sky_ayugy")
+tonemap_mode = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dnp56"]
+size = Vector3(100, 2, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7jpbv"]
+size = Vector3(4.584717, 4.0773926, 1)
+
+[node name="LevelBase" type="Node3D"]
+script = ExtResource("1_dnp56")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ao6ir")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 2.0817633, 0)
+light_energy = 0.234
+shadow_enabled = true
+directional_shadow_max_distance = 1.0
+
+[node name="StarterWeapon" parent="." instance=ExtResource("1_26cjr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+
+[node name="IslandIntermission" parent="." instance=ExtResource("2_dnp56")]
+
+[node name="IslandFight" parent="." instance=ExtResource("3_7jpbv")]
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_dnp56")
+
+[node name="Area3DTriggerStart" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3DTriggerStart"]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 1.9398373, 1.5386963, -2.0601625)
+shape = SubResource("BoxShape3D_7jpbv")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="Area3DTriggerStart" to="." method="_on_area_3d_trigger_start_body_entered"]
