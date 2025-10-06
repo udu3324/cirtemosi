@@ -56,7 +56,6 @@ polygon = PackedVector2Array(-48.2858, -45.1708, 9.23582, -56.5374, 68.1351, -39
 
 [node name="CSGBox3D28" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.55528, 21.9657, -19.9115)
-visible = false
 size = Vector3(98.5168, 0.745895, 103.655)
 
 [node name="DrawBridge" type="Node3D" parent="."]

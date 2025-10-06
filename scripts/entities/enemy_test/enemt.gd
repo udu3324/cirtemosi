@@ -79,7 +79,7 @@ func _process(_delta: float) -> void:
 	else:
 		health_bar.visible = true
 	
-	if health == 0.0 and !dead:
+	if health <= 0.0 and !dead:
 		self.sleeping = true
 		self.freeze = true
 		

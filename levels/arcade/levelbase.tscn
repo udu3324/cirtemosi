@@ -24,7 +24,7 @@ tonemap_mode = 2
 size = Vector3(100, 2, 100)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7jpbv"]
-size = Vector3(4.584717, 4.0773926, 1)
+size = Vector3(6.935, 4.077, 1)
 
 [node name="LevelBase" type="Node3D"]
 script = ExtResource("1_dnp56")
@@ -54,13 +54,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.38883, 0, -6.9284735)
 transform = Transform3D(0.70710677, 0.029314626, -0.7064988, 0, 0.99914026, 0.041457143, 0.70710677, -0.029314626, 0.7064988, 2.8185968, -0.21805938, -2.5172818)
 
 [node name="StarterWeapon" parent="." instance=ExtResource("1_26cjr")]
-transform = Transform3D(0.094758116, 0.049167503, -0.99428535, -0.060584586, 0.997213, 0.043538418, 0.9936552, 0.05611274, 0.097472824, 2.7396643, 0.10525282, -2.3506987)
+transform = Transform3D(0.094758116, 0.049167503, -0.99428535, -0.060584586, 0.997213, 0.043538418, 0.9936552, 0.05611274, 0.097472824, 2.7429147, 0.17117655, -2.3469892)
 
 [node name="Area3DTriggerStart" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5340123, 0, -2.1086514)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5340123, 1.5889874, -5.108651)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3DTriggerStart"]
-transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 2.289524, 1.5386963, -2.4098492)
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 0, 0, 0)
 shape = SubResource("BoxShape3D_7jpbv")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

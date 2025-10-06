@@ -12,6 +12,8 @@ extends Node
 @onready var audio_menu_pick = $MenuFX
 @onready var booh = preload("res://assets/audio/fx/menu_pick.wav")
 
+@onready var regular = preload("res://assets/audio/soundtrack/cirtemosi-start-remixed.ogg")
+
 @onready var vignette = $CanvasLayer/Vignette/MarginContainer/ColorRect
 @onready var health = $CanvasLayer/HealthBar
 @onready var stamina = $CanvasLayer/StaminaBar
@@ -38,6 +40,7 @@ var player
 var enviornment
 
 func _ready() -> void:
+	Globals.master_audio = masterAudio
 	Globals.root_node_3d = $Node3D
 	
 	Globals.title_card = title_card
@@ -247,6 +250,8 @@ func _on_exit_start():
 	
 	_clear_node_3d_stage()
 	
+	masterAudio.stream = regular
+	
 	for hint in hints.get_children():
 		hint.visible = false
 	
@@ -271,6 +276,8 @@ func _on_exit_start():
 	
 	Globals.relics = [false, false, false, false, false, false, false]
 	Globals.shards = 0
+	
+	Globals.item_info_dict["starter_weapon"]["damage"] = 20
 	
 	Globals.card_ruins_shown = false
 	Globals.collected_shard_stack = false
@@ -361,7 +368,16 @@ func _on_level_arcade():
 	hints.get_child(3).visible = true
 	hints.get_child(4).visible = true
 	
+	masterAudio.stream = null
+	
+	Globals.arcade_title.text = "cross the bridge"
+	Globals.arcade_time.text = ""
+	Globals.arcade_description.text = ""
+	
 	_hide_loading()
+	
+	
+	
 
 func _on_level_test():
 	level = preload("res://levels/test/test_scene_1.tscn").instantiate()

@@ -27,6 +27,12 @@ extends Node3D
 @onready var dialogue_response: Label = $SubViewport2/MarginContainer/Label
 @onready var dialogue_encrypted_response: Label = $SubViewport3/MarginContainer/Label
 
+@onready var boot = preload("res://assets/audio/fx/interface_boot.wav")
+@onready var shutdown = preload("res://assets/audio/fx/interface_shutdown.wav")
+@onready var static_sound = preload("res://assets/audio/fx/interface_static.wav")
+@onready var select = preload("res://assets/audio/fx/interface_select.wav")
+@onready var type = preload("res://assets/audio/fx/interface_untranslated.wav")
+
 var terminal_color: Color = Color(0.021, 0.258, 0.021, 1.0)
 
 var player_is_close: bool = false
@@ -223,6 +229,7 @@ func _handle_input():
 				1: _set_active_menu("health")
 				2: _set_active_menu("relic")
 		else:
+			Globals._play_fx(audio_player, select, 0.0, 1.0)
 			_handle_terminal_final_enter()
 	
 	if Input.is_action_just_pressed("ui_left") and active_menu != "main":
@@ -341,6 +348,8 @@ func _internal_typing_func_dont_use_elsewhere(typing_string: String, label_node:
 		await get_tree().create_timer(randf_range(keystroke_time_range, keystroke_time_range + 0.05)).timeout
 		
 		label_node.text += typing_string[i]
+		
+		Globals._play_fx(audio_player, type, 0.0, randf_range(0.7, 1.4))
 
 func _flicker():
 	screen_material.emission_energy_multiplier = randf_range(0.3, 0.8)
@@ -348,6 +357,9 @@ func _flicker():
 	screen_material.albedo_color = Color(0.0, 0.0, 0.0, 0.0)
 	screen_material.emission = Color(0.0, 0.0, 0.0, 0.0)
 	screen_material.emission_enabled = true
+	
+	if !player_is_interacting:
+		Globals._play_fx(audio_player, static_sound, -10.0, randf_range(0.5, 1.5))
 	
 	if player_is_interacting:
 		await get_tree().create_timer(0.1).timeout
@@ -379,6 +391,8 @@ func _on_inner_area_3d_body_entered(body: Node3D) -> void:
 	if body.name.contains("Player"):
 		player_is_interacting = true
 		
+		Globals._play_fx(audio_player, boot, 0.0, 1.0)
+		
 		if tween.is_running():
 			tween.kill()
 		
@@ -402,6 +416,8 @@ func _on_inner_area_3d_body_entered(body: Node3D) -> void:
 func _on_inner_area_3d_body_exited(body: Node3D) -> void:
 	if body.name.contains("Player"):
 		player_is_interacting = false
+		
+		Globals._play_fx(audio_player, shutdown, 0.0, 1.0)
 		
 		if tween.is_running():
 			tween.kill()

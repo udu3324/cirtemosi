@@ -1,10 +1,11 @@
 extends Node3D
 
+@onready var starter_weapon: Node3D = $StarterWeapon
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if Globals.equipment[0] == "starter_weapon" and $StarterWeapon.visible:
-		$StarterWeapon.visible = false
+	if Globals.equipment[0] == "starter_weapon" and starter_weapon.visible:
+		starter_weapon.visible = false
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:

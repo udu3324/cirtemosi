@@ -90,6 +90,7 @@ var enemt_deaths = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 var enemt_death_cleared = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
 # global storage
+var master_audio: AudioStreamPlayer
 var root_node_3d: Node3D
 
 var title_card: Control
