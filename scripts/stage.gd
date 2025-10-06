@@ -28,6 +28,11 @@ extends Node
 @onready var description_crypt = $CanvasLayer/TitleCard/CenterContainer/VBoxContainer/VBoxContainer/DescriptionEncrypted
 @onready var title_decrypt = $CanvasLayer/TitleCard/CenterContainer/VBoxContainer/TitleDecrypted
 
+@onready var arcade_ui = $CanvasLayer/Arcade
+@onready var arcade_ui_title = $CanvasLayer/Arcade/MarginContainer/Title
+@onready var arcade_ui_description = $CanvasLayer/Arcade/MarginContainer2/Description
+@onready var arcade_ui_time = $CanvasLayer/Arcade/MarginContainer3/Time
+
 var level
 var player
 var enviornment
@@ -40,6 +45,14 @@ func _ready() -> void:
 	Globals.title_crypt = title_crypt
 	Globals.description_crypt = description_crypt
 	Globals.title_decrypt = title_decrypt
+	
+	Globals.arcade_title = arcade_ui_title
+	Globals.arcade_description = arcade_ui_description
+	Globals.arcade_time = arcade_ui_time
+	# in case i forget to do it in editor :cry:
+	Globals.arcade_title.text = ""
+	Globals.arcade_description.text = ""
+	Globals.arcade_time.text = ""
 	
 	menuPause.connect("exit_to_start", _on_exit_start)
 	menuReset.connect("exit_to_start", _on_exit_start)
@@ -57,6 +70,8 @@ func _process(_delta: float) -> void:
 	Globals.startVisible = menuStart.visible
 	Globals.loadingVisible = menuLoading.visible
 	Globals.resetVisible = menuReset.visible
+	
+	Globals.arcadeUIVisible = arcade_ui.visible
 	
 	if !masterAudio.playing:
 		masterAudio.play()
@@ -235,6 +250,8 @@ func _on_exit_start():
 	for hint in hints.get_children():
 		hint.visible = false
 	
+	arcade_ui.visible = false
+	
 	menuPause.visible = false
 	menuReset.visible = false
 	
@@ -245,7 +262,11 @@ func _on_exit_start():
 	relics.visible = false
 	shards.visible = false
 	
+	Globals.arcade_description.text = ""
+	Globals.arcade_title.text = ""
+	
 	Globals.equipment = ["", "", ""]
+	Globals.enemt_deaths = Globals.enemt_death_cleared
 	Globals.slot_active = 1
 	
 	Globals.relics = [false, false, false, false, false, false, false]
@@ -319,6 +340,8 @@ func _on_level_arcade():
 	equipment.visible = true
 	#relics.visible = true
 	shards.visible = true
+	
+	arcade_ui.visible = true
 	
 	# do not always apply this to every scenario!!!
 	Globals.stamina = Globals.stamina_max

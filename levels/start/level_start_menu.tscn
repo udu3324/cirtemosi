@@ -48,6 +48,7 @@ polygon = PackedVector2Array(-18.47925, 12.060616, -17.909992, 10.884062, -17.23
 
 [node name="Enemt" parent="." instance=ExtResource("1_cok45")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+ignore_player = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.70710677, -0.40860704, 0.5770964, 0, 0.8161376, 0.5778576, -0.70710677, -0.40860704, 0.5770964, 4.762636, 8.065182, 8.243113)

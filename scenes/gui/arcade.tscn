@@ -1,0 +1,70 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbsplx2pvl8b2"]
+
+[ext_resource type="FontFile" uid="uid://d25dq4tmt7ywp" path="res://assets/font/NebulaSans-Black.ttf" id="1_yykwl"]
+[ext_resource type="FontFile" uid="uid://1qiyr01tsexv" path="res://assets/font/NebulaSans-Bold.ttf" id="2_q1dgm"]
+
+[node name="Arcade" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1158.0
+offset_bottom = 343.0
+color = Color(1, 0.4532537, 0.37674695, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+theme_override_constants/margin_top = 5
+
+[node name="Title" type="Label" parent="MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_yykwl")
+theme_override_font_sizes/font_size = 101
+horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -391.0
+offset_bottom = 49.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 105
+theme_override_constants/margin_right = 25
+
+[node name="Description" type="Label" parent="MarginContainer2"]
+layout_mode = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("1_yykwl")
+theme_override_font_sizes/font_size = 36
+horizontal_alignment = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -391.0
+offset_bottom = 49.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+
+[node name="Time" type="Label" parent="MarginContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_q1dgm")
+theme_override_font_sizes/font_size = 66
+horizontal_alignment = 2

@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://r5un80qecc70"]
+[gd_scene load_steps=11 format=3 uid="uid://r5un80qecc70"]
 
 [ext_resource type="PackedScene" uid="uid://b6t1s1ntpjpeu" path="res://scenes/items/starter_weapon.tscn" id="1_26cjr"]
 [ext_resource type="Script" uid="uid://ca5uvijwqi1rf" path="res://scripts/arcade/levelbase.gd" id="1_dnp56"]
 [ext_resource type="PackedScene" uid="uid://6ofm1d8n6tgo" path="res://scenes/arcade/island_intermission.tscn" id="2_dnp56"]
 [ext_resource type="PackedScene" uid="uid://cpbolh4oop0cs" path="res://scenes/arcade/island_fight.tscn" id="3_7jpbv"]
+[ext_resource type="PackedScene" uid="uid://be7mj4c0s2s0d" path="res://scenes/arcade/bridge.tscn" id="4_dnp56"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_muklc"]
 sky_top_color = Color(0.46903396, 0.7563706, 0.8889926, 1)
@@ -32,17 +33,10 @@ script = ExtResource("1_dnp56")
 environment = SubResource("Environment_ao6ir")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 2.0817633, 0)
-light_energy = 0.234
+transform = Transform3D(-0.09826556, -0.17245093, 0.9801044, 0.76493156, 0.6169012, 0.18523714, -0.6365719, 0.7679151, 0.071293, 0, 2.0817633, 0)
+light_energy = 0.085
 shadow_enabled = true
 directional_shadow_max_distance = 1.0
-
-[node name="StarterWeapon" parent="." instance=ExtResource("1_26cjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
-
-[node name="IslandIntermission" parent="." instance=ExtResource("2_dnp56")]
-
-[node name="IslandFight" parent="." instance=ExtResource("3_7jpbv")]
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
@@ -51,10 +45,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_dnp56")
 
+[node name="IslandIntermission" parent="." instance=ExtResource("2_dnp56")]
+
+[node name="IslandFight" parent="." instance=ExtResource("3_7jpbv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.38883, 0, -6.9284735)
+
+[node name="Bridge" parent="." instance=ExtResource("4_dnp56")]
+transform = Transform3D(0.70710677, 0.029314626, -0.7064988, 0, 0.99914026, 0.041457143, 0.70710677, -0.029314626, 0.7064988, 2.8185968, -0.21805938, -2.5172818)
+
+[node name="StarterWeapon" parent="." instance=ExtResource("1_26cjr")]
+transform = Transform3D(0.094758116, 0.049167503, -0.99428535, -0.060584586, 0.997213, 0.043538418, 0.9936552, 0.05611274, 0.097472824, 2.7396643, 0.10525282, -2.3506987)
+
 [node name="Area3DTriggerStart" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5340123, 0, -2.1086514)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3DTriggerStart"]
-transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 1.9398373, 1.5386963, -2.0601625)
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 2.289524, 1.5386963, -2.4098492)
 shape = SubResource("BoxShape3D_7jpbv")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

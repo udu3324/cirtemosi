@@ -1,0 +1,63 @@
+[gd_scene load_steps=2 format=3 uid="uid://be7mj4c0s2s0d"]
+
+[ext_resource type="PackedScene" uid="uid://dskhuhorck70w" path="res://assets/model/enviornment/island_bridge.blend" id="1_h3y01"]
+
+[node name="Bridge" type="Node3D"]
+
+[node name="island_bridge" parent="." instance=ExtResource("1_h3y01")]
+
+[node name="Collision" type="Node3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Collision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1453247, 0)
+visible = false
+use_collision = true
+size = Vector3(1.275, 0.22302246, 1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Collision"]
+transform = Transform3D(1, 0, 0, 0, 0.9983418, -0.057564024, 0, 0.057564024, 0.9983418, 0, 0.10451184, 1.0585434)
+visible = false
+use_collision = true
+size = Vector3(1.275, 0.22302246, 1.1396484)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Collision"]
+transform = Transform3D(1, 0, 0, 0, 0.99834174, 0.05756402, 0, -0.05756402, 0.99834174, 0, 0.105, -1.059)
+visible = false
+use_collision = true
+size = Vector3(1.275, 0.22302246, 1.1396484)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Collision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7360722, 0.1453247, 0)
+visible = false
+use_collision = true
+size = Vector3(0.14, 0.368, 1)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Collision"]
+transform = Transform3D(1, 0, 0, 0, 0.9983418, -0.057564024, 0, 0.057564024, 0.9983418, 0.7360722, 0.10451184, 1.0585434)
+visible = false
+use_collision = true
+size = Vector3(0.14, 0.368, 1.14)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Collision"]
+transform = Transform3D(1, 0, 0, 0, 0.99834174, 0.05756402, 0, -0.05756402, 0.99834174, 0.7360722, 0.105, -1.059)
+visible = false
+use_collision = true
+size = Vector3(0.14, 0.368, 1.14)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Collision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7280557, 0.1453247, 0)
+visible = false
+use_collision = true
+size = Vector3(0.14, 0.368, 1)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Collision"]
+transform = Transform3D(1, 0, 0, 0, 0.9983418, -0.057564024, 0, 0.057564024, 0.9983418, -0.7280557, 0.10451184, 1.0585434)
+visible = false
+use_collision = true
+size = Vector3(0.14, 0.368, 1.14)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Collision"]
+transform = Transform3D(1, 0, 0, 0, 0.99834174, 0.05756402, 0, -0.05756402, 0.99834174, -0.7280557, 0.105, -1.059)
+visible = false
+use_collision = true
+size = Vector3(0.14, 0.368, 1.14)

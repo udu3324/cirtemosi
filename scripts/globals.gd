@@ -4,6 +4,7 @@ extends Node
 var startVisible: bool = false
 var loadingVisible: bool = false
 var resetVisible: bool = false
+var arcadeUIVisible: bool = false
 
 var settingsVisible: bool = false
 
@@ -84,6 +85,10 @@ func translate_to_interface(text: String) -> String:
 	
 	return result
 
+# between story and arcade mode
+var enemt_deaths = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+var enemt_death_cleared = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
 # global storage
 var root_node_3d: Node3D
 
@@ -92,6 +97,10 @@ var title_card: Control
 var title_crypt: Label
 var description_crypt: Label
 var title_decrypt: Label
+
+var arcade_title: Label
+var arcade_description: Label
+var arcade_time: Label
 
 # global funcs
 func _get_all_nodes(node) -> Array:

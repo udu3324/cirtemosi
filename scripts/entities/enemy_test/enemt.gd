@@ -18,6 +18,8 @@ extends RigidBody3D
 
 @onready var audio_player = $AudioStreamPlayer3D
 
+var array_death_log: int = 0
+var ignore_player: bool = false
 var despawns: bool = true
 var drops_relic_1: bool = false
 var drops_shards: bool = true
@@ -83,6 +85,8 @@ func _process(_delta: float) -> void:
 		
 		dead = true
 		particles.emitting = false
+		
+		Globals.enemt_deaths[array_death_log] += 1
 		
 		Globals._play_fx(audio_player, dies, 0.0, 1.0)
 		
@@ -163,7 +167,7 @@ func _physics_process(delta: float) -> void:
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	
 	# agent is close enough to player!
-	if global_transform.origin.distance_to(Globals.player_pos) < 5 and Globals.player_pos != Vector3(0, 0, 0) and !Globals.resetVisible:
+	if global_transform.origin.distance_to(Globals.player_pos) < 5 and Globals.player_pos != Vector3(0, 0, 0) and !Globals.resetVisible and !ignore_player:
 		agent.set_target_position(Globals.player_pos)
 		chasing = true
 		roaming = false
