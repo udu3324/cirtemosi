@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwd3hmdtl2y8f"]
+
+[ext_resource type="PackedScene" uid="uid://d08s342gfjw8u" path="res://entities/zert/zert_agent.tscn" id="1_22rpk"]
+[ext_resource type="PackedScene" uid="uid://bieewi2byf3jy" path="res://entities/zert/zert_zone.tscn" id="2_8bx0e"]
+
+[node name="Zert" type="Node3D"]
+
+[node name="ZertZone" parent="." instance=ExtResource("2_8bx0e")]
+
+[node name="ZertAgent" parent="." instance=ExtResource("1_22rpk")]

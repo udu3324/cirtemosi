@@ -88,7 +88,7 @@ func _process(delta: float) -> void:
 		else:
 			stop_timer = true
 			Globals.arcade_title.text = "you finished!"
-			Globals.arcade_title.description = "please walk off the\nisland for now to\ngo back to the main\nmenu."
+			Globals.arcade_description.text = "please walk off the\nisland for now to\ngo back to the main\nmenu."
 		
 	if Globals.enemt_deaths[0] == 1: # handle a enemt death
 		

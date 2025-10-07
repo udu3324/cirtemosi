@@ -61,7 +61,7 @@ func _ready() -> void:
 	menuReset.connect("exit_to_start", _on_exit_start)
 	
 	
-	menuStart.connect("level_1", _on_level_1)
+	menuStart.connect("level_1", _on_level_test)
 	menuStart.connect("level_arcade", _on_level_arcade)
 	menuStart.visible = true
 	
@@ -247,6 +247,8 @@ func _handle_level_traverse_event():
 
 func _on_exit_start():
 	Globals.player_pos = Vector3(0, 0, 0)
+	Globals.player_physics_processing = true
+	Globals.player_can_move = true
 	
 	_clear_node_3d_stage()
 	
@@ -272,6 +274,7 @@ func _on_exit_start():
 	
 	Globals.equipment = ["", "", ""]
 	Globals.enemt_deaths = Globals.enemt_death_cleared
+	Globals.zert_deaths = Globals.zert_death_cleared
 	Globals.slot_active = 1
 	
 	Globals.relics = [false, false, false, false, false, false, false]
@@ -281,6 +284,8 @@ func _on_exit_start():
 	
 	Globals.card_ruins_shown = false
 	Globals.collected_shard_stack = false
+	
+	
 	
 	get_tree().paused = false
 	

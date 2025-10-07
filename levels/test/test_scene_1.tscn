@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://bhmmx5pl0neys"]
+[gd_scene load_steps=33 format=4 uid="uid://bhmmx5pl0neys"]
 
 [ext_resource type="Material" uid="uid://dhp1vk7afkguu" path="res://assets/prefab/prefab_dark_meter.tres" id="1_3ju41"]
 [ext_resource type="Texture2D" uid="uid://b5pviiur126b0" path="res://assets/prefab/playtesting.png" id="2_k5kv5"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://x6cwwyhtt76x" path="res://scenes/items/relic_1.tscn" id="6_toffc"]
 [ext_resource type="PackedScene" uid="uid://kn6hbschf6xo" path="res://scenes/items/shards.tscn" id="7_ddkel"]
 [ext_resource type="PackedScene" uid="uid://t0p0267pq1yk" path="res://entities/interface/interface.tscn" id="8_gnbnl"]
+[ext_resource type="PackedScene" uid="uid://bwd3hmdtl2y8f" path="res://entities/zert/zert.tscn" id="9_rdpwy"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_6a74u"]
 _surfaces = [{
@@ -139,6 +140,10 @@ data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_k5kv5"]
 points = PackedVector3Array(-4.59434, -0.0952195, -6.09405, 4.54672, 0.0952195, 6.09405, 4.54672, -0.0952195, 6.09405, 4.54672, 0.0952195, -6.09405, -4.59434, 0.0952195, 6.09405, -4.59434, -0.0952195, 6.09405, 4.54672, -0.0952195, -6.09405, -4.59434, 0.0952195, -6.09405)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_rdpwy"]
+vertices = PackedVector3Array(-19.99121, 0.5, -11, -19.99121, 0.5, -2, -5.491211, 0.5, -2, -5.491211, 0.5, -11)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [node name="TestScene1" type="Node3D"]
 
@@ -431,16 +436,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.043325186, 0.459216, -3.89
 [node name="Shards7" parent="Shards" instance=ExtResource("7_ddkel")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5236777, 0.459216, -3.9785588)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, -0.5, -6.5)
-use_collision = true
-size = Vector3(11, 1, 10)
-
 [node name="CSGBox3D3" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 14.275919, -17.087133)
 use_collision = true
 size = Vector3(11, 1, 10)
 
 [node name="Interface" parent="." instance=ExtResource("8_gnbnl")]
-transform = Transform3D(-0.7888589, 0, -0.6145744, 0, 1, 0, 0.6145744, 0, -0.7888589, -10.652463, 0, -6.5206575)
-drops_shards = null
+transform = Transform3D(-0.7888589, 0, -0.6145744, 0, 1, 0, 0.6145744, 0, -0.7888589, -25.652462, 0, -0.52065754)
+
+[node name="Zert" parent="." instance=ExtResource("9_rdpwy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.541874, 1, -6)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_rdpwy")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.745605, -0.5, -6.5)
+use_collision = true
+size = Vector3(15.491211, 1, 10)
