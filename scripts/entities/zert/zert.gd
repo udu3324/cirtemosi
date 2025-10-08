@@ -157,17 +157,15 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	var cone = rad_to_deg(angle_y) - rad_to_deg(model.rotation.y)
 	if global_transform.origin.distance_to(Globals.player_pos) < 10 and Globals.player_pos != Vector3(0, 0, 0) and !Globals.resetVisible and !ignore_player:
 		if cone > -30 and cone < 30:
-			pass
-			#roaming = false
-			#circling = true
+			roaming = false
+			circling = true
 	
 	# another catch to stop animation/everything if player is caught when looking
 	if rot_tween.is_running() and cone > -30 and cone < 30:
-		pass
-		#rot_tween.kill()
-		#roaming = false
-		#circling = true
-		#looking_around = false
+		rot_tween.kill()
+		roaming = false
+		circling = true
+		looking_around = false
 	
 	# too close and not in cone
 	if global_transform.origin.distance_to(Globals.player_pos) < 1.5 and Globals.player_pos != Vector3(0, 0, 0) and !Globals.resetVisible and !ignore_player:
