@@ -42,7 +42,8 @@ const health_max: float = 100.0
 var health: float = 100.0
 
 const stamina_max: float = 80.0
-const stamina_usage: float = 0.7
+const stamina_usage: float = 0.4
+const stamina_usage_stunned: float = 0.8
 var stamina_recovery_amount: float = 0.05
 var stamina_recovery_time: float = 1.0
 var stamina_regeneration: bool = true

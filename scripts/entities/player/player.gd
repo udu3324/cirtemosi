@@ -101,6 +101,12 @@ func _animate_moving(delta):
 	animating = true
 	
 	var leg_speed = 20.0 if Input.is_action_pressed("sprint") else 10.0
+	if Globals.player_is_stunned:
+		leg_speed = 30.0 if Input.is_action_pressed("sprint") else 3.0
+	
+	# handle holding sprint when not having any stamina
+	if Input.is_action_pressed("sprint") and Globals.stamina <= 1:
+		leg_speed = 3.0 if Globals.player_is_stunned else 10.0
 	
 	animating_time += delta * leg_speed # speed
 	
@@ -173,8 +179,11 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	if input == Vector3.ZERO or !Globals.player_can_move:
 		return
 	
-	if sprinting and !Globals.player_is_stunned:
-		Globals.stamina = Globals.stamina - Globals.stamina_usage
+	if sprinting:
+		if Globals.player_is_stunned:
+			Globals.stamina = Globals.stamina - Globals.stamina_usage_stunned
+		else:
+			Globals.stamina = Globals.stamina - Globals.stamina_usage
 	
 	# map keyboard controls to relatively move based on camera (45deg/cardinal movement only)
 	var camera_basis = camera.global_transform.basis
@@ -206,7 +215,9 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	
 	# multi * 30 for running | 17 for regular
 	var force = 20 if sprinting else 13
-	force = 7 if Globals.player_is_stunned else force
+	if Globals.player_is_stunned and !sprinting:
+		force = 10 if sprinting else 7 # allow sprinting while stunned but normal speed
+	
 	if Globals.screen_relative_movement:
 		apply_central_force(dir2 * force)
 	else:
