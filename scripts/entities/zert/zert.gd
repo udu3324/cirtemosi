@@ -35,6 +35,13 @@ var pause_logic: bool = false
 var roaming = false
 var circling = false
 
+var at_roam_point = false
+var looking_around = false
+var finished_looking_around = false
+var rot_tween = create_tween()
+var stored_roam_previous_pos = Vector3(0, 0, 0)
+var stored_roam_end_pos = Vector3(0, 0, 0)
+
 var health = 150.0
 var attack_event = null
 var dead = false
@@ -87,6 +94,8 @@ func _physics_process(delta: float) -> void:
 	if circling:
 		attack_period += delta
 		floating_ball_material.emission_energy_multiplier = remap(attack_period, 0, attack_next_wait, 0.3, 1.5)
+		floating_ball.mesh.radius = remap(attack_period, 0, attack_next_wait, 0.2, 0.3)
+		floating_ball.mesh.height = remap(attack_period, 0, attack_next_wait, 0.4, 0.6)
 		
 		agent.set_target_position(Globals.player_pos)
 	
@@ -105,6 +114,30 @@ func _physics_process(delta: float) -> void:
 		roaming_next_wait = randf_range(4.0, 7.0)
 		
 		_generate_roam_point_target()
+		
+		looking_around = true
+		
+		# dont look around if the agent hasn't moved anywhere again
+		if stored_roam_previous_pos != stored_roam_end_pos:
+			var store_rot = model.rotation.y
+			rot_tween = create_tween()
+			rot_tween.tween_property(model, "rotation:y", store_rot - deg_to_rad(45), randf_range(0.8, 2.5))
+			await rot_tween.finished
+			
+			rot_tween = create_tween()
+			rot_tween.tween_property(model, "rotation:y", store_rot + deg_to_rad(45), randf_range(0.8, 2.5))
+			await rot_tween.finished
+			
+			rot_tween = create_tween()
+			rot_tween.tween_property(model, "rotation:y", store_rot, 1)
+			await rot_tween.finished
+			
+			await get_tree().create_timer(randf_range(0.5, 1.5)).timeout
+		else:
+			pass #print_debug("skipping looking around")
+		
+		stored_roam_previous_pos = stored_roam_end_pos
+		looking_around = false
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	
@@ -118,6 +151,13 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 			roaming = false
 			circling = true
 	
+	# another catch to stop animation/everything if player is caught when looking
+	if rot_tween.is_running() and cone > -30 and cone < 30:
+		rot_tween.kill()
+		roaming = false
+		circling = true
+		looking_around = false
+	
 	# too close and not in cone
 	if global_transform.origin.distance_to(Globals.player_pos) < 1.5 and Globals.player_pos != Vector3(0, 0, 0) and !Globals.resetVisible and !ignore_player:
 		roaming = false
@@ -127,11 +167,18 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	if global_transform.origin.distance_to(Globals.player_pos) > 12 and circling:
 		circling = false
 		floating_ball_material.emission_energy_multiplier = 0.3
+		floating_ball.mesh.radius = 0.2
+		floating_ball.mesh.height = 0.4
 		
 		_generate_roam_point_target()
 	
+	# dont contine if looking around
+	if looking_around:
+		return
+	
 	# dont need to move if went to target position
 	if agent.is_navigation_finished() and !circling:
+		stored_roam_end_pos = model.global_position
 		return
 	
 	# use rotation based on player if circling
@@ -140,7 +187,6 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	
 	# dont need to go too close while circling
 	if circling and global_transform.origin.distance_to(Globals.player_pos) <= 5:
-		
 		return
 	
 	# attempt attacks waits / etc?
@@ -204,8 +250,9 @@ func _face_to_velocity() -> void:
 	var angle_y = atan2(linear_pos.x, linear_pos.z) + (PI / 2) # add a 90deg offset
 	
 	# model.rotation.y = lerp_angle(model.rotation.y, angle_y, 0.1)
-	var rotate_tween = create_tween()
-	rotate_tween.tween_property(model, "rotation:y", angle_y, 0.1)
+	#var rotate_tween = create_tween()
+	#rotate_tween.tween_property(model, "rotation:y", angle_y, 0.1)
+	model.rotation.y = angle_y
 
 func _generate_roam_point_target():
 	var radius = zert_zone.get_child(0).shape.radius
@@ -221,4 +268,3 @@ func _generate_roam_point_target():
 	
 	agent.set_target_position(world_pos)
 	roaming = true
-	
