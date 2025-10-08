@@ -27,6 +27,8 @@ var drops_relic_3: bool = false
 var drops_shards: bool = true
 var rng_shard_drops: bool = true
 var rand_shard_range: int = 20
+var line_path_length: float = 3
+var line_path_angle: int = 45
 
 var target_reached: bool = true
 
@@ -59,6 +61,11 @@ var left_rest_rot
 var right_rest_pos
 var right_rest_rot
 
+var model_global_pos
+var model_global_pos_forward
+var model_global_pos_backward
+var toggle_dir = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	roaming = true
@@ -70,6 +77,19 @@ func _ready() -> void:
 	left_rest_rot = left_hand.rotation
 	right_rest_pos = right_hand.position
 	right_rest_rot = right_hand.rotation
+	
+	model_global_pos = model.global_position
+	
+	var forward_dir = -model.global_transform.basis.z.normalized()
+	var backward_dir = model.global_transform.basis.z.normalized()
+	
+	var angle_offset = deg_to_rad(line_path_angle)
+	
+	var rotated_forward = (Basis(Vector3.UP, angle_offset) * forward_dir).normalized()
+	var rotated_backward = (Basis(Vector3.UP, angle_offset) * backward_dir).normalized()
+	
+	model_global_pos_forward = model.global_position + rotated_forward * line_path_length
+	model_global_pos_backward = model.global_position + rotated_backward * line_path_length
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -113,7 +133,7 @@ func _physics_process(delta: float) -> void:
 		roaming_period = 0.0
 		roaming_next_wait = randf_range(4.0, 7.0)
 		
-		_generate_roam_point_target()
+		_to_next_path_point()
 		
 		looking_around = true
 		
@@ -170,7 +190,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 		floating_ball.mesh.radius = 0.2
 		floating_ball.mesh.height = 0.4
 		
-		_generate_roam_point_target()
+		_to_next_path_point()
 	
 	# dont contine if looking around
 	if looking_around:
@@ -254,17 +274,12 @@ func _face_to_velocity() -> void:
 	#rotate_tween.tween_property(model, "rotation:y", angle_y, 0.1)
 	model.rotation.y = angle_y
 
-func _generate_roam_point_target():
-	var radius = zert_zone.get_child(0).shape.radius
+func _to_next_path_point():
+	if toggle_dir:
+		agent.set_target_position(model_global_pos_forward)
+		toggle_dir = false
+	else:
+		agent.set_target_position(model_global_pos_backward)
+		toggle_dir = true
 	
-	var angle = randf() * TAU
-	var r = sqrt(randf()) * radius
-	
-	var local_pos = Vector3(r * cos(angle), 0, r * sin(angle))
-	var world_pos = zert_zone.global_transform.origin + local_pos
-	world_pos.y = global_transform.origin.y
-	
-	# print_debug("creating a new roam target", world_pos)
-	
-	agent.set_target_position(world_pos)
 	roaming = true
