@@ -289,7 +289,7 @@ func _on_exit_start():
 	
 	get_tree().paused = false
 	
-	print_debug("adding back the child")
+	#print_debug("adding back the child")
 	add_child(level_start)
 	
 	var audioFade = create_tween()

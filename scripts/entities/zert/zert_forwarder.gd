@@ -9,7 +9,7 @@ extends Node3D
 @export var rng_shard_drops: bool = true
 @export_range (1, 100) var rand_shard_range: int = 20
 @export var line_path_length: float = 3
-@export_range (0, 360) var line_path_angle: int = 45
+@export_range (0, 180) var line_path_angle: int = 45
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -22,10 +22,12 @@ func _ready() -> void:
 	get_child(1).rand_shard_range = rand_shard_range
 	get_child(1).line_path_length = line_path_length
 	get_child(1).line_path_angle = line_path_angle
+	
+	get_child(1)._regen_points()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():
 		var forward_dir = -global_transform.basis.z.normalized()
 		var backward_dir = global_transform.basis.z.normalized()
@@ -38,3 +40,4 @@ func _process(delta: float) -> void:
 		var start = global_position + rotated_forward * line_path_length
 		var end = global_position + rotated_backward * line_path_length
 		
+		DebugDraw3D.draw_line(start, end, Color(1.0, 0.0, 0.0, 1.0))

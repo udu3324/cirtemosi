@@ -6,6 +6,7 @@
 
 [node name="Zert" type="Node3D"]
 script = ExtResource("1_8bx0e")
+line_path_angle = 0
 
 [node name="ZertZone" parent="." instance=ExtResource("2_8bx0e")]
 

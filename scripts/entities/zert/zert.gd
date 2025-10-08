@@ -28,7 +28,7 @@ var drops_shards: bool = true
 var rng_shard_drops: bool = true
 var rand_shard_range: int = 20
 var line_path_length: float = 3
-var line_path_angle: int = 45
+var line_path_angle: int = 0
 
 var target_reached: bool = true
 
@@ -78,18 +78,7 @@ func _ready() -> void:
 	right_rest_pos = right_hand.position
 	right_rest_rot = right_hand.rotation
 	
-	model_global_pos = model.global_position
-	
-	var forward_dir = -model.global_transform.basis.z.normalized()
-	var backward_dir = model.global_transform.basis.z.normalized()
-	
-	var angle_offset = deg_to_rad(line_path_angle)
-	
-	var rotated_forward = (Basis(Vector3.UP, angle_offset) * forward_dir).normalized()
-	var rotated_backward = (Basis(Vector3.UP, angle_offset) * backward_dir).normalized()
-	
-	model_global_pos_forward = model.global_position + rotated_forward * line_path_length
-	model_global_pos_backward = model.global_position + rotated_backward * line_path_length
+	_regen_points()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -97,7 +86,7 @@ func _process(_delta: float) -> void:
 	health_bar.value = health
 	
 	if attack_event != null:
-		pass #todo
+		pass #todo handle attacks
 	
 	if health == 150.0 or dead:
 		health_bar.visible = false
@@ -168,15 +157,17 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	var cone = rad_to_deg(angle_y) - rad_to_deg(model.rotation.y)
 	if global_transform.origin.distance_to(Globals.player_pos) < 10 and Globals.player_pos != Vector3(0, 0, 0) and !Globals.resetVisible and !ignore_player:
 		if cone > -30 and cone < 30:
-			roaming = false
-			circling = true
+			pass
+			#roaming = false
+			#circling = true
 	
 	# another catch to stop animation/everything if player is caught when looking
 	if rot_tween.is_running() and cone > -30 and cone < 30:
-		rot_tween.kill()
-		roaming = false
-		circling = true
-		looking_around = false
+		pass
+		#rot_tween.kill()
+		#roaming = false
+		#circling = true
+		#looking_around = false
 	
 	# too close and not in cone
 	if global_transform.origin.distance_to(Globals.player_pos) < 1.5 and Globals.player_pos != Vector3(0, 0, 0) and !Globals.resetVisible and !ignore_player:
@@ -270,9 +261,9 @@ func _face_to_velocity() -> void:
 	var angle_y = atan2(linear_pos.x, linear_pos.z) + (PI / 2) # add a 90deg offset
 	
 	# model.rotation.y = lerp_angle(model.rotation.y, angle_y, 0.1)
-	#var rotate_tween = create_tween()
-	#rotate_tween.tween_property(model, "rotation:y", angle_y, 0.1)
-	model.rotation.y = angle_y
+	var rotate_tween = create_tween()
+	rotate_tween.tween_property(model, "rotation:y", angle_y, 0.1)
+	#model.rotation.y = angle_y
 
 func _to_next_path_point():
 	if toggle_dir:
@@ -283,3 +274,18 @@ func _to_next_path_point():
 		toggle_dir = true
 	
 	roaming = true
+
+func _regen_points():
+	print_debug("regenned with ", line_path_angle)
+	model_global_pos = model.global_position
+	
+	var forward_dir = -model.global_transform.basis.z.normalized()
+	var backward_dir = model.global_transform.basis.z.normalized()
+	
+	var angle_offset = deg_to_rad(line_path_angle)
+	
+	var rotated_forward = (Basis(Vector3.UP, angle_offset) * forward_dir).normalized()
+	var rotated_backward = (Basis(Vector3.UP, angle_offset) * backward_dir).normalized()
+	
+	model_global_pos_forward = model.global_position + rotated_forward * line_path_length
+	model_global_pos_backward = model.global_position + rotated_backward * line_path_length
