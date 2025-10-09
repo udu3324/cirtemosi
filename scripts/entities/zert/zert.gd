@@ -110,10 +110,19 @@ func _physics_process(delta: float) -> void:
 	
 	if attack_period >= attack_next_wait:
 		attack_period = 0.0
-		attack_next_wait = randf_range(3.0, 5.0)
-		#todo attack
-		print_debug("attempting attack!")
-		pass
+		attack_next_wait = randf_range(0.0, 1.0)
+		
+		#print_debug("attempting attack!")
+		
+		var local_offset = Vector3(-0.6, 0, 0)
+		var spawn_pos = left_hand_collision.global_transform.origin + left_hand_collision.global_transform.basis * local_offset
+		
+		var projectile: RayCast3D = preload("res://entities/zert/zert_projectile.tscn").instantiate()
+		projectile.speed = randf_range(10.0, 15.0)
+		projectile.position = spawn_pos
+		projectile.rotation.y = deg_to_rad(randi_range(0, 360))
+		
+		Globals.root_node_3d.add_child(projectile)
 	
 	if roaming:
 		roaming_period += delta

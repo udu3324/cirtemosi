@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://bhmmx5pl0neys"]
+[gd_scene load_steps=34 format=4 uid="uid://bhmmx5pl0neys"]
 
 [ext_resource type="Material" uid="uid://dhp1vk7afkguu" path="res://assets/prefab/prefab_dark_meter.tres" id="1_3ju41"]
 [ext_resource type="Texture2D" uid="uid://b5pviiur126b0" path="res://assets/prefab/playtesting.png" id="2_k5kv5"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://kn6hbschf6xo" path="res://scenes/items/shards.tscn" id="7_ddkel"]
 [ext_resource type="PackedScene" uid="uid://t0p0267pq1yk" path="res://entities/interface/interface.tscn" id="8_gnbnl"]
 [ext_resource type="PackedScene" uid="uid://bwd3hmdtl2y8f" path="res://entities/zert/zert.tscn" id="9_rdpwy"]
+[ext_resource type="PackedScene" uid="uid://cy2nebdl37ose" path="res://entities/zert/zert_projectile.tscn" id="10_7g6ut"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_6a74u"]
 _surfaces = [{
@@ -455,3 +456,6 @@ navigation_mesh = SubResource("NavigationMesh_rdpwy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.745605, -0.5, -6.5)
 use_collision = true
 size = Vector3(15.491211, 1, 10)
+
+[node name="ZertProjectile" parent="." instance=ExtResource("10_7g6ut")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.84843946, 0)
