@@ -1,9 +1,11 @@
 extends Control
 
-
-@onready var exit_button = $MarginContainer/VBoxContainer/VBoxContainer/ExitButton
+@onready var back_button: Button = $MarginContainer/VBoxContainer/VBoxContainer/BackButton
+@onready var exit_button: Button = $MarginContainer/VBoxContainer/VBoxContainer/ExitButton
 
 signal exit_to_start
+
+signal to_checkpoint
 
 
 func _process(_delta: float) -> void:
@@ -12,9 +14,12 @@ func _process(_delta: float) -> void:
 	
 	if Input.is_action_just_pressed("ui_right"):
 		get_viewport().gui_get_focus_owner().pressed.emit()
+	
+	if back_button.disabled and Globals.save_point != -1.0:
+		back_button.disabled = false
 
 func _on_back_button_pressed() -> void:
-	pass # Replace with function body.
+	emit_signal("to_checkpoint")
 
 
 func _on_exit_button_pressed() -> void:

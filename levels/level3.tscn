@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://buhn06bwytmyh"]
+[gd_scene load_steps=10 format=3 uid="uid://buhn06bwytmyh"]
 
 [ext_resource type="Script" uid="uid://ef8rjkc5rehh" path="res://scripts/scenes/level_3.gd" id="1_kvvkh"]
 [ext_resource type="PackedScene" uid="uid://duydi7lytqxks" path="res://scenes/enviornment/CaveEnv.tscn" id="1_r8unp"]
 [ext_resource type="PackedScene" uid="uid://b6t1s1ntpjpeu" path="res://scenes/items/starter_weapon.tscn" id="3_0fm5q"]
 [ext_resource type="Texture2D" uid="uid://bp82imlehhbru" path="res://assets/prefab/playtesting2.png" id="3_aaqj5"]
+[ext_resource type="PackedScene" uid="uid://c8k8dm81jp0pu" path="res://assets/model/enviornment/mushroom_gray.blend" id="5_cpie4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0fm5q"]
 transparency = 2
@@ -137,7 +138,7 @@ shadow_enabled = true
 omni_range = 20.9488
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Lights"]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 12, 2.83232, -11)
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 12.371278, 2.83232, -11.371278)
 light_color = Color(0.784638, 0.0972639, 0.0522048, 1)
 spot_range = 10.6478
 
@@ -187,7 +188,7 @@ spot_angle = 13.4805
 [node name="Floor" type="CSGPolygon3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1, 0)
 use_collision = true
-polygon = PackedVector2Array(-3.98455, -0.840773, -3.10856, 3.27681, 2.45225, 6.75517, 8.30089, 10.2509, 12.5262, 16.0644, 15.0015, 16.957, 17.6589, 21.3724, 21.0033, 19.2714, 17.6632, 14.2543, 18.1433, 13.1447, 17.4397, 10.5022, 12.5636, 3.98146, 8.09603, 0.932292, 4.71219, -0.439084, 3, -3, 2.4064, -3.65599, -2.47596, -3.54116)
+polygon = PackedVector2Array(-3.98455, -0.840773, -3.10856, 3.27681, 2.45225, 6.75517, 8.30089, 10.2509, 12.5262, 16.0644, 14.871086, 17.088366, 17.6589, 21.3724, 21.0033, 19.2714, 17.6632, 14.2543, 18.1433, 13.1447, 17.4397, 10.5022, 12.5636, 3.98146, 8.09603, 0.932292, 4.71219, -0.439084, 3, -3, 2.4064, -3.65599, -2.47596, -3.54116)
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 4)
@@ -212,6 +213,119 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -2.37805, -7)
 [node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Area3D4"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -2, -8.74228e-08)
 polygon = PackedVector2Array(-13.915, 15.8837, 2.11915, 16.9394, 17.9553, 6.51393, 27.589, -8.99234, 18.3606, -21.2807, -2.10715, -21.4602, -19.4329, -11.4059, -25.1782, 9.24137)
+
+[node name="Nature" type="Node3D" parent="."]
+
+[node name="mushroom_gray" parent="Nature" instance=ExtResource("5_cpie4")]
+transform = Transform3D(0.5582101, 0.13481638, -0.8186735, -0.28404757, 0.9581383, -0.03589408, 0.7795632, 0.2525786, 0.5731365, 2.5135865, 1.0089997, 3.0665245)
+
+[node name="mushroom_gray2" parent="Nature" instance=ExtResource("5_cpie4")]
+transform = Transform3D(0.89033055, -0.1928327, 0.41246465, 0.23019503, 0.97222203, -0.04236349, -0.39283818, 0.13266483, 0.909988, 2.1211624, 1.0089997, 2.451322)
+
+[node name="mushroom_gray4" parent="Nature" instance=ExtResource("5_cpie4")]
+transform = Transform3D(0.56335306, 0, -0.8262163, 0, 1, 0, 0.8262163, 0, 0.56335306, -2.1039162, 1.0089997, -2.7111797)
+
+[node name="mushroom_gray5" parent="Nature" instance=ExtResource("5_cpie4")]
+transform = Transform3D(0.9204327, -0.052419063, 0.38737056, 0.13977155, 0.9695877, -0.20090696, -0.36505833, 0.23906472, 0.8997669, 3.0345542, 1.0089997, -3.4115787)
+
+[node name="mushroom_gray6" parent="Nature" instance=ExtResource("5_cpie4")]
+transform = Transform3D(0.56335306, 0, -0.8262163, 0, 1, 0, 0.8262163, 0, 0.56335306, 3.3953772, 1.0089997, -3.1953938)
+
+[node name="mushroom_gray7" parent="Nature" instance=ExtResource("5_cpie4")]
+transform = Transform3D(0.9204327, -0.052419063, 0.38737056, 0.13977155, 0.9695877, -0.20090696, -0.36505833, 0.23906472, 0.8997669, 4.115998, 1.0089997, -3.0566947)
+
+[node name="mushroom_gray8" parent="Nature" instance=ExtResource("5_cpie4")]
+transform = Transform3D(0.56335306, 0, -0.8262163, 0, 1, 0, 0.8262163, 0, 0.56335306, 3.1026027, 1.0089997, -3.0045564)
+
+[node name="mushroom_gray9" parent="Nature" instance=ExtResource("5_cpie4")]
+transform = Transform3D(0.9204327, -0.052419063, 0.38737056, 0.13977155, 0.9695877, -0.20090696, -0.36505833, 0.23906472, 0.8997669, 4.0533037, 1.0089997, -7.128345)
+
+[node name="mushroom_gray10" parent="Nature" instance=ExtResource("5_cpie4")]
+transform = Transform3D(0.6853903, -0.12052337, -0.71813256, 0.308312, 0.9414777, 0.13624784, 0.6596846, -0.31479177, 0.68243843, 4.2215867, 1.0089997, -7.4932323)
+
+[node name="mushroom_gray11" parent="Nature" instance=ExtResource("5_cpie4")]
+transform = Transform3D(0.9204327, -0.052419063, 0.38737056, 0.13977155, 0.9695877, -0.20090696, -0.36505833, 0.23906472, 0.8997669, 4.4704, 1.0089997, -7.438641)
+
+[node name="mushroom_gray12" parent="Nature" instance=ExtResource("5_cpie4")]
+transform = Transform3D(0.56335306, 0, -0.8262163, 0, 1, 0, 0.8262163, 0, 0.56335306, 14.500202, 1.0090001, -15.937475)
+
+[node name="mushroom_gray14" parent="Nature" instance=ExtResource("5_cpie4")]
+transform = Transform3D(0.9204327, -0.052419063, 0.38737056, 0.13977155, 0.9695877, -0.20090696, -0.36505833, 0.23906472, 0.8997669, 14.862152, 1.0090002, -16.119892)
+
+[node name="mushroom_gray13" parent="Nature" instance=ExtResource("5_cpie4")]
+transform = Transform3D(0.56335306, 0, -0.8262163, 0, 1, 0, 0.8262163, 0, 0.56335306, 16.62634, 1.0089997, -13.319144)
+
+[node name="mushroom_gray18" parent="Nature" instance=ExtResource("5_cpie4")]
+transform = Transform3D(0.019092798, 0, -0.9998177, 0.30377814, 0.9527251, 0.005801032, 0.9525515, -0.3038335, 0.018190188, 17.097052, 1.0089997, -12.910554)
+
+[node name="mushroom_gray15" parent="Nature" instance=ExtResource("5_cpie4")]
+transform = Transform3D(0.9204327, -0.052419063, 0.38737056, 0.13977155, 0.9695877, -0.20090696, -0.36505833, 0.23906472, 0.8997669, 16.809244, 1.0089997, -12.952057)
+
+[node name="mushroom_gray16" parent="Nature" instance=ExtResource("5_cpie4")]
+transform = Transform3D(0.56335306, 0, -0.8262163, 0, 1, 0, 0.8262163, 0, 0.56335306, 17.331623, 1.0089997, -12.762537)
+
+[node name="mushroom_gray17" parent="Nature" instance=ExtResource("5_cpie4")]
+transform = Transform3D(0.9204327, -0.052419063, 0.38737056, 0.13977155, 0.9695877, -0.20090696, -0.36505833, 0.23906472, 0.8997669, 17.331623, 1.0089997, -12.762537)
+
+[node name="mushroom_gray3" parent="Nature" instance=ExtResource("5_cpie4")]
+transform = Transform3D(0.60480267, 0.21864586, -0.7657727, 0.11074884, 0.9291372, 0.3527589, 0.78863716, -0.29815793, 0.5377298, 2.602254, 1.0089998, 2.8886898)
+
+[node name="Rocks" type="Node3D" parent="."]
+
+[node name="CSGBox3D17" type="CSGBox3D" parent="Rocks"]
+transform = Transform3D(-0.46818513, 0.85451615, 0.22495706, 0.787204, 0.518995, -0.33309796, -0.40138817, 0.02113609, -0.9156648, -2.2387545, 0.996559, -0.6858754)
+use_collision = true
+size = Vector3(1.3739, 1.31836, 1)
+
+[node name="CSGBox3D19" type="CSGBox3D" parent="Rocks"]
+transform = Transform3D(-0.49000224, 0.68740886, -0.53606784, 0.791943, 0.608039, 0.05580959, 0.3643143, -0.39718813, -0.84232926, -3.3125043, 0.78432894, -1.2906036)
+use_collision = true
+size = Vector3(1.3739, 1.31836, 1)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Rocks"]
+transform = Transform3D(0.7304066, -0.66131085, 0.17080669, 0.68301296, 0.70710695, -0.18301298, 0.00024984777, 0.25033662, 0.968159, -3.6786141, 1.2406089, -0.49830842)
+use_collision = true
+size = Vector3(2, 1.97266, 1)
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="Rocks"]
+transform = Transform3D(-0.720691, 0.693161, -0.0114859, 0.65156, 0.671593, -0.352749, -0.236798, -0.261707, -0.935647, 7.552098, 1.3829561, -9.036094)
+use_collision = true
+size = Vector3(1.84595, 1.80054, 1)
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="Rocks"]
+transform = Transform3D(-0.315425, 0.60148, -0.733981, 0.830795, 0.548804, 0.0927018, 0.45857, -0.580548, -0.672813, 8.280829, 1.0354761, -9.774103)
+use_collision = true
+size = Vector3(1.3739, 1.31836, 1)
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="Rocks"]
+transform = Transform3D(0.34967726, 0.7117399, -0.6092225, 0.5737188, -0.67676246, -0.46134508, -0.7406565, -0.18820058, -0.64498675, -0.8616826, 0.981377, -4.329199)
+use_collision = true
+size = Vector3(1.84595, 1.80054, 1)
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="Rocks"]
+transform = Transform3D(-0.015852481, -0.002502799, -0.9998708, 0.5085229, -0.8610282, -0.005907203, -0.8609023, -0.5085513, 0.014921546, -0.5387035, 0.77096856, -5.164966)
+use_collision = true
+size = Vector3(1.3739, 1.31836, 1)
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="Rocks"]
+transform = Transform3D(-0.4556924, -0.731785, 0.50678897, 0.5737188, -0.67676246, -0.4613451, 0.6805811, 0.080522835, 0.72823405, 15.165338, 0.9813775, -8.5103655)
+use_collision = true
+size = Vector3(1.84595, 1.80054, 1)
+
+[node name="CSGBox3D20" type="CSGBox3D" parent="Rocks"]
+transform = Transform3D(-0.11204784, -0.07297441, 0.9910191, 0.50852287, -0.86102813, -0.0059072035, 0.85372674, 0.5032945, 0.13358606, 14.721937, 0.77096903, -7.7317653)
+use_collision = true
+size = Vector3(1.3739, 1.31836, 1)
+
+[node name="CSGBox3D21" type="CSGBox3D" parent="Rocks"]
+transform = Transform3D(-0.80611956, -0.5662638, -0.17180252, 0.5737187, -0.6767624, -0.46134505, 0.14497367, -0.47046614, 0.8704273, 3.674882, 0.9813775, 0.4839853)
+use_collision = true
+size = Vector3(1.84595, 1.80054, 1)
+
+[node name="CSGBox3D22" type="CSGBox3D" parent="Rocks"]
+transform = Transform3D(-0.69195455, -0.41273206, 0.592326, 0.5085229, -0.86102825, -0.0059072045, 0.51244795, 0.2971244, 0.80567616, 2.8067923, 0.77096903, 0.705891)
+use_collision = true
+size = Vector3(1.3739, 1.31836, 1)
 
 [connection signal="body_entered" from="lol/Area3D2" to="." method="_on_area_3d_2_body_entered"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

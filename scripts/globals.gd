@@ -67,6 +67,7 @@ var relics = [false, false, false, false, false, false, false]
 var shards: int = 0
 
 # story mode variables - reset when the game resets
+var save_point: float = -1.0
 # - 4.1
 var card_ruins_shown: bool = false
 var collected_shard_stack: bool = false
@@ -74,17 +75,6 @@ var collected_shard_stack: bool = false
 # settings
 var screen_relative_movement = true
 var easy_mode = false
-
-func translate_to_interface(text: String) -> String:
-	var result = ""
-	
-	for c in text.to_lower():
-		if interface_lang_dict.has(c):
-			result += interface_lang_dict[c]
-		else:
-			result += c
-	
-	return result
 
 # between story and arcade mode
 var enemt_deaths = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -116,6 +106,17 @@ func _get_all_nodes(node) -> Array:
 		nodes += _get_all_nodes(child)
 	
 	return nodes
+
+func translate_to_interface(text: String) -> String:
+	var result = ""
+	
+	for c in text.to_lower():
+		if interface_lang_dict.has(c):
+			result += interface_lang_dict[c]
+		else:
+			result += c
+	
+	return result
 
 ## @brief this function creates disposable audio streams for each fx for the specified audio player node
 ## @param audioStreamPlayer: the node used

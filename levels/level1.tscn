@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://csb64dawc7x4p"]
+[gd_scene load_steps=11 format=3 uid="uid://csb64dawc7x4p"]
 
 [ext_resource type="Script" uid="uid://by1dqsv4hw01p" path="res://scripts/scenes/level_1.gd" id="1_pdtm5"]
 [ext_resource type="PackedScene" uid="uid://b15o4pkoogqs3" path="res://assets/model/enviornment/grass.blend" id="3_61w3m"]
 [ext_resource type="PackedScene" uid="uid://kn6hbschf6xo" path="res://scenes/items/shards.tscn" id="3_b3oru"]
 [ext_resource type="PackedScene" uid="uid://c60c2bj8ut5o4" path="res://assets/model/enviornment/mushroom.blend" id="4_pdpul"]
 [ext_resource type="PackedScene" uid="uid://cgy2lvamut2sl" path="res://assets/model/enviornment/rubble_pile.blend" id="5_8hd6v"]
+[ext_resource type="PackedScene" uid="uid://c8k8dm81jp0pu" path="res://assets/model/enviornment/mushroom_gray.blend" id="6_pdpul"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sjb42"]
 size = Vector3(7.24316, 5.76898, 1)
@@ -431,6 +432,42 @@ transform = Transform3D(0.99674803, 0.08029337, -0.0068101683, -0.08058166, 0.99
 
 [node name="rubble_pile4" parent="Decoration" instance=ExtResource("5_8hd6v")]
 transform = Transform3D(-0.41788658, -0.0079509765, 0.90846443, -0.10192066, 0.9940595, -0.03818259, -0.9027642, -0.10854731, -0.4162145, -1.6983893, 1.5139688, -0.16994)
+
+[node name="mushroom_gray" parent="Decoration" instance=ExtResource("6_pdpul")]
+transform = Transform3D(0.9688691, -0.24757403, 0, 0.24261768, 0.94947267, 0.19909431, -0.049290568, -0.19289628, 0.97998035, 1.2961961, 0.3861332, -9.681387)
+
+[node name="mushroom_gray2" parent="Decoration" instance=ExtResource("6_pdpul")]
+transform = Transform3D(0.68700427, -0.3130554, 0.6557602, 0.24261768, 0.94947267, 0.19909433, -0.684954, 0.022320434, 0.7282445, 1.4496535, 0.3861332, -9.314117)
+
+[node name="mushroom_gray3" parent="Decoration" instance=ExtResource("6_pdpul")]
+transform = Transform3D(0.9688691, -0.24757403, 0, 0.24261768, 0.94947267, 0.19909431, -0.049290568, -0.19289628, 0.97998035, 1.0929989, 0.32482302, -9.906156)
+
+[node name="mushroom_gray4" parent="Decoration" instance=ExtResource("6_pdpul")]
+transform = Transform3D(0.68700427, -0.3130554, 0.6557602, 0.24261768, 0.94947267, 0.19909433, -0.684954, 0.022320434, 0.7282445, 1.2464563, 0.3861332, -9.538886)
+
+[node name="mushroom_gray5" parent="Decoration" instance=ExtResource("6_pdpul")]
+transform = Transform3D(-0.8842447, 0.13201393, 0.44797742, 0.15118104, 0.9884806, 0.0071160495, -0.4418776, 0.074018, -0.8940166, -0.9934554, 0.21546781, -10.494792)
+
+[node name="mushroom_gray6" parent="Decoration" instance=ExtResource("6_pdpul")]
+transform = Transform3D(-0.9241341, 0.28863484, -0.25033167, 0.30038217, 0.95377475, -0.009190798, 0.23610742, -0.083688825, -0.9681165, -0.9458035, 0.11805987, -11.024388)
+
+[node name="mushroom_gray8" parent="Decoration" instance=ExtResource("6_pdpul")]
+transform = Transform3D(0.22843796, -0.08129307, -0.97015846, 0.30038214, 0.9537747, -0.009190795, 0.9260596, -0.28931868, 0.24229707, -0.97522545, 1.1973367, -5.005118)
+
+[node name="mushroom_gray9" parent="Decoration" instance=ExtResource("6_pdpul")]
+transform = Transform3D(-0.8872548, 0.27586985, -0.3696948, 0.40117806, 0.8570625, -0.32326508, 0.22767253, -0.4351321, -0.8711059, -0.9133922, 1.1894821, -5.1823297)
+
+[node name="mushroom_gray10" parent="Decoration" instance=ExtResource("6_pdpul")]
+transform = Transform3D(0.5933045, -0.08129309, 0.8008625, -0.18693778, 0.95377487, 0.23530439, -0.7829712, -0.2893187, 0.5506823, 0.44930363, 0.848956, -6.8043504)
+
+[node name="mushroom_gray12" parent="Decoration" instance=ExtResource("6_pdpul")]
+transform = Transform3D(0.6025438, 0.23969108, 0.7612417, -0.06984138, 0.9660118, -0.24888496, -0.79502404, 0.09679799, 0.598805, 0.9305367, 1.0633316, -5.6911473)
+
+[node name="mushroom_gray11" parent="Decoration" instance=ExtResource("6_pdpul")]
+transform = Transform3D(0.855195, 0.27586985, -0.43879092, -0.012196392, 0.8570627, 0.5150683, 0.5181626, -0.43513215, 0.73632, 0.5190496, 0.84114385, -6.994043)
+
+[node name="mushroom_gray7" parent="Decoration" instance=ExtResource("6_pdpul")]
+transform = Transform3D(-0.8842447, 0.13201393, 0.44797742, 0.15118104, 0.9884806, 0.0071160495, -0.4418776, 0.074018, -0.8940166, -1.2101495, 0.21851918, -10.2917185)
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]

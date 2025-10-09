@@ -59,10 +59,11 @@ func _ready() -> void:
 	
 	menuPause.connect("exit_to_start", _on_exit_start)
 	menuReset.connect("exit_to_start", _on_exit_start)
+	menuReset.connect("to_checkpoint", _to_checkpoint)
 	
 	
 	menuStart.connect("level_1", _on_level_test)
-	menuStart.connect("level_arcade", _on_level_arcade)
+	menuStart.connect("level_arcade", _on_level_1)
 	menuStart.visible = true
 	
 	masterAudio.play()
@@ -245,6 +246,22 @@ func _handle_level_traverse_event():
 	
 	await _hide_loading()
 
+func _to_checkpoint():
+	Globals.stamina = Globals.stamina_max - (Globals.stamina_max / 5)
+	Globals.health = Globals.health_max - (Globals.health_max / 5)
+	
+	Globals.enemt_deaths = Globals.enemt_death_cleared
+	Globals.zert_deaths = Globals.zert_death_cleared
+	
+	menuReset.visible = false
+	
+	match Globals.save_point:
+		-1.0:
+			pass # ????? this would never happen.. unless
+		4.1:
+			# cheap way
+			Globals.player_level_traverse_event = "3->4.1"
+
 func _on_exit_start():
 	Globals.player_pos = Vector3(0, 0, 0)
 	Globals.player_physics_processing = true
@@ -284,6 +301,7 @@ func _on_exit_start():
 	
 	Globals.card_ruins_shown = false
 	Globals.collected_shard_stack = false
+	Globals.save_point = -1.0
 	
 	
 	
