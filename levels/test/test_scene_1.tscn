@@ -447,6 +447,7 @@ transform = Transform3D(-0.7888589, 0, -0.6145744, 0, 1, 0, 0.6145744, 0, -0.788
 
 [node name="Zert" parent="." instance=ExtResource("9_rdpwy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.541874, 1, -6)
+drops_relic_3 = true
 line_path_angle = 90
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]

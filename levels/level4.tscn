@@ -1,13 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://40hbudsqa3hu"]
+[gd_scene load_steps=7 format=3 uid="uid://40hbudsqa3hu"]
 
 [ext_resource type="Script" uid="uid://dglf5r2r6vt88" path="res://scripts/scenes/level_4.gd" id="1_cqjvr"]
 [ext_resource type="PackedScene" uid="uid://duydi7lytqxks" path="res://scenes/enviornment/CaveEnv.tscn" id="1_rxes3"]
+[ext_resource type="PackedScene" uid="uid://bwd3hmdtl2y8f" path="res://entities/zert/zert.tscn" id="3_3cb6x"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cqjvr"]
 albedo_color = Color(0.4904529, 0.27618694, 0.06348612, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cqjvr"]
 size = Vector3(9.085922, 5.8031006, 9.590973)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_3cb6x"]
+vertices = PackedVector3Array(-0.24830341, 0.49999952, -19.227022, 0.5016966, 0.49999952, -19.477022, -0.4983034, 0.49999952, -20.977022, -1.9983034, 0.49999952, -21.477022, -3.4983034, 0.49999952, -19.727022, -2.7483034, 0.49999952, -16.477022, -9.248303, 0.49999952, -16.227022, -6.2483034, 0.49999952, -14.477022, -10.998303, 0.49999952, -13.977022, -9.998303, 0.49999952, -12.727022, -7.4983034, 0.49999952, -12.727022)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(3, 0, 4), PackedInt32Array(0, 5, 4), PackedInt32Array(4, 5, 7), PackedInt32Array(4, 7, 6), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 6), PackedInt32Array(10, 6, 7)]
 
 [node name="Level4" type="Node3D"]
 script = ExtResource("1_cqjvr")
@@ -16,12 +21,6 @@ script = ExtResource("1_cqjvr")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -20, 0, 0)
 use_collision = true
 polygon = PackedVector2Array(-13.9361, 9.72695, 0.947796, 16.1574, 12.3636, 12.6893, 16.8432, 5.53634, 13.5549, -3.79754, 4.93547, -7.14623, -4.8977, -7.35448, -10.9015, -3.20613, -11.2628, 2.57402, -13.9361, 6.90913, -15.7424, 9.5102)
-
-[node name="Bridge" type="CSGPolygon3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -9.627846, 0, -10.159151)
-visible = false
-use_collision = true
-polygon = PackedVector2Array(-1.8704576, 3.6417255, 0.030448914, 6.083153, 3.1692352, 8.361553, 6.294688, 10.299801, 7.575799, 11.817871, 9.335779, 11.085932, 10.828085, 9.133411, 9.363243, 8.5028, 7.2541027, 6.2569866, 4.777767, 4.7996693, 2.7591705, 3.1319847, 2.3507972, 1.9732475, -0.2145958, 2.1700182)
 
 [node name="CSGPolygon3D2" type="CSGPolygon3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
@@ -121,6 +120,25 @@ depth = 3.28
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2Zoom"]
 transform = Transform3D(0.9494967, 0, 0.31377703, 0, 1, 0, -0.31377703, 0, 0.9494967, -1.1742306, 0.8375511, 0.14347267)
 shape = SubResource("BoxShape3D_cqjvr")
+
+[node name="ZertCrossBridge" type="Node3D" parent="."]
+
+[node name="Zert" parent="ZertCrossBridge" instance=ExtResource("3_3cb6x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.184, 1, -17.868)
+line_path_angle = 125
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="ZertCrossBridge"]
+navigation_mesh = SubResource("NavigationMesh_3cb6x")
+
+[node name="Bridge" type="CSGPolygon3D" parent="ZertCrossBridge/NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -9.627846, 0, -10.159151)
+use_collision = true
+polygon = PackedVector2Array(-1.8704576, 3.6417255, 0.030448914, 6.083153, 3.1692352, 8.361553, 6.294688, 10.299801, 7.575799, 11.817871, 9.335779, 11.085932, 10.828085, 9.133411, 9.363243, 8.5028, 7.2541027, 6.2569866, 4.777767, 4.7996693, 2.7591705, 3.1319847, 2.3507972, 1.9732475, -0.2145958, 2.1700182)
+
+[node name="Bridge2" type="CSGPolygon3D" parent="ZertCrossBridge"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -10.31206, -0.9999995, -10.678936)
+polygon = PackedVector2Array(9.638559, 10.537643, 8.974784, 8.99552, 7.239012, 6.1112766, 4.403923, 5.026289, 2.7606297, 2.8200493, -0.2145958, 2.1700182)
+depth = 1.85
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Area3D2Zoom" to="." method="_on_area_3d_2_zoom_body_entered"]

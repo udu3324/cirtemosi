@@ -9,6 +9,7 @@ signal to_checkpoint
 
 
 func _process(_delta: float) -> void:
+	
 	if !self.visible:
 		return
 	
@@ -17,6 +18,8 @@ func _process(_delta: float) -> void:
 	
 	if back_button.disabled and Globals.save_point != -1.0:
 		back_button.disabled = false
+	elif Globals.save_point == -1.0 and !back_button.disabled:
+		back_button.disabled = true
 
 func _on_back_button_pressed() -> void:
 	emit_signal("to_checkpoint")

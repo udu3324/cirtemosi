@@ -68,6 +68,8 @@ var shards: int = 0
 
 # story mode variables - reset when the game resets
 var save_point: float = -1.0
+# - 4.0
+var reset_master_4_level_event: bool = false
 # - 4.1
 var card_ruins_shown: bool = false
 var collected_shard_stack: bool = false

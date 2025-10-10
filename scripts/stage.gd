@@ -303,6 +303,8 @@ func _on_exit_start():
 	Globals.collected_shard_stack = false
 	Globals.save_point = -1.0
 	
+	Globals.camera_size = 5.762
+	
 	
 	
 	get_tree().paused = false
@@ -348,7 +350,7 @@ func _on_level_1():
 	
 	await Globals._show_title_card("The Cave", "you mistakenly came here", 1.0)
 	
-	await get_tree().create_timer(0.4).timeout
+	await get_tree().create_timer(0.1).timeout
 	
 	hints.get_child(0).visible = true
 	hints.get_child(1).visible = true

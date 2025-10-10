@@ -44,7 +44,7 @@ var looking_around = false
 var finished_looking_around = false
 var rot_tween = create_tween()
 var stored_roam_previous_pos = Vector3(0, 0, 0)
-var stored_roam_end_pos = Vector3(0, 0, 0)
+var stored_roam_finised_pos = Vector3(0, 0, 0)
 
 var health = 100.0
 var attack_event = null
@@ -172,7 +172,7 @@ func _drop_shards():
 			Globals.root_node_3d.add_child(shard)
 
 func _physics_process(delta: float) -> void:
-	
+	#print("this is a tt", please_stop, circling, looking_around, agent.is_navigation_finished())
 	if please_stop:
 		return
 	
@@ -208,18 +208,23 @@ func _physics_process(delta: float) -> void:
 	
 	if roaming:
 		roaming_period += delta
-	
+	#print("the time is ", roaming_next_wait)
 	if roaming_period >= roaming_next_wait and agent.is_navigation_finished():
 		roaming_period = 0.0
 		roaming_next_wait = randf_range(4.0, 7.0)
-		
+		#print("finding next path")
 		_to_next_path_point()
 		
 		looking_around = true
 		
 		# dont look around if the agent hasn't moved anywhere again
-		if stored_roam_previous_pos != stored_roam_end_pos:
+		if stored_roam_previous_pos != stored_roam_finised_pos:
+			print("spinning right round", model.global_position, stored_roam_finised_pos)
 			var store_rot = model.rotation.y
+			
+			if rot_tween.is_running():
+				rot_tween.kill()
+			
 			rot_tween = create_tween()
 			rot_tween.tween_property(model, "rotation:y", store_rot - deg_to_rad(45), randf_range(0.8, 2.5))
 			await rot_tween.finished
@@ -236,7 +241,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			pass #print_debug("skipping looking around")
 		
-		stored_roam_previous_pos = stored_roam_end_pos
+		stored_roam_previous_pos = model.global_position
 		looking_around = false
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
@@ -246,13 +251,13 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	var to_point = (Globals.player_pos - global_position).normalized()
 	var angle_y = atan2(to_point.x, to_point.z) + (PI / 2)
 	var cone = rad_to_deg(angle_y) - rad_to_deg(model.rotation.y)
-	if global_transform.origin.distance_to(Globals.player_pos) < 10 and Globals.player_pos != Vector3(0, 0, 0) and !Globals.resetVisible and !ignore_player:
+	if global_transform.origin.distance_to(Globals.player_pos) < 6.5 and Globals.player_pos != Vector3(0, 0, 0) and !Globals.resetVisible and !ignore_player:
 		if cone > -30 and cone < 30:
 			roaming = false
 			circling = true
 	
 	# another catch to stop animation/everything if player is caught when looking
-	if rot_tween.is_running() and cone > -30 and cone < 30:
+	if rot_tween.is_running() and cone > -30 and cone < 30 and global_transform.origin.distance_to(Globals.player_pos) < 6.5:
 		rot_tween.kill()
 		roaming = false
 		circling = true
@@ -278,7 +283,9 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	
 	# dont need to move if went to target position
 	if agent.is_navigation_finished() and !circling:
-		stored_roam_end_pos = model.global_position
+		if stored_roam_finised_pos != model.global_position:
+			#print("storing this pos for later ", model.global_position)
+			stored_roam_finised_pos = model.global_position
 		return
 	
 	# use rotation based on player if circling
@@ -329,6 +336,8 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	
 	if roaming:
 		_face_to_velocity()
+	
+	#print("force is being ", dir2 * force)
 
 
 func _face_to_vector3(point: Vector3) -> void:
