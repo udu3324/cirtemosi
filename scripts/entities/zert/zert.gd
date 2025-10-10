@@ -20,6 +20,8 @@ extends RigidBody3D
 
 @onready var audio_player: AudioStreamPlayer3D = $AudioStreamPlayer3D
 
+var dies = preload("res://assets/audio/fx/enemt_dead.wav")
+
 var array_death_log: int = 0
 var ignore_player: bool = false
 var despawns: bool = true
@@ -44,7 +46,7 @@ var rot_tween = create_tween()
 var stored_roam_previous_pos = Vector3(0, 0, 0)
 var stored_roam_end_pos = Vector3(0, 0, 0)
 
-var health = 150.0
+var health = 100.0
 var attack_event = null
 var dead = false
 
@@ -66,6 +68,8 @@ var model_global_pos_forward
 var model_global_pos_backward
 var toggle_dir = false
 
+var please_stop = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	roaming = true
@@ -86,19 +90,91 @@ func _process(_delta: float) -> void:
 	health_bar.value = health
 	
 	if attack_event != null:
-		pass #todo handle attacks
+		var direction = Vector3(sin(attack_event), 0, cos(attack_event))
+		
+		apply_central_force(direction * randi_range(80, 100))
+		
+		attack_event = null
 	
-	if health == 150.0 or dead:
+	if health == 100.0 or dead:
 		health_bar.visible = false
 	else:
 		health_bar.visible = true
 	
 	if health <= 0.0 and !dead:
-		dead = true
+		self.sleeping = true
+		self.freeze = true
 		
-		# todo death event and effect
+		dead = true
+		circling = false
+		roaming = false
+		looking_around = false
+		please_stop = true
+		
+		Globals.zert_deaths[array_death_log] += 1
+		
+		Globals._play_fx(audio_player, dies, 0.0, 1.0)
+		
+		left_hand_collision.disabled = false
+		left_hand.sleeping = false
+		left_hand.freeze = false
+		
+		right_hand_collision.disabled = false
+		right_hand.sleeping = false
+		right_hand.freeze = false
+		
+		main_body_collision.disabled = true
+		head_collision.disabled = false
+		head.sleeping = false
+		head.freeze = false
+		
+		_drop_relic_3()
+		_drop_shards()
+		
+		if despawns:
+			await get_tree().create_timer(randi_range(2, 5)).timeout
+			model.queue_free()
+		
+		return
+
+func _drop_relic_3():
+	if drops_relic_3 and !Globals.relics[2]:
+		print_debug("dropping relic 3")
+		
+		await get_tree().create_timer(0.5).timeout
+		
+		var relic = preload("res://scenes/items/relic_3.tscn").instantiate()
+		var relic_pos = global_transform.origin
+		relic_pos.y += 2
+		relic_pos.x += 0.2
+		relic_pos.z += 0.2
+		
+		relic.global_transform.origin = relic_pos
+		Globals.root_node_3d.add_child(relic)
+
+func _drop_shards():
+	if drops_shards:
+		var actual_drop = rand_shard_range
+		
+		if rng_shard_drops:
+			actual_drop = randi_range(1, rand_shard_range)
+		
+		for i in actual_drop:
+			await get_tree().create_timer(0.1).timeout
+			
+			var shard = preload("res://scenes/items/shards.tscn").instantiate()
+			var shard_pos = global_transform.origin
+			#shard_pos.y += 1
+			shard_pos.x += randf_range(-1.0, 1.0)
+			shard_pos.z += randf_range(-1.0, 1.0)
+			
+			shard.global_transform.origin = shard_pos
+			Globals.root_node_3d.add_child(shard)
 
 func _physics_process(delta: float) -> void:
+	
+	if please_stop:
+		return
 	
 	if circling:
 		attack_period += delta
@@ -126,6 +202,7 @@ func _physics_process(delta: float) -> void:
 		# get the angle from the point
 		var angle_y = atan2(to_point.x, to_point.z) + (PI)
 		projectile.rotation.y = angle_y
+		projectile.vector_rotation = angle_y - (PI / 2)
 		
 		Globals.root_node_3d.add_child(projectile)
 	

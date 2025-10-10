@@ -5,6 +5,7 @@ extends RayCast3D
 # it took so long to debug why animations were affecting all instances...
 # https://stackoverflow.com/a/77131615/16216937
 
+@export var vector_rotation = ""
 @export var speed := 5.0
 
 @onready var mesh: SphereMesh = $MeshInstance3D.mesh
@@ -53,6 +54,14 @@ func _physics_process(delta: float) -> void:
 		
 		#print("collided with", get_collider().name)
 		
+		if get_collider().name.contains("Player"):
+			var force_push = Vector3(-cos(vector_rotation), 0, sin(vector_rotation)).normalized()
+			#DebugDraw3D.draw_sphere(force_push, 0.5, Color.AQUA)
+			Globals.player_pushback_event = force_push * randi_range(2, 5)
+			Globals.player_physics_reset_event = true
+			
+			Globals.health -= 1 if Globals.easy_mode else 3
+			Globals.player_vignette_event = true
 
 func cleanup() -> void:
 	queue_free()

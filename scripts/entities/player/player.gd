@@ -45,7 +45,7 @@ func _process(delta: float) -> void:
 		self.sleeping = true
 		self.freeze = true
 	
-	if Globals.health == 0.0 and !run_hp_ranout_once:
+	if Globals.health <= 0.0 and !run_hp_ranout_once:
 		Globals.player_death_event = "ran_out_of_hp"
 		
 		run_hp_ranout_once = true
@@ -327,6 +327,7 @@ func _handle_equipment() -> void:
 			var distance = position.distance_to(enemy.global_transform.origin)
 			
 			#print("player ", position, " | enemy ", enemy.global_transform.origin, " | distance ", distance)
+			
 			
 			# check if distance is good
 			if distance > Globals.item_info_dict[held_item]["range"]:

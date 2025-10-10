@@ -72,7 +72,6 @@ func _process(_delta: float) -> void:
 		apply_central_force(direction * randi_range(100, 400))
 		
 		attack_event = null
-		
 	
 	if health == 100.0 or dead:
 		health_bar.visible = false

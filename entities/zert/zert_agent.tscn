@@ -25,14 +25,13 @@ script = ExtResource("1_ciist")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 avoidance_enabled = true
-debug_enabled = true
 debug_use_custom = true
 debug_path_custom_color = Color(0.7189672, 0.08124996, 0.18451741, 1)
 debug_path_custom_point_size = 12.51
 
 [node name="zert" parent="." instance=ExtResource("1_x4i3p")]
 
-[node name="ColisionMesh" type="MeshInstance3D" parent="."]
+[node name="EnemyCollisionMesh" type="MeshInstance3D" parent="."]
 visible = false
 mesh = SubResource("CapsuleMesh_x4i3p")
 
