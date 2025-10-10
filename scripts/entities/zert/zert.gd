@@ -70,7 +70,7 @@ var toggle_dir = false
 func _ready() -> void:
 	roaming = true
 	
-	attack_next_wait = randf_range(3.0, 5.0)
+	attack_next_wait = randf_range(0.0, 1.0)
 	roaming_next_wait = randf_range(5.0, 7.0)
 	
 	left_rest_pos = left_hand.position
@@ -120,7 +120,12 @@ func _physics_process(delta: float) -> void:
 		var projectile: RayCast3D = preload("res://entities/zert/zert_projectile.tscn").instantiate()
 		projectile.speed = randf_range(10.0, 15.0)
 		projectile.position = spawn_pos
-		projectile.rotation.y = deg_to_rad(randi_range(0, 360))
+		
+		var to_point = (Globals.player_pos - projectile.position).normalized()
+	
+		# get the angle from the point
+		var angle_y = atan2(to_point.x, to_point.z) + (PI)
+		projectile.rotation.y = angle_y
 		
 		Globals.root_node_3d.add_child(projectile)
 	
