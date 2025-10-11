@@ -124,7 +124,7 @@ shape = SubResource("BoxShape3D_cqjvr")
 [node name="ZertCrossBridge" type="Node3D" parent="."]
 
 [node name="Zert" parent="ZertCrossBridge" instance=ExtResource("3_3cb6x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.184, 1, -17.868)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.853315, 1, -18.496462)
 line_path_angle = 125
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="ZertCrossBridge"]
