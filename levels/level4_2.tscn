@@ -6,3 +6,94 @@
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 use_collision = true
 polygon = PackedVector2Array(4.4032, 43.201, -6.85971, 34.1139, -2.8921, 22.723, 8.24282, 13.5079, 26.4171, 12.356, 44.3353, 19.5233, 45.4872, 26.3067, 37.936, 28.8664, 24.3693, 34.4979, 20.5296, 38.4655, 12.8504, 42.6891)
+
+[node name="BridgeRef" type="CSGPolygon3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -9.627846, 0, -10.159151)
+polygon = PackedVector2Array(-1.8704576, 3.6417255, 0.030448914, 6.083153, 3.1692352, 8.361553, 6.294688, 10.299801, 7.575799, 11.817871, 9.335779, 11.085932, 10.828085, 9.133411, 9.363243, 8.5028, 7.2541027, 6.2569866, 4.777767, 4.7996693, 2.7591705, 3.1319847, 2.3507972, 1.9732475, -0.2145958, 2.1700182)
+
+[node name="StructurePuzzle" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0.5, -17)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="StructurePuzzle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, 0)
+use_collision = true
+size = Vector3(7, 4, 1)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="StructurePuzzle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.5, -3.5)
+use_collision = true
+size = Vector3(1, 4, 6)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="StructurePuzzle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, -6)
+use_collision = true
+size = Vector3(4, 4, 1)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="StructurePuzzle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.5, -3)
+use_collision = true
+size = Vector3(2, 4, 1)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="StructurePuzzle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.5, -3.6083984)
+use_collision = true
+size = Vector3(1, 4, 0.21679688)
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="StructurePuzzle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.5, -5.3789063)
+use_collision = true
+size = Vector3(1, 4, 0.2421875)
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="StructurePuzzle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.05505371, -4.4823)
+use_collision = true
+size = Vector3(1, 0.8947754, 1.6472168)
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="StructurePuzzle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.418396, 1.5, -9)
+use_collision = true
+size = Vector3(0.16320801, 4, 1)
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="StructurePuzzle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.030899048, -0.033935547, -9)
+use_collision = true
+size = Vector3(2.6253967, 0.95751953, 1)
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="StructurePuzzle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3881836, 1.5, -9)
+use_collision = true
+size = Vector3(0.22363281, 4, 1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="StructurePuzzle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1.5, -9)
+use_collision = true
+size = Vector3(3, 4, 1)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="StructurePuzzle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1.5, -9)
+use_collision = true
+size = Vector3(3, 4, 1)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="StructurePuzzle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1.5, -9)
+use_collision = true
+size = Vector3(1, 4, 1)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="StructurePuzzle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.5, -4.5)
+use_collision = true
+size = Vector3(1, 4, 10)
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="StructurePuzzle"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5.5, -0.5, -8.5)
+polygon = PackedVector2Array(0, 0, 0, 4, 9, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(-0.6123725, 0.49999997, -0.6123724, -0.047367185, 0.75, 0.6597397, 0.78914905, 0.43301278, -0.43559584, 5, 9, -29)
+spot_range = 20.49195
+spot_angle = 30.667162
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 8.274716, 9, -44.022675)
+spot_range = 45.738575
+spot_angle = 60.21566

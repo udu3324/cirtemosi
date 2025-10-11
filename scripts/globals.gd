@@ -32,6 +32,7 @@ var player_pushback_event: Vector3 = Vector3.ZERO
 var player_physics_reset_event: bool = false
 
 var player_level_traverse_event: String = ""
+var player_level_load_event: String = ""
 var player_death_event: String = ""
 var player_self_destruct_event: bool = false
 

@@ -219,7 +219,7 @@ func _physics_process(delta: float) -> void:
 		
 		# dont look around if the agent hasn't moved anywhere again
 		if stored_roam_previous_pos != stored_roam_finised_pos:
-			print("spinning right round", model.global_position, stored_roam_finised_pos)
+			#print("spinning right round", model.global_position, stored_roam_finised_pos)
 			var store_rot = model.rotation.y
 			
 			if rot_tween.is_running():
@@ -257,7 +257,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 			circling = true
 	
 	# another catch to stop animation/everything if player is caught when looking
-	if rot_tween.is_running() and cone > -30 and cone < 30 and global_transform.origin.distance_to(Globals.player_pos) < 6.5:
+	if rot_tween.is_running() and cone > -30 and cone < 30 and global_transform.origin.distance_to(Globals.player_pos) < 6.5 and !ignore_player:
 		rot_tween.kill()
 		roaming = false
 		circling = true
@@ -374,7 +374,7 @@ func _to_next_path_point():
 	roaming = true
 
 func _regen_points():
-	print_debug("regenned with ", line_path_angle)
+	#print_debug("regenned with ", line_path_angle)
 	model_global_pos = model.global_position
 	
 	var forward_dir = -model.global_transform.basis.z.normalized()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://40hbudsqa3hu"]
+[gd_scene load_steps=8 format=3 uid="uid://40hbudsqa3hu"]
 
 [ext_resource type="Script" uid="uid://dglf5r2r6vt88" path="res://scripts/scenes/level_4.gd" id="1_cqjvr"]
 [ext_resource type="PackedScene" uid="uid://duydi7lytqxks" path="res://scenes/enviornment/CaveEnv.tscn" id="1_rxes3"]
@@ -14,6 +14,9 @@ size = Vector3(9.085922, 5.8031006, 9.590973)
 vertices = PackedVector3Array(-0.24830341, 0.49999952, -19.227022, 0.5016966, 0.49999952, -19.477022, -0.4983034, 0.49999952, -20.977022, -1.9983034, 0.49999952, -21.477022, -3.4983034, 0.49999952, -19.727022, -2.7483034, 0.49999952, -16.477022, -9.248303, 0.49999952, -16.227022, -6.2483034, 0.49999952, -14.477022, -10.998303, 0.49999952, -13.977022, -9.998303, 0.49999952, -12.727022, -7.4983034, 0.49999952, -12.727022)
 polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(3, 0, 4), PackedInt32Array(0, 5, 4), PackedInt32Array(4, 5, 7), PackedInt32Array(4, 7, 6), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 6), PackedInt32Array(10, 6, 7)]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_3cb6x"]
+size = Vector3(5.667, 3.044, 1)
+
 [node name="Level4" type="Node3D"]
 script = ExtResource("1_cqjvr")
 
@@ -27,24 +30,32 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 
 use_collision = true
 polygon = PackedVector2Array(4.4032, 43.201, -6.85971, 34.1139, -2.8921, 22.723, 8.24282, 13.5079, 26.4171, 12.356, 44.3353, 19.5233, 45.4872, 26.3067, 37.936, 28.8664, 24.3693, 34.4979, 20.5296, 38.4655, 12.8504, 42.6891)
 
+[node name="CSGPolygon3D4" type="CSGPolygon3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -2.0072792, 8.774098e-08)
+use_collision = true
+polygon = PackedVector2Array(-1.6039362, 23.454134, 2.5445967, 22.748, 3.2507277, 18.864267, 7.934534, 17.274418, 10.847334, 14.273352, 15.966799, 15.420818, 21.615862, 13.390686, 25.146528, 15.420818, 32.207863, 15.862152, 36.179863, 19.56935, 42.09372, 19.922417, 43.848103, 25.64544)
+depth = 3.12
+
 [node name="CSGPolygon3D3" type="CSGPolygon3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 11, 6.55671e-07, 15)
 use_collision = true
 polygon = PackedVector2Array(-7.13375, 11.2221, -6.23784, 16.3416, 8.73671, 16.9816, 17.9518, 12.502, 19.9996, 1.62306, 8.73671, -6.44016, -8.28564, -4.0084, -13.4051, 3.15891, -8.54161, 6.87055, -8.41363, 10.4542)
 
-[node name="CSGPolygon3D4" type="CSGPolygon3D" parent="."]
+[node name="CaveEnv" parent="." instance=ExtResource("1_rxes3")]
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="CSGPolygon3D4" type="CSGPolygon3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -24, -1.04907e-06, -24)
 use_collision = true
 polygon = PackedVector2Array(-9.12218, -5.50803, 0.604877, -4.22815, 7.77218, -1.92437, 12.1238, 4.34702, 12.8917, 11.3863, 11.8678, 15.8659, 7.90017, 14.714, 5.72438, 10.2345, -1.44293, 7.80269, -5.02658, 3.5791, -8.48225, 1.27532, -12.0659, -2.6923, -10.914, -5.63601)
 depth = 1.85
 
-[node name="CSGPolygon3D5" type="CSGPolygon3D" parent="."]
+[node name="CSGPolygon3D5" type="CSGPolygon3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -24, -2.4683702, -24)
 use_collision = true
 polygon = PackedVector2Array(-9.743912, -4.041361, -6.271755, -3.6059608, -3.3395653, -3.9000874, -0.003162384, -2.452057, 3.865324, -1.875185, 5.6344414, -0.22158241, 8.300058, 1.0708466, 9.003866, 3.7782059, 11.588211, 6.7895184, 11.046871, 11.141388, 11.305668, 14.559494, 9.139488, 12.958408, -7.3422813, -1.781004, -12.475174, -3.4291801)
 depth = 2.71
-
-[node name="CaveEnv" parent="." instance=ExtResource("1_rxes3")]
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -2.37805, -7)
@@ -53,7 +64,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -2.37805, -7)
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -2, -8.74228e-08)
 polygon = PackedVector2Array(-48.2858, -45.1708, 9.23582, -56.5374, 68.1351, -39.4876, 76.9184, 13.9007, 46.6076, 43.8671, -22.1083, 46.2781, -66.8855, 31.295, -72.2244, -14.6878)
 
-[node name="CSGBox3D28" type="CSGBox3D" parent="."]
+[node name="Roof" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.55528, 21.9657, -19.9115)
 size = Vector3(98.5168, 0.745895, 103.655)
 
@@ -124,7 +135,8 @@ shape = SubResource("BoxShape3D_cqjvr")
 [node name="ZertCrossBridge" type="Node3D" parent="."]
 
 [node name="Zert" parent="ZertCrossBridge" instance=ExtResource("3_3cb6x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.853315, 1, -18.496462)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6492212, 0.99999905, -19.023363)
+ignore_player = true
 line_path_angle = 125
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="ZertCrossBridge"]
@@ -146,6 +158,30 @@ light_color = Color(0.36674514, 0.51723593, 0.5678207, 1)
 light_energy = 0.489
 spot_range = 13.125083
 
+[node name="Area3DExit4_1" type="Area3D" parent="ZertCrossBridge"]
+transform = Transform3D(0.9215924, 0, -0.3881591, 0, 1, 0, 0.3881591, 0, 0.9215924, -9.132637, 0, -13.313523)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ZertCrossBridge/Area3DExit4_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.014530182, 1.4952545, -9.536743e-07)
+shape = SubResource("BoxShape3D_3cb6x")
+
+[node name="Area3DMidBridge" type="Area3D" parent="ZertCrossBridge"]
+transform = Transform3D(0.6756803, 0, -0.7371948, 0, 1, 0, 0.7371948, 0, 0.6756803, -5.158768, 0, -16.99354)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ZertCrossBridge/Area3DMidBridge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.014530182, 1.4952545, -9.536743e-07)
+shape = SubResource("BoxShape3D_3cb6x")
+
+[node name="Area3D2Exit4_2" type="Area3D" parent="ZertCrossBridge"]
+transform = Transform3D(0.763582, 0, -0.64571095, 0, 1, 0, 0.64571095, 0, 0.763582, -0.551561, -9.536743e-07, -20.54447)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ZertCrossBridge/Area3D2Exit4_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.014530182, 1.4952545, -9.536743e-07)
+shape = SubResource("BoxShape3D_3cb6x")
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Area3D2Zoom" to="." method="_on_area_3d_2_zoom_body_entered"]
 [connection signal="body_exited" from="Area3D2Zoom" to="." method="_on_area_3d_2_zoom_body_exited"]
+[connection signal="body_entered" from="ZertCrossBridge/Area3DExit4_1" to="." method="_on_area_3d_exit_4_1_body_entered"]
+[connection signal="body_entered" from="ZertCrossBridge/Area3DMidBridge" to="." method="_on_area_3d_mid_bridge_body_entered"]
+[connection signal="body_entered" from="ZertCrossBridge/Area3D2Exit4_2" to="." method="_on_area_3d_2_exit_4_2_body_entered"]

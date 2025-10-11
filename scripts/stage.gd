@@ -89,6 +89,9 @@ func _process(_delta: float) -> void:
 	if Globals.player_level_traverse_event != "":
 		_handle_level_traverse_event()
 	
+	if Globals.player_level_load_event != "":
+		_handle_player_level_load_event()
+	
 	if Globals.menu_pick_fx_event != null:
 		Globals._play_fx(audio_menu_pick, booh, Globals.menu_pick_fx_event, 1.0)
 		Globals.menu_pick_fx_event = null
@@ -245,6 +248,45 @@ func _handle_level_traverse_event():
 	await get_tree().create_timer(3.0).timeout 
 	
 	await _hide_loading()
+
+func _handle_player_level_load_event():
+	print_debug("recieved load event", Globals.player_level_load_event)
+	
+	# clear global so it doesn't run again
+	var traversing_to: String = Globals.player_level_load_event
+	Globals.player_level_load_event = ""
+	
+	if traversing_to == "4.1->4.2":
+		var next = $Node3D.find_child("Level4_2", true, false)
+		
+		for child in $Node3D.get_children():
+			print("it is ", child.name)
+		
+		if $Node3D.find_child("Level4_1", true, false) != null:
+			print("freeing Level4_1")
+			$Node3D.find_child("Level4_1", true, false).queue_free()
+		
+		if next != null: # player went back other direction
+			print("skipped load event")
+			return
+		
+		var sub_level = preload("res://levels/level4_2.tscn").instantiate()
+		$Node3D.add_child(sub_level)
+
+	if traversing_to == "4.2->4.1":
+		var next = $Node3D.find_child("Level4_1", true, false)
+		
+		if $Node3D.find_child("Level4_2", true, false) != null:
+			print("freeing Level4_2")
+			$Node3D.find_child("Level4_2", true, false).queue_free()
+		
+		if next != null: # player went back other direction
+			print("skipped load event")
+			return
+		
+		var sub_level = preload("res://levels/level4_1.tscn").instantiate()
+		sub_level.global_position = Vector3(-20, 0, 0)
+		$Node3D.add_child(sub_level)
 
 func _to_checkpoint():
 	Globals.stamina = Globals.stamina_max - (Globals.stamina_max / 5)
