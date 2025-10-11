@@ -140,6 +140,12 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -10.31
 polygon = PackedVector2Array(9.638559, 10.537643, 8.974784, 8.99552, 7.239012, 6.1112766, 4.403923, 5.026289, 2.7606297, 2.8200493, -0.2145958, 2.1700182)
 depth = 1.85
 
+[node name="SpotLight3D" type="SpotLight3D" parent="ZertCrossBridge"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -5, 9.051401, -17)
+light_color = Color(0.36674514, 0.51723593, 0.5678207, 1)
+light_energy = 0.489
+spot_range = 13.125083
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Area3D2Zoom" to="." method="_on_area_3d_2_zoom_body_entered"]
 [connection signal="body_exited" from="Area3D2Zoom" to="." method="_on_area_3d_2_zoom_body_exited"]
