@@ -259,15 +259,12 @@ func _handle_player_level_load_event():
 	if traversing_to == "4.1->4.2":
 		var next = $Node3D.find_child("Level4_2", true, false)
 		
-		for child in $Node3D.get_children():
-			print("it is ", child.name)
-		
 		if $Node3D.find_child("Level4_1", true, false) != null:
-			print("freeing Level4_1")
+			#print("freeing Level4_1")
 			$Node3D.find_child("Level4_1", true, false).queue_free()
 		
 		if next != null: # player went back other direction
-			print("skipped load event")
+			#print("skipped load event")
 			return
 		
 		var sub_level = preload("res://levels/level4_2.tscn").instantiate()
@@ -277,11 +274,11 @@ func _handle_player_level_load_event():
 		var next = $Node3D.find_child("Level4_1", true, false)
 		
 		if $Node3D.find_child("Level4_2", true, false) != null:
-			print("freeing Level4_2")
+			#print("freeing Level4_2")
 			$Node3D.find_child("Level4_2", true, false).queue_free()
 		
 		if next != null: # player went back other direction
-			print("skipped load event")
+			#print("skipped load event")
 			return
 		
 		var sub_level = preload("res://levels/level4_1.tscn").instantiate()

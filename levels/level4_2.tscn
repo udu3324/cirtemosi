@@ -1,99 +1,377 @@
-[gd_scene format=3 uid="uid://7cp0pqabugrl"]
+[gd_scene load_steps=6 format=3 uid="uid://7cp0pqabugrl"]
+
+[ext_resource type="PackedScene" uid="uid://bwd3hmdtl2y8f" path="res://entities/zert/zert.tscn" id="1_05hsp"]
+[ext_resource type="PackedScene" uid="uid://kn6hbschf6xo" path="res://scenes/items/shards.tscn" id="2_u22qj"]
+[ext_resource type="PackedScene" uid="uid://t0p0267pq1yk" path="res://entities/interface/interface.tscn" id="2_ve1yt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ve1yt"]
+albedo_color = Color(0.7059877, 0.66718817, 0.47144568, 1)
+emission = Color(0.6789437, 0.6789437, 0.6789437, 1)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_u22qj"]
+vertices = PackedVector3Array(6.7260756, 3.9999998, -14.684167, 6.7260756, 3.9999998, -13.184167, 7.2260756, 3.9999998, -12.684167, 9.226076, 3.9999998, -14.684167, 6.7260756, 3.9999998, -9.184167, 7.4760756, 3.9999998, -8.434167, 9.226076, 3.9999998, -9.684167, 10.226076, 3.9999998, -13.684167, 10.226076, 3.9999998, -11.434167)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(4, 6, 5), PackedInt32Array(7, 8, 3), PackedInt32Array(3, 8, 2), PackedInt32Array(2, 8, 6), PackedInt32Array(2, 6, 4)]
 
 [node name="Level4_2" type="Node3D"]
 
-[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="."]
+[node name="Floor" type="CSGPolygon3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 use_collision = true
 polygon = PackedVector2Array(4.4032, 43.201, -6.85971, 34.1139, -2.8921, 22.723, 8.24282, 13.5079, 26.4171, 12.356, 44.3353, 19.5233, 45.4872, 26.3067, 37.936, 28.8664, 24.3693, 34.4979, 20.5296, 38.4655, 12.8504, 42.6891)
 
+[node name="Platform" type="CSGPolygon3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2, 0)
+use_collision = true
+polygon = PackedVector2Array(4.4032, 43.201, -6.85971, 34.1139, -4.8234286, 28.229496, -2.3320825, 25.948149, 0.89120364, 27.076988, 3.8505073, 26.516468, 5.8045616, 26.515606, 8.734584, 29.893568, 13.764108, 31.019102, 17.708157, 33.212017, 20.5296, 38.4655, 12.8504, 42.6891)
+depth = 2.0
+
 [node name="BridgeRef" type="CSGPolygon3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -9.627846, 0, -10.159151)
+visible = false
 polygon = PackedVector2Array(-1.8704576, 3.6417255, 0.030448914, 6.083153, 3.1692352, 8.361553, 6.294688, 10.299801, 7.575799, 11.817871, 9.335779, 11.085932, 10.828085, 9.133411, 9.363243, 8.5028, 7.2541027, 6.2569866, 4.777767, 4.7996693, 2.7591705, 3.1319847, 2.3507972, 1.9732475, -0.2145958, 2.1700182)
 
 [node name="StructurePuzzle" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0.5, -17)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.30566, 0.5, -17.525751)
+
+[node name="Barriers" type="Node3D" parent="StructurePuzzle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9440844, 0)
+visible = false
+
+[node name="CSGBox3D" type="CSGBox3D" parent="StructurePuzzle/Barriers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.025635, 4.2939878, -3.769287)
+use_collision = true
+size = Vector3(0.30029297, 1, 8.538574)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="StructurePuzzle/Barriers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.974365, 4.2939878, -4.5)
+use_collision = true
+size = Vector3(0.30029297, 1, 10)
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="StructurePuzzle/Barriers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.638769, 4.293988, -5.3852234)
+use_collision = true
+size = Vector3(0.30029297, 1, 7.019226)
+
+[node name="CSGBox3D17" type="CSGBox3D" parent="StructurePuzzle/Barriers"]
+transform = Transform3D(-0.84468305, 0, 0.53526676, 0, 1, 0, -0.53526676, 0, -0.84468305, 10.6378, 4.293988, -3.094904)
+use_collision = true
+size = Vector3(0.30029297, 1, 4.488205)
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="StructurePuzzle/Barriers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.568317, 4.293988, -5.927946)
+use_collision = true
+size = Vector3(0.30029297, 1, 2.6656494)
+
+[node name="CSGBox3D19" type="CSGBox3D" parent="StructurePuzzle/Barriers"]
+transform = Transform3D(0.83593184, 0, 0.5488332, 0, 1, 0, -0.5488332, 0, 0.83593184, 10.960653, 4.293988, -7.6461716)
+use_collision = true
+size = Vector3(0.30029297, 1, 2.6656494)
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="StructurePuzzle/Barriers"]
+transform = Transform3D(0.07898107, 0, 0.9968761, 0, 1, 0, -0.9968761, 0, 0.07898107, 8.856649, 4.293988, -8.566942)
+use_collision = true
+size = Vector3(0.30029297, 1, 4.287903)
+
+[node name="CSGBox3D20" type="CSGBox3D" parent="StructurePuzzle/Barriers"]
+transform = Transform3D(0.07898107, 0, 0.9968761, 0, 1, 0, -0.9968761, 0, 0.07898107, 8.626156, 4.293988, -1.9873943)
+use_collision = true
+size = Vector3(0.30029297, 1, 4.287903)
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="StructurePuzzle/Barriers"]
+transform = Transform3D(1, 0, 0, 0, 0.9096644, -0.41534433, 0, 0.41534433, 0.9096644, -6.025635, 3.297581, -5.902069)
+use_collision = true
+size = Vector3(0.30029297, 1, 9.019516)
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="StructurePuzzle/Barriers"]
+transform = Transform3D(1, 0, 0, 0, 0.9096644, -0.41534433, 0, 0.41534433, 0.9096644, -4.025635, 2.699515, -4.5922165)
+use_collision = true
+size = Vector3(0.30029297, 1, 7.6671333)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="StructurePuzzle/Barriers"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.013183594, 4.2939878, -10.057137)
+use_collision = true
+size = Vector3(0.30029297, 1, 11.922363)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="StructurePuzzle/Barriers"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.8779907, 4.2939878, 0.94286346)
+use_collision = true
+size = Vector3(0.30029297, 1, 10.192749)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="StructurePuzzle/Barriers"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.95344543, 4.2939878, -1.0571365)
+use_collision = true
+size = Vector3(0.30029297, 1, 6.3557434)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="StructurePuzzle/Barriers"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.042129517, 4.2939878, -6.0571365)
+use_collision = true
+size = Vector3(0.30029297, 1, 4.2896423)
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="StructurePuzzle/Barriers"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.9813919, 4.2939878, -3.0571365)
+use_collision = true
+size = Vector3(0.30029297, 1, 2.2425995)
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="StructurePuzzle/Barriers"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.21838379, 4.2939878, -8.057137)
+use_collision = true
+size = Vector3(0.30029297, 1, 8)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="StructurePuzzle/Barriers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0256348, 4.2939878, -3.3705616)
+use_collision = true
+size = Vector3(0.30029297, 1, 5)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="StructurePuzzle/Barriers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.025634766, 4.2939878, -3.4895344)
+use_collision = true
+size = Vector3(0.30029297, 1, 1.1777039)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="StructurePuzzle/Barriers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9743652, 4.2939878, -4.409197)
+use_collision = true
+size = Vector3(0.30029297, 1, 2.9227295)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="StructurePuzzle/Barriers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9743652, 4.2939878, -4.4766235)
+use_collision = true
+size = Vector3(0.30029297, 1, 7.1239014)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="StructurePuzzle"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, 0)
 use_collision = true
-size = Vector3(7, 4, 1)
+size = Vector3(8, 4, 1)
+material = SubResource("StandardMaterial3D_ve1yt")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="StructurePuzzle"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.5, -3.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1.5, -4)
 use_collision = true
-size = Vector3(1, 4, 6)
+size = Vector3(1, 4, 7)
+material = SubResource("StandardMaterial3D_ve1yt")
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="StructurePuzzle"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, -6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, -7)
 use_collision = true
-size = Vector3(4, 4, 1)
+size = Vector3(6, 4, 1)
+material = SubResource("StandardMaterial3D_ve1yt")
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="StructurePuzzle"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.5, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, -2)
+use_collision = true
+size = Vector3(5, 4, 1)
+material = SubResource("StandardMaterial3D_ve1yt")
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="StructurePuzzle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.5, -4)
+use_collision = true
+size = Vector3(1, 4, 3)
+material = SubResource("StandardMaterial3D_ve1yt")
+
+[node name="CSGBox3D17" type="CSGBox3D" parent="StructurePuzzle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, -5)
 use_collision = true
 size = Vector3(2, 4, 1)
+material = SubResource("StandardMaterial3D_ve1yt")
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="StructurePuzzle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, -4)
+use_collision = true
+size = Vector3(1, 4, 1)
+material = SubResource("StandardMaterial3D_ve1yt")
+
+[node name="CSGBox3D19" type="CSGBox3D" parent="StructurePuzzle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1.5, -3)
+use_collision = true
+size = Vector3(1, 4, 1)
+material = SubResource("StandardMaterial3D_ve1yt")
+
+[node name="CSGBox3D20" type="CSGBox3D" parent="StructurePuzzle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1.5, -6)
+use_collision = true
+size = Vector3(1, 4, 1)
+material = SubResource("StandardMaterial3D_ve1yt")
 
 [node name="CSGBox3D9" type="CSGBox3D" parent="StructurePuzzle"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.5, -3.6083984)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1.5, -3.6083984)
 use_collision = true
 size = Vector3(1, 4, 0.21679688)
+material = SubResource("StandardMaterial3D_ve1yt")
 
 [node name="CSGBox3D13" type="CSGBox3D" parent="StructurePuzzle"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.5, -5.3789063)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1.5, -5.3789063)
 use_collision = true
 size = Vector3(1, 4, 0.2421875)
+material = SubResource("StandardMaterial3D_ve1yt")
 
 [node name="CSGBox3D15" type="CSGBox3D" parent="StructurePuzzle"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.05505371, -4.4823)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -0.05505371, -4.4823)
 use_collision = true
 size = Vector3(1, 0.8947754, 1.6472168)
+material = SubResource("StandardMaterial3D_ve1yt")
 
 [node name="CSGBox3D11" type="CSGBox3D" parent="StructurePuzzle"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.418396, 1.5, -9)
 use_collision = true
 size = Vector3(0.16320801, 4, 1)
+material = SubResource("StandardMaterial3D_ve1yt")
 
 [node name="CSGBox3D14" type="CSGBox3D" parent="StructurePuzzle"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.030899048, -0.033935547, -9)
 use_collision = true
 size = Vector3(2.6253967, 0.95751953, 1)
+material = SubResource("StandardMaterial3D_ve1yt")
 
 [node name="CSGBox3D12" type="CSGBox3D" parent="StructurePuzzle"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3881836, 1.5, -9)
 use_collision = true
 size = Vector3(0.22363281, 4, 1)
+material = SubResource("StandardMaterial3D_ve1yt")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="StructurePuzzle"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1.5, -9)
 use_collision = true
 size = Vector3(3, 4, 1)
+material = SubResource("StandardMaterial3D_ve1yt")
 
 [node name="CSGBox3D10" type="CSGBox3D" parent="StructurePuzzle"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1.5, -9)
 use_collision = true
 size = Vector3(3, 4, 1)
+material = SubResource("StandardMaterial3D_ve1yt")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="StructurePuzzle"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1.5, -9)
 use_collision = true
 size = Vector3(1, 4, 1)
+material = SubResource("StandardMaterial3D_ve1yt")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="StructurePuzzle"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.5, -4.5)
 use_collision = true
 size = Vector3(1, 4, 10)
+material = SubResource("StandardMaterial3D_ve1yt")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="StructurePuzzle"]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5.5, -0.5, -8.5)
+use_collision = true
 polygon = PackedVector2Array(0, 0, 0, 4, 9, 0)
+material = SubResource("StandardMaterial3D_ve1yt")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(-0.6123725, 0.49999997, -0.6123724, -0.047367185, 0.75, 0.6597397, 0.78914905, 0.43301278, -0.43559584, 5, 9, -29)
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="StructurePuzzle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.68405724, 2.861023e-06, 6.7334356)
+navigation_mesh = SubResource("NavigationMesh_u22qj")
+
+[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="StructurePuzzle/NavigationRegion3D"]
+transform = Transform3D(0.8666617, 0.49889618, 2.1807445e-08, 0, -4.371139e-08, 1, 0.49889618, -0.8666617, -3.7882987e-08, 6.450945, 3.5, -10.887542)
+use_collision = true
+polygon = PackedVector2Array(0, 0, -0.19363403, 1.2630444, -1.463583, 2.0917416, -1.9853458, 3.295292, -1.4334221, 4.4209824, 0.30340195, 5.0333996, 2.187336, 4.4926414, 3.2434006, 2.765154, 3.304226, 0.4564724, 2.5382805, -1.9208317, 0.8637829, -1.6532135)
+
+[node name="CSGPolygon3D3" type="CSGPolygon3D" parent="StructurePuzzle/NavigationRegion3D"]
+transform = Transform3D(0.8666617, 0.49889618, 2.1807445e-08, 0, -4.371139e-08, 1, 0.49889618, -0.8666617, -3.7882987e-08, 6.450945, 2.7117915, -10.887542)
+use_collision = true
+polygon = PackedVector2Array(-0.48073292, 4.472002, 0.8884859, 4.64884, 1.3172836, 3.7366505, 2.981614, 2.233858, 2.2591352, 0.86532784, 2.205431, -1.028862, 1.045886, -1.3149815)
+depth = 3.28
+
+[node name="Zert" parent="StructurePuzzle" instance=ExtResource("1_05hsp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.912815, 4.500003, -6.936571)
+line_path_length = 1.295
+line_path_angle = 100
+
+[node name="Zert2" parent="StructurePuzzle" instance=ExtResource("1_05hsp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.57313, 4.500003, -3.4599724)
+line_path_length = 1.295
+line_path_angle = 100
+
+[node name="PileOfShards" type="Node3D" parent="StructurePuzzle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.30411732, -4.0639114)
+
+[node name="Shards" parent="StructurePuzzle/PileOfShards" instance=ExtResource("2_u22qj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21782207, 0, 0.2163372)
+
+[node name="Shards2" parent="StructurePuzzle/PileOfShards" instance=ExtResource("2_u22qj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0035524368, 0, 0.01546669)
+
+[node name="Shards3" parent="StructurePuzzle/PileOfShards" instance=ExtResource("2_u22qj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2388506, 0, 0.21247864)
+
+[node name="Shards4" parent="StructurePuzzle/PileOfShards" instance=ExtResource("2_u22qj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21782207, 0.29745376, 0.2163372)
+
+[node name="Shards5" parent="StructurePuzzle/PileOfShards" instance=ExtResource("2_u22qj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0035524368, 0.29745376, 0.01546669)
+
+[node name="Shards10" parent="StructurePuzzle/PileOfShards" instance=ExtResource("2_u22qj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0035524368, 0.29745376, 0.40595436)
+
+[node name="Shards6" parent="StructurePuzzle/PileOfShards" instance=ExtResource("2_u22qj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2388506, 0.29745376, 0.21247864)
+
+[node name="Shards7" parent="StructurePuzzle/PileOfShards" instance=ExtResource("2_u22qj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21782207, 0.5462605, 0.2163372)
+
+[node name="Shards8" parent="StructurePuzzle/PileOfShards" instance=ExtResource("2_u22qj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0035524368, 0.5462605, 0.01546669)
+
+[node name="Shards9" parent="StructurePuzzle/PileOfShards" instance=ExtResource("2_u22qj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2388506, 0.5462605, 0.21247864)
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="."]
+transform = Transform3D(0.79317486, -0.37321994, 0.4812282, -0.047367144, 0.74999994, 0.6597397, -0.6071491, -0.5460833, 0.57720274, 21.933666, 9, -14.130613)
+light_color = Color(0.1657444, 0.35284707, 0.17253423, 1)
 spot_range = 20.49195
 spot_angle = 30.667162
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 8.274716, 9, -44.022675)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 11.68283, 11.0651, -31.576048)
+light_color = Color(0.9971362, 0.619743, 0.6955033, 1)
 spot_range = 45.738575
-spot_angle = 60.21566
+spot_angle = 62.7222
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 5.090988, 11.065102, -37.910583)
+light_color = Color(0.9971362, 0.619743, 0.6955033, 1)
+spot_range = 45.738575
+spot_angle = 62.7222
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 26.528357, 11.0651, -23.36606)
+light_color = Color(0.9971362, 0.619743, 0.6955033, 1)
+spot_range = 45.738575
+spot_angle = 52.58603
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
+transform = Transform3D(-0.09537673, 0, -0.99544126, 0, 1, 0, 0.99544126, 0, -0.09537673, 0.7526945, -4.7683716e-07, -27.73887)
+use_collision = true
+polygon = PackedVector2Array(0, 0, 0, 1, 0, 2, 1, 2, 4, 0)
+depth = 3.12
+
+[node name="Interface" parent="." instance=ExtResource("2_ve1yt")]
+transform = Transform3D(-0.9948895, 0, -0.10096955, 0, 1, 0, 0.10096955, 0, -0.9948895, 9.369743, 2.5000002, -37.835052)
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2, -35)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 6)
+use_collision = true
+size = Vector3(1, 2, 1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, 4)
+use_collision = true
+size = Vector3(1, 3, 1)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, 4)
+use_collision = true
+size = Vector3(1, 4, 1)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2.5, 4)
+use_collision = true
+size = Vector3(1, 5, 1)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3, 2)
+use_collision = true
+size = Vector3(1, 6, 1)
