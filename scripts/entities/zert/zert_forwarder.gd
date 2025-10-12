@@ -13,17 +13,17 @@ extends Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	get_child(1).array_death_log = array_death_log
-	get_child(1).ignore_player = ignore_player
-	get_child(1).despawns = despawns
-	get_child(1).drops_relic_3 = drops_relic_3
-	get_child(1).drops_shards = drops_shards
-	get_child(1).rng_shard_drops = rng_shard_drops
-	get_child(1).rand_shard_range = rand_shard_range
-	get_child(1).line_path_length = line_path_length
-	get_child(1).line_path_angle = line_path_angle
+	get_child(0).array_death_log = array_death_log
+	get_child(0).ignore_player = ignore_player
+	get_child(0).despawns = despawns
+	get_child(0).drops_relic_3 = drops_relic_3
+	get_child(0).drops_shards = drops_shards
+	get_child(0).rng_shard_drops = rng_shard_drops
+	get_child(0).rand_shard_range = rand_shard_range
+	get_child(0).line_path_length = line_path_length
+	get_child(0).line_path_angle = line_path_angle
 	
-	get_child(1)._regen_points()
+	get_child(0)._regen_points()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

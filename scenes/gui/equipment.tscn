@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bq3w0tdsdqfts"]
+[gd_scene load_steps=7 format=3 uid="uid://bq3w0tdsdqfts"]
 
 [ext_resource type="Script" uid="uid://dl8elgc1agdy7" path="res://scripts/entities/player/equipment.gd" id="1_7vuh4"]
 [ext_resource type="Texture2D" uid="uid://2nnjlcr0ecfx" path="res://assets/slot/slot_glint.png" id="3_7vuh4"]
 [ext_resource type="Texture2D" uid="uid://cjb2o2ho4bhbp" path="res://assets/slot/starter_sword.png" id="4_83lu2"]
 [ext_resource type="Texture2D" uid="uid://d0srlwpjr2abq" path="res://assets/slot/empty_slot.png" id="5_83lu2"]
 [ext_resource type="AudioStream" uid="uid://dptd8kkqfhnr2" path="res://assets/audio/fx/slot_move.wav" id="5_nvhhb"]
+[ext_resource type="Texture2D" uid="uid://chl562aw1mhbt" path="res://assets/slot/bow.png" id="5_r8e7t"]
 
 [node name="Equipment" type="Control"]
 layout_mode = 3
@@ -69,6 +70,12 @@ visible = false
 custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 texture = ExtResource("3_7vuh4")
+expand_mode = 2
+
+[node name="Bow" type="TextureRect" parent="MarginContainer/HBoxContainer/Slot2"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("5_r8e7t")
 expand_mode = 2
 
 [node name="Slot3" type="CenterContainer" parent="MarginContainer/HBoxContainer"]

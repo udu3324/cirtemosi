@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://bhmmx5pl0neys"]
+[gd_scene load_steps=35 format=4 uid="uid://bhmmx5pl0neys"]
 
 [ext_resource type="Material" uid="uid://dhp1vk7afkguu" path="res://assets/prefab/prefab_dark_meter.tres" id="1_3ju41"]
 [ext_resource type="Texture2D" uid="uid://b5pviiur126b0" path="res://assets/prefab/playtesting.png" id="2_k5kv5"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://t0p0267pq1yk" path="res://entities/interface/interface.tscn" id="8_gnbnl"]
 [ext_resource type="PackedScene" uid="uid://bwd3hmdtl2y8f" path="res://entities/zert/zert.tscn" id="9_rdpwy"]
 [ext_resource type="PackedScene" uid="uid://cy2nebdl37ose" path="res://entities/zert/zert_projectile.tscn" id="10_7g6ut"]
+[ext_resource type="PackedScene" uid="uid://chrpj84t3rlxj" path="res://scenes/items/bow.tscn" id="11_t54sk"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_6a74u"]
 _surfaces = [{
@@ -248,8 +249,8 @@ skeleton = NodePath("../..")
 shape = SubResource("ConcavePolygonShape3D_rmem4")
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="Spawn"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.70386, 1.19114, -2.74762)
-size = Vector3(0.297363, 2.03072, 2.92249)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.70386, 1.9117315, -2.9295955)
+size = Vector3(0.297363, 3.4719028, 3.2864404)
 material = ExtResource("1_3ju41")
 
 [node name="TestSlopes" type="Node3D" parent="."]
@@ -460,3 +461,6 @@ size = Vector3(15.491211, 1, 10)
 
 [node name="ZertProjectile" parent="." instance=ExtResource("10_7g6ut")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.84843946, 0)
+
+[node name="Bow" parent="." instance=ExtResource("11_t54sk")]
+transform = Transform3D(0.50386447, -0.15518785, 0.84972775, 0, 0.98372865, 0.17966074, -0.86378276, -0.090524666, 0.49566594, 2.232224, 0.20203042, -0.9923456)

@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://chrpj84t3rlxj"]
+
+[ext_resource type="AudioStream" uid="uid://6aptpugod2ue" path="res://assets/audio/fx/item_pick_special.wav" id="1_5vvi2"]
+[ext_resource type="Script" uid="uid://idwee1u22itr" path="res://scripts/items/bow.gd" id="1_pmkb5"]
+[ext_resource type="PackedScene" uid="uid://rnsgx63nfn1l" path="res://assets/model/item/weapons/bow/bow_model.tscn" id="2_pmkb5"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ev5um"]
+radius = 0.483412
+
+[node name="Bow" type="Node3D"]
+script = ExtResource("1_pmkb5")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_ev5um")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35616, 0)
+light_color = Color(0.0923266, 0.10246, 0.10268, 1)
+light_energy = 0.568
+omni_range = 0.831037
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("1_5vvi2")
+
+[node name="bow" parent="." instance=ExtResource("2_pmkb5")]
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

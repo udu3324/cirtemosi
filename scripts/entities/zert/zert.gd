@@ -1,7 +1,6 @@
 extends RigidBody3D
 
 @onready var agent: NavigationAgent3D = $NavigationAgent3D
-@onready var zert_zone: Area3D = get_parent().get_child(0)
 @onready var health_bar: ProgressBar = $SubViewport/MarginContainer/HealthBar
 
 @onready var model: Node3D = $zert

@@ -3,7 +3,10 @@ extends RigidBody3D
 @onready var camera: Camera3D = $TwistPivot/PitchPivot/Camera3D
 @onready var model = $Node3D
 
-@onready var starter_weapon = $Node3D/player_rev2/ArmLeft/LeftArm/StarterWeaponNode
+@onready var weapon_node = $Node3D/player_rev2/ArmLeft/LeftArm/WeaponNode
+@onready var starter_weapon = $Node3D/player_rev2/ArmLeft/LeftArm/WeaponNode/starter_weapon2
+@onready var bow = $Node3D/player_rev2/ArmLeft/LeftArm/WeaponNode/bow
+
 @onready var left_leg = $Node3D/player_rev2/LegLeft
 @onready var right_leg = $Node3D/player_rev2/LegRight
 @onready var left_arm = $Node3D/player_rev2/ArmLeft
@@ -18,7 +21,7 @@ extends RigidBody3D
 @onready var torso_collision = $Node3D/player_rev2/Torso2/CollisionShape3D
 @onready var head_collision = $Node3D/player_rev2/Head2/CollisionShape3D
 
-@onready var audio_player = $Node3D/player_rev2/ArmLeft/LeftArm/StarterWeaponNode/AudioStreamPlayer3D
+@onready var audio_player = $Node3D/player_rev2/ArmLeft/LeftArm/WeaponNode/AudioStreamPlayer3D
 
 var swoosh = preload("res://assets/audio/fx/player_attempt_hit.wav")
 var hit_starter_weapon = preload("res://assets/audio/fx/starter_weapon_hit.wav")
@@ -279,10 +282,13 @@ func _face_to_velocity() -> void:
 
 
 func _render_equipment() -> void:
+	starter_weapon.visible = false
+	bow.visible = false
+	
 	if Globals.slot_active == 1 and Globals.equipment[0] == "starter_weapon":
 		starter_weapon.visible = true
-	else:
-		starter_weapon.visible = false
+	elif Globals.slot_active == 2 and Globals.equipment[1] == "bow":
+		bow.visible = true
 
 var attacking = false
 func _handle_equipment() -> void:
@@ -304,7 +310,7 @@ func _handle_equipment() -> void:
 		
 		# start animation
 		var attack_tween = create_tween()
-		attack_tween.parallel().tween_property(starter_weapon, "rotation:y", deg_to_rad(85), 0.5)
+		attack_tween.parallel().tween_property(weapon_node, "rotation:y", deg_to_rad(85), 0.5)
 		attack_tween.parallel().tween_property(left_arm, "rotation:y", deg_to_rad(25), 0.25)
 		attack_tween.parallel().tween_property(left_arm, "rotation:z", deg_to_rad(105), 0.25)
 		attack_tween.parallel().tween_property(left_arm, "position:x", 0.2, 0.5)
@@ -354,11 +360,44 @@ func _handle_equipment() -> void:
 		
 		# stop animation
 		attack_tween = create_tween()
-		attack_tween.parallel().tween_property(starter_weapon, "rotation:y", 0, 0.25)
+		attack_tween.parallel().tween_property(weapon_node, "rotation:y", 0, 0.25)
 		attack_tween.parallel().tween_property(left_arm, "rotation:y", 0, 0.5)
 		attack_tween.parallel().tween_property(left_arm, "rotation:z", 0, 0.5)
 		attack_tween.parallel().tween_property(left_arm, "position:x", 0, 0.25)
 		attack_tween.chain().tween_property(left_arm, "rotation:y", 0, 0.25)
+
+		await attack_tween.finished
+		
+		attacking = false
+	
+	if held_item == "bow":
+		attacking = true
+		
+		# start animation
+		var attack_tween = create_tween()
+		attack_tween.parallel().tween_property(weapon_node, "rotation:x", - deg_to_rad(5), 0.2)
+		attack_tween.parallel().tween_property(weapon_node, "rotation:y", + deg_to_rad(23), 0.2)
+		attack_tween.parallel().tween_property(weapon_node, "position:x", 0.3, 0.2)
+		attack_tween.parallel().tween_property(weapon_node, "position:z", 0.3, 0.2)
+		attack_tween.parallel().tween_property(left_arm, "rotation:y", deg_to_rad(25), 0.21)
+		attack_tween.parallel().tween_property(left_arm, "rotation:z", deg_to_rad(105), 0.21)
+		attack_tween.parallel().tween_property(left_arm, "position:x", 0.2, 0.2)
+		attack_tween.chain().tween_property(left_arm, "rotation:y", deg_to_rad(-75), 0.2)
+		
+		await attack_tween.finished
+		
+		await get_tree().create_timer(1.0).timeout
+		
+		# stop animation
+		attack_tween = create_tween()
+		attack_tween.parallel().tween_property(weapon_node, "rotation:x", 0, 0.21)
+		attack_tween.parallel().tween_property(weapon_node, "rotation:y", 0, 0.2)
+		attack_tween.parallel().tween_property(weapon_node, "position:x", 0, 0.2)
+		attack_tween.parallel().tween_property(weapon_node, "position:z", 0, 0.2)
+		attack_tween.parallel().tween_property(left_arm, "rotation:y", 0, 0.2)
+		attack_tween.parallel().tween_property(left_arm, "rotation:z", 0, 0.2)
+		attack_tween.parallel().tween_property(left_arm, "position:x", 0, 0.21)
+		attack_tween.chain().tween_property(left_arm, "rotation:y", 0, 0.21)
 
 		await attack_tween.finished
 		

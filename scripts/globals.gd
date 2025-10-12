@@ -59,6 +59,11 @@ var item_info_dict = {
 		"range": 1.7, # meters
 		"cone": 60, # degrees
 		"damage": 20
+	},
+	"bow": {
+		"range": 8.0, # meters
+		"cone": 70, # degrees
+		"damage": 10
 	}
 }
 

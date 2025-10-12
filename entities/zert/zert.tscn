@@ -1,13 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwd3hmdtl2y8f"]
+[gd_scene load_steps=3 format=3 uid="uid://bwd3hmdtl2y8f"]
 
 [ext_resource type="Script" uid="uid://ctovfi4m4nk68" path="res://scripts/entities/zert/zert_forwarder.gd" id="1_8bx0e"]
 [ext_resource type="PackedScene" uid="uid://d08s342gfjw8u" path="res://entities/zert/zert_agent.tscn" id="1_22rpk"]
-[ext_resource type="PackedScene" uid="uid://bieewi2byf3jy" path="res://entities/zert/zert_zone.tscn" id="2_8bx0e"]
 
 [node name="Zert" type="Node3D"]
 script = ExtResource("1_8bx0e")
 line_path_angle = 0
-
-[node name="ZertZone" parent="." instance=ExtResource("2_8bx0e")]
 
 [node name="ZertAgent" parent="." instance=ExtResource("1_22rpk")]

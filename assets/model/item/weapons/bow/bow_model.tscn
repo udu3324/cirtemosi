@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://rnsgx63nfn1l"]
+
+[ext_resource type="PackedScene" uid="uid://dig1nfy670eng" path="res://assets/model/item/weapons/bow/bow.blend" id="1_1kfh4"]
+
+[node name="bow" instance=ExtResource("1_1kfh4")]
+
+[node name="2" parent="." index="1"]
+visible = false
+
+[node name="3" parent="." index="4"]
+visible = false

@@ -5,6 +5,7 @@ extends Control
 @onready var glint3 = $MarginContainer/HBoxContainer/Slot3/SelectionGlint
 
 @onready var starter_weapon = $MarginContainer/HBoxContainer/Slot1/Sword
+@onready var bow = $MarginContainer/HBoxContainer/Slot2/Bow
 
 @onready var audio_swap = $AudioStreamPlayer2D
 
@@ -15,11 +16,15 @@ func _process(_delta: float) -> void:
 	_render_glint()
 	
 	# unhide weapons
-	if Globals.equipment[0] == "starter_weapon":
+	if Globals.equipment[0] == "starter_weapon" and !starter_weapon.visible:
 		starter_weapon.visible = true
-	else:
+	elif Globals.equipment[0] != "starter_weapon" and starter_weapon.visible:
 		starter_weapon.visible = false
 	
+	if Globals.equipment[1] == "bow" and !bow.visible:
+		bow.visible = true
+	elif Globals.equipment[1] != "bow" and bow.visible:
+		bow.visible = false
 
 func _render_glint():
 	
