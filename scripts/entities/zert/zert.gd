@@ -1,3 +1,4 @@
+@tool
 extends RigidBody3D
 
 @onready var agent: NavigationAgent3D = $NavigationAgent3D
@@ -21,15 +22,15 @@ extends RigidBody3D
 
 var dies = preload("res://assets/audio/fx/enemt_dead.wav")
 
-var array_death_log: int = 0
-var ignore_player: bool = false
-var despawns: bool = true
-var drops_relic_3: bool = false
-var drops_shards: bool = true
-var rng_shard_drops: bool = true
-var rand_shard_range: int = 20
-var line_path_length: float = 3
-var line_path_angle: int = 0
+@export_range (0, 24) var array_death_log: int = 0
+@export var ignore_player: bool = false
+@export var despawns: bool = true
+@export var drops_relic_3: bool = false
+@export var drops_shards: bool = true
+@export var rng_shard_drops: bool = true
+@export_range (1, 100) var rand_shard_range: int = 20
+@export var line_path_length: float = 3
+@export_range (0, 180) var line_path_angle: int = 0
 
 var target_reached: bool = true
 
@@ -41,7 +42,7 @@ var circling = false
 var at_roam_point = false
 var looking_around = false
 var finished_looking_around = false
-var rot_tween = create_tween()
+var rot_tween: Tween
 var stored_roam_previous_pos = Vector3(0, 0, 0)
 var stored_roam_finised_pos = Vector3(0, 0, 0)
 
@@ -55,7 +56,7 @@ var attack_next_wait: float = 0.0
 var roaming_period: float = 0.0
 var roaming_next_wait: float = 0.0
 
-var tween: Tween = create_tween()
+var tween: Tween
 
 var left_rest_pos
 var left_rest_rot
@@ -86,6 +87,22 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	if Engine.is_editor_hint():
+		var forward_dir = -global_transform.basis.z.normalized()
+		var backward_dir = global_transform.basis.z.normalized()
+	
+		var angle_offset = deg_to_rad(line_path_angle)
+	
+		var rotated_forward = (Basis(Vector3.UP, angle_offset) * forward_dir).normalized()
+		var rotated_backward = (Basis(Vector3.UP, angle_offset) * backward_dir).normalized()
+	
+		var start = global_position + rotated_forward * line_path_length
+		var end = global_position + rotated_backward * line_path_length
+		
+		DebugDraw3D.draw_line(start, end, Color(1.0, 0.0, 0.0, 1.0))
+		
+		return
+	
 	health_bar.value = health
 	
 	if attack_event != null:
@@ -221,7 +238,7 @@ func _physics_process(delta: float) -> void:
 			#print("spinning right round", model.global_position, stored_roam_finised_pos)
 			var store_rot = model.rotation.y
 			
-			if rot_tween.is_running():
+			if rot_tween and rot_tween.is_running():
 				rot_tween.kill()
 			
 			rot_tween = create_tween()
@@ -256,7 +273,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 			circling = true
 	
 	# another catch to stop animation/everything if player is caught when looking
-	if rot_tween.is_running() and cone > -30 and cone < 30 and global_transform.origin.distance_to(Globals.player_pos) < 6.5 and !ignore_player:
+	if rot_tween and rot_tween.is_running() and cone > -30 and cone < 30 and global_transform.origin.distance_to(Globals.player_pos) < 6.5 and !ignore_player:
 		rot_tween.kill()
 		roaming = false
 		circling = true

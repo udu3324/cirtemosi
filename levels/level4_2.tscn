@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://7cp0pqabugrl"]
+[gd_scene load_steps=12 format=3 uid="uid://7cp0pqabugrl"]
 
-[ext_resource type="PackedScene" uid="uid://bwd3hmdtl2y8f" path="res://entities/zert/zert.tscn" id="1_05hsp"]
+[ext_resource type="PackedScene" uid="uid://d08s342gfjw8u" path="res://entities/zert/zert.tscn" id="1_05hsp"]
 [ext_resource type="PackedScene" uid="uid://kn6hbschf6xo" path="res://scenes/items/shards.tscn" id="2_u22qj"]
 [ext_resource type="PackedScene" uid="uid://t0p0267pq1yk" path="res://entities/interface/interface.tscn" id="2_ve1yt"]
+[ext_resource type="Texture2D" uid="uid://dcys6jvvpk8ui" path="res://assets/relics/relic_3_hidden_icon.png" id="4_8eyll"]
+[ext_resource type="Texture2D" uid="uid://ctwb6rjmjrvf1" path="res://assets/relics/relic_3_icon.png" id="5_lf873"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u22qj"]
 albedo_color = Color(0.41981313, 0.41981313, 0.4198131, 1)
@@ -304,16 +306,6 @@ use_collision = true
 polygon = PackedVector2Array(-0.48073292, 4.472002, 0.8884859, 4.64884, 1.3172836, 3.7366505, 2.981614, 2.233858, 2.2591352, 0.86532784, 2.205431, -1.028862, 1.045886, -1.3149815)
 depth = 3.28
 
-[node name="Zert" parent="StructurePuzzle" instance=ExtResource("1_05hsp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.912815, 4.500003, -6.936571)
-line_path_length = 1.295
-line_path_angle = 100
-
-[node name="Zert2" parent="StructurePuzzle" instance=ExtResource("1_05hsp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.57313, 4.500003, -3.4599724)
-line_path_length = 1.295
-line_path_angle = 100
-
 [node name="PileOfShards" type="Node3D" parent="StructurePuzzle"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.30411732, -4.0639114)
 
@@ -346,6 +338,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0035524368, 0.5462605, 0.01
 
 [node name="Shards9" parent="StructurePuzzle/PileOfShards" instance=ExtResource("2_u22qj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2388506, 0.5462605, 0.21247864)
+
+[node name="ZertAgent" parent="StructurePuzzle" instance=ExtResource("1_05hsp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.923035, 4.5, -3.765625)
+line_path_length = 1.53
+line_path_angle = 115
+
+[node name="ZertAgent2" parent="StructurePuzzle" instance=ExtResource("1_05hsp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.040466, 4.5, -6.6246567)
+line_path_length = 1.5899999999999999
+line_path_angle = 75
 
 [node name="SpotLight3D3" type="SpotLight3D" parent="."]
 transform = Transform3D(0.79317486, -0.37321994, 0.4812282, -0.047367144, 0.74999994, 0.6597397, -0.6071491, -0.5460833, 0.57720274, 21.933666, 9, -14.130613)
@@ -380,6 +382,10 @@ material = SubResource("StandardMaterial3D_8eyll")
 
 [node name="Interface" parent="." instance=ExtResource("2_ve1yt")]
 transform = Transform3D(-0.9948895, 0, -0.10096955, 0, 1, 0, 0.10096955, 0, -0.9948895, 15.513818, 2.5000002, -34.99908)
+relic_num = 3
+relic_outline = Color(0.2, 0.5568628, 0.92941177, 1)
+relic_hidden = ExtResource("4_8eyll")
+relic_shown = ExtResource("5_lf873")
 
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2, -35)

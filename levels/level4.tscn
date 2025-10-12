@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dglf5r2r6vt88" path="res://scripts/scenes/level_4.gd" id="1_cqjvr"]
 [ext_resource type="PackedScene" uid="uid://duydi7lytqxks" path="res://scenes/enviornment/CaveEnv.tscn" id="1_rxes3"]
-[ext_resource type="PackedScene" uid="uid://bwd3hmdtl2y8f" path="res://entities/zert/zert.tscn" id="3_3cb6x"]
+[ext_resource type="PackedScene" uid="uid://d08s342gfjw8u" path="res://entities/zert/zert.tscn" id="3_3cb6x"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cqjvr"]
 albedo_color = Color(0.4904529, 0.27618694, 0.06348612, 1)
@@ -134,11 +134,6 @@ shape = SubResource("BoxShape3D_cqjvr")
 
 [node name="ZertCrossBridge" type="Node3D" parent="."]
 
-[node name="Zert" parent="ZertCrossBridge" instance=ExtResource("3_3cb6x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6492212, 0.99999905, -19.023363)
-ignore_player = true
-line_path_angle = 125
-
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="ZertCrossBridge"]
 navigation_mesh = SubResource("NavigationMesh_3cb6x")
 
@@ -178,6 +173,12 @@ transform = Transform3D(0.763582, 0, -0.64571095, 0, 1, 0, 0.64571095, 0, 0.7635
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ZertCrossBridge/Area3D2Exit4_2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.014530182, 1.4952545, -9.536743e-07)
 shape = SubResource("BoxShape3D_3cb6x")
+
+[node name="ZertAgent" parent="ZertCrossBridge" instance=ExtResource("3_3cb6x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.993451, 1, -17.17958)
+ignore_player = true
+line_path_length = 2.735
+line_path_angle = 130
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Area3D2Zoom" to="." method="_on_area_3d_2_zoom_body_entered"]

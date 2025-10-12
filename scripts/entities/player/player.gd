@@ -375,29 +375,39 @@ func _handle_equipment() -> void:
 		
 		# start animation
 		var attack_tween = create_tween()
-		attack_tween.parallel().tween_property(weapon_node, "rotation:x", - deg_to_rad(5), 0.2)
-		attack_tween.parallel().tween_property(weapon_node, "rotation:y", + deg_to_rad(23), 0.2)
-		attack_tween.parallel().tween_property(weapon_node, "position:x", 0.3, 0.2)
-		attack_tween.parallel().tween_property(weapon_node, "position:z", 0.3, 0.2)
-		attack_tween.parallel().tween_property(left_arm, "rotation:y", deg_to_rad(25), 0.21)
-		attack_tween.parallel().tween_property(left_arm, "rotation:z", deg_to_rad(105), 0.21)
-		attack_tween.parallel().tween_property(left_arm, "position:x", 0.2, 0.2)
-		attack_tween.chain().tween_property(left_arm, "rotation:y", deg_to_rad(-75), 0.2)
+		attack_tween.parallel().tween_property(weapon_node, "rotation:x", - deg_to_rad(5), 0.1)
+		attack_tween.parallel().tween_property(weapon_node, "rotation:y", + deg_to_rad(23), 0.1)
+		attack_tween.parallel().tween_property(weapon_node, "position:x", 0.3, 0.1)
+		attack_tween.parallel().tween_property(weapon_node, "position:z", 0.3, 0.1)
+		attack_tween.parallel().tween_property(left_arm, "rotation:y", deg_to_rad(25), 0.11)
+		attack_tween.parallel().tween_property(left_arm, "rotation:z", deg_to_rad(105), 0.11)
+		attack_tween.parallel().tween_property(left_arm, "position:x", 0.2, 0.1)
+		attack_tween.chain().tween_property(left_arm, "rotation:y", deg_to_rad(-75), 0.1)
 		
 		await attack_tween.finished
 		
-		await get_tree().create_timer(1.0).timeout
+		await get_tree().create_timer(0.1).timeout
+		
+		# spawn in projectile
+		var local_offset = Vector3(-0.6, 0, 0)
+		var spawn_pos = bow.global_transform.origin + bow.global_transform.basis * local_offset
+		
+		var projectile: RayCast3D = preload("res://scenes/items/bow_projectile.tscn").instantiate()
+		projectile.speed = randf_range(10.0, 15.0)
+		projectile.position = spawn_pos
+		
+		Globals.root_node_3d.add_child(projectile)
 		
 		# stop animation
 		attack_tween = create_tween()
-		attack_tween.parallel().tween_property(weapon_node, "rotation:x", 0, 0.21)
-		attack_tween.parallel().tween_property(weapon_node, "rotation:y", 0, 0.2)
-		attack_tween.parallel().tween_property(weapon_node, "position:x", 0, 0.2)
-		attack_tween.parallel().tween_property(weapon_node, "position:z", 0, 0.2)
-		attack_tween.parallel().tween_property(left_arm, "rotation:y", 0, 0.2)
-		attack_tween.parallel().tween_property(left_arm, "rotation:z", 0, 0.2)
-		attack_tween.parallel().tween_property(left_arm, "position:x", 0, 0.21)
-		attack_tween.chain().tween_property(left_arm, "rotation:y", 0, 0.21)
+		attack_tween.parallel().tween_property(weapon_node, "rotation:x", 0, 0.11)
+		attack_tween.parallel().tween_property(weapon_node, "rotation:y", 0, 0.1)
+		attack_tween.parallel().tween_property(weapon_node, "position:x", 0, 0.1)
+		attack_tween.parallel().tween_property(weapon_node, "position:z", 0, 0.1)
+		attack_tween.parallel().tween_property(left_arm, "rotation:y", 0, 0.1)
+		attack_tween.parallel().tween_property(left_arm, "rotation:z", 0, 0.1)
+		attack_tween.parallel().tween_property(left_arm, "position:x", 0, 0.11)
+		attack_tween.chain().tween_property(left_arm, "rotation:y", 0, 0.11)
 
 		await attack_tween.finished
 		

@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://x6cwwyhtt76x" path="res://scenes/items/relic_1.tscn" id="6_toffc"]
 [ext_resource type="PackedScene" uid="uid://kn6hbschf6xo" path="res://scenes/items/shards.tscn" id="7_ddkel"]
 [ext_resource type="PackedScene" uid="uid://t0p0267pq1yk" path="res://entities/interface/interface.tscn" id="8_gnbnl"]
-[ext_resource type="PackedScene" uid="uid://bwd3hmdtl2y8f" path="res://entities/zert/zert.tscn" id="9_rdpwy"]
+[ext_resource type="PackedScene" uid="uid://d08s342gfjw8u" path="res://entities/zert/zert.tscn" id="9_rdpwy"]
 [ext_resource type="PackedScene" uid="uid://cy2nebdl37ose" path="res://entities/zert/zert_projectile.tscn" id="10_7g6ut"]
 [ext_resource type="PackedScene" uid="uid://chrpj84t3rlxj" path="res://scenes/items/bow.tscn" id="11_t54sk"]
 
