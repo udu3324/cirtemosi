@@ -22,10 +22,14 @@ func _physics_process(delta: float) -> void:
 		global_position = get_collision_point()
 		set_physics_process(false)
 		
-		print("collided with", get_collider().name)
+		#print("collided with", get_collider().name)
 		
 		if get_collider().name.contains("Zert") or get_collider().name.contains("Enemt"):
 			print("hit enemy")
+			var entity = get_collider()
+			
+			entity.health -= Globals.item_info_dict[Globals.equipment[Globals.slot_active - 1]]["damage"]
+			
 			timer.start()
 
 func cleanup() -> void:

@@ -25,6 +25,7 @@ mesh = SubResource("SphereMesh_fcnoa")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 10.0
 one_shot = true
+autostart = true
 
 [node name="Timer2" type="Timer" parent="."]
 wait_time = 0.3

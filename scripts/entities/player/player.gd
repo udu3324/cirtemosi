@@ -7,6 +7,10 @@ extends RigidBody3D
 @onready var starter_weapon = $Node3D/player_rev2/ArmLeft/LeftArm/WeaponNode/starter_weapon2
 @onready var bow = $Node3D/player_rev2/ArmLeft/LeftArm/WeaponNode/bow
 
+@onready var string_1_bow = $Node3D/player_rev2/ArmLeft/LeftArm/WeaponNode/bow/one
+@onready var string_2_bow = $Node3D/player_rev2/ArmLeft/LeftArm/WeaponNode/bow/two
+@onready var string_3_bow = $Node3D/player_rev2/ArmLeft/LeftArm/WeaponNode/bow/three
+
 @onready var left_leg = $Node3D/player_rev2/LegLeft
 @onready var right_leg = $Node3D/player_rev2/LegRight
 @onready var left_arm = $Node3D/player_rev2/ArmLeft
@@ -385,18 +389,29 @@ func _handle_equipment() -> void:
 		attack_tween.chain().tween_property(left_arm, "rotation:y", deg_to_rad(-75), 0.1)
 		
 		await attack_tween.finished
+		await get_tree().create_timer(0.03).timeout
+		string_1_bow.visible = false
+		string_2_bow.visible = true
 		
-		await get_tree().create_timer(0.1).timeout
+		await get_tree().create_timer(0.03).timeout
+		string_2_bow.visible = false
+		string_3_bow.visible = true
+		
+		await get_tree().create_timer(0.04).timeout
 		
 		# spawn in projectile
-		var local_offset = Vector3(-0.6, 0, 0)
+		var local_offset = Vector3(-0.3, 0, 0)
 		var spawn_pos = bow.global_transform.origin + bow.global_transform.basis * local_offset
 		
 		var projectile: RayCast3D = preload("res://scenes/items/bow_projectile.tscn").instantiate()
 		projectile.speed = randf_range(10.0, 15.0)
 		projectile.position = spawn_pos
+		projectile.rotation.y = model.rotation.y + (PI/2)
 		
 		Globals.root_node_3d.add_child(projectile)
+		
+		string_3_bow.visible = false
+		string_1_bow.visible = true
 		
 		# stop animation
 		attack_tween = create_tween()
