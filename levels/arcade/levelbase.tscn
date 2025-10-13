@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://r5un80qecc70"]
+[gd_scene load_steps=14 format=3 uid="uid://r5un80qecc70"]
 
 [ext_resource type="PackedScene" uid="uid://b6t1s1ntpjpeu" path="res://scenes/items/starter_weapon.tscn" id="1_26cjr"]
 [ext_resource type="Script" uid="uid://ca5uvijwqi1rf" path="res://scripts/arcade/levelbase.gd" id="1_dnp56"]
 [ext_resource type="PackedScene" uid="uid://6ofm1d8n6tgo" path="res://scenes/arcade/island_intermission.tscn" id="2_dnp56"]
 [ext_resource type="PackedScene" uid="uid://cpbolh4oop0cs" path="res://scenes/arcade/island_fight.tscn" id="3_7jpbv"]
 [ext_resource type="PackedScene" uid="uid://be7mj4c0s2s0d" path="res://scenes/arcade/bridge.tscn" id="4_dnp56"]
+[ext_resource type="FontFile" uid="uid://d25dq4tmt7ywp" path="res://assets/font/NebulaSans-Black.ttf" id="6_7jpbv"]
+[ext_resource type="FontFile" uid="uid://erdgllynwqkw" path="res://examples_dd3d/Roboto-Bold.ttf" id="7_5hqeq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_muklc"]
 sky_top_color = Color(0.46903396, 0.7563706, 0.8889926, 1)
@@ -25,6 +27,9 @@ size = Vector3(100, 2, 100)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7jpbv"]
 size = Vector3(6.935, 4.077, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_5hqeq"]
+viewport_path = NodePath("SubViewport")
 
 [node name="LevelBase" type="Node3D"]
 script = ExtResource("1_dnp56")
@@ -62,6 +67,46 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5340123, 1.5889874, -5.1086
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3DTriggerStart"]
 transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 0, 0, 0)
 shape = SubResource("BoxShape3D_7jpbv")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+
+[node name="CenterContainer" type="CenterContainer" parent="SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewport/CenterContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="SubViewport/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.503)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("6_7jpbv")
+theme_override_font_sizes/font_size = 26
+text = " - arcade leaderboard - "
+
+[node name="Label" type="Label" parent="SubViewport/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.48100004)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("7_5hqeq")
+text = "can supoort ~16 lines
+
+wip leaderboard"
+horizontal_alignment = 1
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3, 2, 1.3)
+billboard = 1
+texture = SubResource("ViewportTexture_5hqeq")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Area3DTriggerStart" to="." method="_on_area_3d_trigger_start_body_entered"]

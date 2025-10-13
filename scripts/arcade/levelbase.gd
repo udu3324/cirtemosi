@@ -1,5 +1,7 @@
 extends Node3D
 
+@onready var leaderboard_label: Label = $SubViewport/CenterContainer/VBoxContainer/Label
+
 @onready var zone = $IslandFight/Area3DSpawn
 @onready var bridge = $Bridge
 
@@ -40,6 +42,9 @@ extends Node3D
 	},
 }
 
+var leaderboard_data
+var save_a_new_data: bool = false
+
 var on_wave: int = 0
 var time_elapsed: float = 0.0
 var started: bool = false
@@ -50,8 +55,39 @@ var wave_zert_deaths: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
+	#Shibadb.save_loaded.connect(_on_leaderboard_loaded)
+	
+	#await Shibadb.init_shibadb("68ec56fcd22" + "e9d15257d4260")
+	
+	#Shibadb.load_progress()
 
+func _on_leaderboard_loaded(data) -> void:
+	print("data is ", data)
+	
+	# handle strange data in case? idk lol
+	if typeof(data) == TYPE_DICTIONARY and data.has("leaderboard"):
+		leaderboard_data = data["leaderboard"]
+	elif typeof(data) == TYPE_ARRAY:
+		leaderboard_data = data
+	else:
+		leaderboard_data = []
+	
+	if save_a_new_data:
+		save_a_new_data = false
+		print("triggered save new leaderboard pos ", on_wave, time_elapsed, Globals.shards, Globals.easy_mode)
+		
+		var new_entry = {
+			"player": str(randi()),
+			"wave": on_wave,
+			"time": _format_time(time_elapsed),
+			"shards": Globals.shards,
+			"easy_mode": Globals.easy_mode
+		}
+		
+		leaderboard_data.append(new_entry)
+		
+		Shibadb.save_progress({ "leaderboard": leaderboard_data })
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -89,6 +125,9 @@ func _process(delta: float) -> void:
 			stop_timer = true
 			Globals.arcade_title.text = "finished!"
 			Globals.arcade_description.text = "\n\n\nplease walk off the\nisland for now to\ngo back to the main\nmenu."
+			
+			#save_a_new_data = true
+			#Shibadb.load_progress()
 	
 	
 	if Globals.enemt_deaths[0] >= 1: # handle a enemt death
