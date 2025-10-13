@@ -1,0 +1,92 @@
+[gd_scene load_steps=11 format=3 uid="uid://bx27rmfnckyq8"]
+
+[ext_resource type="Script" uid="uid://ys4ojc7780fh" path="res://scripts/enviornment/sign.gd" id="1_dun1f"]
+[ext_resource type="Script" uid="uid://cmyasc1t8l0la" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="1_xvjbn"]
+[ext_resource type="FontFile" uid="uid://d25dq4tmt7ywp" path="res://assets/font/NebulaSans-Black.ttf" id="2_dun1f"]
+[ext_resource type="FontFile" uid="uid://d8rupcfbnwjx" path="res://assets/font/NebulaSans-Semibold.ttf" id="4_dun1f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_el4jl"]
+albedo_color = Color(0.24486047, 0.18358809, 0.071411945, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jo4q2"]
+albedo_color = Color(0.35906956, 0.35906887, 0.3590692, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w5cwh"]
+albedo_color = Color(0.22670749, 0.22670749, 0.22670746, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_4apdh"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="Texture2D" id="Texture2D_6ywqb"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("1_xvjbn")
+path = "attack"
+metadata/_custom_type_script = "uid://cmyasc1t8l0la"
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_t345f"]
+radius = 1.5
+
+[node name="Sign" type="Node3D"]
+script = ExtResource("1_dun1f")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.27929688, 0)
+size = Vector3(0.1, 0.559, 0.1)
+material = SubResource("StandardMaterial3D_el4jl")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6169945, 0)
+use_collision = true
+size = Vector3(0.78, 0.499, 0.14)
+material = SubResource("StandardMaterial3D_jo4q2")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6169945, 0.020715512)
+size = Vector3(0.655, 0.364, 0.104)
+material = SubResource("StandardMaterial3D_w5cwh")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1982106, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_4apdh")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+
+[node name="CenterContainer" type="CenterContainer" parent="SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SubViewport/CenterContainer"]
+visible = false
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="SubViewport/CenterContainer/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("Texture2D_6ywqb")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="SubViewport/CenterContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_dun1f")
+text = "to interact"
+
+[node name="Label" type="Label" parent="SubViewport/CenterContainer"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_dun1f")
+theme_override_font_sizes/font_size = 16
+text = "placeholder"
+horizontal_alignment = 1
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_t345f")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

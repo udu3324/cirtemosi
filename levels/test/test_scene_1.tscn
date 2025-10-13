@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://bhmmx5pl0neys"]
+[gd_scene load_steps=36 format=4 uid="uid://bhmmx5pl0neys"]
 
 [ext_resource type="Material" uid="uid://dhp1vk7afkguu" path="res://assets/prefab/prefab_dark_meter.tres" id="1_3ju41"]
 [ext_resource type="Texture2D" uid="uid://b5pviiur126b0" path="res://assets/prefab/playtesting.png" id="2_k5kv5"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://d08s342gfjw8u" path="res://entities/zert/zert.tscn" id="9_rdpwy"]
 [ext_resource type="PackedScene" uid="uid://cy2nebdl37ose" path="res://entities/zert/zert_projectile.tscn" id="10_7g6ut"]
 [ext_resource type="PackedScene" uid="uid://chrpj84t3rlxj" path="res://scenes/items/bow.tscn" id="11_t54sk"]
+[ext_resource type="PackedScene" uid="uid://bx27rmfnckyq8" path="res://scenes/enviornment/sign.tscn" id="12_dj3q0"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_6a74u"]
 _surfaces = [{
@@ -464,3 +465,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.84843946, 0)
 
 [node name="Bow" parent="." instance=ExtResource("11_t54sk")]
 transform = Transform3D(0.50386447, -0.15518785, 0.84972775, 0, 0.98372865, 0.17966074, -0.86378276, -0.090524666, 0.49566594, 2.232224, 0.20203042, -0.9923456)
+
+[node name="Sign" parent="." instance=ExtResource("12_dj3q0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -3)
+text = "can you see this"

@@ -8,6 +8,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		print_debug("picking up bow")
 		self.visible = false
 		Globals.equipment[1] = "bow"
+		Globals.slot_active = 2
 		
 		audio_player.play()
 		

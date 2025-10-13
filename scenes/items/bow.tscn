@@ -17,6 +17,7 @@ shape = SubResource("SphereShape3D_ev5um")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35616, 0)
+visible = false
 light_color = Color(0.0923266, 0.10246, 0.10268, 1)
 light_energy = 0.568
 omni_range = 0.831037

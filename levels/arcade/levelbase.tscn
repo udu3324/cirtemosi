@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cpbolh4oop0cs" path="res://scenes/arcade/island_fight.tscn" id="3_7jpbv"]
 [ext_resource type="PackedScene" uid="uid://be7mj4c0s2s0d" path="res://scenes/arcade/bridge.tscn" id="4_dnp56"]
 [ext_resource type="FontFile" uid="uid://d25dq4tmt7ywp" path="res://assets/font/NebulaSans-Black.ttf" id="6_7jpbv"]
-[ext_resource type="FontFile" uid="uid://erdgllynwqkw" path="res://examples_dd3d/Roboto-Bold.ttf" id="7_5hqeq"]
+[ext_resource type="FontFile" uid="uid://d8rupcfbnwjx" path="res://assets/font/NebulaSans-Semibold.ttf" id="7_5hqeq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_muklc"]
 sky_top_color = Color(0.46903396, 0.7563706, 0.8889926, 1)
