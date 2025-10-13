@@ -548,7 +548,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5985494, 0.99999905, 4.2555
 shape = SubResource("CylinderShape3D_7sns3")
 
 [node name="Bow" parent="." instance=ExtResource("6_toyn1")]
-transform = Transform3D(0.72284657, 0, 0.69100857, 0, 1, 0, -0.69100857, 0, 0.72284657, -8, 0, -11)
+transform = Transform3D(0.8657547, 0, 0.5004685, 0, 1, 0, -0.5004685, 0, 0.8657547, -7.5754557, 0, -11.654137)
 
 [connection signal="body_entered" from="HiddenStackOfShards/Area3DCollectedShardStack" to="." method="_on_area_3d_collected_shard_stack_body_entered"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

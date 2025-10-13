@@ -177,11 +177,11 @@ shape = SubResource("BoxShape3D_3cb6x")
 
 [node name="ZertAgent" parent="ZertCrossBridge" instance=ExtResource("3_3cb6x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.993451, 1, -17.17958)
-line_path_length = 2.735
+line_path_length = 1.5
 line_path_angle = 130
 
 [node name="Sign" parent="." instance=ExtResource("4_lpgdq")]
-transform = Transform3D(0.8808742, 0, -0.47335038, 0, 1, 0, 0.47335038, 0, 0.8808742, -7.776357, -2.3841858e-07, -11.672295)
+transform = Transform3D(0.94539917, 0, -0.32591465, 0, 1, 0, 0.32591465, 0, 0.94539917, -10.867673, -2.3841858e-07, -10.962763)
 text = "a hidden bow continued to the left"
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

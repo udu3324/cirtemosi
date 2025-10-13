@@ -7,6 +7,8 @@ extends Node3D
 
 func _ready() -> void:
 	sign_label.text = text
+	sign_label.visible = false
+	control.visible = false
 
 func _process(_delta: float) -> void:
 	if !control.visible:
