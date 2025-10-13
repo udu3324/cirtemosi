@@ -87,14 +87,15 @@ func _process(delta: float) -> void:
 			_start_wave(4)
 		else:
 			stop_timer = true
-			Globals.arcade_title.text = "you finished!"
-			Globals.arcade_description.text = "please walk off the\nisland for now to\ngo back to the main\nmenu."
-		
-	if Globals.enemt_deaths[0] == 1: # handle a enemt death
-		
+			Globals.arcade_title.text = "finished!"
+			Globals.arcade_description.text = "\n\n\nplease walk off the\nisland for now to\ngo back to the main\nmenu."
+	
+	
+	if Globals.enemt_deaths[0] >= 1: # handle a enemt death
+		var difference = Globals.enemt_deaths[0]
 		Globals.enemt_deaths[0] = 0
 		
-		wave_enemt_deaths += 1
+		wave_enemt_deaths += difference
 		Globals.arcade_description.text = "enemt " + str(wave_enemt_deaths) + "/" + str(waves[on_wave]["enemts"])
 		
 		if waves[on_wave]["subsequent"] and wave_enemt_deaths != waves[on_wave]["enemts"]:

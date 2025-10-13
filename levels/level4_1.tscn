@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://dc7nu5ov6qwsg"]
+[gd_scene load_steps=16 format=3 uid="uid://dc7nu5ov6qwsg"]
 
 [ext_resource type="Script" uid="uid://htv48ik563d1" path="res://scripts/scenes/level_4_1.gd" id="1_v1dub"]
 [ext_resource type="PackedScene" uid="uid://dwqj4buhblxh8" path="res://entities/enemt/enemt.tscn" id="2_8li1p"]
 [ext_resource type="PackedScene" uid="uid://t0p0267pq1yk" path="res://entities/interface/interface.tscn" id="3_a7d5b"]
 [ext_resource type="PackedScene" uid="uid://kn6hbschf6xo" path="res://scenes/items/shards.tscn" id="4_6f4tj"]
 [ext_resource type="PackedScene" uid="uid://c8k8dm81jp0pu" path="res://assets/model/enviornment/mushroom_gray.blend" id="5_qwoqg"]
+[ext_resource type="PackedScene" uid="uid://chrpj84t3rlxj" path="res://scenes/items/bow.tscn" id="6_toyn1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qwoqg"]
 size = Vector3(3.328125, 1.8640137, 2.003479)
@@ -545,6 +546,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5985494, 0.99999905, 4.2555
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Spawners/Area3D8"]
 shape = SubResource("CylinderShape3D_7sns3")
+
+[node name="Bow" parent="." instance=ExtResource("6_toyn1")]
+transform = Transform3D(0.72284657, 0, 0.69100857, 0, 1, 0, -0.69100857, 0, 0.72284657, -8, 0, -11)
 
 [connection signal="body_entered" from="HiddenStackOfShards/Area3DCollectedShardStack" to="." method="_on_area_3d_collected_shard_stack_body_entered"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

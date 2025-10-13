@@ -29,7 +29,7 @@ func _physics_process(delta: float) -> void:
 			var entity = get_collider()
 			
 			entity.health -= Globals.item_info_dict[Globals.equipment[Globals.slot_active - 1]]["damage"]
-			
+			entity.attack_event = self.rotation.y + PI
 			timer.start()
 
 func cleanup() -> void:

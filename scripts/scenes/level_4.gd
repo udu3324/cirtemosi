@@ -8,6 +8,10 @@ var tween = create_tween()
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.name.contains("Player"):
 		Globals.player_death_event = "floor_death"
+	elif body.name.contains("Enemt") or body.name.contains("Zert"):
+		body.health = 0.0
+		Globals.shards += randi_range(3, 5) # give back player shards
+		#print_debug("enemt fell to death")
 
 
 func _on_area_3d_2_zoom_body_entered(body: Node3D) -> void:

@@ -1,11 +1,14 @@
 extends Node3D
 
 @onready var shard_stack: Node3D = $HiddenStackOfShards
+@onready var bow: Node3D = $Bow
 @onready var spawners: Node3D = $Spawners
 
 func _ready() -> void:
 	if Globals.collected_shard_stack:
 		remove_child(shard_stack)
+	if Globals.equipment[1] == "bow":
+		remove_child(bow)
 
 func _process(_delta: float) -> void:
 	#DebugDraw3D.draw_sphere(_get_random_spawn_point(), 0.01, Color.AQUA)

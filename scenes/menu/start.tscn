@@ -172,6 +172,7 @@ text = "to enter"
 
 [connection signal="mouse_entered" from="MarginContainer/VBoxContainer2/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer2/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_button_start_pressed"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer2/MarginContainer/VBoxContainer/ArcadeButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer2/MarginContainer/VBoxContainer/ArcadeButton" to="." method="_on_arcade_button_pressed"]
 [connection signal="mouse_entered" from="MarginContainer/VBoxContainer2/MarginContainer/VBoxContainer/SettingsButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer2/MarginContainer/VBoxContainer/SettingsButton" to="." method="_on_button_settings_pressed"]

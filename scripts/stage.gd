@@ -62,8 +62,8 @@ func _ready() -> void:
 	menuReset.connect("to_checkpoint", _to_checkpoint)
 	
 	
-	menuStart.connect("level_1", _on_level_test) # todo devchangeback _on_level_1
-	menuStart.connect("level_arcade", _on_level_1) # todo devchangeback _on_level_arcade
+	menuStart.connect("level_1", _on_level_1) # todo devchangeback _on_level_1
+	menuStart.connect("level_arcade", _on_level_arcade) # todo devchangeback _on_level_arcade
 	menuStart.visible = true
 	
 	masterAudio.play()
