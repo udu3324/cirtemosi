@@ -1,5 +1,9 @@
 extends Node
 
+
+var debug_mode: bool = true
+
+
 # gui
 var startVisible: bool = false
 var loadingVisible: bool = false
@@ -79,6 +83,10 @@ var reset_master_4_level_event: bool = false
 # - 4.1
 var card_ruins_shown: bool = false
 var collected_shard_stack: bool = false
+# - 4.2
+var bridge_1_down = false
+var bridge_2_down = false
+var card_structures_shown: bool = false
 
 # settings
 var screen_relative_movement = true

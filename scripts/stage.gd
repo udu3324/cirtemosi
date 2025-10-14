@@ -300,6 +300,23 @@ func _to_checkpoint():
 		4.1:
 			# cheap way
 			Globals.player_level_traverse_event = "3->4.1"
+		4.2:
+			await _show_loading()
+			_clear_node_3d_stage()
+		
+			level = preload("res://levels/level4.tscn").instantiate()
+			$Node3D.add_child(level)
+		
+			var sub_level = preload("res://levels/level4_1.tscn").instantiate()
+			$Node3D.add_child(sub_level)
+			sub_level.global_position = Vector3(-20, 0, 0)
+	
+			_add_player(Vector3(-28, 2.5, -5.5))
+			
+			# base wait time for loading screen
+			await get_tree().create_timer(3.0).timeout 
+	
+			await _hide_loading()
 
 func _on_exit_start():
 	Globals.player_pos = Vector3(0, 0, 0)
@@ -339,7 +356,10 @@ func _on_exit_start():
 	Globals.item_info_dict["starter_weapon"]["damage"] = 20
 	
 	Globals.card_ruins_shown = false
+	Globals.card_structures_shown = false
 	Globals.collected_shard_stack = false
+	Globals.bridge_1_down = false
+	Globals.bridge_2_down = false
 	Globals.save_point = -1.0
 	
 	Globals.camera_size = 5.762
