@@ -307,11 +307,10 @@ func _to_checkpoint():
 			level = preload("res://levels/level4.tscn").instantiate()
 			$Node3D.add_child(level)
 		
-			var sub_level = preload("res://levels/level4_1.tscn").instantiate()
+			var sub_level = preload("res://levels/level4_2.tscn").instantiate()
 			$Node3D.add_child(sub_level)
-			sub_level.global_position = Vector3(-20, 0, 0)
 	
-			_add_player(Vector3(-28, 2.5, -5.5))
+			_add_player(Vector3(-1, 2.5, -24))
 			
 			# base wait time for loading screen
 			await get_tree().create_timer(3.0).timeout 
@@ -524,6 +523,8 @@ func _hide_loading():
 	Globals.player_physics_processing = true
 	Globals.player_physics_reset_event = true
 	Globals.player_is_stunned = false
+	
+	Globals.camera_size = 5.762
 	
 	await get_tree().create_timer(1).timeout # tween length
 	Globals.player_can_move = true
