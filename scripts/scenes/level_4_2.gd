@@ -4,7 +4,7 @@ extends Node3D
 @onready var bridge_1: Node3D = $StructurePuzzle/BridgePuzzleAnchor
 @onready var bridge_2: Node3D = $StructurePuzzle/BridgePuzzleAnchor2
 
-@onready var hidden_text_1: CenterContainer = $HiddenSwitch1/SubViewport/CenterContainerMouse
+@onready var hidden_text_1: CenterContainer = $StructurePuzzle/HiddenSwitch1/SubViewport/CenterContainerMouse
 
 @onready var oblisk_piece: RigidBody3D = $PlatformStuff/Towers/RigidBody3DOblieskPiece
 
@@ -91,7 +91,7 @@ func _on_area_3d_switch_1_body_entered(body: Node3D) -> void:
 func _on_area_3d_switch_1_body_exited(body: Node3D) -> void:
 	if body.name.contains("Player"):
 		listen_for_click_1 = false
-		hidden_text_1.visible = true
+		hidden_text_1.visible = false
 
 
 func _on_area_3d_title_card_body_entered(body: Node3D) -> void:

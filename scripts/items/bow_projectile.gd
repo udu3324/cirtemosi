@@ -25,7 +25,7 @@ func _physics_process(delta: float) -> void:
 		#print("collided with", get_collider().name)
 		
 		if get_collider().name.contains("Zert") or get_collider().name.contains("Enemt"):
-			print("hit enemy")
+			#print("hit enemy")
 			var entity = get_collider()
 			
 			entity.health -= Globals.item_info_dict[Globals.equipment[Globals.slot_active - 1]]["damage"]

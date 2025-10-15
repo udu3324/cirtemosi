@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://7cp0pqabugrl"]
+[gd_scene load_steps=23 format=3 uid="uid://7cp0pqabugrl"]
 
 [ext_resource type="PackedScene" uid="uid://d08s342gfjw8u" path="res://entities/zert/zert.tscn" id="1_05hsp"]
 [ext_resource type="Script" uid="uid://b5gm2nj3mnypo" path="res://scripts/scenes/level_4_2.gd" id="1_lf873"]
@@ -8,21 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://bx27rmfnckyq8" path="res://scenes/enviornment/sign.tscn" id="4_ev50v"]
 [ext_resource type="Texture2D" uid="uid://ctwb6rjmjrvf1" path="res://assets/relics/relic_3_icon.png" id="5_lf873"]
 [ext_resource type="Script" uid="uid://cmyasc1t8l0la" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="8_3b5aq"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_na7ny"]
-sky_top_color = Color(0.384314, 0.454902, 0.54902, 1)
-sky_horizon_color = Color(0.6605339, 0.67304146, 0.69434, 1)
-ground_bottom_color = Color(0.190423, 0.169865, 0.160941, 1)
-ground_horizon_color = Color(0.6605339, 0.67304146, 0.69434, 1)
-
-[sub_resource type="Sky" id="Sky_vdgxt"]
-sky_material = SubResource("ProceduralSkyMaterial_na7ny")
-
-[sub_resource type="Environment" id="Environment_vkoin"]
-background_mode = 2
-sky = SubResource("Sky_vdgxt")
-ssao_enabled = true
-sdfgi_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ve1yt"]
 albedo_color = Color(0.7059877, 0.66718817, 0.47144568, 1)
@@ -50,10 +35,7 @@ path = "attack"
 metadata/_custom_type_script = "uid://cmyasc1t8l0la"
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_vdgxt"]
-viewport_path = NodePath("HiddenSwitch1/SubViewport")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_3b5aq"]
-size = Vector3(10.410992, 4.7908936, 1)
+viewport_path = NodePath("StructurePuzzle/HiddenSwitch1/SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u22qj"]
 albedo_color = Color(0.41981313, 0.41981313, 0.4198131, 1)
@@ -73,25 +55,11 @@ friction = 0.48
 [sub_resource type="BoxShape3D" id="BoxShape3D_na7ny"]
 size = Vector3(1, 0.42230225, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_3b5aq"]
+size = Vector3(10.410992, 4.7908936, 1)
+
 [node name="Level4_2" type="Node3D"]
 script = ExtResource("1_lf873")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_vkoin")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
-shadow_enabled = true
-directional_shadow_max_distance = 1.0
-
-[node name="Floor" type="CSGPolygon3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
-use_collision = true
-polygon = PackedVector2Array(4.4032, 43.201, -6.85971, 34.1139, -2.8921, 22.723, 8.24282, 13.5079, 26.4171, 12.356, 44.3353, 19.5233, 45.4872, 26.3067, 37.936, 28.8664, 24.3693, 34.4979, 20.5296, 38.4655, 12.8504, 42.6891)
-
-[node name="BridgeRef" type="CSGPolygon3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -9.627846, 0, -10.159151)
-polygon = PackedVector2Array(-1.8704576, 3.6417255, 0.030448914, 6.083153, 3.1692352, 8.361553, 6.294688, 10.299801, 7.575799, 11.817871, 9.335779, 11.085932, 10.828085, 9.133411, 9.363243, 8.5028, 7.2541027, 6.2569866, 4.777767, 4.7996693, 2.7591705, 3.1319847, 2.3507972, 1.9732475, -0.2145958, 2.1700182)
 
 [node name="StructurePuzzle" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.30566, 0.5, -17.525751)
@@ -424,50 +392,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -4)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3017578, 0.5, -0.5)
 shape = SubResource("BoxShape3D_vdgxt")
 
-[node name="SpotLight3D3" type="SpotLight3D" parent="."]
-transform = Transform3D(0.79317486, -0.37321994, 0.4812282, -0.047367144, 0.74999994, 0.6597397, -0.6071491, -0.5460833, 0.57720274, 21.933666, 9, -14.130613)
-light_color = Color(0.1657444, 0.35284707, 0.17253423, 1)
-spot_range = 20.49195
-spot_angle = 30.667162
+[node name="HiddenSwitch1" type="Node3D" parent="StructurePuzzle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.6943398, 0.5, -5.474249)
 
-[node name="SpotLight3D2" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 11.68283, 7.522091, -31.576048)
-light_color = Color(0.9971362, 0.619743, 0.6955033, 1)
-light_energy = 0.489
-spot_range = 13.812327
-spot_angle = 66.74104
+[node name="Area3DSwitch1" type="Area3D" parent="StructurePuzzle/HiddenSwitch1"]
 
-[node name="SpotLight3D5" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 5.090988, 11.065102, -37.910583)
-light_color = Color(0.9971362, 0.619743, 0.6955033, 1)
-spot_range = 45.738575
-spot_angle = 62.7222
-
-[node name="SpotLight3D4" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 26.528357, 11.0651, -23.36606)
-light_color = Color(0.9971362, 0.619743, 0.6955033, 1)
-spot_range = 45.738575
-spot_angle = 52.58603
-
-[node name="Interface" parent="." instance=ExtResource("2_ve1yt")]
-transform = Transform3D(-0.9948895, 0, -0.10096955, 0, 1, 0, 0.10096955, 0, -0.9948895, 15.396141, 2.5000002, -36.622738)
-relic_num = 3
-relic_outline = Color(0.2, 0.5568628, 0.92941177, 1)
-relic_hidden = ExtResource("4_8eyll")
-relic_shown = ExtResource("5_lf873")
-
-[node name="HiddenSwitch1" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 1, -23)
-
-[node name="Area3DSwitch1" type="Area3D" parent="HiddenSwitch1"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HiddenSwitch1/Area3DSwitch1"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StructurePuzzle/HiddenSwitch1/Area3DSwitch1"]
 shape = SubResource("SphereShape3D_na7ny")
 
-[node name="SubViewport" type="SubViewport" parent="HiddenSwitch1"]
+[node name="SubViewport" type="SubViewport" parent="StructurePuzzle/HiddenSwitch1"]
 transparent_bg = true
 
-[node name="CenterContainerMouse" type="CenterContainer" parent="HiddenSwitch1/SubViewport"]
+[node name="CenterContainerMouse" type="CenterContainer" parent="StructurePuzzle/HiddenSwitch1/SubViewport"]
 visible = false
 anchors_preset = 15
 anchor_right = 1.0
@@ -475,42 +411,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="HiddenSwitch1/SubViewport/CenterContainerMouse"]
+[node name="TextureRect" type="TextureRect" parent="StructurePuzzle/HiddenSwitch1/SubViewport/CenterContainerMouse"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = SubResource("Texture2D_na7ny")
 expand_mode = 2
 
-[node name="Sprite3D" type="Sprite3D" parent="HiddenSwitch1"]
+[node name="Sprite3D" type="Sprite3D" parent="StructurePuzzle/HiddenSwitch1"]
 billboard = 1
 no_depth_test = true
 texture = SubResource("ViewportTexture_vdgxt")
-
-[node name="Area3DTitleCard" type="Area3D" parent="."]
-transform = Transform3D(0.4275155, 0, -0.90400773, 0, 1, 0, 0.90400773, 0, 0.4275155, 3, 0, -19)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3DTitleCard"]
-transform = Transform3D(0.9975866, 0, -0.06942567, 0, 1, 0, 0.06942567, 0, 0.9975866, -3.2112732, 2, -0.22348309)
-shape = SubResource("BoxShape3D_3b5aq")
-
-[node name="TopSideForeground" type="CSGPolygon3D" parent="."]
-transform = Transform3D(0.707107, -0.408607, 0.577096, 0, 0.816138, 0.577858, -0.707107, -0.408607, 0.577096, 24.332771, 8.20128, -43.770557)
-polygon = PackedVector2Array(-6.9843597, -5.9044037, -7.694229, -3.7747564, -8.515297, -1.5345421, -8.766861, -0.5044098, -9.466274, -0.5910406, -8.965721, 2.7916546, -8.720345, 5.385891, -11.511772, 1.3575878, -13.183281, 7.1924744, -14.254593, 0.72075844, -14.831615, -0.56975555, -15.67487, 4.6166153, -16.83584, 1.9747066, -18.38875, 3.1892395, -20.743778, 2.3465786, -23.76361, 2.0910645, -27.16717, 1.538744, -31.075768, 3.7157364, -34.632507, 10.898834, -29.087389, 19.056202, 9.735172, 19.523132, 18.428787, -2.2856216, -2.8123474, -7.977414, -5, -7, -6.2122574, -3.5052986, -6.2744064, -5.1126766)
-
-[node name="TopSideForeground2" type="CSGPolygon3D" parent="."]
-transform = Transform3D(0.707107, -0.408607, 0.577096, 0, 0.816138, 0.577858, -0.707107, -0.408607, 0.577096, -11.667229, 8.20128, -19.770557)
-polygon = PackedVector2Array(14.264487, -2.6432533, 13.914041, -4.331065, 13.340899, -3.853447, 12.544799, -3.5667458, 12.035184, -4.235531, 11.366405, -4.71315, 10.570306, -4.9042673, 10.506516, -5.987032, 9.933287, -6.783146, 8.818767, -5.604848, 6.589637, -5.3499413, 4.901799, -2.9615498, 11.430366, 2.4202785)
-
-[node name="TwistPivot" type="Node3D" parent="."]
-transform = Transform3D(1.205, 0, 0, 0, 1.205, 0, 0, 0, 1.205, 13.533526, 0.9999981, -39.390903)
-
-[node name="PitchPivot" type="Node3D" parent="TwistPivot"]
-transform = Transform3D(0.707107, -0.408607, 0.577097, 0, 0.816138, 0.577857, -0.707107, -0.408607, 0.577097, 0, 0, 0)
-
-[node name="Camera3D" type="Camera3D" parent="TwistPivot/PitchPivot"]
-transform = Transform3D(0.8298753, 0, 0, 0, 0.82987535, 5.066395e-07, 0, 0, 0.82987523, -9.555418, 2.286749, 11.77022)
-projection = 1
-size = 5.762
 
 [node name="PlatformStuff" type="Node3D" parent="."]
 
@@ -759,8 +669,78 @@ size = Vector3(0.52, 1.91, 3.9355907)
 transform = Transform3D(0.9372942, 0, -0.34853932, 0, 1, 0, 0.34853932, 0, 0.9372942, 8.124692, 0, -8.2820015)
 size = Vector3(0.52, 1.91, 5.1299047)
 
+[node name="Interface" parent="PlatformStuff" instance=ExtResource("2_ve1yt")]
+transform = Transform3D(-0.9948895, 0, -0.10096955, 0, 1, 0, 0.10096955, 0, -0.9948895, 15.396141, 2.5000002, -36.622738)
+relic_num = 3
+relic_outline = Color(0.2, 0.5568628, 0.92941177, 1)
+relic_hidden = ExtResource("4_8eyll")
+relic_shown = ExtResource("5_lf873")
+
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(0.79317486, -0.37321988, 0.4812282, -0.047367144, 0.74999994, 0.6597397, -0.6071491, -0.54608333, 0.57720274, 21.933666, 9, -14.130613)
+light_color = Color(0.1657444, 0.35284707, 0.17253423, 1)
+spot_range = 20.49195
+spot_angle = 30.667162
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 11.68283, 7.522091, -31.576048)
+light_color = Color(0.9971362, 0.619743, 0.6955033, 1)
+light_energy = 0.489
+spot_range = 13.812327
+spot_angle = 66.74104
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 5.090988, 11.065102, -37.910583)
+light_color = Color(0.9971362, 0.619743, 0.6955033, 1)
+spot_range = 45.738575
+spot_angle = 62.7222
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 26.528357, 11.0651, -23.36606)
+light_color = Color(0.9971362, 0.619743, 0.6955033, 1)
+spot_range = 45.738575
+spot_angle = 52.58603
+
+[node name="Floor" type="CSGPolygon3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+use_collision = true
+polygon = PackedVector2Array(4.4032, 43.201, -6.85971, 34.1139, -2.8921, 22.723, 8.24282, 13.5079, 26.4171, 12.356, 44.3353, 19.5233, 45.4872, 26.3067, 37.936, 28.8664, 24.3693, 34.4979, 20.5296, 38.4655, 12.8504, 42.6891)
+
+[node name="BridgeRef" type="CSGPolygon3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -9.627846, 0, -10.159151)
+visible = false
+polygon = PackedVector2Array(-1.8704576, 3.6417255, 0.030448914, 6.083153, 3.1692352, 8.361553, 6.294688, 10.299801, 7.575799, 11.817871, 9.335779, 11.085932, 10.828085, 9.133411, 9.363243, 8.5028, 7.2541027, 6.2569866, 4.777767, 4.7996693, 2.7591705, 3.1319847, 2.3507972, 1.9732475, -0.2145958, 2.1700182)
+
+[node name="Area3DTitleCard" type="Area3D" parent="."]
+transform = Transform3D(0.4275155, 0, -0.90400773, 0, 1, 0, 0.90400773, 0, 0.4275155, 3, 0, -19)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3DTitleCard"]
+transform = Transform3D(0.9975866, 0, -0.06942567, 0, 1, 0, 0.06942567, 0, 0.9975866, -3.2112732, 2, -0.22348309)
+shape = SubResource("BoxShape3D_3b5aq")
+
+[node name="TopSideForeground" type="CSGPolygon3D" parent="."]
+transform = Transform3D(0.707107, -0.408607, 0.577096, 0, 0.816138, 0.577858, -0.707107, -0.408607, 0.577096, 24.332771, 8.20128, -43.770557)
+polygon = PackedVector2Array(-6.9843597, -5.9044037, -7.694229, -3.7747564, -8.515297, -1.5345421, -8.766861, -0.5044098, -9.466274, -0.5910406, -8.965721, 2.7916546, -8.720345, 5.385891, -11.511772, 1.3575878, -13.183281, 7.1924744, -14.254593, 0.72075844, -14.831615, -0.56975555, -15.67487, 4.6166153, -16.83584, 1.9747066, -18.38875, 3.1892395, -20.743778, 2.3465786, -23.76361, 2.0910645, -27.16717, 1.538744, -31.075768, 3.7157364, -34.632507, 10.898834, -29.087389, 19.056202, 9.735172, 19.523132, 18.428787, -2.2856216, -2.8123474, -7.977414, -5, -7, -6.2122574, -3.5052986, -6.2744064, -5.1126766)
+
+[node name="TopSideForeground2" type="CSGPolygon3D" parent="."]
+transform = Transform3D(0.707107, -0.408607, 0.577096, 0, 0.816138, 0.577858, -0.707107, -0.408607, 0.577096, -11.667229, 8.20128, -19.770557)
+polygon = PackedVector2Array(14.264487, -2.6432533, 13.914041, -4.331065, 13.340899, -3.853447, 12.544799, -3.5667458, 12.035184, -4.235531, 11.366405, -4.71315, 10.570306, -4.9042673, 10.506516, -5.987032, 9.933287, -6.783146, 8.818767, -5.604848, 6.589637, -5.3499413, -2.580576, 7.528797, 13.382829, 7.7624493)
+
+[node name="TwistPivotDevCamera" type="Node3D" parent="."]
+transform = Transform3D(1.205, 0, 0, 0, 1.205, 0, 0, 0, 1.205, 15.493667, 0.9999981, -39.74692)
+
+[node name="PitchPivot" type="Node3D" parent="TwistPivotDevCamera"]
+transform = Transform3D(0.707107, -0.408607, 0.577097, 0, 0.816138, 0.577857, -0.707107, -0.408607, 0.577097, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="TwistPivotDevCamera/PitchPivot"]
+transform = Transform3D(0.8298753, 0, 0, 0, 0.82987535, 5.066395e-07, 0, 0, 0.82987523, -17.398956, -3.6277494, 20.123571)
+projection = 1
+size = 5.762
+
 [connection signal="body_entered" from="StructurePuzzle/Area3DCameraZoom" to="." method="_on_area_3d_camera_zoom_body_entered"]
 [connection signal="body_exited" from="StructurePuzzle/Area3DCameraZoom" to="." method="_on_area_3d_camera_zoom_body_exited"]
-[connection signal="body_entered" from="HiddenSwitch1/Area3DSwitch1" to="." method="_on_area_3d_switch_1_body_entered"]
-[connection signal="body_exited" from="HiddenSwitch1/Area3DSwitch1" to="." method="_on_area_3d_switch_1_body_exited"]
+[connection signal="body_entered" from="StructurePuzzle/HiddenSwitch1/Area3DSwitch1" to="." method="_on_area_3d_switch_1_body_entered"]
+[connection signal="body_exited" from="StructurePuzzle/HiddenSwitch1/Area3DSwitch1" to="." method="_on_area_3d_switch_1_body_exited"]
 [connection signal="body_entered" from="Area3DTitleCard" to="." method="_on_area_3d_title_card_body_entered"]
