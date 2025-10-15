@@ -6,21 +6,21 @@ extends Node3D
 
 @onready var hidden_text_1: CenterContainer = $HiddenSwitch1/SubViewport/CenterContainerMouse
 
-@onready var oblisk_piece: RigidBody3D = $Towers/RigidBody3DOblieskPiece
+@onready var oblisk_piece: RigidBody3D = $PlatformStuff/Towers/RigidBody3DOblieskPiece
 
 var oblisk_piece_original_pos: Vector3
 var oblisk_piece_final_pos: Vector3
 
 var listen_for_click_1 = false
 
+var camera_tween = create_tween()
+
 func _ready() -> void:
 	if Globals.bridge_1_down:
-		var tween = create_tween()
-		tween.tween_property(bridge_1, "rotation:z", 0, 2.0)
+		bridge_1.rotation.z = 0
 	
 	if Globals.bridge_2_down:
-		var tween = create_tween()
-		tween.tween_property(bridge_2, "rotation:z", 0, 2.0)
+		bridge_2.rotation.z = 0
 	
 	oblisk_piece_final_pos = oblisk_piece.global_position
 	oblisk_piece_final_pos.x += 1.5
@@ -60,6 +60,8 @@ func _process(_delta: float) -> void:
 			oblisk_piece.freeze = true
 			
 			var tween = create_tween()
+			tween.set_trans(Tween.TRANS_SINE)
+			tween.set_ease(Tween.EASE_IN_OUT)
 			tween.tween_property(oblisk_piece, "global_position", oblisk_piece_original_pos, 2.0)
 			
 			await tween.finished
@@ -99,3 +101,27 @@ func _on_area_3d_title_card_body_entered(body: Node3D) -> void:
 	
 	if body.name.contains("Player"):
 		Globals.save_point = 4.2
+
+
+func _on_area_3d_camera_zoom_body_entered(body: Node3D) -> void:
+	if body.name.contains("Player"):
+		
+		if camera_tween.is_running():
+			camera_tween.kill()
+		
+		camera_tween = create_tween()
+		camera_tween.set_trans(Tween.TRANS_SINE)
+		camera_tween.set_ease(Tween.EASE_IN_OUT)
+		camera_tween.tween_property(Globals, "camera_size", 10.0, 1.5)
+
+
+func _on_area_3d_camera_zoom_body_exited(body: Node3D) -> void:
+	if body.name.contains("Player"):
+		
+		if camera_tween.is_running():
+			camera_tween.kill()
+		
+		camera_tween = create_tween()
+		camera_tween.set_trans(Tween.TRANS_SINE)
+		camera_tween.set_ease(Tween.EASE_IN_OUT)
+		camera_tween.tween_property(Globals, "camera_size", 5.762, 1.5)
