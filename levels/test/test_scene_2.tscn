@@ -63,7 +63,7 @@ mesh = SubResource("PlaneMesh_8tk28")
 shape = SubResource("ConcavePolygonShape3D_13lak")
 
 [node name="Enemt" parent="." instance=ExtResource("2_7u683")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, -4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.622841, 1, -5.542635)
 drops_relic_1 = true
 rand_shard_range = 100
 

@@ -55,6 +55,7 @@ func _ready() -> void:
 	
 	right_rest_pos = right_hand.position
 	right_rest_rot = right_hand.rotation
+	
 
 func _process(_delta: float) -> void:
 	health_bar.value = health

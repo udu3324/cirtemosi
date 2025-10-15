@@ -325,12 +325,7 @@ func _handle_equipment() -> void:
 		# check if player hit an enemy
 		
 		# get all enemy nodes
-		var enemies = []
-		for node in Globals._get_all_nodes(get_tree().root):
-			#print_debug(node)
-			if node.name == "EnemyCollisionMesh":
-				#print_debug("found enemy", node)
-				enemies.append(node)
+		var enemies = _get_all_enemy_nodes()
 		
 		# for each enemy
 		for enemy in enemies:
@@ -406,9 +401,41 @@ func _handle_equipment() -> void:
 		var projectile: RayCast3D = preload("res://scenes/items/bow_projectile.tscn").instantiate()
 		projectile.speed = randf_range(10.0, 15.0)
 		projectile.position = spawn_pos
-		projectile.rotation.y = model.rotation.y + (PI/2)
 		
 		Globals.root_node_3d.add_child(projectile)
+		
+		projectile.rotation.y = model.rotation.y + (PI/2)
+		
+		# aim assist lol
+		var enemies = _get_all_enemy_nodes()
+		
+		# for each enemy
+		for enemy in enemies:
+			var distance = position.distance_to(enemy.global_transform.origin)
+			
+			# check if too far
+			if distance > Globals.item_info_dict[held_item]["range"]:
+				continue
+			
+			# check if already dead
+			if enemy.get_parent().dead:
+				continue
+			
+			# check if angle is alright and is in the cone
+			var forward = -model.global_transform.basis.x.normalized()
+			var to_enemy = ( enemy.global_transform.origin - model.global_transform.origin).normalized()
+			
+			var angle = rad_to_deg(forward.angle_to(to_enemy)) 
+			
+			if angle > Globals.item_info_dict[held_item]["cone"]:
+				continue
+			
+			#print("doing aim assist", enemy.get_parent().name)
+			#DebugDraw3D.draw_line(bow.global_position, enemy.global_position, Color.AQUAMARINE)
+			
+			projectile.look_at(enemy.global_position, Vector3.UP)
+			#print("doing aim assist2", projectile.rotation.y)
+			break
 		
 		string_3_bow.visible = false
 		string_1_bow.visible = true
@@ -427,3 +454,15 @@ func _handle_equipment() -> void:
 		await attack_tween.finished
 		
 		attacking = false
+
+
+func _get_all_enemy_nodes() -> Array:
+	var enemies = []
+	
+	for node in Globals._get_all_nodes(get_tree().root):
+		#print_debug(node)
+		if node.name == "EnemyCollisionMesh":
+			#print_debug("found enemy", node)
+			enemies.append(node)
+	
+	return enemies
