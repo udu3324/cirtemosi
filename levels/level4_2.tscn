@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://7cp0pqabugrl"]
+[gd_scene load_steps=25 format=3 uid="uid://7cp0pqabugrl"]
 
 [ext_resource type="PackedScene" uid="uid://d08s342gfjw8u" path="res://entities/zert/zert.tscn" id="1_05hsp"]
 [ext_resource type="Script" uid="uid://b5gm2nj3mnypo" path="res://scripts/scenes/level_4_2.gd" id="1_lf873"]
@@ -48,6 +48,12 @@ albedo_color = Color(0.27022192, 0.27022192, 0.27022186, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3b5aq"]
 albedo_color = Color(0.12591079, 0.12591085, 0.12591082, 1)
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3b5aq"]
+friction = 0.48
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_na7ny"]
+size = Vector3(1, 0.42230225, 1)
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_na7ny"]
 radius = 1.2707261
 
@@ -83,7 +89,7 @@ polygon = PackedVector2Array(4.4032, 43.201, -6.85971, 34.1139, -2.8921, 22.723,
 [node name="Platform" type="CSGPolygon3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2, 0)
 use_collision = true
-polygon = PackedVector2Array(4.4032, 43.201, -6.85971, 34.1139, -4.8234286, 28.229496, -2.3320825, 25.948149, 0.89120364, 27.076988, 3.8505073, 26.516468, 5.8045616, 26.515606, 8.734584, 29.893568, 13.764108, 31.019102, 17.708157, 33.212017, 20.5296, 38.4655, 12.8504, 42.6891)
+polygon = PackedVector2Array(4.4032, 43.201, -6.85971, 34.1139, -4.8234286, 28.229496, -2.3320825, 25.948149, -1.1543212, 26.14328, -0.5011358, 27.248936, 1.7021772, 28.180687, 2.8635828, 26.782812, 3.8505073, 26.516468, 5.8045616, 26.515606, 8.734584, 29.893568, 13.764108, 31.019102, 17.708157, 33.212017, 20.5296, 38.4655, 12.8504, 42.6891)
 depth = 2.0
 material = SubResource("StandardMaterial3D_u22qj")
 
@@ -326,7 +332,7 @@ polygon = PackedVector2Array(0, 0, 0, 4, 9, 0)
 material = SubResource("StandardMaterial3D_ve1yt")
 
 [node name="BridgePuzzleAnchor" type="Node3D" parent="StructurePuzzle"]
-transform = Transform3D(-0.70710677, -0.70710677, -8.742278e-08, -0.70710677, 0.70710677, 0, 6.181724e-08, 6.181724e-08, -1, -0.56158257, 3.3149147, 0)
+transform = Transform3D(-0.7071067, -0.7071067, -8.742278e-08, -0.7071067, 0.7071067, 0, 6.181723e-08, 6.181723e-08, -1, -0.56158257, 3.3637943, 0)
 
 [node name="Bridge" type="CSGBox3D" parent="StructurePuzzle/BridgePuzzleAnchor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4085255, 1.9073486e-06, 0)
@@ -335,7 +341,7 @@ size = Vector3(3, 0.277, 1)
 material = SubResource("StandardMaterial3D_ve1yt")
 
 [node name="BridgePuzzleAnchor2" type="Node3D" parent="StructurePuzzle"]
-transform = Transform3D(-4.371139e-08, 0, -1, -0.70710677, 0.70710677, 3.090862e-08, 0.70710677, 0.70710677, -3.090862e-08, 3, 3.315, -3.596836)
+transform = Transform3D(-4.371139e-08, 0, -1, -0.70710677, 0.70710677, 3.090862e-08, 0.70710677, 0.70710677, -3.090862e-08, 3, 3.3638797, -3.596836)
 
 [node name="Bridge" type="CSGBox3D" parent="StructurePuzzle/BridgePuzzleAnchor2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9068165, 0, 3.8146973e-06)
@@ -411,6 +417,10 @@ omni_range = 3.2651925
 transform = Transform3D(0.9678849, 0, 0.2513937, 0, 1, 0, -0.2513937, 0, 0.9678849, 2.9075413, 3.4999998, -0.43395615)
 text = "towering the zert, bottom hidden from high"
 
+[node name="Sign2" parent="StructurePuzzle" instance=ExtResource("4_ev50v")]
+transform = Transform3D(-0.43680197, 0, -0.8995578, 0, 1, 0, 0.8995578, 0, -0.43680197, 3.491825, 3.5, -5.617914)
+text = "came down a piece of obelisk, off center from before"
+
 [node name="SpotLight3D3" type="SpotLight3D" parent="."]
 transform = Transform3D(0.79317486, -0.37321994, 0.4812282, -0.047367144, 0.74999994, 0.6597397, -0.6071491, -0.5460833, 0.57720274, 21.933666, 9, -14.130613)
 light_color = Color(0.1657444, 0.35284707, 0.17253423, 1)
@@ -437,9 +447,9 @@ spot_range = 45.738575
 spot_angle = 52.58603
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
-transform = Transform3D(-0.09537673, 0, -0.99544126, 0, 1, 0, 0.99544126, 0, -0.09537673, 0.7526945, -0.016736269, -27.73887)
+transform = Transform3D(0.5063648, 0, -0.86231935, 0, 1, 0, 0.86231935, 0, 0.5063648, -1.1501151, -0.016736269, -27.464167)
 use_collision = true
-polygon = PackedVector2Array(0, 0, 0, 1, 0, 2, 1, 2, 4, 0)
+polygon = PackedVector2Array(0, 0, 0, 1, 0, 2, 1, 2, 5, 0)
 depth = 3.12
 material = SubResource("StandardMaterial3D_8eyll")
 
@@ -495,12 +505,6 @@ use_collision = true
 size = Vector3(1, 0.4230156, 1)
 material = SubResource("StandardMaterial3D_lf873")
 
-[node name="CSGBox3D12" type="CSGBox3D" parent="Towers"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.2115078, 0)
-use_collision = true
-size = Vector3(1, 0.4230156, 1)
-material = SubResource("StandardMaterial3D_lf873")
-
 [node name="CSGBox3D6" type="CSGBox3D" parent="Towers"]
 transform = Transform3D(0.9852231, -0.17127572, 0, 0.17014544, 0.97872144, 0.114694424, -0.01964437, -0.112999596, 0.9934008, -6.9649587, 1.2997634, 4.023119)
 use_collision = true
@@ -539,11 +543,26 @@ material = SubResource("StandardMaterial3D_lf873")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="Towers"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 1, 0.103583574, 4)
-polygon = PackedVector2Array(2.2876596, 4.466625, 4.0210733, 3.1619873, 4.8602886, 1.7494125, 4.892948, 0.48869514, 4.446124, -0.77890587, 2.712863, -1.1512413, 0.74461174, -3.4800224, -1.0187554, -3.4576588, -2.591414, -2.706976, -3.877014, -1.044796, -4.770008, 2.142624, -3.5031147, 4.0571976, -1.1487293, 4.8917007, 0.80056953, 4.8874054)
+polygon = PackedVector2Array(2.6264, 4.3715744, 3.7934628, 2.8665123, 4.8602886, 1.7494125, 4.454173, 0.41739273, 4.446124, -0.77890587, 2.712863, -1.1512413, 0.74461174, -3.4800224, -1.4876413, -3.8527546, -2.435411, -2.1656704, -3.7892473, -1.0400066, -4.1021204, 0.5821705, -4.770008, 2.142624, -3.5936468, 3.9270096, -0.9953203, 5.280117, 0.58539486, 4.6236)
 material = SubResource("StandardMaterial3D_3b5aq")
 
 [node name="Shards" parent="Towers" instance=ExtResource("2_u22qj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 4.295296, -7)
+
+[node name="RigidBody3DOblieskPiece" type="RigidBody3D" parent="Towers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+physics_material_override = SubResource("PhysicsMaterial_3b5aq")
+can_sleep = false
+lock_rotation = true
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="Towers/RigidBody3DOblieskPiece"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2115078, 0)
+size = Vector3(1, 0.4230156, 1)
+material = SubResource("StandardMaterial3D_lf873")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Towers/RigidBody3DOblieskPiece"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.21200562, 0)
+shape = SubResource("BoxShape3D_na7ny")
 
 [node name="HiddenSwitch1" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 1, -23)
@@ -597,7 +616,7 @@ transform = Transform3D(1.205, 0, 0, 0, 1.205, 0, 0, 0, 1.205, 13.533526, 0.9999
 transform = Transform3D(0.707107, -0.408607, 0.577097, 0, 0.816138, 0.577857, -0.707107, -0.408607, 0.577097, 0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="TwistPivot/PitchPivot"]
-transform = Transform3D(0.8298753, 0, 0, 0, 0.82987535, 5.066395e-07, 0, 0, 0.82987523, -1.6816444, 0.62463, 14.117717)
+transform = Transform3D(0.8298753, 0, 0, 0, 0.82987535, 5.066395e-07, 0, 0, 0.82987523, -9.555418, 2.286749, 11.77022)
 projection = 1
 size = 5.762
 
@@ -706,7 +725,6 @@ size = Vector3(1.4126728, 1.86035, 1)
 
 [node name="PlatformBarriers" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3.4083557, -33)
-visible = false
 
 [node name="CSGBox3D" type="CSGBox3D" parent="PlatformBarriers"]
 transform = Transform3D(0.9858677, 0, -0.16752589, 0, 1, 0, 0.16752589, 0, 0.9858677, -0.09801555, 0, -0.114852905)

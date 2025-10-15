@@ -101,6 +101,16 @@ func _process(_delta: float) -> void:
 		Globals.menu_pick_fx_event = null
 	
 	_handle_input_controller_hints()
+	
+	if Globals.debug_mode:
+		if Input.is_action_just_pressed("just_space_key"):
+			print("debug gave equipment and save point and more")
+			Globals.save_point = 4.2
+			Globals.equipment = ["starter_weapon", "bow", ""]
+			Globals.shards += 999
+			Globals.health = Globals.health_max
+			Globals.stamina = Globals.stamina_max
+
 
 func _handle_input_controller_hints():
 	if Input.is_action_pressed("ui_up"):
