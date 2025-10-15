@@ -79,6 +79,7 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Relic2"]
+material = SubResource("ShaderMaterial_vdml7")
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = ExtResource("5_khq2i")
@@ -100,6 +101,7 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Relic3"]
+material = SubResource("ShaderMaterial_vdml7")
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = ExtResource("7_xgwlu")
@@ -121,6 +123,7 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Relic4"]
+material = SubResource("ShaderMaterial_vdml7")
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = ExtResource("9_vdml7")
@@ -142,6 +145,7 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Relic5"]
+material = SubResource("ShaderMaterial_vdml7")
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = ExtResource("11_54kn2")
