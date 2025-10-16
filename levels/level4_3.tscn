@@ -1,0 +1,183 @@
+[gd_scene load_steps=14 format=3 uid="uid://duo44b2ivhol"]
+
+[ext_resource type="Script" uid="uid://ccc84jhoxhk8n" path="res://scripts/scenes/level_4_3.gd" id="1_kcjfs"]
+[ext_resource type="PackedScene" uid="uid://cehpvnetgof0c" path="res://assets/model/house/roof.blend" id="2_c5to3"]
+[ext_resource type="PackedScene" uid="uid://ccflw61cmd8sp" path="res://entities/player.tscn" id="3_tqtpy"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_c5to3"]
+sky_top_color = Color(0.384314, 0.454902, 0.54902, 1)
+sky_horizon_color = Color(0.6605339, 0.67304146, 0.69434, 1)
+ground_bottom_color = Color(0.190423, 0.169865, 0.160941, 1)
+ground_horizon_color = Color(0.6605339, 0.67304146, 0.69434, 1)
+
+[sub_resource type="Sky" id="Sky_tqtpy"]
+sky_material = SubResource("ProceduralSkyMaterial_c5to3")
+
+[sub_resource type="Environment" id="Environment_4mv1t"]
+background_mode = 2
+sky = SubResource("Sky_tqtpy")
+ssao_enabled = true
+sdfgi_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tqtpy"]
+albedo_color = Color(0.36889374, 0.2971463, 0.12813208, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4mv1t"]
+albedo_color = Color(0.12373423, 0.2049301, 0.1599713, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pt5ad"]
+albedo_color = Color(0.25967035, 0.23319721, 0.14718246, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c5to3"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aokp7"]
+albedo_color = Color(0.40713432, 0.43233603, 0.3049225, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c5to3"]
+size = Vector3(5.9630127, 3, 5.9074707)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_c5to3"]
+height = 3.234375
+radius = 2.4643555
+
+[node name="Level4_3" type="Node3D"]
+script = ExtResource("1_kcjfs")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4mv1t")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+directional_shadow_max_distance = 1.0
+
+[node name="CSGPolygon3D4" type="CSGPolygon3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -24, -1.04907e-06, -24)
+use_collision = true
+polygon = PackedVector2Array(-9.12218, -5.50803, 0.604877, -4.22815, 7.77218, -1.92437, 12.1238, 4.34702, 12.8917, 11.3863, 11.8678, 15.8659, 7.90017, 14.714, 5.72438, 10.2345, -1.44293, 7.80269, -5.02658, 3.5791, -8.48225, 1.27532, -12.0659, -2.6923, -10.914, -5.63601)
+depth = 1.85
+
+[node name="DrawBridge" type="Node3D" parent="."]
+transform = Transform3D(0.95180875, 0, 0.3066922, 0, 1, 0, -0.3066922, 0, 0.95180875, -25.219475, -0.5, -19.19378)
+
+[node name="CSGPolygon3D3" type="CSGPolygon3D" parent="DrawBridge"]
+polygon = PackedVector2Array(-0.59804344, 0.107899666, -0.02677536, 5.0968328, -0.0023345947, 5.939989, 0.21676636, 5.5867615, 0.3912468, 5.7557755, 0.684782, 4.157042, 0.9191952, 3.3572834, 0.85697937, 1.8625965, 0.9543648, 0.011973381)
+
+[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="DrawBridge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4376125, 0, -5.2154064e-08)
+polygon = PackedVector2Array(-0.5443783, 0.02773714, -0.49066067, 2.92389, -0.29946518, 4.3506136, -0.17405796, 5.593999, -0.013228416, 5.4073353, 0.2059946, 6.105523, 0.3387537, 5.851143, 0.6334162, 5.6678743, 0.85761166, 3.6581755, 0.8661556, 2.4924297, 1.1973639, -0.019692898, -0.15130329, -0.15074635)
+
+[node name="House" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 1, -29)
+
+[node name="HouseTopSideForeground" type="CSGPolygon3D" parent="House"]
+transform = Transform3D(0.707107, -0.408607, 0.577096, 0, 0.816138, 0.577858, -0.707107, -0.408607, 0.577096, 12.504969, 7.3066025, -5.703903)
+visible = false
+polygon = PackedVector2Array(-16.785927, -0.54395866, -12.896373, 1.7171497, -8.628917, -0.72826576, -8.642101, -3.1873283, -12.616216, -5.4699783, -16.79967, -3.026764, -16.81436, -0.54268074, -32.670174, -6.4221687, -13.744713, -12.311568, 8.001747, -8.265663, 7.7209587, 10.942383, -11.709539, 16.582558, -36.802757, 10.727295, -33.68724, -5.382263, -28.988346, -8.051739)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="House"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4389038, 1, -0.5)
+use_collision = true
+size = Vector3(0.12219238, 3, 6)
+material = SubResource("StandardMaterial3D_tqtpy")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="House"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -3.4243164)
+use_collision = true
+size = Vector3(6, 3, 0.15136719)
+material = SubResource("StandardMaterial3D_tqtpy")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="House"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5321028, -0.5)
+use_collision = true
+size = Vector3(6, 0.056640625, 6)
+material = SubResource("StandardMaterial3D_4mv1t")
+
+[node name="Frame3" type="CSGBox3D" parent="House"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.44831848, 0.5, 2.437851)
+size = Vector3(0.18066406, 2, 0.1987915)
+material = SubResource("StandardMaterial3D_pt5ad")
+
+[node name="Frame2" type="CSGBox3D" parent="House"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0052032, 1.5175087, 2.437851)
+size = Vector3(1.2944336, 0.18273926, 0.1987915)
+material = SubResource("StandardMaterial3D_pt5ad")
+
+[node name="Frame" type="CSGBox3D" parent="House"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5606995, 0.5, 2.437851)
+size = Vector3(0.18066406, 2, 0.1987915)
+material = SubResource("StandardMaterial3D_pt5ad")
+
+[node name="HiddenSides" type="Node3D" parent="House"]
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="House/HiddenSides"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4359741, 1, -0.5)
+use_collision = true
+size = Vector3(0.12805176, 3, 6)
+material = SubResource("StandardMaterial3D_tqtpy")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="House/HiddenSides"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.071289, 1, 2.4418335)
+use_collision = true
+size = Vector3(0.8574219, 3, 0.11633301)
+material = SubResource("StandardMaterial3D_tqtpy")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="House/HiddenSides"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.99700165, 2, 2.4418335)
+use_collision = true
+size = Vector3(1.3003693, 1, 0.11633301)
+material = SubResource("StandardMaterial3D_tqtpy")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="House/HiddenSides"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5651855, 1, 2.4418335)
+use_collision = true
+size = Vector3(3.869629, 3, 0.11633301)
+material = SubResource("StandardMaterial3D_tqtpy")
+
+[node name="DoorShadow" type="CSGBox3D" parent="House/HiddenSides"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0009518, 0.5, 2.414833)
+size = Vector3(0.98950195, 2, 0.119277954)
+material = SubResource("StandardMaterial3D_c5to3")
+
+[node name="Node3DDoorSwivel" type="Node3D" parent="House/HiddenSides"]
+transform = Transform3D(0.949535, 0, -0.31366104, 0, 1, 0, 0.31366104, 0, 0.949535, 0.56544113, 0, 2.4059048)
+
+[node name="DoorShadow2" type="CSGBox3D" parent="House/HiddenSides/Node3DDoorSwivel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49913597, 0.46655273, 0.011365887)
+size = Vector3(1.0266724, 1.9331055, 0.119277954)
+material = SubResource("StandardMaterial3D_aokp7")
+
+[node name="roof" parent="House/HiddenSides" instance=ExtResource("2_c5to3")]
+transform = Transform3D(1.0458409, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 3.5, -0.5)
+
+[node name="Area3DHouse" type="Area3D" parent="House"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="House/Area3DHouse"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.51849365, 1, -0.4991455)
+shape = SubResource("BoxShape3D_c5to3")
+
+[node name="Area3DDoor" type="Area3D" parent="House"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="House/Area3DDoor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.020507813, 3)
+shape = SubResource("CylinderShape3D_c5to3")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -22, 0.5, -29)
+use_collision = true
+polygon = PackedVector2Array(-10.445103, -3.7728996, -7.373516, -5.3104115, -3.4176521, -3.9344578, 0.4006176, -4.106453, 0.92518616, -3.8248482, 1.47398, -3.0772038, 2.243824, -3.1885128, 3.6341076, -2.558506, 5.0788593, 0.021406174, 6.1796207, 2.7733116, 5.1820564, 4.9748383, 5.526045, 7.864338, 5.560442, 8.965099, 3.7717018, 5.1812325, -1.4059143, 3.4812355, 2.4946098, 3.4895172, 2.4789696, -2.4937305, -3.495964, -2.4897919, -3.4772167, 2.726963, -6.9951286, -1.4577427)
+depth = 0.5
+
+[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="."]
+transform = Transform3D(0.8076607, 0, -0.58964765, 0, 1, 0, 0.58964765, 0, 0.8076607, -21.07874, 0, -25.224073)
+use_collision = true
+polygon = PackedVector2Array(0, 0, 0, 0.5, 1, 0)
+
+[node name="Player" parent="." instance=ExtResource("3_tqtpy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 2, -28)
+
+[connection signal="body_entered" from="House/Area3DHouse" to="." method="_on_area_3d_house_body_entered"]
+[connection signal="body_exited" from="House/Area3DHouse" to="." method="_on_area_3d_house_body_exited"]
+[connection signal="body_entered" from="House/Area3DDoor" to="." method="_on_area_3d_door_body_entered"]
+[connection signal="body_exited" from="House/Area3DDoor" to="." method="_on_area_3d_door_body_exited"]

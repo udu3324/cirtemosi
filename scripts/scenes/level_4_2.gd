@@ -1,5 +1,6 @@
 extends Node3D
 
+@onready var relic_2: Node3D = $StructurePuzzle/Relic2
 
 @onready var bridge_1: Node3D = $StructurePuzzle/BridgePuzzleAnchor
 @onready var bridge_2: Node3D = $StructurePuzzle/BridgePuzzleAnchor2
@@ -16,6 +17,9 @@ var listen_for_click_1 = false
 var camera_tween = create_tween()
 
 func _ready() -> void:
+	if Globals.relics[1]:
+		relic_2.queue_free()
+	
 	if Globals.bridge_1_down:
 		bridge_1.rotation.z = 0
 	

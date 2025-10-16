@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://bx27rmfnckyq8"]
+[gd_scene load_steps=10 format=3 uid="uid://bx27rmfnckyq8"]
 
 [ext_resource type="Script" uid="uid://ys4ojc7780fh" path="res://scripts/enviornment/sign.gd" id="1_dun1f"]
 [ext_resource type="Script" uid="uid://cmyasc1t8l0la" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="1_xvjbn"]
 [ext_resource type="FontFile" uid="uid://d25dq4tmt7ywp" path="res://assets/font/NebulaSans-Black.ttf" id="2_dun1f"]
-[ext_resource type="FontFile" uid="uid://d8rupcfbnwjx" path="res://assets/font/NebulaSans-Semibold.ttf" id="4_dun1f"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_el4jl"]
 albedo_color = Color(0.24486047, 0.18358809, 0.071411945, 1)
@@ -47,7 +46,7 @@ size = Vector3(0.655, 0.364, 0.104)
 material = SubResource("StandardMaterial3D_w5cwh")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1982106, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2841522, 0)
 billboard = 1
 texture = SubResource("ViewportTexture_4apdh")
 
@@ -63,6 +62,7 @@ grow_vertical = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SubViewport/CenterContainer"]
 visible = false
+modulate = Color(1, 1, 1, 0.6392157)
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="SubViewport/CenterContainer/HBoxContainer"]
@@ -78,7 +78,7 @@ text = "to interact"
 [node name="Label" type="Label" parent="SubViewport/CenterContainer"]
 visible = false
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_dun1f")
+theme_override_fonts/font = ExtResource("2_dun1f")
 theme_override_font_sizes/font_size = 16
 text = "placeholder"
 horizontal_alignment = 1

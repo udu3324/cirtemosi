@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://7cp0pqabugrl"]
+[gd_scene load_steps=24 format=3 uid="uid://7cp0pqabugrl"]
 
 [ext_resource type="PackedScene" uid="uid://d08s342gfjw8u" path="res://entities/zert/zert.tscn" id="1_05hsp"]
 [ext_resource type="Script" uid="uid://b5gm2nj3mnypo" path="res://scripts/scenes/level_4_2.gd" id="1_lf873"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dcys6jvvpk8ui" path="res://assets/relics/relic_3_hidden_icon.png" id="4_8eyll"]
 [ext_resource type="PackedScene" uid="uid://bx27rmfnckyq8" path="res://scenes/enviornment/sign.tscn" id="4_ev50v"]
 [ext_resource type="Texture2D" uid="uid://ctwb6rjmjrvf1" path="res://assets/relics/relic_3_icon.png" id="5_lf873"]
+[ext_resource type="PackedScene" uid="uid://c4ur6h1x4yovh" path="res://scenes/items/relic_2.tscn" id="6_na7ny"]
 [ext_resource type="Script" uid="uid://cmyasc1t8l0la" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="8_3b5aq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ve1yt"]
@@ -421,6 +422,9 @@ expand_mode = 2
 billboard = 1
 no_depth_test = true
 texture = SubResource("ViewportTexture_vdgxt")
+
+[node name="Relic2" parent="StructurePuzzle" instance=ExtResource("6_na7ny")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3.740107, -4)
 
 [node name="PlatformStuff" type="Node3D" parent="."]
 
