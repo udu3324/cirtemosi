@@ -26,7 +26,7 @@ script = ExtResource("1_agq28")
 shape = SubResource("ConvexPolygonShape3D_agq28")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-light_color = Color(0.5386578, 0.1287973, 0.06700367, 1)
+light_color = Color(0.18431373, 0.3372549, 0.72156864, 1)
 omni_range = 1.55143
 
 [node name="Area3D" type="Area3D" parent="."]

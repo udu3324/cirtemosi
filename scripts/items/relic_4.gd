@@ -5,12 +5,12 @@ extends RigidBody3D
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.name.contains("Player") and self.visible:
-		print_debug("picked up relic 3")
+		print_debug("picked up relic 4")
 		visible = false
 		
 		audio_player.play()
 		
-		Globals.relics[2] = true
+		Globals.relics[3] = true
 		
 		self.collision_layer = 0
 		self.collision_mask = 0

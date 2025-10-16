@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://byeuwjmfcnb3t"]
+
+[ext_resource type="Script" uid="uid://by8beqj3dhn28" path="res://scripts/items/relic_5.gd" id="1_wu08c"]
+[ext_resource type="AudioStream" uid="uid://6aptpugod2ue" path="res://assets/audio/fx/item_pick_special.wav" id="2_d76im"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_g8tuj"]
+radius = 0.19973722
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wu08c"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d76im"]
+albedo_color = Color(0.6627451, 0.99607843, 0.99607843, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_pb0y0"]
+material = SubResource("StandardMaterial3D_d76im")
+radius = 0.2
+height = 0.4
+
+[node name="Relic5" type="RigidBody3D"]
+script = ExtResource("1_wu08c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_g8tuj")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(0.34681475, 0.97476655, 0.9811351, 1)
+omni_range = 1.55143
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_wu08c")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_d76im")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_pb0y0")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

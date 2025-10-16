@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://bhmmx5pl0neys"]
+[gd_scene load_steps=41 format=4 uid="uid://bhmmx5pl0neys"]
 
 [ext_resource type="Material" uid="uid://dhp1vk7afkguu" path="res://assets/prefab/prefab_dark_meter.tres" id="1_3ju41"]
 [ext_resource type="Texture2D" uid="uid://b5pviiur126b0" path="res://assets/prefab/playtesting.png" id="2_k5kv5"]
@@ -13,6 +13,10 @@
 [ext_resource type="PackedScene" uid="uid://chrpj84t3rlxj" path="res://scenes/items/bow.tscn" id="11_t54sk"]
 [ext_resource type="PackedScene" uid="uid://bx27rmfnckyq8" path="res://scenes/enviornment/sign.tscn" id="12_dj3q0"]
 [ext_resource type="PackedScene" uid="uid://dwqj4buhblxh8" path="res://entities/enemt/enemt.tscn" id="13_th8dj"]
+[ext_resource type="PackedScene" uid="uid://c4ur6h1x4yovh" path="res://scenes/items/relic_2.tscn" id="14_j8u1v"]
+[ext_resource type="PackedScene" uid="uid://dpo3k7y1ykg61" path="res://scenes/items/relic_3.tscn" id="15_bnjge"]
+[ext_resource type="PackedScene" uid="uid://frjikjhvgs4c" path="res://scenes/items/relic_4.tscn" id="16_pk4nq"]
+[ext_resource type="PackedScene" uid="uid://byeuwjmfcnb3t" path="res://scenes/items/relic_5.tscn" id="17_pt1ls"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_6a74u"]
 _surfaces = [{
@@ -414,9 +418,6 @@ transform = Transform3D(0.442016, 0.865423, -0.235935, -0.763469, 0.501043, 0.40
 [node name="TestScene3" parent="." instance=ExtResource("4_mxorj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6146, 0, 10.2364)
 
-[node name="Relic1" parent="." instance=ExtResource("6_toffc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7360172, 0.6679367, -3.1259959)
-
 [node name="Shards" type="Node3D" parent="."]
 
 [node name="Shards" parent="Shards" instance=ExtResource("7_ddkel")]
@@ -497,3 +498,18 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 9.25
 visible = false
 use_collision = true
 size = Vector3(0.4169922, 1, 1.9119873)
+
+[node name="Relic1" parent="." instance=ExtResource("6_toffc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.44662905, 6)
+
+[node name="Relic2" parent="." instance=ExtResource("14_j8u1v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.44662905, 6)
+
+[node name="Relic3" parent="." instance=ExtResource("15_bnjge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.44662905, 6)
+
+[node name="Relic4" parent="." instance=ExtResource("16_pk4nq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.44662905, 6)
+
+[node name="Relic5" parent="." instance=ExtResource("17_pt1ls")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0.44662905, 6)
