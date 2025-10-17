@@ -1,5 +1,7 @@
 extends Node3D
 
+@onready var relic: Node3D = $House/Relic4
+
 @onready var door: Node3D = $House/HiddenSides/Node3DDoorSwivel
 
 @onready var house_foreground: CSGPolygon3D = $House/HouseTopSideForeground
@@ -7,6 +9,10 @@ extends Node3D
 
 var camera_tween = create_tween()
 var door_tween = create_tween()
+
+func _ready() -> void:
+	if Globals.relics[3]:
+		relic.queue_free()
 
 func _on_area_3d_house_body_entered(body: Node3D) -> void:
 	if body.name.contains("Player"):

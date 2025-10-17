@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://duo44b2ivhol"]
+[gd_scene load_steps=15 format=3 uid="uid://duo44b2ivhol"]
 
 [ext_resource type="Script" uid="uid://ccc84jhoxhk8n" path="res://scripts/scenes/level_4_3.gd" id="1_kcjfs"]
 [ext_resource type="PackedScene" uid="uid://cehpvnetgof0c" path="res://assets/model/house/roof.blend" id="2_c5to3"]
+[ext_resource type="PackedScene" uid="uid://frjikjhvgs4c" path="res://scenes/items/relic_4.tscn" id="3_4mv1t"]
 [ext_resource type="PackedScene" uid="uid://ccflw61cmd8sp" path="res://entities/player.tscn" id="3_tqtpy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_c5to3"]
@@ -110,6 +111,7 @@ size = Vector3(0.18066406, 2, 0.1987915)
 material = SubResource("StandardMaterial3D_pt5ad")
 
 [node name="HiddenSides" type="Node3D" parent="House"]
+visible = false
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="House/HiddenSides"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4359741, 1, -0.5)
@@ -162,6 +164,8 @@ shape = SubResource("BoxShape3D_c5to3")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="House/Area3DDoor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.020507813, 3)
 shape = SubResource("CylinderShape3D_c5to3")
+
+[node name="Relic4" parent="House" instance=ExtResource("3_4mv1t")]
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -22, 0.5, -29)

@@ -188,6 +188,10 @@ func _drop_shards():
 			Globals.root_node_3d.add_child(shard)
 
 func _physics_process(delta: float) -> void:
+	
+	if Engine.is_editor_hint():
+		return
+	
 	#print("this is a tt", please_stop, circling, looking_around, agent.is_navigation_finished())
 	if please_stop:
 		return

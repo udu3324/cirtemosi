@@ -1,5 +1,7 @@
 extends Node3D
 
+@onready var spot_light_follow: SpotLight3D = $Path/SpotLight3DFollow
+
 @onready var relic_2: Node3D = $StructurePuzzle/Relic2
 
 @onready var bridge_1: Node3D = $StructurePuzzle/BridgePuzzleAnchor
@@ -8,6 +10,9 @@ extends Node3D
 @onready var hidden_text_1: CenterContainer = $StructurePuzzle/HiddenSwitch1/SubViewport/CenterContainerMouse
 
 @onready var oblisk_piece: RigidBody3D = $PlatformStuff/Towers/RigidBody3DOblieskPiece
+
+var spot_light_follow_original_pos: Vector3
+var light_follow_player: bool = false
 
 var oblisk_piece_original_pos: Vector3
 var oblisk_piece_final_pos: Vector3
@@ -31,8 +36,15 @@ func _ready() -> void:
 	oblisk_piece_final_pos.z += 0.5
 	
 	oblisk_piece_original_pos = oblisk_piece.global_position
+	
+	spot_light_follow_original_pos = spot_light_follow.global_position
 
 func _process(_delta: float) -> void:
+	
+	if light_follow_player:
+		var new_pos = Globals.player_pos
+		new_pos.y = spot_light_follow_original_pos.y
+		spot_light_follow.global_position = new_pos
 	
 	if !Globals.bridge_2_down:
 		#DebugDraw3D.draw_sphere(oblisk_piece_final_pos, 0.3, Color.AQUA)
@@ -129,3 +141,16 @@ func _on_area_3d_camera_zoom_body_exited(body: Node3D) -> void:
 		camera_tween.set_trans(Tween.TRANS_SINE)
 		camera_tween.set_ease(Tween.EASE_IN_OUT)
 		camera_tween.tween_property(Globals, "camera_size", 5.762, 1.5)
+
+
+func _on_area_3d_light_follow_body_entered(body: Node3D) -> void:
+	if body.name.contains("Player"):
+		light_follow_player = true
+
+
+func _on_area_3d_light_follow_body_exited(body: Node3D) -> void:
+	if body.name.contains("Player"):
+		light_follow_player = false
+		
+		var tween = create_tween()
+		tween.tween_property(spot_light_follow, "global_position", spot_light_follow_original_pos, 1.0)
