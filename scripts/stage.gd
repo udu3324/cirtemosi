@@ -324,7 +324,7 @@ func _to_checkpoint():
 			var sub_level = preload("res://levels/level4_2.tscn").instantiate()
 			$Node3D.add_child(sub_level)
 	
-			_add_player(Vector3(-1, 2.5, -24))
+			_add_player(Vector3(-1, 0.0, -24))
 			
 			# base wait time for loading screen
 			await get_tree().create_timer(3.0).timeout 

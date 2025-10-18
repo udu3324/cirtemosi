@@ -46,6 +46,7 @@ var rot_tween: Tween
 var stored_roam_previous_pos = Vector3(0, 0, 0)
 var stored_roam_finised_pos = Vector3(0, 0, 0)
 
+var health_previous = 100.0
 var health = 100.0
 var attack_event = null
 var dead = false
@@ -152,6 +153,22 @@ func _process(_delta: float) -> void:
 			model.queue_free()
 		
 		return
+	
+	if health_previous != health:
+		health_previous = health
+		
+		if dead:
+			return
+		
+		# health has changed, player has attacked
+		if roaming:
+			
+			if rot_tween and rot_tween.is_running():
+				rot_tween.kill()
+			
+			roaming = false
+			circling = true
+			looking_around = false
 
 func _drop_relic_3():
 	if drops_relic_3 and !Globals.relics[2]:
@@ -247,13 +264,7 @@ func _physics_process(delta: float) -> void:
 			
 			rot_tween = create_tween()
 			rot_tween.tween_property(model, "rotation:y", store_rot - deg_to_rad(45), randf_range(0.8, 2.5))
-			await rot_tween.finished
-			
-			rot_tween = create_tween()
 			rot_tween.tween_property(model, "rotation:y", store_rot + deg_to_rad(45), randf_range(0.8, 2.5))
-			await rot_tween.finished
-			
-			rot_tween = create_tween()
 			rot_tween.tween_property(model, "rotation:y", store_rot, 1)
 			await rot_tween.finished
 			
@@ -272,16 +283,27 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	var angle_y = atan2(to_point.x, to_point.z) + (PI / 2)
 	var cone = rad_to_deg(angle_y) - rad_to_deg(model.rotation.y)
 	if global_transform.origin.distance_to(Globals.player_pos) < 6.5 and Globals.player_pos != Vector3(0, 0, 0) and !Globals.resetVisible and !ignore_player:
-		if cone > -30 and cone < 30:
+		
+		# dont agro if player is below height
+		
+		if cone > -30 and cone < 30 and !(global_position.y - 0.5 > Globals.player_pos.y):
+			
+			if rot_tween and rot_tween.is_running():
+				rot_tween.kill()
+			
 			roaming = false
 			circling = true
 	
 	# another catch to stop animation/everything if player is caught when looking
 	if rot_tween and rot_tween.is_running() and cone > -30 and cone < 30 and global_transform.origin.distance_to(Globals.player_pos) < 6.5 and !ignore_player:
-		rot_tween.kill()
-		roaming = false
-		circling = true
-		looking_around = false
+		
+		if rot_tween and rot_tween.is_running():
+			rot_tween.kill()
+		
+		if !(global_position.y - 0.5 > Globals.player_pos.y):
+			roaming = false
+			circling = true
+			looking_around = false
 	
 	# too close and not in cone
 	if global_transform.origin.distance_to(Globals.player_pos) < 1.5 and Globals.player_pos != Vector3(0, 0, 0) and !Globals.resetVisible and !ignore_player:
