@@ -1,7 +1,7 @@
 extends Node3D
 
-var transitioning: bool = false
 
+var transitioning: bool = false
 
 var tween = create_tween()
 

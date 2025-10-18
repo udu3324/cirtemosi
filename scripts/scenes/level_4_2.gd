@@ -146,6 +146,14 @@ func _on_area_3d_camera_zoom_body_exited(body: Node3D) -> void:
 func _on_area_3d_light_follow_body_entered(body: Node3D) -> void:
 	if body.name.contains("Player"):
 		light_follow_player = true
+		
+		if camera_tween.is_running():
+			camera_tween.kill()
+		
+		camera_tween = create_tween()
+		camera_tween.set_trans(Tween.TRANS_SINE)
+		camera_tween.set_ease(Tween.EASE_IN_OUT)
+		camera_tween.tween_property(Globals, "camera_size", 7.762, 1.5)
 
 
 func _on_area_3d_light_follow_body_exited(body: Node3D) -> void:
@@ -154,3 +162,11 @@ func _on_area_3d_light_follow_body_exited(body: Node3D) -> void:
 		
 		var tween = create_tween()
 		tween.tween_property(spot_light_follow, "global_position", spot_light_follow_original_pos, 1.0)
+		
+		if camera_tween.is_running():
+			camera_tween.kill()
+		
+		camera_tween = create_tween()
+		camera_tween.set_trans(Tween.TRANS_SINE)
+		camera_tween.set_ease(Tween.EASE_IN_OUT)
+		camera_tween.tween_property(Globals, "camera_size", 5.762, 1.5)

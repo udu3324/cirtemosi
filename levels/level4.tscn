@@ -26,8 +26,9 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -20, 0
 use_collision = true
 polygon = PackedVector2Array(-13.9361, 9.72695, 0.947796, 16.1574, 12.3636, 12.6893, 16.8432, 5.53634, 13.5549, -3.79754, 4.93547, -7.14623, -4.8977, -7.35448, -10.9015, -3.20613, -11.2628, 2.57402, -13.9361, 6.90913, -15.7424, 9.5102)
 
-[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="."]
+[node name="CSGPolygon3DIsland4_2" type="CSGPolygon3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+visible = false
 use_collision = true
 polygon = PackedVector2Array(4.4032, 43.201, -6.85971, 34.1139, -2.8921, 22.723, 8.24282, 13.5079, 26.4171, 12.356, 44.3353, 19.5233, 45.4872, 26.3067, 37.936, 28.8664, 24.3693, 34.4979, 20.5296, 38.4655, 12.8504, 42.6891)
 
@@ -182,6 +183,11 @@ line_path_angle = 130
 [node name="Sign" parent="." instance=ExtResource("4_lpgdq")]
 transform = Transform3D(0.94539917, 0, -0.32591465, 0, 1, 0, 0.32591465, 0, 0.94539917, -10.867673, -2.3841858e-07, -10.962763)
 text = "a hidden bow continued to the left"
+
+[node name="Floor" type="CSGPolygon3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+use_collision = true
+polygon = PackedVector2Array(4.4032, 43.201, -6.85971, 34.1139, -2.8921, 22.723, 8.24282, 13.5079, 25.052916, 12.426071, 26.933262, 13.3932705, 28.429747, 14.7523, 26.366957, 17.678759, 24.07127, 20.020983, 25.402931, 24.48561, 24.909302, 26.79777, 9.745699, 27.11259, 9.202773, 24.771238, 9.088884, 24.866217, 7.9137874, 24.710005, 6.142618, 25.623693, 5.381898, 27.12558, 6.7887135, 27.863636, 8.083576, 30.274086, 10.572278, 30.640114, 12.837945, 31.825384, 15.43318, 32.08673, 16.669369, 34.06601, 18.760283, 35.241783, 19.904196, 38.447647, 12.8504, 42.6891)
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Area3D2Zoom" to="." method="_on_area_3d_2_zoom_body_entered"]
