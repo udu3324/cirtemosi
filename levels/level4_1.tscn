@@ -561,7 +561,7 @@ text = "let me know on slack if you found this lol"
 
 [node name="Sign2" parent="." instance=ExtResource("7_ghxkh")]
 transform = Transform3D(0.99272174, 0, 0.12043142, 0, 1, 0, -0.12043142, 0, 0.99272174, 1.2886314, 2.3841858e-07, -14.861461)
-text = "home to the"
+text = "two power sources required"
 
 [connection signal="body_entered" from="HiddenStackOfShards/Area3DCollectedShardStack" to="." method="_on_area_3d_collected_shard_stack_body_entered"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://duo44b2ivhol"]
+[gd_scene load_steps=30 format=3 uid="uid://duo44b2ivhol"]
 
 [ext_resource type="Script" uid="uid://ccc84jhoxhk8n" path="res://scripts/scenes/level_4_3.gd" id="1_kcjfs"]
 [ext_resource type="PackedScene" uid="uid://cehpvnetgof0c" path="res://assets/model/house/roof.blend" id="2_c5to3"]
@@ -54,6 +54,9 @@ albedo_color = Color(0.32544088, 0.3254409, 0.32544088, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u3h5t"]
 albedo_color = Color(0.5078381, 0.47781068, 0.32108614, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_647fq"]
+albedo_color = Color(0.08690407, 0.27373686, 0.43247482, 1)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1da3c"]
 albedo_color = Color(0.29954746, 0.29954746, 0.29954743, 1)
 
@@ -78,6 +81,9 @@ bottom_radius = 0.3
 height = 0.1
 radial_segments = 8
 rings = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mbbt2"]
+albedo_color = Color(0.023388224, 0.10443675, 0.20358852, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_4mv1t"]
 material = SubResource("StandardMaterial3D_u3h5t")
@@ -192,7 +198,7 @@ use_collision = true
 size = Vector3(1.5497429, 1.1539308, 1)
 
 [node name="HouseTopSideForeground" type="CSGPolygon3D" parent="House"]
-transform = Transform3D(0.707107, -0.408607, 0.577096, 0, 0.816138, 0.577858, -0.707107, -0.408607, 0.577096, 12.504969, 7.3066025, -5.703903)
+transform = Transform3D(0.707107, -0.408607, 0.577096, 0, 0.816138, 0.577858, -0.707107, -0.408607, 0.577096, 13.376636, 8.1794195, -4.832237)
 visible = false
 polygon = PackedVector2Array(-16.785927, -0.54395866, -12.896373, 1.7171497, -8.628917, -0.72826576, -8.642101, -3.1873283, -12.616216, -5.4699783, -16.79967, -3.026764, -16.81436, -0.54268074, -32.670174, -6.4221687, -13.744713, -12.311568, 8.001747, -8.265663, 7.7209587, 10.942383, -11.709539, 16.582558, -36.802757, 10.727295, -33.68724, -5.382263, -28.988346, -8.051739)
 
@@ -370,6 +376,11 @@ use_collision = true
 size = Vector3(1.6764221, 0.16033936, 0.7895508)
 material = SubResource("StandardMaterial3D_u3h5t")
 
+[node name="CSGBox3D3" type="CSGBox3D" parent="House/MiscFurniture"]
+transform = Transform3D(0.99062663, 0, 0.1365974, 0, 1, 0, -0.1365974, 0, 0.99062663, 0.7015419, 0.418985, 0.18011665)
+size = Vector3(0.74531937, 0.16033936, 0.51135254)
+material = SubResource("StandardMaterial3D_647fq")
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="House/MiscFurniture"]
 transform = Transform3D(0.99890494, -0.0045275907, -0.046565898, 0.007035268, 0.99852526, 0.053830154, 0.046253532, -0.054098815, 0.9974637, -1.4580078, -0.17773402, -0.13213539)
 mesh = SubResource("CylinderMesh_gujym")
@@ -382,6 +393,48 @@ shape = SubResource("ConvexPolygonShape3D_4mv1t")
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="House/MiscFurniture"]
 transform = Transform3D(0.99890494, -0.0045275907, -0.046565898, 0.007035268, 0.99852526, 0.053830154, 0.046253532, -0.054098815, 0.9974637, -1.4592628, 0.09943795, -0.14715004)
 mesh = SubResource("CylinderMesh_647fq")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="House/MiscFurniture"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.20578766, 0.5038769, 0.5905628)
+polygon = PackedVector2Array(0.81941223, 0.31801224, 0.74666405, 0.2564869, 0.6592579, 0.3136387, 0.59349823, 0.2410698, 0.5260334, 0.31187057, 0.4565239, 0.3335247, 0.4427185, 0.2682438, 0.37273216, 0.31370735, 0.25667763, 0.21330261, 0.18344116, 0.3060379, 0.21469116, 0.30130005, 0.26451302, 0.26514053, 0.37093735, 0.3288784, 0.42736053, 0.30283356, 0.4489956, 0.35332108, 0.5420742, 0.3275833, 0.59534836, 0.26507568, 0.651247, 0.32850075, 0.7398472, 0.28400803, 0.7950306, 0.33612823)
+depth = 0.2
+material = SubResource("StandardMaterial3D_mbbt2")
+
+[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="House/MiscFurniture"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.30531883, 0.5038769, 0.4739132)
+polygon = PackedVector2Array(0.6921215, 0.37374878, 0.6133709, 0.22651863, 0.47172546, 0.23197365, 0.41729736, 0.34449196, 0.47968864, 0.45666122, 0.5914612, 0.4691372)
+depth = 0.2
+material = SubResource("StandardMaterial3D_mbbt2")
+
+[node name="CSGPolygon3D3" type="CSGPolygon3D" parent="House/MiscFurniture"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.1891346, 0.5038769, 0.42737198)
+polygon = PackedVector2Array(0.6921215, 0.37374878, 0.6133709, 0.22651863, 0.47172546, 0.23197365, 0.41729736, 0.34449196, 0.47968864, 0.45666122, 0.5914612, 0.4691372)
+depth = 0.2
+material = SubResource("StandardMaterial3D_mbbt2")
+
+[node name="CSGPolygon3D4" type="CSGPolygon3D" parent="House/MiscFurniture"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.06624031, 0.5038769, 0.49238396)
+polygon = PackedVector2Array(0.61561775, 0.27485657, 0.45315933, 0.24544525, 0.45591927, 0.28166008, 0.62039757, 0.30414772)
+depth = 0.2
+material = SubResource("StandardMaterial3D_mbbt2")
+
+[node name="CSGPolygon3D5" type="CSGPolygon3D" parent="House/MiscFurniture"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.039476395, 0.5038769, 0.43031693)
+polygon = PackedVector2Array(0.61561775, 0.27485657, 0.45315933, 0.24544525, 0.45591927, 0.28166008, 0.62039757, 0.30414772)
+depth = 0.2
+material = SubResource("StandardMaterial3D_mbbt2")
+
+[node name="CSGPolygon3D6" type="CSGPolygon3D" parent="House/MiscFurniture"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.073488235, 0.5038769, 0.38627434)
+polygon = PackedVector2Array(0.61561775, 0.27485657, 0.45315933, 0.24544525, 0.45591927, 0.28166008, 0.62039757, 0.30414772)
+depth = 0.2
+material = SubResource("StandardMaterial3D_mbbt2")
+
+[node name="CSGPolygon3D7" type="CSGPolygon3D" parent="House/MiscFurniture"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.028627396, 0.5038769, 0.2735672)
+polygon = PackedVector2Array(0.61561775, 0.27485657, 0.45315933, 0.24544525, 0.45591927, 0.28166008, 0.62039757, 0.30414772)
+depth = 0.2
+material = SubResource("StandardMaterial3D_mbbt2")
 
 [node name="Chair" type="Node3D" parent="House"]
 transform = Transform3D(0.97282237, -0.0151436245, 0.23105684, 0.020814676, 0.9995385, -0.02212593, -0.23061511, 0.026333973, 0.9726886, 1.2200985, -0.09765756, -1.2486286)
