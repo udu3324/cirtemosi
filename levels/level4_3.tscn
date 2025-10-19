@@ -1,24 +1,11 @@
-[gd_scene load_steps=31 format=3 uid="uid://duo44b2ivhol"]
+[gd_scene load_steps=30 format=3 uid="uid://duo44b2ivhol"]
 
 [ext_resource type="Script" uid="uid://ccc84jhoxhk8n" path="res://scripts/scenes/level_4_3.gd" id="1_kcjfs"]
 [ext_resource type="PackedScene" uid="uid://cehpvnetgof0c" path="res://assets/model/house/roof.blend" id="2_c5to3"]
 [ext_resource type="PackedScene" uid="uid://frjikjhvgs4c" path="res://scenes/items/relic_4.tscn" id="3_4mv1t"]
+[ext_resource type="PackedScene" uid="uid://duydi7lytqxks" path="res://scenes/enviornment/CaveEnv.tscn" id="5_aokp7"]
 [ext_resource type="PackedScene" uid="uid://bx27rmfnckyq8" path="res://scenes/enviornment/sign.tscn" id="5_pt5ad"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_c5to3"]
-sky_top_color = Color(0.384314, 0.454902, 0.54902, 1)
-sky_horizon_color = Color(0.6605339, 0.67304146, 0.69434, 1)
-ground_bottom_color = Color(0.190423, 0.169865, 0.160941, 1)
-ground_horizon_color = Color(0.6605339, 0.67304146, 0.69434, 1)
-
-[sub_resource type="Sky" id="Sky_tqtpy"]
-sky_material = SubResource("ProceduralSkyMaterial_c5to3")
-
-[sub_resource type="Environment" id="Environment_4mv1t"]
-background_mode = 2
-sky = SubResource("Sky_tqtpy")
-ssao_enabled = true
-sdfgi_enabled = true
+[ext_resource type="PackedScene" uid="uid://ccflw61cmd8sp" path="res://entities/player.tscn" id="6_gcb43"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tqtpy"]
 albedo_color = Color(0.36889374, 0.2971463, 0.12813208, 1)
@@ -106,17 +93,9 @@ points = PackedVector3Array(-0.48447457, -0.074999996, -0.09078598, 0.4754299, 0
 [node name="Level4_3" type="Node3D"]
 script = ExtResource("1_kcjfs")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_4mv1t")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
-shadow_enabled = true
-directional_shadow_max_distance = 1.0
-
 [node name="TopSideForeground" type="CSGPolygon3D" parent="."]
-transform = Transform3D(0.707107, -0.408607, 0.577096, 0, 0.816138, 0.577858, -0.707107, -0.408607, 0.577096, -9.333172, 4.985944, -35.542046)
-polygon = PackedVector2Array(-30.462902, -2.4658432, -27.55234, 0.3154621, -25.540684, 0.2721386, -22.162546, 3.744255, -19.13192, 0.42105484, -18.143362, 2.5403156, -15.458054, 4.8002605, -12.847094, 2.308241, -9.686434, 3.7006702, -8.658106, 0.5219383, -6.643383, -0.83244705, -6.0332355, -0.26789284, -5.3999395, 0.4783039, -4.5500956, -2.0739613, -3.4414034, -0.68328667, 3.0017967, 0.13050842, 3.3668156, 17.221483, -35.434837, 17.429962, -36.016624, 1.5657043, -31.035538, -0.04573822)
+transform = Transform3D(0.707107, -0.408607, 0.577096, 0, 0.816138, 0.577858, -0.707107, -0.408607, 0.577096, -6.9950714, 7.3271313, -33.203945)
+polygon = PackedVector2Array(-30.462902, -2.4658432, -27.55234, 0.3154621, -25.540684, 0.2721386, -22.162546, 3.744255, -19.13192, 0.42105484, -18.518087, 1.3829384, -15.581707, 2.3897572, -15.255001, 3.2136955, -15.458054, 4.8002605, -13.612678, 3.3015537, -12.847094, 2.308241, -9.686434, 3.7006702, -8.658106, 0.5219383, -6.643383, -0.83244705, -6.0332355, -0.26789284, -5.3999395, 0.4783039, -4.5500956, -2.0739613, -3.4414034, -0.68328667, 3.0017967, 0.13050842, 3.3668156, 17.221483, -35.434837, 17.429962, -36.016624, 1.5657043, -31.035538, -0.04573822)
 
 [node name="CSGPolygon3D4" type="CSGPolygon3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -24, -1.04907e-06, -24)
@@ -138,6 +117,7 @@ polygon = PackedVector2Array(-0.5443783, 0.02773714, -0.49066067, 2.92389, -0.29
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 1, -29)
 
 [node name="HiddenSides" type="Node3D" parent="House"]
+visible = false
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="House/HiddenSides"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4359741, 1, -0.5)
@@ -430,6 +410,12 @@ mesh = SubResource("CylinderMesh_4mv1t")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="House/Chair/MeshInstance3D/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_twdl6")
 
+[node name="SpotLight3D2" type="SpotLight3D" parent="House"]
+transform = Transform3D(0.798194, 0.1373232, 0.5865394, -0.57372993, 0.47010142, 0.67070013, -0.18363029, -0.8718641, 0.4540186, 2.040285, 2.878981, 1.6562674)
+light_energy = 0.37
+spot_range = 7.963924
+spot_angle = 37.56308
+
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -22, 0.5, -29)
 use_collision = true
@@ -444,6 +430,23 @@ polygon = PackedVector2Array(0, 0, 0, 0.5, 1, 0)
 [node name="Sign" parent="." instance=ExtResource("5_pt5ad")]
 transform = Transform3D(0.87691975, 0, 0.4806368, 0, 1, 0, -0.4806368, 0, 0.87691975, -17.477325, 4.7683716e-07, -26.929773)
 text = "the dewlling that once held a person that developed society"
+
+[node name="CaveEnv" parent="." instance=ExtResource("5_aokp7")]
+
+[node name="Player" parent="." instance=ExtResource("6_gcb43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.7162285, 0.9999981, -28.33248)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -15.2506075, 6.7164145, -32.32567)
+light_energy = 0.305
+spot_range = 13.47315
+spot_angle = 61.521976
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -22.44522, 6.7164125, -24.541763)
+light_energy = 0.305
+spot_range = 13.47315
+spot_angle = 61.521976
 
 [connection signal="body_entered" from="House/Area3DHouse" to="." method="_on_area_3d_house_body_entered"]
 [connection signal="body_exited" from="House/Area3DHouse" to="." method="_on_area_3d_house_body_exited"]

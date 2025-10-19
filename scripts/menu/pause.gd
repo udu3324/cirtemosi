@@ -31,7 +31,7 @@ func _process(_delta: float) -> void:
 
 func _handle_input():
 	# if user pressed exit key, toggle pause menu
-	if Input.is_action_just_pressed("ui_cancel") and !Globals.startVisible and !Globals.loadingVisible and !Globals.resetVisible and !Globals.settingsVisible and !Globals.arcadeUIVisible:
+	if Input.is_action_just_pressed("ui_cancel") and !Globals.startVisible and !Globals.loadingVisible and !Globals.resetVisible and !Globals.settingsVisible:
 		self.visible = !self.is_visible_in_tree();
 		
 		# punish player for pausing

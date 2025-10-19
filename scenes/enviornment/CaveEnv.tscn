@@ -18,8 +18,3 @@ ambient_light_energy = 5.23
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_72jl1")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.995587, -0.0778032, 0.0524788, -1.52435e-08, 0.559193, 0.829038, -0.0938476, 0.825379, -0.556725, 0, 0, 0)
-light_color = Color(0.557838, 0.642535, 0.634288, 1)
-shadow_enabled = true

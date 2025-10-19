@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://bhmmx5pl0neys"]
+[gd_scene load_steps=42 format=4 uid="uid://bhmmx5pl0neys"]
 
 [ext_resource type="Material" uid="uid://dhp1vk7afkguu" path="res://assets/prefab/prefab_dark_meter.tres" id="1_3ju41"]
 [ext_resource type="Texture2D" uid="uid://b5pviiur126b0" path="res://assets/prefab/playtesting.png" id="2_k5kv5"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://dpo3k7y1ykg61" path="res://scenes/items/relic_3.tscn" id="15_bnjge"]
 [ext_resource type="PackedScene" uid="uid://frjikjhvgs4c" path="res://scenes/items/relic_4.tscn" id="16_pk4nq"]
 [ext_resource type="PackedScene" uid="uid://byeuwjmfcnb3t" path="res://scenes/items/relic_5.tscn" id="17_pt1ls"]
+[ext_resource type="PackedScene" uid="uid://duydi7lytqxks" path="res://scenes/enviornment/CaveEnv.tscn" id="18_bnjge"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_6a74u"]
 _surfaces = [{
@@ -515,3 +516,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.44662905, 6)
 
 [node name="Relic5" parent="Relics" instance=ExtResource("17_pt1ls")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0.44662905, 6)
+
+[node name="CaveEnv" parent="." instance=ExtResource("18_bnjge")]
