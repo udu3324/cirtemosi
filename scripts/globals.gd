@@ -87,6 +87,9 @@ var collected_shard_stack: bool = false
 var bridge_1_down = false
 var bridge_2_down = false
 var card_structures_shown: bool = false
+# - 4.3
+var electrical_box_1 = false
+var electrical_box_2 = false
 
 # settings
 var screen_relative_movement = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dc7nu5ov6qwsg"]
+[gd_scene load_steps=17 format=3 uid="uid://dc7nu5ov6qwsg"]
 
 [ext_resource type="Script" uid="uid://htv48ik563d1" path="res://scripts/scenes/level_4_1.gd" id="1_v1dub"]
 [ext_resource type="PackedScene" uid="uid://dwqj4buhblxh8" path="res://entities/enemt/enemt.tscn" id="2_8li1p"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://kn6hbschf6xo" path="res://scenes/items/shards.tscn" id="4_6f4tj"]
 [ext_resource type="PackedScene" uid="uid://c8k8dm81jp0pu" path="res://assets/model/enviornment/mushroom_gray.blend" id="5_qwoqg"]
 [ext_resource type="PackedScene" uid="uid://chrpj84t3rlxj" path="res://scenes/items/bow.tscn" id="6_toyn1"]
+[ext_resource type="PackedScene" uid="uid://bx27rmfnckyq8" path="res://scenes/enviornment/sign.tscn" id="7_ghxkh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qwoqg"]
 size = Vector3(3.328125, 1.8640137, 2.003479)
@@ -549,6 +550,18 @@ shape = SubResource("CylinderShape3D_7sns3")
 
 [node name="Bow" parent="." instance=ExtResource("6_toyn1")]
 transform = Transform3D(0.8657547, 0, 0.5004685, 0, 1, 0, -0.5004685, 0, 0.8657547, -7.5754557, 0, -11.654137)
+
+[node name="Sign" parent="." instance=ExtResource("7_ghxkh")]
+transform = Transform3D(0.94539917, 0, -0.32591465, 0, 1, 0, 0.32591465, 0, 0.94539917, 9.985088, -2.3841858e-07, -10.545894)
+text = "a hidden bow continued to the left"
+
+[node name="Sign3" parent="." instance=ExtResource("7_ghxkh")]
+transform = Transform3D(0.9066321, 0, 0.4219222, 0, 1, 0, -0.4219222, 0, 0.9066321, -21.546242, 1.5, -1.3250004)
+text = "let me know on slack if you found this lol"
+
+[node name="Sign2" parent="." instance=ExtResource("7_ghxkh")]
+transform = Transform3D(0.99272174, 0, 0.12043142, 0, 1, 0, -0.12043142, 0, 0.99272174, 1.2886314, 2.3841858e-07, -14.861461)
+text = "home to the"
 
 [connection signal="body_entered" from="HiddenStackOfShards/Area3DCollectedShardStack" to="." method="_on_area_3d_collected_shard_stack_body_entered"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

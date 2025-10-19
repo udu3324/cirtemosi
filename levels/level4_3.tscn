@@ -1,11 +1,9 @@
-[gd_scene load_steps=30 format=3 uid="uid://duo44b2ivhol"]
+[gd_scene load_steps=28 format=3 uid="uid://duo44b2ivhol"]
 
 [ext_resource type="Script" uid="uid://ccc84jhoxhk8n" path="res://scripts/scenes/level_4_3.gd" id="1_kcjfs"]
 [ext_resource type="PackedScene" uid="uid://cehpvnetgof0c" path="res://assets/model/house/roof.blend" id="2_c5to3"]
 [ext_resource type="PackedScene" uid="uid://frjikjhvgs4c" path="res://scenes/items/relic_4.tscn" id="3_4mv1t"]
-[ext_resource type="PackedScene" uid="uid://duydi7lytqxks" path="res://scenes/enviornment/CaveEnv.tscn" id="5_aokp7"]
 [ext_resource type="PackedScene" uid="uid://bx27rmfnckyq8" path="res://scenes/enviornment/sign.tscn" id="5_pt5ad"]
-[ext_resource type="PackedScene" uid="uid://ccflw61cmd8sp" path="res://entities/player.tscn" id="6_gcb43"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tqtpy"]
 albedo_color = Color(0.36889374, 0.2971463, 0.12813208, 1)
@@ -117,7 +115,6 @@ polygon = PackedVector2Array(-0.5443783, 0.02773714, -0.49066067, 2.92389, -0.29
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 1, -29)
 
 [node name="HiddenSides" type="Node3D" parent="House"]
-visible = false
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="House/HiddenSides"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4359741, 1, -0.5)
@@ -430,11 +427,6 @@ polygon = PackedVector2Array(0, 0, 0, 0.5, 1, 0)
 [node name="Sign" parent="." instance=ExtResource("5_pt5ad")]
 transform = Transform3D(0.87691975, 0, 0.4806368, 0, 1, 0, -0.4806368, 0, 0.87691975, -17.477325, 4.7683716e-07, -26.929773)
 text = "the dewlling that once held a person that developed society"
-
-[node name="CaveEnv" parent="." instance=ExtResource("5_aokp7")]
-
-[node name="Player" parent="." instance=ExtResource("6_gcb43")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.7162285, 0.9999981, -28.33248)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -15.2506075, 6.7164145, -32.32567)

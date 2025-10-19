@@ -270,34 +270,61 @@ func _handle_player_level_load_event():
 	var traversing_to: String = Globals.player_level_load_event
 	Globals.player_level_load_event = ""
 	
-	if traversing_to == "4.1->4.2":
-		var next = $Node3D.find_child("Level4_2", true, false)
-		
-		if $Node3D.find_child("Level4_1", true, false) != null:
-			#print("freeing Level4_1")
-			$Node3D.find_child("Level4_1", true, false).queue_free()
-		
-		if next != null: # player went back other direction
-			#print("skipped load event")
-			return
-		
-		var sub_level = preload("res://levels/level4_2.tscn").instantiate()
-		$Node3D.add_child(sub_level)
-
-	if traversing_to == "4.2->4.1":
-		var next = $Node3D.find_child("Level4_1", true, false)
-		
-		if $Node3D.find_child("Level4_2", true, false) != null:
-			#print("freeing Level4_2")
-			$Node3D.find_child("Level4_2", true, false).queue_free()
-		
-		if next != null: # player went back other direction
-			#print("skipped load event")
-			return
-		
-		var sub_level = preload("res://levels/level4_1.tscn").instantiate()
-		sub_level.global_position = Vector3(-20, 0, 0)
-		$Node3D.add_child(sub_level)
+	match traversing_to:
+		"4.1->4.2":
+			var next = $Node3D.find_child("Level4_2", true, false)
+			
+			if $Node3D.find_child("Level4_1", true, false) != null:
+				#print("freeing Level4_1")
+				$Node3D.find_child("Level4_1", true, false).queue_free()
+			
+			if next != null: # player went back other direction
+				#print("skipped load event")
+				return
+			
+			var sub_level = preload("res://levels/level4_2.tscn").instantiate()
+			$Node3D.add_child(sub_level)
+		"4.2->4.1":
+			var next = $Node3D.find_child("Level4_1", true, false)
+			
+			if $Node3D.find_child("Level4_2", true, false) != null:
+				#print("freeing Level4_2")
+				$Node3D.find_child("Level4_2", true, false).queue_free()
+			
+			if next != null: # player went back other direction
+				#print("skipped load event")
+				return
+			
+			var sub_level = preload("res://levels/level4_1.tscn").instantiate()
+			sub_level.global_position = Vector3(-20, 0, 0)
+			$Node3D.add_child(sub_level)
+		"4.1->4.3":
+			var next = $Node3D.find_child("Level4_3", true, false)
+			
+			if $Node3D.find_child("Level4_1", true, false) != null:
+				#print("freeing Level4_1")
+				$Node3D.find_child("Level4_1", true, false).queue_free()
+			
+			if next != null: # player went back other direction
+				#print("skipped load event")
+				return
+			
+			var sub_level = preload("res://levels/level4_3.tscn").instantiate()
+			$Node3D.add_child(sub_level)
+		"4.3->4.1":
+			var next = $Node3D.find_child("Level4_1", true, false)
+			
+			if $Node3D.find_child("Level4_3", true, false) != null:
+				#print("freeing Level4_2")
+				$Node3D.find_child("Level4_3", true, false).queue_free()
+			
+			if next != null: # player went back other direction
+				#print("skipped load event")
+				return
+			
+			var sub_level = preload("res://levels/level4_1.tscn").instantiate()
+			sub_level.global_position = Vector3(-20, 0, 0)
+			$Node3D.add_child(sub_level)
 
 func _to_checkpoint():
 	Globals.stamina = Globals.stamina_max - (Globals.stamina_max / 5)
@@ -373,6 +400,8 @@ func _on_exit_start():
 	Globals.collected_shard_stack = false
 	Globals.bridge_1_down = false
 	Globals.bridge_2_down = false
+	Globals.electrical_box_1 = false
+	Globals.electrical_box_2 = false
 	Globals.save_point = -1.0
 	
 	Globals.camera_size = 5.762
