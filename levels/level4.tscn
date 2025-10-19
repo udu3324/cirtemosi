@@ -246,7 +246,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09807968, 0.14244866, 0.14
 shape = SubResource("SphereShape3D_3cb6x")
 
 [node name="Sprite3D" type="Sprite3D" parent="DrawBridge/ElectricalBox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.52178955, 1.8063152, 1.0887623)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.52178955, 2.2299836, 1.0887623)
 visible = false
 billboard = 1
 texture = SubResource("ViewportTexture_cc5tm")
@@ -305,7 +305,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09807968, 0.14244866, 0.14
 shape = SubResource("SphereShape3D_3cb6x")
 
 [node name="Sprite3D" type="Sprite3D" parent="DrawBridge/ElectricalBox2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.014877319, 1.8063152, 1.3668861)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0148768425, 2.1761003, 1.3668842)
 visible = false
 billboard = 1
 texture = SubResource("ViewportTexture_naavy")
