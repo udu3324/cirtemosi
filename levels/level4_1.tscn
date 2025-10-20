@@ -360,26 +360,34 @@ spot_angle_attenuation = 0.026278
 
 [node name="SpotLight3D4" type="SpotLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 10.6274, 10.6475, -10.0814)
-light_color = Color(0.14902, 0.270588, 0.317647, 1)
-light_energy = 2.6
-spot_range = 27.6016
+light_color = Color(0.43529412, 0.11372549, 0.1882353, 1)
+light_energy = 0.983
+spot_range = 18.212355
 spot_angle = 47.0548
 spot_angle_attenuation = 0.026278
 
 [node name="SpotLight3D5" type="SpotLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 9.15058, 10.6475, 0.450843)
-light_color = Color(0.147609, 0.272364, 0.316287, 1)
-light_energy = 2.6
-spot_range = 27.6016
+light_color = Color(0.43529412, 0.11372549, 0.1882353, 1)
+light_energy = 0.983
+spot_range = 15.988431
 spot_angle = 47.0548
 spot_angle_attenuation = 0.026278
 
 [node name="SpotLight3D6" type="SpotLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.51645, 10.6475, 5.78644)
-light_color = Color(0.147609, 0.272364, 0.316287, 1)
-light_energy = 2.6
-spot_range = 27.6016
+light_color = Color(0.43458357, 0.114235185, 0.18970346, 1)
+light_energy = 0.983
+spot_range = 15.144411
 spot_angle = 47.0548
+spot_angle_attenuation = 0.026278
+
+[node name="SpotLight3D7" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -24.560972, 6.6418524, -1.9539826)
+light_color = Color(0.4144017, 0.6686249, 0.44091892, 1)
+light_energy = 2.6
+spot_range = 7.6316934
+spot_angle = 56.026863
 spot_angle_attenuation = 0.026278
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Lights"]
