@@ -98,7 +98,7 @@ func _on_area_3d_exit_4_1_body_entered(body: Node3D) -> void:
 
 func _on_area_3d_mid_bridge_body_entered(body: Node3D) -> void:
 	if body.name.contains("Player"):
-		transitioning = !transitioning
+		transitioning = true
 		#print("player transitioning state is ", transitioning)
 
 
@@ -115,7 +115,7 @@ func _on_area_3d_bridge_4_3_enter_body_entered(body: Node3D) -> void:
 
 func _on_area_3d_bridge_4_3_transition_body_entered(body: Node3D) -> void:
 	if body.name.contains("Player"):
-		transitioning_2 = !transitioning_2
+		transitioning_2 = true
 
 func _on_area_3d_bridge_4_1_enter_body_entered(body: Node3D) -> void:
 	if body.name.contains("Player") and transitioning_2:
