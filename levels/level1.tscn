@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://csb64dawc7x4p"]
+[gd_scene load_steps=12 format=3 uid="uid://csb64dawc7x4p"]
 
 [ext_resource type="Script" uid="uid://by1dqsv4hw01p" path="res://scripts/scenes/level_1.gd" id="1_pdtm5"]
 [ext_resource type="PackedScene" uid="uid://b15o4pkoogqs3" path="res://assets/model/enviornment/grass.blend" id="3_61w3m"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c60c2bj8ut5o4" path="res://assets/model/enviornment/mushroom.blend" id="4_pdpul"]
 [ext_resource type="PackedScene" uid="uid://cgy2lvamut2sl" path="res://assets/model/enviornment/rubble_pile.blend" id="5_8hd6v"]
 [ext_resource type="PackedScene" uid="uid://c8k8dm81jp0pu" path="res://assets/model/enviornment/mushroom_gray.blend" id="6_pdpul"]
+[ext_resource type="PackedScene" uid="uid://bx27rmfnckyq8" path="res://scenes/enviornment/sign.tscn" id="7_8hd6v"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sjb42"]
 size = Vector3(7.24316, 5.76898, 1)
@@ -182,9 +183,9 @@ size = Vector3(2.89908, 2.01752, 0.001)
 [node name="Lights" type="Node3D" parent="."]
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Lights"]
-transform = Transform3D(0.9937909, 0.0038053063, -0.1111959, 0.10422601, 0.3178838, 0.9423835, 0.0389334, -0.9481218, 0.31551412, 0.171949, 9.77802, 0.785365)
-light_color = Color(0.115771405, 0.6503127, 0.7946844, 1)
-light_energy = 4.064
+transform = Transform3D(0.97456247, -0.009141513, -0.22392982, 0.22352551, 0.11215162, 0.96822435, 0.016263058, -0.9936491, 0.1113421, -0.48426113, 9.77802, 0.6340979)
+light_color = Color(0.64944535, 0.58523667, 0.41247094, 1)
+light_energy = 20.0
 spot_range = 10.2273
 spot_angle = 32.3002
 
@@ -195,13 +196,15 @@ spot_angle = 37.5459
 
 [node name="SpotLight3D4" type="SpotLight3D" parent="Lights"]
 transform = Transform3D(0.774104, 0.0309194, 0.632303, 0.0539599, 0.991949, -0.114567, -0.630755, 0.122806, 0.766203, 10.2437, 12.1382, 1.76604)
+visible = false
 light_energy = 0.072
 spot_range = 6.94459
 spot_angle = 59.4963
 
 [node name="SpotLight3D3" type="SpotLight3D" parent="Lights"]
 transform = Transform3D(0.973626, -0.205785, 0.0985173, 0.0239915, 0.521757, 0.852757, -0.226887, -0.827902, 0.512933, -3.15827, 11.499, 7.32051)
-light_energy = 0.768
+light_color = Color(0.6509804, 0.58431375, 0.4117647, 1)
+light_energy = 1.033
 spot_range = 13.3131
 spot_angle = 22.0724
 
@@ -221,64 +224,55 @@ spot_range = 7.55239
 spot_angle = 41.0846
 
 [node name="Barriers" type="Node3D" parent="."]
+visible = false
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Barriers"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0959, 2.59947, -0.106664)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0959, 2.59947, 0.12433952)
 use_collision = true
-size = Vector3(0.168945, 2.479, 6.94537)
+size = Vector3(0.168945, 2.479, 7.4073772)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Barriers"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0495, 2.59947, 0.017359)
-visible = false
 use_collision = true
 size = Vector3(0.168945, 2.479, 6.69733)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="Barriers"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.92722, 1.93163, -6.70042)
-visible = false
 use_collision = true
 size = Vector3(0.168945, 3.8147, 5.30911)
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="Barriers"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.00833, 1.93163, -6.70042)
-visible = false
 use_collision = true
 size = Vector3(0.168945, 3.8147, 5.30911)
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="Barriers"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.90695, 1.93163, -4.11783)
-visible = false
 use_collision = true
 size = Vector3(1.96619, 3.8147, 0.143929)
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="Barriers"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.84452, 1.93163, -4.11783)
-visible = false
 use_collision = true
 size = Vector3(1.96619, 3.8147, 0.143929)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Barriers"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.0229624, 2.59947, 4.14758)
-visible = false
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.14267199, 2.59947, 4.14758)
 use_collision = true
-size = Vector3(0.168945, 2.479, 7.05426)
+size = Vector3(0.168945, 2.479, 7.3855286)
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="Barriers"]
 transform = Transform3D(0.969411, 0, 0.245443, 0, 1, 0, -0.245443, 0, 0.969411, 0.661108, 2.59947, 3.3205)
-visible = false
 use_collision = true
 size = Vector3(0.168945, 2.479, 3.19582)
 
 [node name="CSGBox3D9" type="CSGBox3D" parent="Barriers"]
 transform = Transform3D(0.343053, 0, 0.939316, 0, 1, 0, -0.939316, 0, 0.343053, -2.52997, 2.59947, 1.96108)
-visible = false
 use_collision = true
 size = Vector3(0.168945, 2.479, 3.19582)
 
 [node name="CSGBox3D10" type="CSGBox3D" parent="Barriers"]
 transform = Transform3D(0.825606, 0, 0.564247, 0, 1, 0, -0.564247, 0, 0.825606, 3.58026, 2.59947, 0.175157)
-visible = false
 use_collision = true
 size = Vector3(0.168945, 2.479, 3.19582)
 
@@ -389,6 +383,7 @@ environment = SubResource("Environment_b3oru")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.0944441, -0.99020416, 0.102840036, -0.57635343, 0.029844077, 0.81665564, -0.8117249, -0.13640048, -0.5678889, 0, 2.4778447, 0)
+visible = false
 light_color = Color(0.8694981, 0.96362156, 0.9389185, 1)
 shadow_enabled = true
 
@@ -468,6 +463,10 @@ transform = Transform3D(0.855195, 0.27586985, -0.43879092, -0.012196392, 0.85706
 
 [node name="mushroom_gray7" parent="Decoration" instance=ExtResource("6_pdpul")]
 transform = Transform3D(-0.8842447, 0.13201393, 0.44797742, 0.15118104, 0.9884806, 0.0071160495, -0.4418776, 0.074018, -0.8940166, -1.2101495, 0.21851918, -10.2917185)
+
+[node name="Sign" parent="." instance=ExtResource("7_8hd6v")]
+transform = Transform3D(0.8354431, 0, 0.549577, 0, 1, 0, -0.549577, 0, 0.8354431, -1.4584717, 1.5000002, -3.114769)
+text = "you fell down a cave"
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]

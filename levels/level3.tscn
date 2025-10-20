@@ -27,10 +27,6 @@ script = ExtResource("1_kvvkh")
 
 [node name="CaveEnv" parent="." instance=ExtResource("1_r8unp")]
 
-[node name="LightCover" type="CSGBox3D" parent="."]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -2.44778, 34, -21.8706)
-size = Vector3(62.9701, 1, 65.3029)
-
 [node name="Cave" type="Node3D" parent="."]
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Cave"]
@@ -151,8 +147,8 @@ spot_range = 11.5053
 
 [node name="SpotLight3D3" type="SpotLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 5.65971, 16.8481, -8.48112)
-light_color = Color(0.252028, 0.252028, 0.252028, 1)
-light_energy = 2.6
+light_color = Color(0.66353995, 0.58245283, 0.75090045, 1)
+light_energy = 0.473
 spot_range = 41.64
 spot_angle = 47.0548
 spot_angle_attenuation = 0.026278

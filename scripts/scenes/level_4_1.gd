@@ -1,6 +1,6 @@
 extends Node3D
 
-@onready var shard_stack: Node3D = $HiddenStackOfShards
+@onready var shard_stack: Node3D = $Upper/HiddenStackOfShards
 @onready var bow: Node3D = $Bow
 @onready var spawners: Node3D = $Spawners
 
