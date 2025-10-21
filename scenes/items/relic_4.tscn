@@ -1,20 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://frjikjhvgs4c"]
+[gd_scene load_steps=6 format=3 uid="uid://frjikjhvgs4c"]
 
 [ext_resource type="Script" uid="uid://sfoa5w1yhhko" path="res://scripts/items/relic_4.gd" id="1_s6djc"]
 [ext_resource type="AudioStream" uid="uid://6aptpugod2ue" path="res://assets/audio/fx/item_pick_special.wav" id="2_ijwj8"]
+[ext_resource type="PackedScene" uid="uid://c42y2sgy8abcs" path="res://assets/model/item/relics/relic_4.blend" id="3_k2huc"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0aaya"]
 radius = 0.19973722
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_s6djc"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k2huc"]
-albedo_color = Color(0.5294118, 0.2627451, 0.8156863, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_k2huc"]
-material = SubResource("StandardMaterial3D_k2huc")
-radius = 0.2
-height = 0.4
 
 [node name="Relic4" type="RigidBody3D"]
 script = ExtResource("1_s6djc")
@@ -34,7 +27,6 @@ shape = SubResource("SphereShape3D_s6djc")
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_ijwj8")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_k2huc")
+[node name="relic_4" parent="." instance=ExtResource("3_k2huc")]
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
