@@ -16,13 +16,20 @@ var inserted: bool = false
 func _ready() -> void:
 	container.visible = false
 	
-	relic_tex.texture = relic_hidden
+	relic_tex.material = relic_tex.material.duplicate()
+	
 	relic_tex.material.set_shader_parameter("line_color", relic_outline)
+	
+	relic_tex.texture = relic_hidden
 	
 	# if player has relic, replace img with shown relic
 	if Globals.relics[relic - 1]:
 		relic_tex.texture = relic_shown
 		pass
+	
+	# in case if scene has been reloaded
+	if Globals.inserted_relic[relic - 1]:
+		inserted = true
 
 func _process(_delta: float) -> void:
 	if !handle_input:
@@ -33,6 +40,8 @@ func _process(_delta: float) -> void:
 		# player does not have relic
 		if !Globals.relics[relic - 1]:
 			return
+		
+		print("inserted relic ", relic)
 		
 		container.visible = false
 		handle_input = false

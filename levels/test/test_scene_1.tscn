@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://bhmmx5pl0neys"]
+[gd_scene load_steps=43 format=4 uid="uid://bhmmx5pl0neys"]
 
 [ext_resource type="Material" uid="uid://dhp1vk7afkguu" path="res://assets/prefab/prefab_dark_meter.tres" id="1_3ju41"]
 [ext_resource type="Texture2D" uid="uid://b5pviiur126b0" path="res://assets/prefab/playtesting.png" id="2_k5kv5"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://frjikjhvgs4c" path="res://scenes/items/relic_4.tscn" id="16_pk4nq"]
 [ext_resource type="PackedScene" uid="uid://byeuwjmfcnb3t" path="res://scenes/items/relic_5.tscn" id="17_pt1ls"]
 [ext_resource type="PackedScene" uid="uid://duydi7lytqxks" path="res://scenes/enviornment/CaveEnv.tscn" id="18_bnjge"]
+[ext_resource type="PackedScene" uid="uid://vs4t3q0uk5k7" path="res://levels/level4_4.tscn" id="19_pk4nq"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_6a74u"]
 _surfaces = [{
@@ -155,6 +156,11 @@ vertices = PackedVector3Array(-19.99121, 0.5, -11, -19.99121, 0.5, -2, -5.491211
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [node name="TestScene1" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+directional_shadow_max_distance = 1.0
 
 [node name="Spawn" type="Node3D" parent="."]
 
@@ -370,9 +376,6 @@ shape = SubResource("ConvexPolygonShape3D_k5kv5")
 [node name="StaticBody3D2" type="StaticBody3D" parent="Barriers"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 5, 4.6)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Barriers/StaticBody3D2"]
-shape = SubResource("ConvexPolygonShape3D_k5kv5")
-
 [node name="StaticBody3D3" type="StaticBody3D" parent="Barriers"]
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -4.6, 5, -5.12544)
 
@@ -518,3 +521,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.44662905, 6)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0.44662905, 6)
 
 [node name="CaveEnv" parent="." instance=ExtResource("18_bnjge")]
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0087890625, -0.5, 8)
+use_collision = true
+size = Vector3(3, 1, 7)
+
+[node name="Level4_4" parent="." instance=ExtResource("19_pk4nq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 15)

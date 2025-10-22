@@ -94,14 +94,8 @@ shape = SubResource("ConvexPolygonShape3D_ptlot")
 [node name="StaticBody3D5" type="StaticBody3D" parent="."]
 transform = Transform3D(1.91069e-15, 1, -1.06581e-14, -1, 1.91069e-15, 4.37114e-08, 4.37114e-08, 1.06581e-14, 1, -7.5, 0, 10.788)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D5"]
-shape = SubResource("ConvexPolygonShape3D_ptlot")
-
 [node name="StaticBody3D6" type="StaticBody3D" parent="."]
 transform = Transform3D(1.91069e-15, 1, -1.06581e-14, -1, 1.91069e-15, 4.37114e-08, 4.37114e-08, 1.06581e-14, 1, -7.5, 0, -10.7992)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D6"]
-shape = SubResource("ConvexPolygonShape3D_ptlot")
 
 [node name="StaticBody3D7" type="StaticBody3D" parent="."]
 transform = Transform3D(1.91069e-15, 1, -1.06581e-14, -1, 1.91069e-15, 4.37114e-08, 4.37114e-08, 1.06581e-14, 1, 7.5, 0, 1.9)

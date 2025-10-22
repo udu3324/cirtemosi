@@ -1,7 +1,7 @@
 extends Node
 
 
-var debug_mode: bool = false
+var debug_mode: bool = true
 
 
 # gui
@@ -92,6 +92,7 @@ var electrical_box_1 = false
 var electrical_box_2 = false
 # - 4.4
 var inserted_relic = [false, false, false, false, false]
+var run_spiral_down_once = false
 
 # settings
 var screen_relative_movement = true
