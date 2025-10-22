@@ -402,6 +402,7 @@ func _on_exit_start():
 	Globals.bridge_2_down = false
 	Globals.electrical_box_1 = false
 	Globals.electrical_box_2 = false
+	Globals.inserted_relic = [false, false, false, false, false]
 	Globals.save_point = -1.0
 	
 	Globals.camera_size = 5.762

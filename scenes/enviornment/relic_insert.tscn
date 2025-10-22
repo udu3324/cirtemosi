@@ -1,0 +1,75 @@
+[gd_scene load_steps=10 format=3 uid="uid://um2gg1awp8a1"]
+
+[ext_resource type="Script" uid="uid://5yq7f8qq66oq" path="res://scripts/enviornment/relic_insert.gd" id="1_kdmuq"]
+[ext_resource type="Script" uid="uid://cmyasc1t8l0la" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="2_y8esn"]
+[ext_resource type="FontFile" uid="uid://d25dq4tmt7ywp" path="res://assets/font/NebulaSans-Black.ttf" id="3_y2ndr"]
+[ext_resource type="Shader" uid="uid://ya1pd4bihrik" path="res://assets/shader/outline.gdshader" id="4_e4wrm"]
+[ext_resource type="Texture2D" uid="uid://b2d3i2apa0e28" path="res://assets/relics/relic_1_hidden_icon.png" id="4_y2ndr"]
+
+[sub_resource type="Texture2D" id="Texture2D_y2ndr"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_y8esn")
+path = "attack"
+metadata/_custom_type_script = "uid://cmyasc1t8l0la"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8bws4"]
+shader = ExtResource("4_e4wrm")
+shader_parameter/line_color = Color(0.5176471, 0.07450981, 0.12156863, 1)
+shader_parameter/line_thickness = 28.4050013492375
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_kdmuq"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oyq7b"]
+size = Vector3(2, 3, 4.5)
+
+[node name="RelicInsert" type="Node3D"]
+script = ExtResource("1_kdmuq")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+
+[node name="CenterContainer" type="CenterContainer" parent="SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SubViewport/CenterContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="SubViewport/CenterContainer/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("Texture2D_y2ndr")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="SubViewport/CenterContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_y2ndr")
+theme_override_font_sizes/font_size = 30
+text = "to insert"
+
+[node name="TextureRect2" type="TextureRect" parent="SubViewport/CenterContainer/HBoxContainer"]
+material = SubResource("ShaderMaterial_8bws4")
+layout_mode = 2
+texture = ExtResource("4_y2ndr")
+expand_mode = 2
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+billboard = 1
+no_depth_test = true
+texture = SubResource("ViewportTexture_kdmuq")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_oyq7b")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+visible = false
+size = Vector3(2, 3, 4.5)
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

@@ -90,6 +90,8 @@ var card_structures_shown: bool = false
 # - 4.3
 var electrical_box_1 = false
 var electrical_box_2 = false
+# - 4.4
+var inserted_relic = [false, false, false, false, false]
 
 # settings
 var screen_relative_movement = true
