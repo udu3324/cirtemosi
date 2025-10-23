@@ -13,8 +13,8 @@ extends Node3D
 
 
 var transitioning: bool = false
-
 var transitioning_2: bool = false
+var transitioning_3: bool = false
 
 var tween = create_tween()
 
@@ -138,3 +138,18 @@ func _on_area_3d_electrical_box_2_body_entered(body: Node3D) -> void:
 func _on_area_3d_electrical_box_2_body_exited(body: Node3D) -> void:
 	if body.name.contains("Player"):
 		electrical_sprite_2.visible = false
+
+
+func _on_area_3d_transition_4_4_body_entered(body: Node3D) -> void:
+	if body.name.contains("Player"):
+		transitioning_3 = true
+
+func _on_area_3d_exit_4_4_body_entered(body: Node3D) -> void:
+	if body.name.contains("Player") and transitioning_3:
+		transitioning_3 = false
+		Globals.player_level_load_event = "4.4->4.1"
+
+func _on_area_3d_3_enter_4_4_body_entered(body: Node3D) -> void:
+	if body.name.contains("Player") and transitioning_3:
+		transitioning_3 = false
+		Globals.player_level_load_event = "4.1->4.4"

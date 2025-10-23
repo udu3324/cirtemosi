@@ -1,3 +1,4 @@
+@tool
 extends Node3D
 
 @export var relic_outline: Color = Color(0.518, 0.075, 0.122)
@@ -11,7 +12,6 @@ extends Node3D
 
 var handle_input: bool = false
 var inserted: bool = false
-
 
 func _ready() -> void:
 	container.visible = false
@@ -32,6 +32,10 @@ func _ready() -> void:
 		inserted = true
 
 func _process(_delta: float) -> void:
+	if Engine.is_editor_hint():
+		container.visible = true
+		return
+
 	if !handle_input:
 		return
 	

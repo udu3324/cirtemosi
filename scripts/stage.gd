@@ -104,12 +104,26 @@ func _process(_delta: float) -> void:
 	
 	if Globals.debug_mode:
 		if Input.is_action_just_pressed("just_space_key"):
-			print("debug gave equipment and save point and more")
+			print("debug gave equipment and save point and more", Globals.debug_mode_relic_give)
 			Globals.save_point = 4.2
 			Globals.equipment = ["starter_weapon", "bow", ""]
 			Globals.shards += 999
 			Globals.health = Globals.health_max
 			Globals.stamina = Globals.stamina_max
+			
+			match Globals.debug_mode_relic_give:
+				10:
+					Globals.relics[0] = true
+				12:
+					Globals.relics[1] = true
+				14:
+					Globals.relics[2] = true
+				16:
+					Globals.relics[3] = true
+				18:
+					Globals.relics[4] = true
+			
+			Globals.debug_mode_relic_give += 1
 
 
 func _handle_input_controller_hints():
@@ -317,6 +331,33 @@ func _handle_player_level_load_event():
 			if $Node3D.find_child("Level4_3", true, false) != null:
 				#print("freeing Level4_2")
 				$Node3D.find_child("Level4_3", true, false).queue_free()
+			
+			if next != null: # player went back other direction
+				#print("skipped load event")
+				return
+			
+			var sub_level = preload("res://levels/level4_1.tscn").instantiate()
+			sub_level.global_position = Vector3(-20, 0, 0)
+			$Node3D.add_child(sub_level)
+		"4.1->4.4":
+			var next = $Node3D.find_child("Level4_4", true, false)
+			
+			if $Node3D.find_child("Level4_1", true, false) != null:
+				#print("freeing Level4_1")
+				$Node3D.find_child("Level4_1", true, false).queue_free()
+			
+			if next != null: # player went back other direction
+				#print("skipped load event")
+				return
+			
+			var sub_level = preload("res://levels/level4_4.tscn").instantiate()
+			$Node3D.add_child(sub_level)
+		"4.4->4.1":
+			var next = $Node3D.find_child("Level4_1", true, false)
+			
+			if $Node3D.find_child("Level4_4", true, false) != null:
+				#print("freeing Level4_1")
+				$Node3D.find_child("Level4_4", true, false).queue_free()
 			
 			if next != null: # player went back other direction
 				#print("skipped load event")

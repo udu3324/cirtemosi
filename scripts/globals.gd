@@ -2,7 +2,7 @@ extends Node
 
 
 var debug_mode: bool = true
-
+var debug_mode_relic_give: int = 0
 
 # gui
 var startVisible: bool = false
@@ -93,6 +93,7 @@ var electrical_box_2 = false
 # - 4.4
 var inserted_relic = [false, false, false, false, false]
 var run_spiral_down_once = false
+var final_relic_placement_ready = false
 
 # settings
 var screen_relative_movement = true
