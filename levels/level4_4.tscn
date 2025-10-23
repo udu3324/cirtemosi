@@ -288,7 +288,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 7, 2)
 [node name="OmniLight3D" type="OmniLight3D" parent="MasterObelisk/FinalRelicInsert"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.98425865, 0)
 light_color = Color(0.7176471, 0.99215686, 0.99215686, 1)
-light_energy = 2.0
+light_energy = 0.2
 omni_range = 4.180128
 
 [node name="Area3DLastInsert" type="Area3D" parent="MasterObelisk/FinalRelicInsert"]
@@ -334,6 +334,7 @@ text = "to add the last relic"
 
 [node name="relic_5" parent="MasterObelisk/FinalRelicInsert" instance=ExtResource("14_x0omi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42419815, 0)
+visible = false
 
 [node name="Platform" type="Node3D" parent="."]
 
@@ -439,8 +440,31 @@ size = Vector3(2, 1.97266, 1)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 12, 14.508945, 2)
-light_energy = 1.085
+light_color = Color(0.14509805, 0.34901962, 0.44705883, 1)
+light_energy = 0.234
 spot_range = 25.488792
+spot_angle = 62.08459
+
+[node name="Control" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control/MarginContainer"]
+layout_mode = 2
+color = Color(0.080783345, 0.080783345, 0.080783345, 1)
 
 [connection signal="body_entered" from="Spiral/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="MasterObelisk/FinalRelicInsert/Area3DLastInsert" to="." method="_on_area_3d_last_insert_body_entered"]

@@ -14,6 +14,18 @@ albedo_color = Color(0, 0, 0, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aokp7"]
 albedo_color = Color(0.40713432, 0.43233603, 0.3049225, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gcb43"]
+albedo_color = Color(0.15125465, 0.20621714, 0.17351836, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5xhxx"]
+albedo_color = Color(0.2509804, 0.21960784, 0.15294118, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yxi7k"]
+albedo_color = Color(0.26183373, 0.21803322, 0.1146811, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_me0ts"]
+albedo_color = Color(0.32544088, 0.3254409, 0.32544088, 1)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4mv1t"]
 albedo_color = Color(0.12373423, 0.2049301, 0.1599713, 1)
 
@@ -38,18 +50,6 @@ albedo_color = Color(0.85727096, 0.23917165, 0.15393436, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5snh7"]
 albedo_color = Color(0.99321634, 0.76977855, 0.72590595, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gcb43"]
-albedo_color = Color(0.15125465, 0.20621714, 0.17351836, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5xhxx"]
-albedo_color = Color(0.2509804, 0.21960784, 0.15294118, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yxi7k"]
-albedo_color = Color(0.26183373, 0.21803322, 0.1146811, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_me0ts"]
-albedo_color = Color(0.32544088, 0.3254409, 0.32544088, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u3h5t"]
 albedo_color = Color(0.5078381, 0.47781068, 0.32108614, 1)
@@ -196,6 +196,59 @@ size = Vector3(1.5497429, 1.1539308, 1)
 transform = Transform3D(-0.29645735, 0.8851668, 0.35859835, 0.78400755, 0.011138512, 0.62065053, 0.545385, 0.4651406, -0.69727993, 2.4199314, -0.8120962, 0.9822273)
 use_collision = true
 size = Vector3(1.5497429, 1.1539308, 1)
+
+[node name="Window" type="Node3D" parent="House/HiddenSides"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8472404, 0.21763754, 0.39808846)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="House/HiddenSides/Window"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4206982, 0.88562727, -0.7016392)
+size = Vector3(0.29322052, 1.1107178, 2.1449013)
+material = SubResource("StandardMaterial3D_gcb43")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="House/HiddenSides/Window"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3692837, 0.363945, -0.7143669)
+size = Vector3(0.40930557, 0.1278534, 2.3113718)
+material = SubResource("StandardMaterial3D_5xhxx")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="House/HiddenSides/Window"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4017868, 0.9398308, 0.35383034)
+size = Vector3(0.34430122, 1.2796249, 0.10895932)
+material = SubResource("StandardMaterial3D_yxi7k")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="House/HiddenSides/Window"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4135284, 0.42782664, -0.6909523)
+size = Vector3(0.32081652, 0.17683935, 2.1985226)
+material = SubResource("StandardMaterial3D_yxi7k")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="House/HiddenSides/Window"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4194527, 0.96855736, -0.22117043)
+size = Vector3(0.30896783, 1.0750326, 0.031632602)
+material = SubResource("StandardMaterial3D_me0ts")
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="House/HiddenSides/Window"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4194527, 0.96855736, -0.76343536)
+size = Vector3(0.30896783, 1.0750326, 0.031632602)
+material = SubResource("StandardMaterial3D_me0ts")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="House/HiddenSides/Window"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4194527, 0.96855736, -1.2624588)
+size = Vector3(0.30896783, 1.0750326, 0.031632602)
+material = SubResource("StandardMaterial3D_me0ts")
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="House/HiddenSides/Window"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -3.4194527, 0.96855736, -0.72244644)
+size = Vector3(0.30896783, 2.1037192, 0.031632602)
+material = SubResource("StandardMaterial3D_me0ts")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="House/HiddenSides/Window"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4017868, 1.5122395, -0.70448303)
+size = Vector3(0.34430122, 0.13480759, 2.225586)
+material = SubResource("StandardMaterial3D_yxi7k")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="House/HiddenSides/Window"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4017868, 0.9398308, -1.7672005)
+size = Vector3(0.34430122, 1.2796249, 0.10895932)
+material = SubResource("StandardMaterial3D_yxi7k")
 
 [node name="HouseTopSideForeground" type="CSGPolygon3D" parent="House"]
 transform = Transform3D(0.707107, -0.408607, 0.577096, 0, 0.816138, 0.577858, -0.707107, -0.408607, 0.577096, 13.376636, 8.1794195, -4.832237)
@@ -466,6 +519,10 @@ light_energy = 0.37
 spot_range = 7.963924
 spot_angle = 37.56308
 
+[node name="Sign" parent="House" instance=ExtResource("5_pt5ad")]
+transform = Transform3D(0.9370367, -0.33511978, -0.09826959, 0.11801946, 0.03903438, 0.9922437, -0.32868463, -0.9413665, 0.0761273, 1.7263088, 0.13661289, -0.7587242)
+text = "~~~~~~"
+
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -22, 0.5, -29)
 use_collision = true
@@ -490,6 +547,12 @@ spot_angle = 61.521976
 [node name="SpotLight3D2" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -22.44522, 6.7164125, -24.541763)
 light_energy = 0.305
+spot_range = 13.47315
+spot_angle = 61.521976
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -16.450186, 6.7164125, -25.091244)
+light_energy = 0.145
 spot_range = 13.47315
 spot_angle = 61.521976
 

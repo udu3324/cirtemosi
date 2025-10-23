@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://7cp0pqabugrl"]
+[gd_scene load_steps=29 format=3 uid="uid://7cp0pqabugrl"]
 
 [ext_resource type="PackedScene" uid="uid://d08s342gfjw8u" path="res://entities/zert/zert.tscn" id="1_05hsp"]
 [ext_resource type="Script" uid="uid://b5gm2nj3mnypo" path="res://scripts/scenes/level_4_2.gd" id="1_lf873"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://ctwb6rjmjrvf1" path="res://assets/relics/relic_3_icon.png" id="5_lf873"]
 [ext_resource type="PackedScene" uid="uid://c4ur6h1x4yovh" path="res://scenes/items/relic_2.tscn" id="6_na7ny"]
 [ext_resource type="Script" uid="uid://cmyasc1t8l0la" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="8_3b5aq"]
+[ext_resource type="PackedScene" uid="uid://c8k8dm81jp0pu" path="res://assets/model/enviornment/mushroom_gray.blend" id="10_vdgxt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ve1yt"]
 albedo_color = Color(0.7059877, 0.66718817, 0.47144568, 1)
@@ -698,10 +699,18 @@ relic_shown = ExtResource("5_lf873")
 [node name="Lights" type="Node3D" parent="."]
 
 [node name="SpotLight3D3" type="SpotLight3D" parent="Lights"]
-transform = Transform3D(0.79317486, -0.37321988, 0.4812282, -0.047367144, 0.74999994, 0.6597397, -0.6071491, -0.54608333, 0.57720274, 21.933666, 9, -14.130613)
-light_color = Color(0.1657444, 0.35284707, 0.17253423, 1)
+transform = Transform3D(0.79317486, -0.37321994, 0.4812282, -0.047367144, 0.74999994, 0.6597397, -0.6071491, -0.5460833, 0.57720274, 22.155481, 9, -14.723136)
+light_color = Color(0.67268616, 0.042920686, 0.29359016, 1)
+light_energy = 1.936
 spot_range = 20.49195
 spot_angle = 30.667162
+
+[node name="SpotLight3D6" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(0.92096645, 0.26098946, -0.28931874, -0.085290305, 0.859549, 0.5038861, 0.38019258, -0.43938613, 0.81387556, 20.761723, 9, -13.983983)
+light_color = Color(0.67268616, 0.042920686, 0.29359016, 1)
+light_energy = 6.702
+spot_range = 20.49195
+spot_angle = 15.570718
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 11.68283, 7.522091, -31.576048)
@@ -715,6 +724,13 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 5.09
 light_color = Color(0.9971362, 0.619743, 0.6955033, 1)
 spot_range = 45.738575
 spot_angle = 62.7222
+
+[node name="SpotLight3D7" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 4.993775, 8.589082, -32.247093)
+light_color = Color(0.9971362, 0.619743, 0.6955033, 1)
+light_energy = 3.128
+spot_range = 10.172807
+spot_angle = 45.4233
 
 [node name="SpotLight3D4" type="SpotLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 18.281963, 11.065099, -23.821291)
@@ -1015,6 +1031,177 @@ polygon = PackedVector2Array(-19.245377, -6.0756483, -17.498047, -5.3770056, -15
 [node name="TopSideForeground2" type="CSGPolygon3D" parent="Foregrounds"]
 transform = Transform3D(0.707107, -0.408607, 0.577096, 0, 0.816138, 0.577858, -0.707107, -0.408607, 0.577096, -11.667229, 8.20128, -19.770557)
 polygon = PackedVector2Array(14.264487, -2.6432533, 13.914041, -4.331065, 13.340899, -3.853447, 12.544799, -3.5667458, 12.035184, -4.235531, 11.366405, -4.71315, 10.570306, -4.9042673, 9.829668, -5.275426, 9.262801, -6.2125435, 8.838032, -6.467847, 7.75383, -5.484787, 6.7253733, -4.6160975, -2.580576, 7.528797, 13.382829, 7.7624493)
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -14)
+
+[node name="mushroom_gray" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.09524606, -0.025835061, 0.9951184, 0.23617762, 0.9717064, 0.0026218789, -0.96703076, 0.23477498, 0.09865296, -3.2749796, 0, -0.6867552)
+
+[node name="mushroom_gray2" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.879524, 0.07658024, -0.46965194, 7.450581e-09, 0.9869655, 0.16093206, 0.4758545, -0.14154361, 0.8680598, -3.1034956, -0.027568992, -0.25067157)
+
+[node name="mushroom_gray3" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.7247887, 0.1879519, 0.6628389, -0.108902946, 0.98122925, -0.15915215, -0.68031, 0.043166623, 0.7316524, -2.2600384, -0.03491132, -0.35354084)
+
+[node name="mushroom_gray4" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.879524, 0.07658024, -0.46965194, 7.450581e-09, 0.9869655, 0.16093206, 0.4758545, -0.14154361, 0.8680598, -6.7490726, -0.027568039, -11.213875)
+
+[node name="mushroom_gray5" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.09524606, -0.025835061, 0.9951184, 0.23617762, 0.9717064, 0.0026218789, -0.96703076, 0.23477498, 0.09865296, -6.7697725, 9.536743e-07, -10.775986)
+
+[node name="mushroom_gray6" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.879524, 0.07658024, -0.46965194, 7.450581e-09, 0.9869655, 0.16093206, 0.4758545, -0.14154361, 0.8680598, -6.1342607, -0.0275678, -10.824299)
+
+[node name="mushroom_gray7" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.7247887, 0.1879519, 0.6628389, -0.108902946, 0.98122925, -0.15915215, -0.68031, 0.043166623, 0.7316524, -9.997154, -0.034910366, -9.439983)
+
+[node name="mushroom_gray8" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.879524, 0.07658024, -0.46965194, 7.450581e-09, 0.9869655, 0.16093206, 0.4758545, -0.14154361, 0.8680598, -13.313333, -0.027568277, -9.20332)
+
+[node name="mushroom_gray9" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.7247887, 0.1879519, 0.6628389, -0.108902946, 0.98122925, -0.15915215, -0.68031, 0.043166623, 0.7316524, -13.173653, -0.034910604, -8.514488)
+
+[node name="mushroom_gray10" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.879524, 0.07658024, -0.46965194, 7.450581e-09, 0.9869655, 0.16093206, 0.4758545, -0.14154361, 0.8680598, -5.040345, -0.0275678, -2.9548914)
+
+[node name="mushroom_gray11" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.09524606, -0.025835061, 0.9951184, 0.23617762, 0.9717064, 0.0026218789, -0.96703076, 0.23477498, 0.09865296, 0.1555748, 7.1525574e-07, -3.4325104)
+
+[node name="mushroom_gray12" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.28786504, 0.165227, -0.94330996, -0.17533557, 0.97744775, 0.11770017, 0.94148344, 0.13151407, 0.3103433, 13.588578, -0.062345054, 0.8842815)
+
+[node name="mushroom_gray13" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.09524606, -0.025835061, 0.9951184, 0.23617762, 0.9717064, 0.0026218789, -0.96703076, 0.23477498, 0.09865296, 14.194063, 7.1525574e-07, 0.59827423)
+
+[node name="mushroom_gray14" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.879524, 0.07658024, -0.46965194, 7.450581e-09, 0.9869655, 0.16093206, 0.4758545, -0.14154361, 0.8680598, 15.476497, -0.027568277, 0.12987024)
+
+[node name="mushroom_gray15" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.09524606, -0.025835061, 0.9951184, 0.23617762, 0.9717064, 0.0026218789, -0.96703076, 0.23477498, 0.09865296, 14.145212, 7.1525574e-07, 0.9381838)
+
+[node name="mushroom_gray16" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.28786504, 0.165227, -0.94330996, -0.17533557, 0.97744775, 0.11770017, 0.94148344, 0.13151407, 0.3103433, 12.439784, -0.062345054, -3.034043)
+
+[node name="mushroom_gray17" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.09524606, -0.025835061, 0.9951184, 0.23617762, 0.9717064, 0.0026218789, -0.96703076, 0.23477498, 0.09865296, 12.843544, 7.1525574e-07, -2.941185)
+
+[node name="mushroom_gray18" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.879524, 0.07658024, -0.46965194, 7.450581e-09, 0.9869655, 0.16093206, 0.4758545, -0.14154361, 0.8680598, 13.291808, -0.027568277, -3.933924)
+
+[node name="mushroom_gray19" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.7247887, 0.1879519, 0.6628389, -0.108902946, 0.98122925, -0.15915215, -0.68031, 0.043166623, 0.7316524, 6.5596294, -0.034910604, -1.6162122)
+
+[node name="mushroom_gray20" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.879524, 0.07658024, -0.46965194, 7.450581e-09, 0.9869655, 0.16093206, 0.4758545, -0.14154361, 0.8680598, 16.066586, 0.9724317, -2.9197142)
+
+[node name="mushroom_gray21" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.09524606, -0.025835061, 0.9951184, 0.23617762, 0.9717064, 0.0026218789, -0.96703076, 0.23477498, 0.09865296, 16.51347, 1.0000007, -3.0275803)
+
+[node name="mushroom_gray22" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.879524, 0.07658024, -0.46965194, 7.450581e-09, 0.9869655, 0.16093206, 0.4758545, -0.14154361, 0.8680598, 22.60146, 0.9724317, -8.259806)
+
+[node name="mushroom_gray23" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.09524606, -0.025835061, 0.9951184, 0.23617762, 0.9717064, 0.0026218789, -0.96703076, 0.23477498, 0.09865296, 23.02142, 1.0000007, -8.368355)
+
+[node name="mushroom_gray24" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.28786504, 0.165227, -0.94330996, -0.17533557, 0.97744775, 0.11770017, 0.94148344, 0.13151407, 0.3103433, 22.45663, 0.937655, -7.310776)
+
+[node name="mushroom_gray25" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.09524606, -0.025835061, 0.9951184, 0.23617762, 0.9717064, 0.0026218789, -0.96703076, 0.23477498, 0.09865296, 23.46465, 1.0000007, -11.310051)
+
+[node name="mushroom_gray26" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.879524, 0.07658024, -0.46965194, 7.450581e-09, 0.9869655, 0.16093206, 0.4758545, -0.14154361, 0.8680598, 24.250492, 0.9724317, -10.941175)
+
+[node name="mushroom_gray27" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.09524606, -0.025835061, 0.9951184, 0.23617762, 0.9717064, 0.0026218789, -0.96703076, 0.23477498, 0.09865296, 33.336197, 1.0000014, -10.2614155)
+
+[node name="mushroom_gray28" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.28786504, 0.165227, -0.94330996, -0.17533557, 0.97744775, 0.11770017, 0.94148344, 0.13151407, 0.3103433, 33.769405, 0.9376557, -10.029858)
+
+[node name="mushroom_gray29" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.09524606, -0.025835061, 0.9951184, 0.23617762, 0.9717064, 0.0026218789, -0.96703076, 0.23477498, 0.09865296, 34.523132, 1.0000014, -10.793976)
+
+[node name="mushroom_gray30" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.879524, 0.07658024, -0.46965194, 7.450581e-09, 0.9869655, 0.16093206, 0.4758545, -0.14154361, 0.8680598, 34.867832, 0.97243243, -7.5674763)
+
+[node name="mushroom_gray31" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.7247887, 0.1879519, 0.6628389, -0.108902946, 0.98122925, -0.15915215, -0.68031, 0.043166623, 0.7316524, 34.532852, 0.9650901, -7.9344506)
+
+[node name="mushroom_gray32" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.879524, 0.07658024, -0.46965194, 7.450581e-09, 0.9869655, 0.16093206, 0.4758545, -0.14154361, 0.8680598, 33.53568, 0.97243243, -7.7321014)
+
+[node name="mushroom_gray33" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.09524606, -0.025835061, 0.9951184, 0.23617762, 0.9717064, 0.0026218789, -0.96703076, 0.23477498, 0.09865296, 36.363144, 1.0000014, -7.4396267)
+
+[node name="mushroom_gray34" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.879524, 0.07658024, -0.46965194, 7.450581e-09, 0.9869655, 0.16093206, 0.4758545, -0.14154361, 0.8680598, 39.59629, 0.9724329, -11.1303425)
+
+[node name="mushroom_gray35" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.09524606, -0.025835061, 0.9951184, 0.23617762, 0.9717064, 0.0026218789, -0.96703076, 0.23477498, 0.09865296, 40.70095, 1.0000014, -11.004446)
+
+[node name="mushroom_gray36" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.879524, 0.07658024, -0.46965194, 7.450581e-09, 0.9869655, 0.16093206, 0.4758545, -0.14154361, 0.8680598, 40.446648, 0.97243243, -10.435322)
+
+[node name="mushroom_gray37" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.7247887, 0.1879519, 0.6628389, -0.108902946, 0.98122925, -0.15915215, -0.68031, 0.043166623, 0.7316524, 40.4421, 0.9650901, -10.440811)
+
+[node name="mushroom_gray38" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.879524, 0.07658024, -0.46965194, 7.450581e-09, 0.9869655, 0.16093206, 0.4758545, -0.14154361, 0.8680598, -7.8452215, 1.972433, -13.927231)
+
+[node name="mushroom_gray42" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.09524606, -0.025835061, 0.9951184, 0.23617762, 0.9717064, 0.0026218789, -0.96703076, 0.23477498, 0.09865296, -7.541362, 2.000002, -13.577122)
+
+[node name="mushroom_gray43" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.879524, 0.07658024, -0.46965194, 7.450581e-09, 0.9869655, 0.16093206, 0.4758545, -0.14154361, 0.8680598, -8.297095, 1.972433, -13.376675)
+
+[node name="mushroom_gray44" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.09524606, -0.025835061, 0.9951184, 0.23617762, 0.9717064, 0.0026218789, -0.96703076, 0.23477498, 0.09865296, -12.544344, 2.000002, -12.99407)
+
+[node name="mushroom_gray45" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.28786504, 0.165227, -0.94330996, -0.17533557, 0.97744775, 0.11770017, 0.94148344, 0.13151407, 0.3103433, -12.890534, 1.9376562, -12.729818)
+
+[node name="mushroom_gray46" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.09524606, -0.025835061, 0.9951184, 0.23617762, 0.9717064, 0.0026218789, -0.96703076, 0.23477498, 0.09865296, -0.10279846, 2.000002, -16.701393)
+
+[node name="mushroom_gray47" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.879524, 0.07658024, -0.46965194, 7.450581e-09, 0.9869655, 0.16093206, 0.4758545, -0.14154361, 0.8680598, 0.028156249, 1.972433, -17.101412)
+
+[node name="mushroom_gray48" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.09524606, -0.025835061, 0.9951184, 0.23617762, 0.9717064, 0.0026218789, -0.96703076, 0.23477498, 0.09865296, 0.75117683, 2.000002, -16.981243)
+
+[node name="mushroom_gray49" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.879524, 0.07658024, -0.46965194, 7.450581e-09, 0.9869655, 0.16093206, 0.4758545, -0.14154361, 0.8680598, 3.2742786, 1.972433, -17.821207)
+
+[node name="mushroom_gray50" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.7247887, 0.1879519, 0.6628389, -0.108902946, 0.98122925, -0.15915215, -0.68031, 0.043166623, 0.7316524, 7.4862194, 1.9650906, -22.422945)
+
+[node name="mushroom_gray51" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.879524, 0.07658024, -0.46965194, 7.450581e-09, 0.9869655, 0.16093206, 0.4758545, -0.14154361, 0.8680598, 7.799073, 1.972433, -22.471285)
+
+[node name="mushroom_gray52" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.09524606, -0.025835061, 0.9951184, 0.23617762, 0.9717064, 0.0026218789, -0.96703076, 0.23477498, 0.09865296, 2.951151, 2.000002, -22.216267)
+
+[node name="mushroom_gray53" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.28786504, 0.165227, -0.94330996, -0.17533557, 0.97744775, 0.11770017, 0.94148344, 0.13151407, 0.3103433, 3.3058317, 1.9376562, -22.08128)
+
+[node name="mushroom_gray54" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.09524606, -0.025835061, 0.9951184, 0.23617762, 0.9717064, 0.0026218789, -0.96703076, 0.23477498, 0.09865296, 4.5063143, 2.000002, -21.569763)
+
+[node name="mushroom_gray55" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.879524, 0.07658024, -0.46965194, 7.450581e-09, 0.9869655, 0.16093206, 0.4758545, -0.14154361, 0.8680598, 4.880123, 1.972433, -21.85692)
+
+[node name="mushroom_gray56" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.09524606, -0.025835061, 0.9951184, 0.23617762, 0.9717064, 0.0026218789, -0.96703076, 0.23477498, 0.09865296, 5.68338, 2.000002, -22.658867)
+
+[node name="mushroom_gray39" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.879524, 0.07658024, -0.46965194, 7.450581e-09, 0.9869655, 0.16093206, 0.4758545, -0.14154361, 0.8680598, -6.1306157, 3.9724329, -14.944162)
+
+[node name="mushroom_gray40" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.7247887, 0.1879519, 0.6628389, -0.108902946, 0.98122925, -0.15915215, -0.68031, 0.043166623, 0.7316524, -5.783445, 3.9650905, -15.204971)
+
+[node name="mushroom_gray41" parent="Node3D" instance=ExtResource("10_vdgxt")]
+transform = Transform3D(0.879524, 0.07658024, -0.46965194, 7.450581e-09, 0.9869655, 0.16093206, 0.4758545, -0.14154361, 0.8680598, -3.7994266, 7.972433, -18.783606)
 
 [connection signal="body_entered" from="StructurePuzzle/Area3DCameraZoom" to="." method="_on_area_3d_camera_zoom_body_entered"]
 [connection signal="body_exited" from="StructurePuzzle/Area3DCameraZoom" to="." method="_on_area_3d_camera_zoom_body_exited"]

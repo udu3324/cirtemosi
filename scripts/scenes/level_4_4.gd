@@ -15,6 +15,8 @@ extends Node3D
 @onready var final_light: OmniLight3D = $MasterObelisk/FinalRelicInsert/OmniLight3D
 @onready var final_relic_model: Node3D = $MasterObelisk/FinalRelicInsert/relic_5
 
+@onready var end_bg: Control = $Control
+
 var obelisk_final_pos: Vector3
 
 var handle_input: bool = false
@@ -26,7 +28,7 @@ func _ready() -> void:
 	obelisk.global_position.y -= 8.5
 	
 	if Globals.final_relic_placement_ready:
-		spiral.global_position.y -= 10.0
+		spiral.queue_free()
 		
 		# spiral animation already happened and player already has relic
 	elif Globals.relics[4] and Globals.run_spiral_down_once:
@@ -40,11 +42,14 @@ func _process(_delta: float) -> void:
 	if Globals.inserted_relic[0] and light_relic_1.light_energy != 4.5:
 		light_relic_1.light_energy = 4.5
 		relic_1_model.visible = true
+	
 	if Globals.inserted_relic[1] and light_relic_2.light_energy != 4.5:
 		light_relic_2.light_energy = 4.5
 		relic_2_model.visible = true
+	
 	if Globals.inserted_relic[2] and light_relic_3.light_energy != 4.5:
 		light_relic_3.light_energy = 4.5
+	
 	if Globals.inserted_relic[3] and light_relic_4.light_energy != 4.5:
 		light_relic_4.light_energy = 4.5
 	
@@ -57,11 +62,24 @@ func _process(_delta: float) -> void:
 		return
 	
 	if Input.is_action_just_pressed("attack"):
-		done = true
-		final_insert_container.visible = false
+		print("finished game..")
 		
+		done = true
 		Globals.player_can_move = false
-		final_light.light_energy = 4.5
+		
+		final_insert_container.visible = false
+		final_relic_model.visible = true
+		
+		var tween = create_tween()
+		tween.tween_property(final_light, "light_energy", 4.5, 3.0)
+		tween.tween_property(final_light, "light_energy", 2.5, 3.0)
+		tween.tween_property(final_light, "light_energy", 4.5, 3.0)
+		tween.tween_property(final_light, "light_energy", 2.5, 3.0)
+		
+		await tween.finished
+		
+		tween = create_tween()
+		tween.tween_property(end_bg, "modulate:a", 255, 3.0)
 		
 		#todo game done
 
