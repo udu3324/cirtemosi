@@ -102,6 +102,19 @@ func _process(_delta: float) -> void:
 	
 	_handle_input_controller_hints()
 	
+	if Globals.hide_ui_event:
+		Globals.hide_ui_event = false
+		
+		health.visible = false
+		stamina.visible = false
+		equipment.visible = false
+		relics.visible = false
+		shards.visible = false
+	
+	if Globals.credits_end_game_event:
+		Globals.credits_end_game_event = false
+		# todoooooooooooo
+	
 	if Globals.debug_mode:
 		if Input.is_action_just_pressed("just_space_key"):
 			print("debug gave equipment and save point and more", Globals.debug_mode_relic_give)

@@ -39,7 +39,8 @@ var player_level_traverse_event: String = ""
 var player_level_load_event: String = ""
 var player_death_event: String = ""
 var player_self_destruct_event: bool = false
-
+var hide_ui_event: bool = false
+var credits_end_game_event: bool = false
 
 # player stats
 const health_max: float = 100.0

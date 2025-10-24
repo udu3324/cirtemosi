@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://vs4t3q0uk5k7"]
+[gd_scene load_steps=26 format=3 uid="uid://vs4t3q0uk5k7"]
 
 [ext_resource type="Script" uid="uid://wqrdaq8ko3rk" path="res://scripts/scenes/level_4_4.gd" id="1_aac41"]
 [ext_resource type="PackedScene" uid="uid://byeuwjmfcnb3t" path="res://scenes/items/relic_5.tscn" id="1_n8lnq"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://duydi7lytqxks" path="res://scenes/enviornment/CaveEnv.tscn" id="12_nijnl"]
 [ext_resource type="FontFile" uid="uid://d25dq4tmt7ywp" path="res://assets/font/NebulaSans-Black.ttf" id="13_x0omi"]
 [ext_resource type="PackedScene" uid="uid://iy0ywhoerl1x" path="res://assets/model/item/relics/relic_5.blend" id="14_x0omi"]
+[ext_resource type="FontFile" uid="uid://1qiyr01tsexv" path="res://assets/font/NebulaSans-Bold.ttf" id="16_5rbxa"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n8lnq"]
 albedo_color = Color(0.3420786, 0.30527073, 0.25008196, 1)
@@ -27,6 +28,9 @@ radius = 0.5226424
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8k8l7"]
 albedo_color = Color(0.1728327, 0.17283267, 0.17283267, 1)
+emission_enabled = true
+emission = Color(0, 0.11640609, 0.30364543, 1)
+emission_energy_multiplier = 0.28
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_n8lnq"]
 material = SubResource("StandardMaterial3D_8k8l7")
@@ -456,7 +460,7 @@ theme_override_font_sizes/font_size = 25
 text = "to add the last relic"
 
 [node name="relic_5" parent="MasterObelisk/FinalRelicInsert" instance=ExtResource("14_x0omi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42419815, 0)
+transform = Transform3D(-0.9956623, 0, 0.755749, 0, 1.25, 0, -0.755749, 0, -0.9956623, 0, 0.5543165, 0)
 visible = false
 
 [node name="Platform" type="Node3D" parent="."]
@@ -569,7 +573,6 @@ spot_range = 25.488792
 spot_angle = 62.08459
 
 [node name="Control" type="Control" parent="."]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -586,11 +589,20 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ColorRect" type="ColorRect" parent="Control/MarginContainer"]
+visible = false
 layout_mode = 2
-color = Color(0.080783345, 0.080783345, 0.080783345, 1)
+color = Color(1, 1, 1, 0)
 
 [node name="CenterContainer" type="CenterContainer" parent="Control/MarginContainer"]
 layout_mode = 2
+
+[node name="Label2" type="Label" parent="Control/MarginContainer/CenterContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("16_5rbxa")
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="body_entered" from="Spiral/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="MasterObelisk/FinalRelicInsert/Area3DLastInsert" to="." method="_on_area_3d_last_insert_body_entered"]
