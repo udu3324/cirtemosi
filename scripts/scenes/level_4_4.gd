@@ -18,6 +18,7 @@ extends Node3D
 @onready var end_bg: Control = $Control
 
 var obelisk_final_pos: Vector3
+var obelisk_settled_pos: Vector3
 
 var handle_input: bool = false
 var done: bool = false
@@ -27,12 +28,14 @@ func _ready() -> void:
 	
 	obelisk.global_position.y -= 8.5
 	
+	obelisk_settled_pos = obelisk.global_position
+	
 	if Globals.final_relic_placement_ready:
 		spiral.queue_free()
 		
 		# spiral animation already happened and player already has relic
 	elif Globals.relics[4] and Globals.run_spiral_down_once:
-		spiral.global_position.y -= 10
+		spiral.queue_free()
 		obelisk.global_position.y += 8.5
 
 func _process(_delta: float) -> void:
@@ -55,8 +58,9 @@ func _process(_delta: float) -> void:
 	
 	if Globals.inserted_relic[0] and Globals.inserted_relic[1] and Globals.inserted_relic[2] and Globals.inserted_relic[3] and !Globals.final_relic_placement_ready:
 		Globals.final_relic_placement_ready = true
+		
 		var tween = create_tween()
-		tween.tween_property(obelisk, "position:y", -8.5, 8.0)
+		tween.tween_property(obelisk, "global_position", obelisk_settled_pos, 18.0)
 	
 	if !handle_input:
 		return
@@ -78,6 +82,7 @@ func _process(_delta: float) -> void:
 		
 		await tween.finished
 		
+		
 		tween = create_tween()
 		tween.tween_property(end_bg, "modulate:a", 255, 3.0)
 		
@@ -91,13 +96,14 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		tween.tween_property(spiral, "position:y", -10.0, 5.0)
 		
 		await tween.finished
+		spiral.queue_free()
 		
 		tween = create_tween()
-		tween.tween_property(obelisk, "global_position", obelisk_final_pos, 5.0)
+		tween.tween_property(obelisk, "global_position", obelisk_final_pos, 15.0)
 
 
 func _on_area_3d_last_insert_body_entered(body: Node3D) -> void:
-	if body.name.contains("Player") and !done:
+	if body.name.contains("Player") and !done and Globals.final_relic_placement_ready:
 		final_insert_container.visible = true
 		handle_input = true
 

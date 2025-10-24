@@ -122,6 +122,9 @@ func _process(_delta: float) -> void:
 					Globals.relics[3] = true
 				18:
 					Globals.relics[4] = true
+				50:
+					Globals.relics = [false, false, false, false, false]
+					Globals.debug_mode_relic_give = 0
 			
 			Globals.debug_mode_relic_give += 1
 
@@ -444,6 +447,9 @@ func _on_exit_start():
 	Globals.electrical_box_1 = false
 	Globals.electrical_box_2 = false
 	Globals.inserted_relic = [false, false, false, false, false]
+	Globals.run_spiral_down_once = false
+	Globals.final_relic_placement_ready = false
+	
 	Globals.save_point = -1.0
 	
 	Globals.camera_size = 5.762

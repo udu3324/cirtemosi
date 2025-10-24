@@ -384,7 +384,7 @@ spot_range = 13.125083
 transform = Transform3D(0.9215924, 0, -0.3881591, 0, 1, 0, 0.3881591, 0, 0.9215924, -9.132637, 0, -13.313523)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ZertCrossBridge/Area3DExit4_1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.014530182, 1.4952545, -9.536743e-07)
+transform = Transform3D(0.99697864, 0, -0.07767612, 0, 1, 0, 0.07767612, 0, 0.99697864, 0.36115456, 1.4952555, -0.63641167)
 shape = SubResource("BoxShape3D_3cb6x")
 
 [node name="Area3DMidBridge" type="Area3D" parent="ZertCrossBridge"]
@@ -398,7 +398,7 @@ shape = SubResource("BoxShape3D_3cb6x")
 transform = Transform3D(0.763582, 0, -0.64571095, 0, 1, 0, 0.64571095, 0, 0.763582, -0.551561, -9.536743e-07, -20.54447)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ZertCrossBridge/Area3D2Exit4_2"]
-transform = Transform3D(0.9956632, 0, -0.09303095, 0, 1, 0, 0.09303095, 0, 0.9956632, -0.064447924, 1.495254, 0.5170513)
+transform = Transform3D(0.99566317, 0, -0.09303093, 0, 1, 0, 0.09303093, 0, 0.99566317, -0.2551489, 1.495254, 1.5423031)
 shape = SubResource("BoxShape3D_3cb6x")
 
 [node name="ZertAgent" parent="ZertCrossBridge" instance=ExtResource("3_3cb6x")]

@@ -68,7 +68,6 @@ transform = Transform3D(0.707107, -0.408607, 0.577097, 0, 0.816138, 0.577857, -0
 
 [node name="Spiral" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.50894547, 0)
-visible = false
 
 [node name="Relic5" parent="Spiral" instance=ExtResource("1_n8lnq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.998368, 9.200446, 2.05841)
@@ -145,6 +144,130 @@ material = SubResource("StandardMaterial3D_n8lnq")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Spiral/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 9, 2)
 shape = SubResource("SphereShape3D_md528")
+
+[node name="Barriers" type="Node3D" parent="Spiral"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 2)
+visible = false
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Spiral/Barriers"]
+transform = Transform3D(0.94844544, -0.3169405, 0, 0.3169405, 0.94844544, 0, 0, 0, 1, 0.10079384, 2.2122915, 2.5287037)
+use_collision = true
+size = Vector3(5.4107447, 1, 0.263)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Spiral/Barriers"]
+transform = Transform3D(0.94844544, -0.3169405, 0, 0.3169405, 0.94844544, 0, 0, 0, 1, 0.2938795, 2.2768142, 4.5287037)
+use_collision = true
+size = Vector3(5.720293, 1, 0.263)
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="Spiral/Barriers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4254837, 3.137661, 4.5287037)
+use_collision = true
+size = Vector3(1.8003736, 1, 0.263)
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="Spiral/Barriers"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.5119705, 3.137661, 3.8845115)
+use_collision = true
+size = Vector3(1.2547809, 1, 0.263)
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="Spiral/Barriers"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.290823, 5.137661, -3.6503358)
+use_collision = true
+size = Vector3(1, 1, 0.263)
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="Spiral/Barriers"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.6466312, 5.137661, -4.3366356)
+use_collision = true
+size = Vector3(1.2547809, 1, 0.263)
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="Spiral/Barriers"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.8312473, 6.8343563, -4.531242)
+use_collision = true
+size = Vector3(1, 1, 0.263)
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="Spiral/Barriers"]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -4.5175476, 6.8343563, -3.8870502)
+use_collision = true
+size = Vector3(1.2547809, 1, 0.263)
+
+[node name="CSGBox3D17" type="CSGBox3D" parent="Spiral/Barriers"]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -4.4964933, 8.925924, 3.857614)
+use_collision = true
+size = Vector3(1, 1, 0.263)
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="Spiral/Barriers"]
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, -3.8523016, 8.925924, 4.5439143)
+use_collision = true
+size = Vector3(1.2547809, 1, 0.263)
+
+[node name="CSGBox3D19" type="CSGBox3D" parent="Spiral/Barriers"]
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 0.64515495, 9.7759495, 4.4775157)
+use_collision = true
+size = Vector3(1, 1, 0.263)
+
+[node name="CSGBox3D20" type="CSGBox3D" parent="Spiral/Barriers"]
+transform = Transform3D(-2.1855695e-07, 0, 1, 0, 1, 0, -1, 0, -2.1855695e-07, 1.3314543, 9.7759495, 1.5147433)
+use_collision = true
+size = Vector3(5.891942, 1, 0.263)
+
+[node name="CSGBox3D21" type="CSGBox3D" parent="Spiral/Barriers"]
+transform = Transform3D(-2.1855695e-07, 0, 1, 0, 1, 0, -1, 0, -2.1855695e-07, -1.3055334, 9.7759495, -0.06950927)
+use_collision = true
+size = Vector3(2.7234368, 1, 0.263)
+
+[node name="CSGBox3D22" type="CSGBox3D" parent="Spiral/Barriers"]
+transform = Transform3D(-1, 0, -2.6226834e-07, 0, 1, 0, 2.6226834e-07, 0, -1, 0.01813984, 9.7759495, -1.4608679)
+use_collision = true
+size = Vector3(2.7234368, 1, 0.263)
+
+[node name="CSGBox3D23" type="CSGBox3D" parent="Spiral/Barriers"]
+transform = Transform3D(-1, 0, -2.6226834e-07, 0, 1, 0, 2.6226834e-07, 0, -1, -0.7705364, 9.7759495, 1.232991)
+use_collision = true
+size = Vector3(1.208276, 1, 0.263)
+
+[node name="CSGBox3D24" type="CSGBox3D" parent="Spiral/Barriers"]
+transform = Transform3D(3.0597974e-07, 0, -1, 0, 1, 0, 1, 0, 3.0597974e-07, -0.32328415, 9.7759495, 1.8974855)
+use_collision = true
+size = Vector3(1.208276, 1, 0.263)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Spiral/Barriers"]
+transform = Transform3D(-4.1457866e-08, 1.3853908e-08, 1, 0.3169405, 0.94844544, 0, -0.94844544, 0.3169405, -4.371139e-08, 2.5520096, 3.9871087, 0.016798496)
+use_collision = true
+size = Vector3(5.13157, 1, 0.263)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Spiral/Barriers"]
+transform = Transform3D(-4.1457866e-08, 1.3853908e-08, 1, 0.3169405, 0.94844544, 0, -0.94844544, 0.3169405, -4.371139e-08, 4.431448, 3.9661093, 0.0796392)
+use_collision = true
+size = Vector3(6.5383854, 1, 0.263)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Spiral/Barriers"]
+transform = Transform3D(-0.94844544, 0.3169405, -8.742278e-08, 0.3169405, 0.94844544, 0, 8.291573e-08, -2.7707816e-08, -1, -0.045492172, 5.7861276, -2.4483764)
+use_collision = true
+size = Vector3(5.13157, 1, 0.263)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Spiral/Barriers"]
+transform = Transform3D(-0.94844544, 0.3169405, -8.742278e-08, 0.3169405, 0.94844544, 0, 8.291573e-08, -2.7707816e-08, -1, -0.041697502, 5.7848597, -4.529914)
+use_collision = true
+size = Vector3(6.54278, 1, 0.263)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Spiral/Barriers"]
+transform = Transform3D(1.243736e-07, -4.1561727e-08, -1, 0.3169405, 0.94844544, 0, 0.94844544, -0.3169405, 1.3113416e-07, -2.5740776, 7.8099384, -0.094717145)
+use_collision = true
+size = Vector3(4.9813123, 1, 0.263)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Spiral/Barriers"]
+transform = Transform3D(1.243736e-07, -4.1561727e-08, -1, 0.3169405, 0.94844544, 0, 0.94844544, -0.3169405, 1.3113416e-07, -4.517706, 7.8820505, 0.121077776)
+use_collision = true
+size = Vector3(6.0608187, 1, 0.263)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Spiral/Barriers"]
+transform = Transform3D(0.94844544, -0.3169405, 1.7484555e-07, 0.3169405, 0.94844544, 0, -1.6583145e-07, 5.541563e-08, 1, -1.5613918, 9.230544, 2.4388132)
+use_collision = true
+size = Vector3(2.5378084, 1, 0.263)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="Spiral/Barriers"]
+transform = Transform3D(0.94844544, -0.3169405, 1.7484555e-07, 0.3169405, 0.94844544, 0, -1.6583145e-07, 5.541563e-08, 1, -1.5841169, 9.22295, 4.491682)
+use_collision = true
+size = Vector3(3.4452431, 1, 0.263)
 
 [node name="MasterObelisk" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
@@ -465,6 +588,9 @@ grow_vertical = 2
 [node name="ColorRect" type="ColorRect" parent="Control/MarginContainer"]
 layout_mode = 2
 color = Color(0.080783345, 0.080783345, 0.080783345, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="Control/MarginContainer"]
+layout_mode = 2
 
 [connection signal="body_entered" from="Spiral/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="MasterObelisk/FinalRelicInsert/Area3DLastInsert" to="." method="_on_area_3d_last_insert_body_entered"]

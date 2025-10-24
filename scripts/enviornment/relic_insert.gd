@@ -45,12 +45,18 @@ func _process(_delta: float) -> void:
 		if !Globals.relics[relic - 1]:
 			return
 		
+		# stop input from turning into an actual interaction
+		Globals.player_can_move = false
+		
 		print("inserted relic ", relic)
 		
 		container.visible = false
 		handle_input = false
 		inserted = true
 		Globals.inserted_relic[relic - 1] = true
+		
+		await get_tree().create_timer(0.1).timeout
+		Globals.player_can_move = true
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
