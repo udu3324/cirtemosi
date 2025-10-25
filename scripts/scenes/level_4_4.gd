@@ -98,14 +98,22 @@ func _process(_delta: float) -> void:
 		await get_tree().create_timer(2.0).timeout
 		await _animate_text_typing("power lost from generations before return", 0.25)
 		await get_tree().create_timer(2.0).timeout
-		await _animate_text_typing("you have been transcended\nback to the surface ", 0.20)
+		await _animate_text_typing("you have been transcended\nback to the surface", 0.20)
 		await get_tree().create_timer(2.0).timeout
 		
 		end_bg.visible = true
 		var tween = create_tween()
 		tween.tween_property(end_bg, "color:a", 1.0, 5.0)
 		
-		Globals.credits_end_game_event = true
+		await tween.finished
+		await get_tree().create_timer(2.0).timeout
+		
+		end_label.text = ""
+		end_bg.color = Color(0, 0, 0, 1)
+		
+		await get_tree().create_timer(0.2).timeout
+		
+		Globals.credits_trigger_enter = true
 
 func _animate_text_typing(typing_string: String, keystroke_time_range: float):
 	

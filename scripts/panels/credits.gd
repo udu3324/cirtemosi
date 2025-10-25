@@ -2,6 +2,9 @@ extends Control
 
 @onready var creditsScroll = $CenterContainer
 
+signal exit_to_start
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if Input.is_action_pressed("attack") and self.visible:
@@ -53,3 +56,8 @@ func _on_credits_hide():
 	credits_opacity.kill()
 	credits_scroll.kill()
 	credits_audio_fade.kill()
+	
+	var next = Globals.root_node_3d.find_child("Level4_4", true, false)
+	if next != null:
+		print("exiting")
+		emit_signal("exit_to_start")

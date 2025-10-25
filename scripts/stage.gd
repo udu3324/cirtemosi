@@ -2,6 +2,7 @@ extends Node
 
 @onready var masterAudio = $AudioStreamPlayer
 
+@onready var credits = $CanvasLayer/Credits
 
 @onready var menuStart = $CanvasLayer/MenuStart
 @onready var menuPause = $CanvasLayer/MenuPause
@@ -61,6 +62,9 @@ func _ready() -> void:
 	menuReset.connect("exit_to_start", _on_exit_start)
 	menuReset.connect("to_checkpoint", _to_checkpoint)
 	
+	credits.connect("exit_to_start", _on_exit_start)
+	
+	
 	if Globals.debug_mode:
 		menuStart.connect("level_1", _on_level_test)
 		menuStart.connect("level_arcade", _on_level_1)
@@ -110,10 +114,6 @@ func _process(_delta: float) -> void:
 		equipment.visible = false
 		relics.visible = false
 		shards.visible = false
-	
-	if Globals.credits_end_game_event:
-		Globals.credits_end_game_event = false
-		# todoooooooooooo
 	
 	if Globals.debug_mode:
 		if Input.is_action_just_pressed("just_space_key"):
