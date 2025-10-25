@@ -400,7 +400,7 @@ func _to_checkpoint():
 			Globals.player_level_traverse_event = "3->4.1"
 		4.2:
 			await _show_loading()
-			_clear_node_3d_stage()
+			await _clear_node_3d_stage()
 		
 			level = preload("res://levels/level4.tscn").instantiate()
 			$Node3D.add_child(level)
@@ -643,3 +643,6 @@ func _hide_loading():
 func _clear_node_3d_stage():
 	for node in $Node3D.get_children():
 		node.queue_free()
+	
+	while $Node3D.get_child_count() > 0:
+		await get_tree().process_frame
