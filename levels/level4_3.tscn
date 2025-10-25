@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://duo44b2ivhol"]
+[gd_scene load_steps=31 format=3 uid="uid://duo44b2ivhol"]
 
 [ext_resource type="Script" uid="uid://ccc84jhoxhk8n" path="res://scripts/scenes/level_4_3.gd" id="1_kcjfs"]
 [ext_resource type="PackedScene" uid="uid://cehpvnetgof0c" path="res://assets/model/house/roof.blend" id="2_c5to3"]
@@ -93,6 +93,9 @@ height = 0.15
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_twdl6"]
 points = PackedVector3Array(-0.48447457, -0.074999996, -0.09078598, 0.4754299, 0.074999996, 0.08907304, 0.48457184, -0.074999996, 0.09078598, -0.09072835, -0.074999996, 0.4845714, -0.29701814, 0.074999996, -0.3862624, -0.29701814, 0.074999996, 0.3862624, 0.19677946, -0.074999996, -0.4542145, 0.29711536, 0.074999996, -0.3862624, 0.25244367, 0.074999996, 0.4159534, -0.15124632, -0.074999996, -0.46939293, -0.47533262, 0.074999996, 0.08907304, -0.42386177, -0.074999996, 0.25736925, 0.48599133, -0.047879744, -0.21061644, 0.3028282, -0.074999996, 0.39369053, 0.08901973, 0.074999996, -0.47542852, 0.08901973, 0.074999996, 0.47542852, 0.48599133, -0.06408833, 0.21061644, -0.3936028, -0.074999996, -0.3028097, -0.4456446, 0.074999996, -0.1931312, 0.4456487, 0.074999996, -0.1931312, 0.15134355, -0.074999996, 0.46939293, 0.38617954, 0.074999996, 0.29709628, -0.30273098, -0.074999996, 0.39369053, -0.1483917, 0.074999996, 0.46053645, 0.39360514, -0.074999996, -0.3028097, -0.08901557, 0.074999996, -0.47542852, -0.3861754, 0.074999996, 0.29709628, 0.09073072, -0.074999996, -0.4845714, -0.48447457, -0.074999996, 0.09078598, -0.30273098, -0.074999996, -0.39369053, -0.47533262, 0.074999996, -0.08907304, -0.4456446, 0.074999996, 0.1931312)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4mv1t"]
+size = Vector3(7.84, 3.8953857, 1)
 
 [node name="Level4_3" type="Node3D"]
 script = ExtResource("1_kcjfs")
@@ -556,7 +559,15 @@ light_energy = 0.145
 spot_range = 13.47315
 spot_angle = 61.521976
 
+[node name="Area3DTitleCard" type="Area3D" parent="."]
+transform = Transform3D(0.97983414, 0, 0.19981259, 0, 1, 0, -0.19981259, 0, 0.97983414, -23.64971, 0, -20.864605)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3DTitleCard"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4476929, 0)
+shape = SubResource("BoxShape3D_4mv1t")
+
 [connection signal="body_entered" from="House/Area3DHouse" to="." method="_on_area_3d_house_body_entered"]
 [connection signal="body_exited" from="House/Area3DHouse" to="." method="_on_area_3d_house_body_exited"]
 [connection signal="body_entered" from="House/Area3DDoor" to="." method="_on_area_3d_door_body_entered"]
 [connection signal="body_exited" from="House/Area3DDoor" to="." method="_on_area_3d_door_body_exited"]
+[connection signal="body_entered" from="Area3DTitleCard" to="." method="_on_area_3d_title_card_body_entered"]

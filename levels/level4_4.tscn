@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://vs4t3q0uk5k7"]
+[gd_scene load_steps=27 format=3 uid="uid://vs4t3q0uk5k7"]
 
 [ext_resource type="Script" uid="uid://wqrdaq8ko3rk" path="res://scripts/scenes/level_4_4.gd" id="1_aac41"]
 [ext_resource type="PackedScene" uid="uid://byeuwjmfcnb3t" path="res://scenes/items/relic_5.tscn" id="1_n8lnq"]
@@ -55,6 +55,9 @@ resource_name = ""
 script = ExtResource("12_7rygr")
 path = "attack"
 metadata/_custom_type_script = "uid://cmyasc1t8l0la"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5rbxa"]
+size = Vector3(1, 4.2543945, 12.959564)
 
 [node name="Level4_4" type="Node3D"]
 script = ExtResource("1_aac41")
@@ -572,6 +575,13 @@ light_energy = 0.234
 spot_range = 25.488792
 spot_angle = 62.08459
 
+[node name="Area3DCard" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3DCard"]
+transform = Transform3D(0.994375, 0, -0.10591698, 0, 1, 0, 0.10591698, 0, 0.994375, 0.81693316, 1.6271973, -0.81644166)
+shape = SubResource("BoxShape3D_5rbxa")
+
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
@@ -607,3 +617,4 @@ horizontal_alignment = 1
 [connection signal="body_entered" from="Spiral/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="MasterObelisk/FinalRelicInsert/Area3DLastInsert" to="." method="_on_area_3d_last_insert_body_entered"]
 [connection signal="body_exited" from="MasterObelisk/FinalRelicInsert/Area3DLastInsert" to="." method="_on_area_3d_last_insert_body_exited"]
+[connection signal="body_entered" from="Area3DCard" to="." method="_on_area_3d_card_body_entered"]

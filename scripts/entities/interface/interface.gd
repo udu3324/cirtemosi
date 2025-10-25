@@ -285,7 +285,7 @@ func _handle_terminal_final_enter():
 						Globals.item_info_dict[Globals.equipment[Globals.slot_active - 1]]["damage"] += 5
 						await _animate_text_typing("your [" + Globals.equipment[Globals.slot_active - 1] + "] now deals\nmore damage than before", 0.3)
 					else:
-						await _animate_text_typing("do you even\nhave the shards", 0.3)
+						await _animate_text_typing("do you even\nhave the shards", 0.23)
 		"health":
 			match index:
 				0:
@@ -304,15 +304,23 @@ func _handle_terminal_final_enter():
 						
 						await _animate_text_typing("your character is now\nloaded with new health", 0.16)
 					else:
-						await _animate_text_typing("do you even\nhave the shards", 0.3)
+						await _animate_text_typing("do you even\nhave the shards", 0.23)
 		"relic":
 			match index:
 				0:
 					if Globals.relics[relic_num - 1]: # has the relic
 						# todo all relic messages
-						await _animate_text_typing("yet to be the last.\nkey for the first.", 0.15)
+						match relic_num:
+							1:
+								await _animate_text_typing("yet to be the last.\nkey for the first.", 0.15)
+							3:
+								await _animate_text_typing("the energy held can power cities for centuries", 0.15)
 					else:
-						await _animate_text_typing("`~^${$&@*..!@*~_", 0.25)
+						match relic_num:
+							1:
+								await _animate_text_typing("you dont have this relic\nit is found at your first enemy", 0.25)
+							3:
+								await _animate_text_typing("you dont have this relic\nit is held at the end of a path", 0.25)
 	
 	ignore_input = false
 	

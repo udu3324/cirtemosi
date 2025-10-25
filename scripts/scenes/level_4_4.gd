@@ -199,3 +199,9 @@ func _on_area_3d_last_insert_body_exited(body: Node3D) -> void:
 	if body.name.contains("Player"):
 		final_insert_container.visible = false
 		handle_input = false
+
+
+func _on_area_3d_card_body_entered(body: Node3D) -> void:
+	if body.name.contains("Player") and !Globals.card_obelisk_shown:
+		Globals._show_title_card("Final Obelisk", "The abandoned structure", 0.5)
+		Globals.card_obelisk_shown = true

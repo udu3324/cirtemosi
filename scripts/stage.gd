@@ -459,9 +459,11 @@ func _on_exit_start():
 	Globals.bridge_2_down = false
 	Globals.electrical_box_1 = false
 	Globals.electrical_box_2 = false
+	Globals.card_house_shown = false
 	Globals.inserted_relic = [false, false, false, false, false]
 	Globals.run_spiral_down_once = false
 	Globals.final_relic_placement_ready = false
+	Globals.card_obelisk_shown = false
 	
 	Globals.save_point = -1.0
 	

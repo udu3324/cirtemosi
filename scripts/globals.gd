@@ -90,10 +90,12 @@ var card_structures_shown: bool = false
 # - 4.3
 var electrical_box_1 = false
 var electrical_box_2 = false
+var card_house_shown = false
 # - 4.4
 var inserted_relic = [false, false, false, false, false]
 var run_spiral_down_once = false
 var final_relic_placement_ready = false
+var card_obelisk_shown = false
 
 # settings
 var screen_relative_movement = true
