@@ -55,15 +55,12 @@ var wave_zert_deaths: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
-	#Shibadb.save_loaded.connect(_on_leaderboard_loaded)
+	# load the leaderboard
+	DB.leaderboard_request_completed.connect(_on_leaderboard_loaded)
+	DB.fetch_top(16)
 	
-	#await Shibadb.init_shibadb("68ec56fcd22" + "e9d15257d4260")
-	
-	#Shibadb.load_progress()
 
 func _on_leaderboard_loaded(data) -> void:
-	print("data is ", data)
 	
 	# handle strange data in case? idk lol
 	if typeof(data) == TYPE_DICTIONARY and data.has("leaderboard"):
@@ -73,21 +70,39 @@ func _on_leaderboard_loaded(data) -> void:
 	else:
 		leaderboard_data = []
 	
+	leaderboard_label.text = "wave | time | player | shards \n"
+	
+	for score in data:
+		var player_name = score.player_name
+		var wave = score.wave
+		var time = _format_time(score.time)
+		var shards = score.shards
+		var easy_mode = score.easy_mode
+		
+		#leaderboard_label.text += str(count) + " - " + player_name + " | wave " + str(wave) + " | " + time + " | " + str(shards) +  " shards"
+		leaderboard_label.text += String.num_int64(wave) + " - " + time + " - " + player_name + " - " + String.num_int64(shards) + " shards"
+		
+		if easy_mode:
+			leaderboard_label.text += " (easymode)"
+		
+		leaderboard_label.text += "\n"
+	
+	# move somewhere else todo
 	if save_a_new_data:
 		save_a_new_data = false
 		print("triggered save new leaderboard pos ", on_wave, time_elapsed, Globals.shards, Globals.easy_mode)
 		
 		var new_entry = {
-			"player": str(randi()),
+			"player_name": str(randi()),
 			"wave": on_wave,
-			"time": _format_time(time_elapsed),
+			"time": time_elapsed,
 			"shards": Globals.shards,
 			"easy_mode": Globals.easy_mode
 		}
 		
 		leaderboard_data.append(new_entry)
 		
-		Shibadb.save_progress({ "leaderboard": leaderboard_data })
+		#Shibadb.save_progress({ "leaderboard": leaderboard_data })
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

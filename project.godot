@@ -21,7 +21,8 @@ config/icon="res://icon.svg"
 
 Globals="*res://scripts/globals.gd"
 ControllerIcons="*res://addons/controller_icons/ControllerIcons.gd"
-Shibadb="*res://scripts/shibadb.gd"
+Shibadb="res://scripts/shibadb.gd"
+DB="*res://scripts/leaderboard.gd"
 
 [debug_draw_3d]
 
