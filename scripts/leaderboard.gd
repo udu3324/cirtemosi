@@ -70,7 +70,7 @@ func fetch_top(limit: int = 50) -> void:
 		_queued_fetch = true
 		return
 	_request_kind = RequestKind.FETCH
-	var url = "%s/%s?select=*&order=wave.desc,time.asc&limit=%d" % [BASE, TABLE, limit]
+	var url = "%s/%s?select=*&order=wave.desc,time.asc,shards.desc&limit=%d" % [BASE, TABLE, limit]
 	var err = http.request(url, HEADERS_GET, HTTPClient.METHOD_GET)
 	if err != OK:
 		_request_kind = RequestKind.NONE

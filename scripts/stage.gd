@@ -35,7 +35,7 @@ extends Node
 @onready var arcade_ui_title = $CanvasLayer/Arcade/MarginContainer/Title
 @onready var arcade_ui_description = $CanvasLayer/Arcade/MarginContainer2/Description
 @onready var arcade_ui_time = $CanvasLayer/Arcade/MarginContainer3/Time
-@onready var arcade_ui_submit: CenterContainer = $CanvasLayer/Arcade/CenterContainer
+@onready var arcade_ui_submit: CenterContainer = $CanvasLayer/Arcade/MarginContainer4/CenterContainer
 
 var level
 var player
@@ -64,6 +64,8 @@ func _ready() -> void:
 	menuReset.connect("to_checkpoint", _to_checkpoint)
 	
 	credits.connect("exit_to_start", _on_exit_start)
+	
+	arcade_ui.connect("exit_to_start", _on_exit_start)
 	
 	
 	if Globals.debug_mode:
@@ -208,6 +210,9 @@ func _handle_death_event():
 		
 		Globals.player_can_move = false
 		Globals.player_physics_processing = false
+		
+		var audioFade = create_tween()
+		audioFade.tween_property(Globals.master_audio, "volume_db", -5.0, 2)
 		
 		return
 		
@@ -448,6 +453,7 @@ func _on_exit_start():
 		hint.visible = false
 	
 	arcade_ui.visible = false
+	arcade_ui_submit.visible = false
 	
 	menuPause.visible = false
 	menuReset.visible = false
@@ -490,6 +496,8 @@ func _on_exit_start():
 	Globals.camera_size = 5.762
 	
 	Globals.arcade_started = false
+	Globals.arcade_wave = 0
+	Globals.arcade_timef = 0.0
 	
 	
 	get_tree().paused = false

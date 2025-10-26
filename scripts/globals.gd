@@ -99,6 +99,9 @@ var card_obelisk_shown = false
 
 # arcade
 var arcade_started = false
+var arcade_name = ""
+var arcade_timef = 0.0
+var arcade_wave = 0
 
 # settings
 var screen_relative_movement = true

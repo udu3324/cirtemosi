@@ -27,7 +27,7 @@ extends Node3D
 	3: { # spawn 8 enemts all spaced out but fast
 		"subsequent": false,
 		"enemts": 8,
-		"enemt_delay": 7.0,
+		"enemt_delay": 5.0,
 		"zerts": 0,
 		"zert_delay": 0,
 		"weapon_damage": 25
@@ -43,7 +43,6 @@ extends Node3D
 }
 
 var leaderboard_data
-var save_a_new_data: bool = false
 
 var on_wave: int = 0
 var time_elapsed: float = 0.0
@@ -80,29 +79,12 @@ func _on_leaderboard_loaded(data) -> void:
 		var easy_mode = score.easy_mode
 		
 		#leaderboard_label.text += str(count) + " - " + player_name + " | wave " + str(wave) + " | " + time + " | " + str(shards) +  " shards"
-		leaderboard_label.text += String.num_int64(wave) + " - " + time + " - " + player_name + " - " + String.num_int64(shards) + " shards"
+		leaderboard_label.text += String.num_int64(wave) + " | " + time + " - " + player_name + " - " + String.num_int64(shards) + " shards"
 		
 		if easy_mode:
 			leaderboard_label.text += " (easymode)"
 		
 		leaderboard_label.text += "\n"
-	
-	# move somewhere else todo
-	if save_a_new_data:
-		save_a_new_data = false
-		print("triggered save new leaderboard pos ", on_wave, time_elapsed, Globals.shards, Globals.easy_mode)
-		
-		var new_entry = {
-			"player_name": str(randi()),
-			"wave": on_wave,
-			"time": time_elapsed,
-			"shards": Globals.shards,
-			"easy_mode": Globals.easy_mode
-		}
-		
-		leaderboard_data.append(new_entry)
-		
-		#Shibadb.save_progress({ "leaderboard": leaderboard_data })
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -110,6 +92,7 @@ func _process(delta: float) -> void:
 	# handle count up time
 	if started and !stop_timer:
 		time_elapsed += delta
+		Globals.arcade_timef = time_elapsed
 		Globals.arcade_time.text = _format_time(time_elapsed)
 	
 	if on_wave == 0:
@@ -130,6 +113,7 @@ func _process(delta: float) -> void:
 		Globals.health = Globals.health_max
 		await get_tree().create_timer(0.8).timeout
 		
+		Globals.arcade_wave = on_wave
 		if on_wave == 1:
 			_start_wave(2)
 		elif on_wave == 2:
@@ -139,10 +123,11 @@ func _process(delta: float) -> void:
 		else:
 			stop_timer = true
 			Globals.arcade_title.text = "finished!"
-			Globals.arcade_description.text = "\n\n\nplease walk off the\nisland for now to\ngo back to the main\nmenu."
+			#Globals.arcade_description.text = "\n\n\nplease walk off the\nisland for now to\ngo back to the main\nmenu."
 			
-			#save_a_new_data = true
-			#Shibadb.load_progress()
+			await get_tree().create_timer(2.0).timeout
+			
+			Globals.player_death_event = "arcade_fin_shortcut"
 	
 	
 	if Globals.enemt_deaths[0] >= 1: # handle a enemt death
@@ -189,6 +174,7 @@ func _on_area_3d_trigger_start_body_entered(body: Node3D) -> void:
 # start a new wave
 func _start_wave(wave: int):
 	on_wave = wave
+	
 	
 	Globals.arcade_title.text = "wave " + str(wave)
 	Globals.arcade_description.text = ""
