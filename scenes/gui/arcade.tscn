@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://cbsplx2pvl8b2"]
+[gd_scene load_steps=6 format=3 uid="uid://cbsplx2pvl8b2"]
 
+[ext_resource type="Script" uid="uid://bv6ipe0k6d0xc" path="res://scripts/arcade/arcade_ui.gd" id="1_622p3"]
 [ext_resource type="FontFile" uid="uid://d25dq4tmt7ywp" path="res://assets/font/NebulaSans-Black.ttf" id="1_yykwl"]
 [ext_resource type="FontFile" uid="uid://1qiyr01tsexv" path="res://assets/font/NebulaSans-Bold.ttf" id="2_q1dgm"]
+[ext_resource type="FontFile" uid="uid://d8rupcfbnwjx" path="res://assets/font/NebulaSans-Semibold.ttf" id="3_2tbt5"]
+[ext_resource type="Theme" uid="uid://cty6tsnl17brm" path="res://assets/theme/arcade_button.tres" id="4_622p3"]
 
 [node name="Arcade" type="Control"]
 layout_mode = 3
@@ -10,13 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-layout_mode = 0
-offset_right = 1158.0
-offset_bottom = 343.0
-color = Color(1, 0.4532537, 0.37674695, 1)
+script = ExtResource("1_622p3")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -68,3 +65,268 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_q1dgm")
 theme_override_font_sizes/font_size = 66
 horizontal_alignment = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_2tbt5")
+theme_override_font_sizes/font_size = 41
+text = "enter a name to submit your score!"
+
+[node name="LineEdit" type="LineEdit" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_2tbt5")
+theme_override_font_sizes/font_size = 51
+placeholder_text = "(3-16 chars)"
+max_length = 16
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+virtual_keyboard_show_on_focus = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 10
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme = ExtResource("4_622p3")
+text = "1"
+
+[node name="Button29" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme = ExtResource("4_622p3")
+text = "2"
+
+[node name="Button31" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme = ExtResource("4_622p3")
+text = "3"
+
+[node name="Button32" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme = ExtResource("4_622p3")
+text = "4"
+
+[node name="Button33" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme = ExtResource("4_622p3")
+text = "5"
+
+[node name="Button34" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme = ExtResource("4_622p3")
+text = "6"
+
+[node name="Button35" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme = ExtResource("4_622p3")
+text = "7"
+
+[node name="Button36" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme = ExtResource("4_622p3")
+text = "8"
+
+[node name="Button37" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme = ExtResource("4_622p3")
+text = "9"
+
+[node name="Button38" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme = ExtResource("4_622p3")
+text = "0"
+
+[node name="Button28" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme = ExtResource("4_622p3")
+text = "q"
+
+[node name="Button2" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme = ExtResource("4_622p3")
+text = "w"
+
+[node name="Button3" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme = ExtResource("4_622p3")
+text = "e"
+
+[node name="Button4" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme = ExtResource("4_622p3")
+text = "r"
+
+[node name="Button5" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme = ExtResource("4_622p3")
+text = "t"
+
+[node name="Button6" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme = ExtResource("4_622p3")
+text = "y"
+
+[node name="Button7" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme = ExtResource("4_622p3")
+text = "u"
+
+[node name="Button8" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme = ExtResource("4_622p3")
+text = "i"
+
+[node name="Button9" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme = ExtResource("4_622p3")
+text = "o"
+
+[node name="Button10" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme = ExtResource("4_622p3")
+text = "p"
+
+[node name="Button11" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("4_622p3")
+text = "a"
+
+[node name="Button12" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("4_622p3")
+text = "s"
+
+[node name="Button13" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("4_622p3")
+text = "d"
+
+[node name="Button14" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("4_622p3")
+text = "f"
+
+[node name="Button15" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("4_622p3")
+text = "g"
+
+[node name="Button16" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("4_622p3")
+text = "h"
+
+[node name="Button17" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("4_622p3")
+text = "j"
+
+[node name="Button18" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("4_622p3")
+text = "k"
+
+[node name="Button19" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("4_622p3")
+text = "l"
+
+[node name="Button20" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("4_622p3")
+text = "_"
+
+[node name="Button21" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("4_622p3")
+text = "z"
+
+[node name="Button22" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("4_622p3")
+text = "x"
+
+[node name="Button23" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("4_622p3")
+text = "c"
+
+[node name="Button24" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("4_622p3")
+text = "v"
+
+[node name="Button25" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("4_622p3")
+text = "b"
+
+[node name="Button26" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("4_622p3")
+text = "n"
+
+[node name="Button27" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("4_622p3")
+text = "m"
+
+[node name="Button30" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("4_622p3")
+text = "←"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="DontSave" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_yykwl")
+theme_override_font_sizes/font_size = 46
+text = " cancel "
+
+[node name="Submit" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_yykwl")
+theme_override_font_sizes/font_size = 46
+text = " submit "
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/DontSave" to="." method="_on_dont_save_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/Submit" to="." method="_on_submit_pressed"]

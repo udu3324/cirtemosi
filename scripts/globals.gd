@@ -97,6 +97,9 @@ var run_spiral_down_once = false
 var final_relic_placement_ready = false
 var card_obelisk_shown = false
 
+# arcade
+var arcade_started = false
+
 # settings
 var screen_relative_movement = true
 var easy_mode = false

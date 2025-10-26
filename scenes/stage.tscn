@@ -55,10 +55,10 @@ visible = false
 [node name="HealthBar" parent="CanvasLayer" instance=ExtResource("5_dexii")]
 visible = false
 
+[node name="ControllerHints" parent="CanvasLayer" instance=ExtResource("7_5sts7")]
+
 [node name="Arcade" parent="CanvasLayer" instance=ExtResource("9_drh8o")]
 visible = false
-
-[node name="ControllerHints" parent="CanvasLayer" instance=ExtResource("7_5sts7")]
 
 [node name="TitleCard" parent="CanvasLayer" instance=ExtResource("10_nea6r")]
 visible = false

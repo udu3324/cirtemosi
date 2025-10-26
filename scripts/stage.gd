@@ -35,6 +35,7 @@ extends Node
 @onready var arcade_ui_title = $CanvasLayer/Arcade/MarginContainer/Title
 @onready var arcade_ui_description = $CanvasLayer/Arcade/MarginContainer2/Description
 @onready var arcade_ui_time = $CanvasLayer/Arcade/MarginContainer3/Time
+@onready var arcade_ui_submit: CenterContainer = $CanvasLayer/Arcade/CenterContainer
 
 var level
 var player
@@ -83,7 +84,7 @@ func _process(_delta: float) -> void:
 	Globals.loadingVisible = menuLoading.visible
 	Globals.resetVisible = menuReset.visible
 	
-	Globals.arcadeUIVisible = arcade_ui.visible
+	Globals.arcadeUIVisible = arcade_ui_submit.visible
 	
 	if !masterAudio.playing:
 		masterAudio.play()
@@ -190,7 +191,26 @@ func _handle_vignette_event():
 	tween.tween_property(vignette.material, "shader_parameter/opacity", 0.0, 1.0)
 
 func _handle_death_event():
-	print_debug("recieved death event", Globals.player_death_event)
+	print_debug("recieved death event ", Globals.player_death_event)
+	
+	if arcade_ui.visible and Globals.arcade_started:
+		Globals.player_death_event = ""
+		Globals.arcade_started = false
+		
+		print("handled a death during arcade")
+		arcade_ui_submit.visible = true
+		
+		arcade_ui_title.text = ""
+		arcade_ui_description.text = ""
+		
+		stamina.visible = false
+		health.visible = false
+		
+		Globals.player_can_move = false
+		Globals.player_physics_processing = false
+		
+		return
+		
 	
 	if Globals.player_death_event == "floor_death":
 		Globals.player_death_event = ""
@@ -469,6 +489,7 @@ func _on_exit_start():
 	
 	Globals.camera_size = 5.762
 	
+	Globals.arcade_started = false
 	
 	
 	get_tree().paused = false

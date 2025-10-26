@@ -173,6 +173,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 func _on_area_3d_trigger_start_body_entered(body: Node3D) -> void:
 	if body.name.contains("Player") and !started:
 		started = true
+		Globals.arcade_started = true
 		
 		bridge.queue_free()
 		
