@@ -106,6 +106,8 @@ var arcade_wave = 0
 # settings
 var screen_relative_movement = true
 var easy_mode = false
+var gamma = 1.4
+var gamma_preview = false
 
 # between story and arcade mode
 var enemt_deaths = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]

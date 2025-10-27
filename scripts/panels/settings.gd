@@ -6,8 +6,13 @@ extends Control
 @onready var screen_relative_movement_btn = $CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/ScreenRelativeMovement
 @onready var easy_mode_btn = $CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer/EasyMode
 @onready var volume_slider = $CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer3/HBoxContainer/MasterVolume
+@onready var gamma_slider = $CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer4/HBoxContainer/Gamma
+@onready var hide_timer: Timer = $HideTimer
+@onready var blocker: MarginContainer = $MarginContainer
 
 var mouse_is_inside: bool = false
+
+
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -16,6 +21,7 @@ func _ready() -> void:
 	screen_relative_movement_btn.button_pressed = Globals.screen_relative_movement
 	easy_mode_btn.button_pressed = Globals.easy_mode
 	
+	gamma_slider.value = remap(Globals.gamma, 0.0, 2.0, 0.0, 20.0)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -82,3 +88,16 @@ func _on_easy_mode_toggled(toggled_on: bool) -> void:
 func _on_master_volume_value_changed(value: float) -> void:
 	#print_debug("volume changed to ", volume_slider.value - 15)
 	AudioServer.set_bus_volume_db(0, volume_slider.value - 15)
+
+
+func _on_gamma_value_changed(value: float) -> void:
+	Globals.gamma = remap(value, 0.0, 20.0, 0.0, 2.0)
+	
+	blocker.visible = false
+	Globals.gamma_preview = true
+	hide_timer.start()
+
+
+func _on_hide_timer_timeout() -> void:
+	blocker.visible = true
+	Globals.gamma_preview = false

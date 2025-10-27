@@ -8,12 +8,22 @@ extends Control
 signal exit_to_start
 
 var loaded = false
+var _was_visible_before = false
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 func _process(_delta: float) -> void:
 	_handle_input()
+	
+	if Globals.gamma_preview:
+		if visible:
+			_was_visible_before = true
+			visible = false
+	else:
+		if _was_visible_before and !visible:
+			visible = true
+			_was_visible_before = false
 	
 	if !visible:
 		return

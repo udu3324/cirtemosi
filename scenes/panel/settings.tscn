@@ -177,6 +177,25 @@ layout_mode = 2
 theme = ExtResource("2_hs6tt")
 text = "Master Volume"
 
+[node name="VBoxContainer4" type="VBoxContainer" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer4"]
+layout_mode = 2
+
+[node name="Gamma" type="HSlider" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer4/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+focus_neighbor_top = NodePath("../../../VBoxContainer2/HBoxContainer/EasyMode")
+max_value = 20.0
+step = 0.1
+value = 10.0
+
+[node name="Label" type="Label" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer4/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_hs6tt")
+text = "Gamma"
+
 [node name="HSeparator2" type="HSeparator" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
@@ -253,6 +272,12 @@ theme_override_fonts/font = ExtResource("1_2jlhx")
 theme_override_font_sizes/font_size = 20
 text = "to exit"
 
+[node name="HideTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
 [connection signal="toggled" from="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/ScreenRelativeMovement" to="." method="_on_screen_relative_movement_toggled"]
 [connection signal="toggled" from="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer/EasyMode" to="." method="_on_easy_mode_toggled"]
 [connection signal="value_changed" from="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer3/HBoxContainer/MasterVolume" to="." method="_on_master_volume_value_changed"]
+[connection signal="value_changed" from="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer4/HBoxContainer/Gamma" to="." method="_on_gamma_value_changed"]
+[connection signal="timeout" from="HideTimer" to="." method="_on_hide_timer_timeout"]

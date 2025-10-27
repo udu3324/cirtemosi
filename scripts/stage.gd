@@ -15,6 +15,7 @@ extends Node
 
 @onready var regular = preload("res://assets/audio/soundtrack/cirtemosi-start-remixed.ogg")
 
+@onready var gamma: ColorRect = $CanvasLayer/Gamma/ColorRect
 @onready var vignette = $CanvasLayer/Vignette/MarginContainer/ColorRect
 @onready var health = $CanvasLayer/HealthBar
 @onready var stamina = $CanvasLayer/StaminaBar
@@ -94,6 +95,9 @@ func _process(_delta: float) -> void:
 	if Globals.player_vignette_event:
 		_handle_vignette_event()
 	
+	if Globals.gamma != gamma.material.get_shader_parameter("gamma"):
+		gamma.material.set_shader_parameter("gamma", Globals.gamma)
+	
 	if Globals.player_death_event != "":
 		_handle_death_event()
 	
@@ -143,7 +147,6 @@ func _process(_delta: float) -> void:
 					Globals.debug_mode_relic_give = 0
 			
 			Globals.debug_mode_relic_give += 1
-
 
 func _handle_input_controller_hints():
 	if Input.is_action_pressed("ui_up"):
@@ -499,6 +502,7 @@ func _on_exit_start():
 	Globals.arcade_wave = 0
 	Globals.arcade_timef = 0.0
 	
+	Globals.gamma_preview = false
 	
 	get_tree().paused = false
 	

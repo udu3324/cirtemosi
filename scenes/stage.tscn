@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://deosjk0k7g3ym"]
+[gd_scene load_steps=25 format=3 uid="uid://deosjk0k7g3ym"]
 
 [ext_resource type="Script" uid="uid://cus4gkng2m21t" path="res://scripts/stage.gd" id="1_vcsse"]
 [ext_resource type="PackedScene" uid="uid://dl3txvou7nvh" path="res://scenes/gui/relics.tscn" id="2_0hg5s"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bxa8pathifmtb" path="res://scenes/gui/vignette.tscn" id="2_jl6nj"]
 [ext_resource type="PackedScene" uid="uid://8uapt3fxhrtt" path="res://scenes/gui/stamina_bar.tscn" id="3_2so7o"]
 [ext_resource type="PackedScene" uid="uid://b4b5oapw2kjx0" path="res://scenes/menu/pause.tscn" id="3_st0q7"]
+[ext_resource type="PackedScene" uid="uid://djohmk13ubk24" path="res://scenes/gui/gamma.tscn" id="3_uw5rs"]
 [ext_resource type="PackedScene" uid="uid://bq3w0tdsdqfts" path="res://scenes/gui/equipment.tscn" id="4_1hwpr"]
 [ext_resource type="PackedScene" uid="uid://cbyf4enci74kj" path="res://scenes/gui/shards.tscn" id="5_3bqjo"]
 [ext_resource type="PackedScene" uid="uid://dc6xmfi6ci3yi" path="res://scenes/gui/health_bar.tscn" id="5_dexii"]
@@ -37,6 +38,8 @@ script = ExtResource("1_vcsse")
 [node name="Node3D" type="Node3D" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Gamma" parent="CanvasLayer" instance=ExtResource("3_uw5rs")]
 
 [node name="Vignette" parent="CanvasLayer" instance=ExtResource("2_jl6nj")]
 
