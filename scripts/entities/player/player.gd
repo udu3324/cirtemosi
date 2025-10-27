@@ -29,6 +29,7 @@ extends RigidBody3D
 
 var swoosh = preload("res://assets/audio/fx/player_attempt_hit.wav")
 var hit_starter_weapon = preload("res://assets/audio/fx/starter_weapon_hit.wav")
+var pull_out_bow = preload("res://assets/audio/fx/bow-pullout.wav")
 
 var animating = false
 var animate_reset = false
@@ -372,6 +373,8 @@ func _handle_equipment() -> void:
 	if held_item == "bow":
 		attacking = true
 		
+		Globals._play_fx(audio_player, pull_out_bow, 0.0, 1.0)
+		
 		# start animation
 		var attack_tween = create_tween()
 		attack_tween.parallel().tween_property(weapon_node, "rotation:x", - deg_to_rad(5), 0.1)
@@ -454,7 +457,6 @@ func _handle_equipment() -> void:
 		await attack_tween.finished
 		
 		attacking = false
-
 
 func _get_all_enemy_nodes() -> Array:
 	var enemies = []

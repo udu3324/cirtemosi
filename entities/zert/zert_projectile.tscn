@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cy2nebdl37ose"]
+[gd_scene load_steps=5 format=3 uid="uid://cy2nebdl37ose"]
 
 [ext_resource type="Script" uid="uid://dvmaaxpq02c6n" path="res://scripts/entities/zert/zert_projectile.gd" id="1_ydykf"]
+[ext_resource type="AudioStream" uid="uid://dvmmd7sxueb5c" path="res://assets/audio/fx/zert-land.wav" id="2_fcnoa"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ydykf"]
 resource_local_to_scene = true
@@ -30,6 +31,9 @@ autostart = true
 [node name="Timer2" type="Timer" parent="."]
 wait_time = 0.3
 one_shot = true
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_fcnoa")
 
 [connection signal="timeout" from="Timer" to="." method="cleanup"]
 [connection signal="timeout" from="Timer2" to="." method="cleanup"]

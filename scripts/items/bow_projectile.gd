@@ -5,6 +5,7 @@ extends RayCast3D
 @export var speed := 5.0
 
 @onready var timer: Timer = $Timer2
+@onready var audio_player: AudioStreamPlayer3D = $AudioStreamPlayer3D
 
 #var lerp := 0
 var elapsed_time := 0.0
@@ -21,6 +22,8 @@ func _physics_process(delta: float) -> void:
 		collided = true
 		global_position = get_collision_point()
 		set_physics_process(false)
+		
+		audio_player.play()
 		
 		#print("collided with", get_collider().name)
 		

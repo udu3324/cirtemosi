@@ -21,6 +21,7 @@ extends RigidBody3D
 @onready var audio_player: AudioStreamPlayer3D = $AudioStreamPlayer3D
 
 var dies = preload("res://assets/audio/fx/enemt_dead.wav")
+var shoot = preload("res://assets/audio/fx/zert-shoot.wav")
 
 @export_range (0, 24) var array_death_log: int = 0
 @export var ignore_player: bool = false
@@ -242,6 +243,8 @@ func _physics_process(delta: float) -> void:
 		projectile.vector_rotation = angle_y - (PI / 2)
 		
 		Globals.root_node_3d.add_child(projectile)
+		
+		Globals._play_fx(audio_player, shoot, 0.0, 1.0)
 	
 	if roaming:
 		roaming_period += delta

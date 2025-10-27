@@ -12,6 +12,7 @@ extends RayCast3D
 @onready var material: StandardMaterial3D = mesh.material
 
 @onready var timer: Timer = $Timer2
+@onready var audio_player: AudioStreamPlayer3D = $AudioStreamPlayer3D
 
 #var lerp := 0
 var elapsed_time := 0.0
