@@ -27,7 +27,7 @@ extends Node3D
 	3: { # spawn 8 enemts all spaced out but fast
 		"subsequent": false,
 		"enemts": 8,
-		"enemt_delay": 5.0,
+		"enemt_delay": 5.5,
 		"zerts": 0,
 		"zert_delay": 0,
 		"weapon_damage": 25
@@ -113,7 +113,9 @@ func _process(delta: float) -> void:
 		Globals.health = Globals.health_max
 		await get_tree().create_timer(0.8).timeout
 		
-		Globals.arcade_wave = on_wave
+		if !stop_timer:
+			Globals.arcade_wave = on_wave
+		
 		if on_wave == 1:
 			_start_wave(2)
 		elif on_wave == 2:

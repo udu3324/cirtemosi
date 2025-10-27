@@ -1,7 +1,7 @@
 extends Node3D
 
 
-@export_range (10, 500) var healing_size: int = 30
+@export_range (10, 500) var healing_size: int = 50
 @export_range (1, 7) var relic_num: int = 1
 @export var relic_outline: Color = Color(0.518, 0.075, 0.122)
 

@@ -86,7 +86,7 @@ func _process(_delta: float) -> void:
 	Globals.loadingVisible = menuLoading.visible
 	Globals.resetVisible = menuReset.visible
 	
-	Globals.arcadeUIVisible = arcade_ui_submit.visible
+	Globals.arcadeUIVisible = arcade_ui.visible
 	
 	if !masterAudio.playing:
 		masterAudio.play()

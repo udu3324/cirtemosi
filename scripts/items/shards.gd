@@ -15,6 +15,14 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		
 		Globals.shards += 1
 		
+		var add_health = randi_range(1, 3)
+		if (Globals.health + add_health) < Globals.health_max:
+			Globals.health += add_health
+		
+		var add_stamina = randi_range(10, 15)
+		if (Globals.stamina + add_stamina) < Globals.stamina_max:
+			Globals.stamina += add_stamina
+		
 		self.collision_layer = 0
 		self.collision_mask = 0
 		
