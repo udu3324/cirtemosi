@@ -1,7 +1,7 @@
 extends Node
 
 
-var debug_mode: bool = true
+var debug_mode: bool = false
 var debug_mode_relic_give: int = 0
 
 # gui
