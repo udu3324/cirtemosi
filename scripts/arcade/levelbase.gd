@@ -11,7 +11,7 @@ extends Node3D
 	1: { # spawn 4 enemts all spaced out
 		"subsequent": true,
 		"enemts": 3,
-		"enemt_delay": 1.5,
+		"enemt_delay": 0.5,
 		"zerts": 0,
 		"zert_delay": 0,
 		"weapon_damage": 20
@@ -27,10 +27,10 @@ extends Node3D
 	3: { # spawn 8 enemts all spaced out but fast
 		"subsequent": false,
 		"enemts": 8,
-		"enemt_delay": 5.5,
+		"enemt_delay": 4.0,
 		"zerts": 0,
 		"zert_delay": 0,
-		"weapon_damage": 25
+		"weapon_damage": 50
 	},
 	4: { # spawn 4 enemts all at once with a delay
 		"subsequent": false,
@@ -38,7 +38,15 @@ extends Node3D
 		"enemt_delay": 0.0,
 		"zerts": 0,
 		"zert_delay": 0,
-		"weapon_damage": 30
+		"weapon_damage": 25
+	},
+	5: { # spawn a zert
+		"subsequent": false,
+		"enemts": 0,
+		"enemt_delay": 0.0,
+		"zerts": 1,
+		"zert_delay": 0,
+		"weapon_damage": 25
 	},
 }
 
@@ -122,6 +130,10 @@ func _process(delta: float) -> void:
 			_start_wave(3)
 		elif on_wave == 3:
 			_start_wave(4)
+		elif on_wave == 4:
+			Globals.equipment[1] = "bow"
+			Globals.slot_active = 2
+			_start_wave(5)
 		else:
 			stop_timer = true
 			Globals.arcade_title.text = "finished!"
@@ -131,18 +143,40 @@ func _process(delta: float) -> void:
 			
 			Globals.player_death_event = "arcade_fin_shortcut"
 	
-	
-	if Globals.enemt_deaths[0] >= 1: # handle a enemt death
+	# handle a enemt death
+	if Globals.enemt_deaths[0] >= 1: 
 		var difference = Globals.enemt_deaths[0]
 		Globals.enemt_deaths[0] = 0
 		
 		wave_enemt_deaths += difference
-		Globals.arcade_description.text = "enemt " + str(wave_enemt_deaths) + "/" + str(waves[on_wave]["enemts"])
+		_build_description()
 		
 		if waves[on_wave]["subsequent"] and wave_enemt_deaths != waves[on_wave]["enemts"]:
 			await get_tree().create_timer(waves[on_wave]["enemt_delay"]).timeout
 			#print("just one 4now")
 			_spawn_enemt()
+	
+	# handle a zert death
+	if Globals.zert_deaths[0] >= 1:
+		var difference = Globals.zert_deaths[0]
+		Globals.zert_deaths[0] = 0
+		
+		wave_zert_deaths += difference
+		_build_description()
+		
+		if waves[on_wave]["subsequent"] and wave_zert_deaths != waves[on_wave]["zerts"]:
+			await get_tree().create_timer(waves[on_wave]["zert_delay"]).timeout
+			#print("just one 4now")
+			_spawn_zert()
+
+func _build_description():
+	Globals.arcade_description.text = ""
+	
+	if waves[on_wave]["enemts"] >= 1:
+		Globals.arcade_description.text += "enemt " + str(wave_enemt_deaths) + "/" + str(waves[on_wave]["enemts"]) + "\n"
+	
+	if waves[on_wave]["zerts"] >= 1:
+		Globals.arcade_description.text += "zert " + str(wave_zert_deaths) + "/" + str(waves[on_wave]["zerts"]) + "\n"
 
 # floor death area 3d handler - handles death of things
 func _on_area_3d_body_entered(body: Node3D) -> void:
@@ -200,6 +234,15 @@ func _start_wave(wave: int):
 
 	if waves[on_wave]["zerts"] != 0:
 		Globals.arcade_description.text += "zert " + str(wave_zert_deaths) + "/" + str(waves[on_wave]["zerts"]) + "\n"
+		
+		# kickstart wave
+		if waves[on_wave]["subsequent"]:
+			_spawn_zert()
+		else:
+			for i in range(waves[on_wave]["zerts"]):
+				#print("spawning in!!!!")
+				var delay = waves[on_wave]["zert_delay"] * i
+				_spawn_zert_async_internal_func_dont_use(delay)
 	
 	pass
 
@@ -225,6 +268,28 @@ func _spawn_enemt():
 func _spawn_enemt_async_internal_func_dont_use(delay: float):
 	await get_tree().create_timer(delay).timeout
 	_spawn_enemt()
+
+func _spawn_zert():
+	var radius = zone.get_child(0).shape.radius
+	
+	var angle = randf() * TAU
+	var r = sqrt(randf()) * radius
+	
+	var local_pos = Vector3(r * cos(angle), 0, r * sin(angle))
+	var world_pos = zone.global_transform.origin + local_pos
+	world_pos.y = 1.0
+	
+	var zert = preload("res://entities/zert/zert.tscn").instantiate()
+	zert.name = "Zert" + str(randi())
+	zert.global_transform.origin = world_pos
+	zert.rng_shard_drops = false
+	#zert.rotation here todo
+	
+	Globals.root_node_3d.add_child(zert)
+
+func _spawn_zert_async_internal_func_dont_use(delay: float):
+	await get_tree().create_timer(delay).timeout
+	_spawn_zert()
 
 # ty https://forum.godotengine.org/t/formatting-a-timer/6482/2
 func _format_time(time: float) -> String: 

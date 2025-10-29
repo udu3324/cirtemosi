@@ -85,6 +85,7 @@ func _ready() -> void:
 	right_rest_rot = right_hand.rotation
 	
 	_regen_points()
+	model.rotation.y = deg_to_rad(line_path_angle) + (PI / 2)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -94,6 +95,7 @@ func _process(_delta: float) -> void:
 		var backward_dir = global_transform.basis.z.normalized()
 	
 		var angle_offset = deg_to_rad(line_path_angle)
+		model.rotation.y = angle_offset + (PI / 2)
 	
 		var rotated_forward = (Basis(Vector3.UP, angle_offset) * forward_dir).normalized()
 		var rotated_backward = (Basis(Vector3.UP, angle_offset) * backward_dir).normalized()
