@@ -267,6 +267,8 @@ func _face_to_vector3(point: Vector3) -> void:
 	
 	# model.rotation.y = lerp_angle(model.rotation.y, angle_y, 0.5)
 	var rotate_tween = create_tween()
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_ease(Tween.EASE_IN_OUT)
 	rotate_tween.tween_property(model, "rotation:y", angle_y, 0.1)
 
 func _face_to_velocity() -> void:
@@ -278,6 +280,8 @@ func _face_to_velocity() -> void:
 	
 	# model.rotation.y = lerp_angle(model.rotation.y, angle_y, 0.1)
 	var rotate_tween = create_tween()
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_ease(Tween.EASE_IN_OUT)
 	rotate_tween.tween_property(model, "rotation:y", angle_y, 0.1)
 
 func _attempt_attack():
@@ -304,6 +308,8 @@ func _attempt_attack():
 	Globals._play_fx(audio_player, slash, 0.0, randf_range(0.7, 0.9))
 	
 	tween = create_tween()
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(right_hand, "position:x", - 0.53, 0.07).as_relative()
 	tween.tween_property(right_hand, "position:z", 0.2, 0.07).as_relative()
 	tween.tween_property(right_hand, "rotation:y", deg_to_rad(80), 0.03).as_relative()
@@ -314,6 +320,8 @@ func _attempt_attack():
 	
 	await get_tree().create_timer(0.03).timeout
 	tween = create_tween()
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(left_hand, "position:x", - 0.55, 0.09).as_relative()
 	tween.tween_property(left_hand, "position:z", - 0.2, 0.09).as_relative()
 	tween.tween_property(left_hand, "rotation:y", - deg_to_rad(80), 0.03).as_relative()
@@ -355,6 +363,8 @@ func _attempt_attack():
 	# right_hand.position.x += 0.3
 	# right_hand.rotation.y = lerp_angle(right_hand.rotation.y, right_hand.rotation.y + deg_to_rad(80), 0.1)
 	tween = create_tween()
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(right_hand, "rotation", right_rest_rot, 0.13)
 	tween.tween_property(right_hand, "position", right_rest_pos, 0.17)
 	
@@ -364,6 +374,8 @@ func _attempt_attack():
 	
 	await get_tree().create_timer(0.03).timeout
 	tween = create_tween()
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(left_hand, "rotation", left_rest_rot, 0.13)
 	tween.tween_property(left_hand, "position", left_rest_pos, 0.17)
 	await tween.finished

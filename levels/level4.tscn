@@ -18,7 +18,7 @@ emission = Color(0.24415788, 0.5749604, 0.6892473, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cc5tm"]
 albedo_color = Color(0.39688924, 0.39688927, 0.3968891, 1)
-emission = Color(0.7543166, 0.2866455, 0.24946246, 1)
+emission = Color(0.76862746, 0.22745098, 0.38039216, 1)
 emission_on_uv2 = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lpgdq"]
@@ -76,7 +76,7 @@ rings = 1
 viewport_path = NodePath("DrawBridge/ElectricalBox2/SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cqjvr"]
-size = Vector3(9.085922, 5.8031006, 9.157669)
+size = Vector3(9.717831, 5.8031006, 7.668268)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_3cb6x"]
 vertices = PackedVector3Array(-0.24830341, 0.49999952, -19.227022, 0.5016966, 0.49999952, -19.477022, -0.4983034, 0.49999952, -20.977022, -1.9983034, 0.49999952, -21.477022, -3.4983034, 0.49999952, -19.727022, -2.7483034, 0.49999952, -16.477022, -9.248303, 0.49999952, -16.227022, -6.2483034, 0.49999952, -14.477022, -10.998303, 0.49999952, -13.977022, -9.998303, 0.49999952, -12.727022, -7.4983034, 0.49999952, -12.727022)
@@ -356,7 +356,7 @@ polygon = PackedVector2Array(5.640152, -1.7501183, 3.8089314, -4.6290846, -4.595
 depth = 3.28
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2Zoom"]
-transform = Transform3D(0.9494967, 0, 0.31377703, 0, 1, 0, -0.31377703, 0, 0.9494967, -1.2422104, 0.8375511, -0.062236786)
+transform = Transform3D(0.9494967, 0, 0.31377703, 0, 1, 0, -0.31377703, 0, 0.9494967, -0.82302666, 0.8375511, 0.19928169)
 shape = SubResource("BoxShape3D_cqjvr")
 
 [node name="ZertCrossBridge" type="Node3D" parent="."]

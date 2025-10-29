@@ -100,6 +100,8 @@ func _on_area_3d_mid_bridge_body_entered(body: Node3D) -> void:
 	if body.name.contains("Player"):
 		transitioning = true
 		#print("player transitioning state is ", transitioning)
+		var audio_tween = create_tween()
+		audio_tween.tween_property(Globals.master_audio, "volume_db", -5.0, 1.0)
 
 
 func _on_area_3d_2_exit_4_2_body_entered(body: Node3D) -> void:
@@ -116,6 +118,9 @@ func _on_area_3d_bridge_4_3_enter_body_entered(body: Node3D) -> void:
 func _on_area_3d_bridge_4_3_transition_body_entered(body: Node3D) -> void:
 	if body.name.contains("Player"):
 		transitioning_2 = true
+		
+		var audio_tween = create_tween()
+		audio_tween.tween_property(Globals.master_audio, "volume_db", -5.0, 1.0)
 
 func _on_area_3d_bridge_4_1_enter_body_entered(body: Node3D) -> void:
 	if body.name.contains("Player") and transitioning_2:
@@ -143,6 +148,9 @@ func _on_area_3d_electrical_box_2_body_exited(body: Node3D) -> void:
 func _on_area_3d_transition_4_4_body_entered(body: Node3D) -> void:
 	if body.name.contains("Player"):
 		transitioning_3 = true
+		
+		var audio_tween = create_tween()
+		audio_tween.tween_property(Globals.master_audio, "volume_db", -5.0, 1.0)
 
 func _on_area_3d_exit_4_4_body_entered(body: Node3D) -> void:
 	if body.name.contains("Player") and transitioning_3:

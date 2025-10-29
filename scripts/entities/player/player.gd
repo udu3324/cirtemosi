@@ -360,6 +360,8 @@ func _handle_equipment() -> void:
 		
 		# stop animation
 		attack_tween = create_tween()
+		attack_tween.set_trans(Tween.TRANS_SINE)
+		attack_tween.set_ease(Tween.EASE_IN_OUT)
 		attack_tween.parallel().tween_property(weapon_node, "rotation:y", 0, 0.25)
 		attack_tween.parallel().tween_property(left_arm, "rotation:y", 0, 0.5)
 		attack_tween.parallel().tween_property(left_arm, "rotation:z", 0, 0.5)
@@ -377,6 +379,8 @@ func _handle_equipment() -> void:
 		
 		# start animation
 		var attack_tween = create_tween()
+		attack_tween.set_trans(Tween.TRANS_SINE)
+		attack_tween.set_ease(Tween.EASE_IN_OUT)
 		attack_tween.parallel().tween_property(weapon_node, "rotation:x", - deg_to_rad(5), 0.1)
 		attack_tween.parallel().tween_property(weapon_node, "rotation:y", + deg_to_rad(23), 0.1)
 		attack_tween.parallel().tween_property(weapon_node, "position:x", 0.3, 0.1)
@@ -445,6 +449,8 @@ func _handle_equipment() -> void:
 		
 		# stop animation
 		attack_tween = create_tween()
+		attack_tween.set_trans(Tween.TRANS_SINE)
+		attack_tween.set_ease(Tween.EASE_IN_OUT)
 		attack_tween.parallel().tween_property(weapon_node, "rotation:x", 0, 0.11)
 		attack_tween.parallel().tween_property(weapon_node, "rotation:y", 0, 0.1)
 		attack_tween.parallel().tween_property(weapon_node, "position:x", 0, 0.1)

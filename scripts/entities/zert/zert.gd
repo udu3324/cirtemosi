@@ -266,6 +266,8 @@ func _physics_process(delta: float) -> void:
 				rot_tween.kill()
 			
 			rot_tween = create_tween()
+			rot_tween.set_trans(Tween.TRANS_SINE)
+			rot_tween.set_ease(Tween.EASE_IN_OUT)
 			rot_tween.tween_property(model, "rotation:y", store_rot - deg_to_rad(45), randf_range(0.8, 2.5))
 			rot_tween.tween_property(model, "rotation:y", store_rot + deg_to_rad(45), randf_range(0.8, 2.5))
 			rot_tween.tween_property(model, "rotation:y", store_rot, 1)

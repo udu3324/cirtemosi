@@ -14,6 +14,9 @@ extends Node
 @onready var booh = preload("res://assets/audio/fx/menu_pick.wav")
 
 @onready var regular = preload("res://assets/audio/soundtrack/cirtemosi-start-remixed.ogg")
+@onready var puzzles = preload("res://assets/audio/soundtrack/cirtemosi-puzzles.ogg")
+@onready var house = preload("res://assets/audio/soundtrack/cirtemosi-house.ogg")
+@onready var obelisk = preload("res://assets/audio/soundtrack/cirtemosi-obelisk.ogg")
 
 @onready var gamma: ColorRect = $CanvasLayer/Gamma/ColorRect
 @onready var vignette = $CanvasLayer/Vignette/MarginContainer/ColorRect
@@ -342,6 +345,11 @@ func _handle_player_level_load_event():
 			
 			var sub_level = preload("res://levels/level4_2.tscn").instantiate()
 			$Node3D.add_child(sub_level)
+			
+			# change soundtrack
+			masterAudio.stream = puzzles
+			var audioFade = create_tween()
+			audioFade.tween_property(masterAudio, "volume_db", 0.0, 2)
 		"4.2->4.1":
 			var next = $Node3D.find_child("Level4_1", true, false)
 			
@@ -356,6 +364,11 @@ func _handle_player_level_load_event():
 			var sub_level = preload("res://levels/level4_1.tscn").instantiate()
 			sub_level.global_position = Vector3(-20, 0, 0)
 			$Node3D.add_child(sub_level)
+			
+			# change soundtrack
+			masterAudio.stream = regular
+			var audioFade = create_tween()
+			audioFade.tween_property(masterAudio, "volume_db", 0.0, 2)
 		"4.1->4.3":
 			var next = $Node3D.find_child("Level4_3", true, false)
 			
@@ -369,6 +382,11 @@ func _handle_player_level_load_event():
 			
 			var sub_level = preload("res://levels/level4_3.tscn").instantiate()
 			$Node3D.add_child(sub_level)
+			
+			# change soundtrack
+			masterAudio.stream = house
+			var audioFade = create_tween()
+			audioFade.tween_property(masterAudio, "volume_db", 0.0, 2)
 		"4.3->4.1":
 			var next = $Node3D.find_child("Level4_1", true, false)
 			
@@ -383,6 +401,11 @@ func _handle_player_level_load_event():
 			var sub_level = preload("res://levels/level4_1.tscn").instantiate()
 			sub_level.global_position = Vector3(-20, 0, 0)
 			$Node3D.add_child(sub_level)
+			
+			# change soundtrack
+			masterAudio.stream = regular
+			var audioFade = create_tween()
+			audioFade.tween_property(masterAudio, "volume_db", 0.0, 2)
 		"4.1->4.4":
 			var next = $Node3D.find_child("Level4_4", true, false)
 			
@@ -396,6 +419,11 @@ func _handle_player_level_load_event():
 			
 			var sub_level = preload("res://levels/level4_4.tscn").instantiate()
 			$Node3D.add_child(sub_level)
+			
+			# change soundtrack
+			masterAudio.stream = obelisk
+			var audioFade = create_tween()
+			audioFade.tween_property(masterAudio, "volume_db", 0.0, 2)
 		"4.4->4.1":
 			var next = $Node3D.find_child("Level4_1", true, false)
 			
@@ -410,6 +438,11 @@ func _handle_player_level_load_event():
 			var sub_level = preload("res://levels/level4_1.tscn").instantiate()
 			sub_level.global_position = Vector3(-20, 0, 0)
 			$Node3D.add_child(sub_level)
+			
+			# change soundtrack
+			masterAudio.stream = regular
+			var audioFade = create_tween()
+			audioFade.tween_property(masterAudio, "volume_db", 0.0, 2)
 
 func _to_checkpoint():
 	Globals.stamina = Globals.stamina_max - (Globals.stamina_max / 5)

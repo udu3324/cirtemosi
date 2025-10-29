@@ -132,6 +132,8 @@ func _process(delta: float) -> void:
 		turn_period += delta
 		if turn_period > 6.0:
 			tween = create_tween()
+			tween.set_trans(Tween.TRANS_SINE)
+			tween.set_ease(Tween.EASE_IN_OUT)
 			_face_to_vector3(Globals.player_pos)
 			
 			turn_period = 0
@@ -318,9 +320,9 @@ func _handle_terminal_final_enter():
 					else:
 						match relic_num:
 							1:
-								await _animate_text_typing("you dont have this relic\nit is found at your first enemy", 0.25)
+								await _animate_text_typing("you dont have this relic\nit is found at your first enemy", 0.18)
 							3:
-								await _animate_text_typing("you dont have this relic\nit is held at the end of a path", 0.25)
+								await _animate_text_typing("you dont have this relic\nit is held at the end of a path", 0.18)
 	
 	ignore_input = false
 	
@@ -341,9 +343,12 @@ func _animate_text_typing(typing_string: String, keystroke_time_range: float):
 	dialogue_encrypted_response.text = ""
 	await get_tree().create_timer(0.2).timeout
 	
+	dialogue_encrypted_response.text = "[interface]\n"
 	_internal_typing_func_dont_use_elsewhere(encrypted_typing_string, dialogue_encrypted_response, keystroke_time_range - 0.05)
 	
 	await get_tree().create_timer(1.0).timeout
+	
+	dialogue_response.text = "[translated]\n"
 	
 	#_internal_typing_func_dont_use_elsewhere(typing_string, dialogue_response, keystroke_time_range)
 	for i in range(typing_string.length()):
@@ -405,6 +410,8 @@ func _on_inner_area_3d_body_entered(body: Node3D) -> void:
 			tween.kill()
 		
 		tween = create_tween()
+		tween.set_trans(Tween.TRANS_SINE)
+		tween.set_ease(Tween.EASE_IN_OUT)
 		tween.parallel().tween_property(model, "rotation:x", -deg_to_rad(13.5), 1.3).as_relative()
 		#rotate y for facing to player
 		tween.parallel().tween_property(model, "rotation:z", -deg_to_rad(21.5), 1.3).as_relative()
@@ -431,6 +438,8 @@ func _on_inner_area_3d_body_exited(body: Node3D) -> void:
 			tween.kill()
 		
 		tween = create_tween()
+		tween.set_trans(Tween.TRANS_SINE)
+		tween.set_ease(Tween.EASE_IN_OUT)
 		
 		tween.parallel().tween_property(model, "global_position", model_position_rest, 0.3)
 

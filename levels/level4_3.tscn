@@ -40,7 +40,7 @@ size = Vector3(5.9630127, 3, 5.9074707)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_c5to3"]
 height = 3.234375
-radius = 2.4643555
+radius = 2.0839844
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nguaj"]
 albedo_color = Color(0.2509804, 0.21960784, 0.15294118, 1)
@@ -308,6 +308,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.51849365, 1, -0.4991455)
 shape = SubResource("BoxShape3D_c5to3")
 
 [node name="Area3DDoor" type="Area3D" parent="House"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7925148, 0, -0.19840431)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="House/Area3DDoor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.020507813, 3)
@@ -539,11 +540,11 @@ polygon = PackedVector2Array(0, 0, 0, 0.5, 1, 0)
 
 [node name="Sign" parent="." instance=ExtResource("5_pt5ad")]
 transform = Transform3D(0.87691975, 0, 0.4806368, 0, 1, 0, -0.4806368, 0, 0.87691975, -17.477325, 4.7683716e-07, -26.929773)
-text = "the dewlling that once held a person that developed society"
+text = "the dewlling, once held a person that developed society"
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -15.2506075, 6.7164145, -32.32567)
-light_energy = 0.305
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -15.247949, 6.7164145, -32.072212)
+light_energy = 0.045
 spot_range = 13.47315
 spot_angle = 61.521976
 
