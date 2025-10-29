@@ -180,12 +180,16 @@ func _show_title_card(title: String, description: String, pre_wait: float):
 	title_decrypt.text = "- " + title + " -"
 	
 	var tween = create_tween()
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(title_card, "modulate:a", 1.0, 1.0)
 	
 	await tween.finished
 	await get_tree().create_timer(3.0).timeout
 	
 	tween = create_tween()
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(title_card, "modulate:a", 0.0, 1.0)
 	
 	await tween.finished

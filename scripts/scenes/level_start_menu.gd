@@ -15,4 +15,6 @@ func _process(_delta: float) -> void:
 		#var time = randf_range(0.3, 2)
 		
 		tween = create_tween()
+		tween.set_trans(Tween.TRANS_SINE)
+		tween.set_ease(Tween.EASE_IN_OUT)
 		tween.tween_property(light_rot, "rotation:y", deg_to_rad(rot), 0.1)

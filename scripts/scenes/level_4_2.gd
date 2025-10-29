@@ -65,6 +65,8 @@ func _process(_delta: float) -> void:
 			
 			var final_pos = Vector3(3.428786, 2.0, -34.56116)
 			var tween = create_tween()
+			tween.set_trans(Tween.TRANS_SINE)
+			tween.set_ease(Tween.EASE_IN_OUT)
 			tween.tween_property(oblisk_piece, "global_position", final_pos, 2.0)
 			
 			var tween2 = create_tween()

@@ -66,6 +66,8 @@ func _process(_delta: float) -> void:
 		Globals.final_relic_placement_ready = true
 		
 		var tween = create_tween()
+		tween.set_trans(Tween.TRANS_SINE)
+		tween.set_ease(Tween.EASE_IN_OUT)
 		tween.tween_property(obelisk, "global_position", obelisk_settled_pos, 18.0)
 		
 		await tween.finished
@@ -180,12 +182,16 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		Globals.run_spiral_down_once = true
 		
 		var tween = create_tween()
+		tween.set_trans(Tween.TRANS_SINE)
+		tween.set_ease(Tween.EASE_IN_OUT)
 		tween.tween_property(spiral, "position:y", -10.0, 5.0)
 		
 		await tween.finished
 		spiral.queue_free()
 		
 		tween = create_tween()
+		tween.set_trans(Tween.TRANS_SINE)
+		tween.set_ease(Tween.EASE_IN_OUT)
 		tween.tween_property(obelisk, "global_position", obelisk_final_pos, 15.0)
 
 

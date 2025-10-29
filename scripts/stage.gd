@@ -191,11 +191,15 @@ func _handle_vignette_event():
 		return
 	
 	var tween = create_tween()
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(vignette.material, "shader_parameter/opacity", 1.0, 0.3)
 	
 	await get_tree().create_timer(0.8).timeout
 	
 	tween = create_tween()
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(vignette.material, "shader_parameter/opacity", 0.0, 1.0)
 
 func _handle_death_event():
@@ -678,6 +682,8 @@ func _show_loading():
 	menuLoading.visible = true
 	
 	var tween = create_tween()
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(menuLoading, "modulate:a", 1.0, 1)
 	
 	var audioFade = create_tween()
@@ -690,6 +696,8 @@ func _hide_loading():
 	audioFade.tween_property(masterAudio, "volume_db", 0, 2)
 	
 	var tween = create_tween()
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(menuLoading, "modulate:a", 0.0, 1)
 	
 	Globals.player_physics_processing = true

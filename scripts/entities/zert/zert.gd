@@ -396,6 +396,8 @@ func _face_to_vector3(point: Vector3) -> void:
 	
 	# model.rotation.y = lerp_angle(model.rotation.y, angle_y, 0.5)
 	var rotate_tween = create_tween()
+	rotate_tween.set_trans(Tween.TRANS_SINE)
+	rotate_tween.set_ease(Tween.EASE_IN_OUT)
 	rotate_tween.tween_property(model, "rotation:y", angle_y, 0.1)
 
 func _face_to_velocity() -> void:
@@ -407,6 +409,8 @@ func _face_to_velocity() -> void:
 	
 	# model.rotation.y = lerp_angle(model.rotation.y, angle_y, 0.1)
 	var rotate_tween = create_tween()
+	rotate_tween.set_trans(Tween.TRANS_SINE)
+	rotate_tween.set_ease(Tween.EASE_IN_OUT)
 	rotate_tween.tween_property(model, "rotation:y", angle_y, 0.1)
 	#model.rotation.y = angle_y
 
