@@ -34,6 +34,9 @@ func _physics_process(delta: float) -> void:
 			if typeof(entity.health) != TYPE_FLOAT:
 				return
 			
+			if typeof(Globals.item_info_dict.get(Globals.equipment[Globals.slot_active - 1], null)) != TYPE_DICTIONARY:
+				return
+			
 			entity.health -= Globals.item_info_dict[Globals.equipment[Globals.slot_active - 1]]["damage"]
 			entity.attack_event = self.rotation.y + PI
 			timer.start()

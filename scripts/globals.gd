@@ -1,7 +1,7 @@
 extends Node
 
 
-var debug_mode: bool = true
+var debug_mode: bool = false
 var debug_mode_relic_give: int = 0
 
 # gui
@@ -60,7 +60,7 @@ var equipment = ["", "", ""]
 
 var item_info_dict = {
 	"starter_weapon": {
-		"range": 1.7, # meters
+		"range": 1.7, # metersd
 		"cone": 60, # degrees
 		"damage": 20
 	},

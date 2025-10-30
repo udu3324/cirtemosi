@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://b018wplqhhphi"]
+
+[ext_resource type="PackedScene" uid="uid://cl576y6dceqbp" path="res://assets/model/enviornment/pillar_2.blend" id="1_1it3j"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1it3j"]
+height = 0.31811768
+radius = 0.42578125
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_05kvb"]
+height = 1.5175177
+radius = 0.3227539
+
+[node name="PillarB" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+visible = false
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.33094117, 0)
+shape = SubResource("CylinderShape3D_1it3j")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.67863107, 0)
+shape = SubResource("CylinderShape3D_05kvb")
+
+[node name="pillar_2" parent="." instance=ExtResource("1_1it3j")]

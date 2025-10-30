@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://bigcth6odd1nf"]
+
+[ext_resource type="PackedScene" uid="uid://61vhy42gjjpg" path="res://assets/model/enviornment/pillar_1.blend" id="1_t43pa"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_t43pa"]
+radius = 0.37755284
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_t43pa"]
+height = 0.3200708
+radius = 0.42578125
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_tgrh6"]
+height = 0.4305432
+radius = 0.42578125
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_hybea"]
+height = 2.2572637
+radius = 0.3227539
+
+[node name="PillarA" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8161545, 0)
+shape = SubResource("SphereShape3D_t43pa")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3299646, 0)
+shape = SubResource("CylinderShape3D_t43pa")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3969042, 0)
+shape = SubResource("CylinderShape3D_tgrh6")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0485041, 0)
+shape = SubResource("CylinderShape3D_hybea")
+
+[node name="pillar_1" parent="." instance=ExtResource("1_t43pa")]
