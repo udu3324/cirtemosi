@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://r5un80qecc70"]
+[gd_scene load_steps=15 format=3 uid="uid://r5un80qecc70"]
 
 [ext_resource type="PackedScene" uid="uid://b6t1s1ntpjpeu" path="res://scenes/items/starter_weapon.tscn" id="1_26cjr"]
 [ext_resource type="Script" uid="uid://ca5uvijwqi1rf" path="res://scripts/arcade/levelbase.gd" id="1_dnp56"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://be7mj4c0s2s0d" path="res://scenes/arcade/bridge.tscn" id="4_dnp56"]
 [ext_resource type="FontFile" uid="uid://d25dq4tmt7ywp" path="res://assets/font/NebulaSans-Black.ttf" id="6_7jpbv"]
 [ext_resource type="FontFile" uid="uid://d8rupcfbnwjx" path="res://assets/font/NebulaSans-Semibold.ttf" id="7_5hqeq"]
+[ext_resource type="PackedScene" uid="uid://cpmr5nj0has33" path="res://scenes/arcade/island_smaller.tscn" id="8_f4xo2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_muklc"]
 sky_top_color = Color(0.46903396, 0.7563706, 0.8889926, 1)
@@ -111,6 +112,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3, 2, 1.3)
 billboard = 1
 no_depth_test = true
 texture = SubResource("ViewportTexture_5hqeq")
+
+[node name="Islands" type="Node3D" parent="."]
+
+[node name="IslandSmaller" parent="Islands" instance=ExtResource("8_f4xo2")]
+transform = Transform3D(0.08037285, 0, -0.99676484, 0, 1, 0, 0.99676484, 0, 0.08037285, -0.36700293, 0, -8.12125)
+
+[node name="IslandSmaller2" parent="Islands" instance=ExtResource("8_f4xo2")]
+transform = Transform3D(-0.9948489, 0, -0.101368755, 0, 1, 0, 0.101368755, 0, -0.9948489, 7.4484997, 0, -14.725801)
+
+[node name="IslandSmaller3" parent="Islands" instance=ExtResource("8_f4xo2")]
+transform = Transform3D(0.10194177, 0, 0.9947904, 0, 1, 0, -0.9947904, 0, 0.10194177, 14.815504, 0, -5.654499)
+
+[node name="IslandSmaller4" parent="Islands" instance=ExtResource("8_f4xo2")]
+transform = Transform3D(0.98056674, 0, 0.19618572, 0, 1, 0, -0.19618572, 0, 0.98056674, 8.30065, 0, 0.45670354)
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Area3DTriggerStart" to="." method="_on_area_3d_trigger_start_body_entered"]

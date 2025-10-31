@@ -457,6 +457,9 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -25.
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.541874, 1, -7)
 drops_relic_3 = true
 line_path_angle = 115
+instant_despawn = false
+vision_range = 6.5
+vision_cone = 30.0
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_rdpwy")

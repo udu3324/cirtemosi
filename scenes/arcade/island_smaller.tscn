@@ -1,0 +1,70 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpmr5nj0has33"]
+
+[ext_resource type="PackedScene" uid="uid://b4kc23ipqdae7" path="res://assets/model/enviornment/island_smaller_model.tscn" id="1_6w1n0"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_ew8gs"]
+vertices = PackedVector3Array(1.6831131, 0.94240004, 0.92531824, 1.9331131, 0.94240004, 0.42531824, 1.6831131, 0.94240004, -0.82468176, -1.3168869, 0.94240004, -1.0746818, -2.066887, 0.94240004, -0.32468176, -1.5668869, 0.94240004, 0.92531824, 0.6831131, 0.94240004, -1.0746818)
+polygons = [PackedInt32Array(0, 2, 1), PackedInt32Array(4, 3, 5), PackedInt32Array(5, 3, 6), PackedInt32Array(5, 6, 2), PackedInt32Array(5, 2, 0)]
+
+[node name="IslandSmaller" type="Node3D"]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_ew8gs")
+
+[node name="island_smaller" parent="NavigationRegion3D" instance=ExtResource("1_6w1n0")]
+
+[node name="Barriers" type="Node3D" parent="."]
+visible = false
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Barriers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09048461, 2.4157038, -1.8390845)
+use_collision = true
+size = Vector3(1.771, 1.32, 0.336)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Barriers"]
+transform = Transform3D(0.90469337, 0, 0.4260636, 0, 1, 0, -0.4260636, 0, 0.90469337, -1.5361611, 2.4157038, -1.5842379)
+use_collision = true
+size = Vector3(1.771, 1.32, 0.336)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Barriers"]
+transform = Transform3D(0.3387051, 0, 0.9408927, 0, 1, 0, -0.9408927, 0, 0.3387051, -2.474934, 2.4157038, -0.61543953)
+use_collision = true
+size = Vector3(1.771, 1.32, 0.336)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Barriers"]
+transform = Transform3D(0.42606354, 0, -0.9046934, 0, 1, 0, 0.9046934, 0, 0.42606354, 2.3260124, 2.4157038, -0.84007907)
+use_collision = true
+size = Vector3(1.771, 1.32, 0.336)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Barriers"]
+transform = Transform3D(0.94089264, 0, -0.3387051, 0, 1, 0, 0.3387051, 0, 0.94089264, 1.4300536, 2.4157038, -1.5726264)
+use_collision = true
+size = Vector3(1.771, 1.32, 0.336)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Barriers"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.01705335, 2.4157038, 1.7990186)
+use_collision = true
+size = Vector3(1.771, 1.32, 0.336)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Barriers"]
+transform = Transform3D(-0.90469337, 0, -0.42606366, 0, 1, 0, 0.42606366, 0, -0.90469337, 1.4741763, 2.4157038, 1.6176181)
+use_collision = true
+size = Vector3(1.771, 1.32, 0.336)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Barriers"]
+transform = Transform3D(-0.33870497, 0, -0.94089264, 0, 1, 0, 0.94089264, 0, -0.33870497, 2.3677266, 2.4157038, 0.5511741)
+use_collision = true
+size = Vector3(1.771, 1.32, 0.336)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Barriers"]
+transform = Transform3D(-0.42606363, 0, 0.90469337, 0, 1, 0, -0.90469337, 0, -0.42606363, -2.446943, 2.4157038, 0.74829537)
+use_collision = true
+size = Vector3(1.771, 1.32, 0.336)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="Barriers"]
+transform = Transform3D(-0.94089264, 0, 0.33870494, 0, 1, 0, -0.33870494, 0, -0.94089264, -1.6584156, 2.4157038, 1.5140237)
+use_collision = true
+size = Vector3(1.771, 1.32, 0.336)
+
+[node name="Spawn" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56147, 0)

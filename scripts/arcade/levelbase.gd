@@ -7,6 +7,16 @@ extends Node3D
 
 @onready var arcade = preload("res://assets/audio/soundtrack/cirtemosi-arcade.ogg")
 
+@onready var island_1 = $Islands/IslandSmaller
+@onready var island_2 = $Islands/IslandSmaller2
+@onready var island_3 = $Islands/IslandSmaller3
+@onready var island_4 = $Islands/IslandSmaller4
+
+@onready var island_1_spawnpoint = $Islands/IslandSmaller/Spawn
+@onready var island_2_spawnpoint = $Islands/IslandSmaller2/Spawn
+@onready var island_3_spawnpoint = $Islands/IslandSmaller3/Spawn
+@onready var island_4_spawnpoint = $Islands/IslandSmaller4/Spawn
+
 @onready var waves = {
 	1: { # spawn 4 enemts all spaced out
 		"subsequent": true,
@@ -27,7 +37,7 @@ extends Node3D
 	3: { # spawn 8 enemts all spaced out but fast
 		"subsequent": false,
 		"enemts": 8,
-		"enemt_delay": 4.0,
+		"enemt_delay": 3.0,
 		"zerts": 0,
 		"zert_delay": 0,
 		"weapon_damage": 50
@@ -60,12 +70,18 @@ var stop_timer: bool = false
 var wave_enemt_deaths: int = 0
 var wave_zert_deaths: int = 0
 
+var island_populated = [false, false, false, false]
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# load the leaderboard
 	DB.leaderboard_request_completed.connect(_on_leaderboard_loaded)
 	DB.fetch_top(16)
 	
+	island_1.visible = false
+	island_2.visible = false
+	island_3.visible = false
+	island_4.visible = false
 
 func _on_leaderboard_loaded(data) -> void:
 	
@@ -157,17 +173,48 @@ func _process(delta: float) -> void:
 			_spawn_enemt()
 	
 	# handle a zert death
-	if Globals.zert_deaths[0] >= 1:
-		var difference = Globals.zert_deaths[0]
-		Globals.zert_deaths[0] = 0
-		
-		wave_zert_deaths += difference
+	if Globals.zert_deaths[1] >= 1:
+		Globals.zert_deaths[1] = 0
+		wave_zert_deaths += 1
+		island_populated[0] = false
+		island_1.visible = false
+		_zert_death_reward()
 		_build_description()
-		
-		if waves[on_wave]["subsequent"] and wave_zert_deaths != waves[on_wave]["zerts"]:
-			await get_tree().create_timer(waves[on_wave]["zert_delay"]).timeout
-			#print("just one 4now")
-			_spawn_zert()
+	
+	if Globals.zert_deaths[2] >= 1:
+		Globals.zert_deaths[2] = 0
+		wave_zert_deaths += 1
+		island_populated[1] = false
+		island_2.visible = false
+		_zert_death_reward()
+		_build_description()
+	
+	if Globals.zert_deaths[3] >= 1:
+		Globals.zert_deaths[3] = 0
+		wave_zert_deaths += 1
+		island_populated[2] = false
+		island_3.visible = false
+		_zert_death_reward()
+		_build_description()
+	
+	if Globals.zert_deaths[4] >= 1:
+		Globals.zert_deaths[4] = 0
+		wave_zert_deaths += 1
+		island_populated[3] = false
+		island_4.visible = false
+		_zert_death_reward()
+		_build_description()
+
+func _zert_death_reward():
+	Globals.shards += randi_range(3, 10)
+	
+	var add_health = randi_range(5, 10)
+	if (Globals.health + add_health) < Globals.health_max:
+		Globals.health += add_health
+	
+	var add_stamina = randi_range(15, 20)
+	if (Globals.stamina + add_stamina) < Globals.stamina_max:
+		Globals.stamina += add_stamina
 
 func _build_description():
 	Globals.arcade_description.text = ""
@@ -214,6 +261,9 @@ func _start_wave(wave: int):
 	
 	Globals.arcade_title.text = "wave " + str(wave)
 	Globals.arcade_description.text = ""
+	
+	# in case if the player forgets to pick up their weapon...
+	Globals.equipment[0] = "starter_weapon"
 	
 	Globals.item_info_dict[Globals.equipment[Globals.slot_active - 1]]["damage"] = waves[on_wave]["weapon_damage"]
 	
@@ -270,26 +320,61 @@ func _spawn_enemt_async_internal_func_dont_use(delay: float):
 	_spawn_enemt()
 
 func _spawn_zert():
-	var radius = zone.get_child(0).shape.radius
+	var randomIsland = randi_range(0, 3)
 	
-	var angle = randf() * TAU
-	var r = sqrt(randf()) * radius
+	# keep retrying until an island is not populated
+	if island_populated[randomIsland]:
+		await get_tree().create_timer(0.1).timeout
+		_spawn_zert()
+		return
 	
-	var local_pos = Vector3(r * cos(angle), 0, r * sin(angle))
-	var world_pos = zone.global_transform.origin + local_pos
-	world_pos.y = 1.0
-	
-	var zert = preload("res://entities/zert/zert.tscn").instantiate()
-	zert.name = "Zert" + str(randi())
-	zert.global_transform.origin = world_pos
-	zert.rng_shard_drops = false
-	#zert.rotation here todo
-	
-	Globals.root_node_3d.add_child(zert)
+	_spawn_zert_at_island(randomIsland + 1)
 
 func _spawn_zert_async_internal_func_dont_use(delay: float):
 	await get_tree().create_timer(delay).timeout
 	_spawn_zert()
+
+func _spawn_zert_at_island(island: int):
+	var zert = preload("res://entities/zert/zert.tscn").instantiate()
+	zert.name = "Zert" + str(randi())
+	zert.drops_shards = false
+	zert.line_path_length = 0.5
+	zert.instant_despawn = true
+	zert.vision_cone = 45
+	zert.vision_range = 15.0
+	
+	match island:
+		1:
+			zert.global_transform.origin = island_1_spawnpoint.global_position
+			zert.line_path_angle = 90
+			zert.array_death_log = 1
+			island_populated[0] = true
+			
+			island_1.visible = true
+		2:
+			zert.global_transform.origin = island_2_spawnpoint.global_position
+			zert.line_path_angle = 0
+			zert.array_death_log = 2
+			island_populated[1] = true
+			
+			island_2.visible = true
+		3:
+			zert.global_transform.origin = island_3_spawnpoint.global_position
+			zert.line_path_angle = 270
+			zert.array_death_log = 3
+			island_populated[2] = true
+			
+			island_3.visible = true
+		4:
+			zert.global_transform.origin = island_4_spawnpoint.global_position
+			zert.line_path_angle = 180
+			zert.array_death_log = 4
+			island_populated[3] = true
+			
+			island_4.visible = true
+	
+	Globals.root_node_3d.add_child(zert)
+
 
 # ty https://forum.godotengine.org/t/formatting-a-timer/6482/2
 func _format_time(time: float) -> String: 

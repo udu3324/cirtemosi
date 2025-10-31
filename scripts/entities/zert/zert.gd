@@ -31,7 +31,10 @@ var shoot = preload("res://assets/audio/fx/zert-shoot.wav")
 @export var rng_shard_drops: bool = true
 @export_range (1, 100) var rand_shard_range: int = 20
 @export var line_path_length: float = 3
-@export_range (0, 180) var line_path_angle: int = 0
+@export_range (0, 360) var line_path_angle: int = 0
+@export var instant_despawn: bool = false
+@export var vision_range: float = 6.5
+@export var vision_cone: float = 30
 
 var target_reached: bool = true
 
@@ -152,7 +155,8 @@ func _process(_delta: float) -> void:
 		_drop_shards()
 		
 		if despawns:
-			await get_tree().create_timer(randi_range(2, 5)).timeout
+			if !instant_despawn:
+				await get_tree().create_timer(randi_range(2, 5)).timeout
 			model.queue_free()
 		
 		return
@@ -227,7 +231,7 @@ func _physics_process(delta: float) -> void:
 	if attack_period >= attack_next_wait:
 		attack_period = 0.0
 		attack_next_wait = randf_range(0.0, 1.0)
-		
+		_face_to_vector3(Globals.player_pos)
 		#print_debug("attempting attack!")
 		
 		var local_offset = Vector3(-0.6, 0, 0)
@@ -289,11 +293,11 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	var to_point = (Globals.player_pos - global_position).normalized()
 	var angle_y = atan2(to_point.x, to_point.z) + (PI / 2)
 	var cone = rad_to_deg(angle_y) - rad_to_deg(model.rotation.y)
-	if global_transform.origin.distance_to(Globals.player_pos) < 6.5 and Globals.player_pos != Vector3(0, 0, 0) and !Globals.resetVisible and !ignore_player:
+	if global_transform.origin.distance_to(Globals.player_pos) < vision_range and Globals.player_pos != Vector3(0, 0, 0) and !Globals.resetVisible and !ignore_player:
 		
 		# dont agro if player is below height
 		
-		if cone > -30 and cone < 30 and !(global_position.y - 0.5 > Globals.player_pos.y):
+		if (abs(cone) < vision_cone) and !(global_position.y - 0.5 > Globals.player_pos.y):
 			
 			if rot_tween and rot_tween.is_running():
 				rot_tween.kill()
@@ -302,7 +306,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 			circling = true
 	
 	# another catch to stop animation/everything if player is caught when looking
-	if rot_tween and rot_tween.is_running() and cone > -30 and cone < 30 and global_transform.origin.distance_to(Globals.player_pos) < 6.5 and !ignore_player:
+	if rot_tween and rot_tween.is_running() and (abs(cone) < vision_cone) and global_transform.origin.distance_to(Globals.player_pos) < vision_range and !ignore_player:
 		
 		if rot_tween and rot_tween.is_running():
 			rot_tween.kill()
@@ -318,7 +322,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 		circling = true
 	
 	# too far and fell out of cone region
-	if global_transform.origin.distance_to(Globals.player_pos) > 12 and circling:
+	if global_transform.origin.distance_to(Globals.player_pos) > (vision_range + 5.5) and circling:
 		circling = false
 		floating_ball_material.emission_energy_multiplier = 0.3
 		floating_ball.mesh.radius = 0.2
@@ -430,10 +434,10 @@ func _regen_points():
 	#print_debug("regenned with ", line_path_angle)
 	model_global_pos = model.global_position
 	
-	var forward_dir = -model.global_transform.basis.z.normalized()
-	var backward_dir = model.global_transform.basis.z.normalized()
+	var forward_dir = model.global_transform.basis.z.normalized()
+	var backward_dir = -model.global_transform.basis.z.normalized()
 	
-	var angle_offset = deg_to_rad(line_path_angle)
+	var angle_offset = deg_to_rad(line_path_angle) + (PI / 2)
 	
 	var rotated_forward = (Basis(Vector3.UP, angle_offset) * forward_dir).normalized()
 	var rotated_backward = (Basis(Vector3.UP, angle_offset) * backward_dir).normalized()
