@@ -1,8 +1,9 @@
-[gd_scene load_steps=31 format=3 uid="uid://duo44b2ivhol"]
+[gd_scene load_steps=32 format=3 uid="uid://duo44b2ivhol"]
 
 [ext_resource type="Script" uid="uid://ccc84jhoxhk8n" path="res://scripts/scenes/level_4_3.gd" id="1_kcjfs"]
 [ext_resource type="PackedScene" uid="uid://cehpvnetgof0c" path="res://assets/model/house/roof.blend" id="2_c5to3"]
 [ext_resource type="PackedScene" uid="uid://frjikjhvgs4c" path="res://scenes/items/relic_4.tscn" id="3_4mv1t"]
+[ext_resource type="PackedScene" uid="uid://c8k8dm81jp0pu" path="res://assets/model/enviornment/mushroom_gray.blend" id="5_aokp7"]
 [ext_resource type="PackedScene" uid="uid://bx27rmfnckyq8" path="res://scenes/enviornment/sign.tscn" id="5_pt5ad"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tqtpy"]
@@ -102,7 +103,7 @@ script = ExtResource("1_kcjfs")
 
 [node name="TopSideForeground" type="CSGPolygon3D" parent="."]
 transform = Transform3D(0.707107, -0.408607, 0.577096, 0, 0.816138, 0.577858, -0.707107, -0.408607, 0.577096, -6.9950714, 7.3271313, -33.203945)
-polygon = PackedVector2Array(-30.462902, -2.4658432, -27.55234, 0.3154621, -25.540684, 0.2721386, -22.162546, 3.744255, -19.13192, 0.42105484, -18.518087, 1.3829384, -15.581707, 2.3897572, -15.255001, 3.2136955, -15.458054, 4.8002605, -13.612678, 3.3015537, -12.847094, 2.308241, -9.686434, 3.7006702, -8.658106, 0.5219383, -6.643383, -0.83244705, -6.0332355, -0.26789284, -5.3999395, 0.4783039, -4.5500956, -2.0739613, -3.4414034, -0.68328667, 3.0017967, 0.13050842, 3.3668156, 17.221483, -35.434837, 17.429962, -36.016624, 1.5657043, -31.035538, -0.04573822)
+polygon = PackedVector2Array(-26.89331, -2.7742558, -26.689636, 0.13417816, -25.371851, 0.541832, -22.162546, 3.744255, -19.13192, 0.42105484, -18.518087, 1.3829384, -15.581707, 2.3897572, -15.255001, 3.2136955, -15.458054, 4.8002605, -13.612678, 3.3015537, -12.847094, 2.308241, -9.686434, 3.7006702, -8.658106, 0.5219383, -6.643383, -0.83244705, -6.0332355, -0.26789284, -5.3999395, 0.4783039, -4.5500956, -2.0739613, -3.4414034, -0.68328667, 3.0017967, 0.13050842, 3.3668156, 17.221483, -35.434837, 17.429962, -36.016624, 1.5657043, -31.035538, -0.04573822)
 
 [node name="CSGPolygon3D4" type="CSGPolygon3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -24, -1.04907e-06, -24)
@@ -566,6 +567,74 @@ transform = Transform3D(0.97983414, 0, 0.19981259, 0, 1, 0, -0.19981259, 0, 0.97
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3DTitleCard"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4476929, 0)
 shape = SubResource("BoxShape3D_4mv1t")
+
+[node name="Mushrooms" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 0, -22)
+
+[node name="mushroom_gray" parent="Mushrooms" instance=ExtResource("5_aokp7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.101549, 0, -2.662939)
+
+[node name="mushroom_gray2" parent="Mushrooms" instance=ExtResource("5_aokp7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.391672, 0, -3.6440258)
+
+[node name="mushroom_gray3" parent="Mushrooms" instance=ExtResource("5_aokp7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.7656, 0, -3.5066547)
+
+[node name="mushroom_gray4" parent="Mushrooms" instance=ExtResource("5_aokp7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.803675, 2.3841858e-07, -5.0506535)
+
+[node name="mushroom_gray5" parent="Mushrooms" instance=ExtResource("5_aokp7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.9709435, 0.5, -7.85338)
+
+[node name="mushroom_gray6" parent="Mushrooms" instance=ExtResource("5_aokp7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.699783, 0.5, -9.286001)
+
+[node name="mushroom_gray7" parent="Mushrooms" instance=ExtResource("5_aokp7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.362274, 0.5, -5.662565)
+
+[node name="mushroom_gray8" parent="Mushrooms" instance=ExtResource("5_aokp7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.136511, 0.5, -3.4074688)
+
+[node name="mushroom_gray9" parent="Mushrooms" instance=ExtResource("5_aokp7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.831478, 0.5, -3.1469345)
+
+[node name="Wall" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 0, -22)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Wall"]
+transform = Transform3D(0.86851674, 0.0043495, -0.495641, 0.19697294, 0.9145835, 0.35318357, 0.45484117, -0.40437368, 0.7934743, -0.48353958, 0.7134856, 0.62794304)
+use_collision = true
+size = Vector3(0.76660156, 2.7434692, 1.9550781)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Wall"]
+transform = Transform3D(0.95981276, -0.10643538, -0.25967532, 0.14687675, 0.9789626, 0.14163013, 0.23913789, -0.17407864, 0.9552536, -1.4578915, 1.1041356, 1.7998352)
+use_collision = true
+size = Vector3(0.76660156, 3.695465, 2.414734)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Wall"]
+transform = Transform3D(0.7926122, -0.16691665, -0.58643436, 0.052182503, 0.97684014, -0.20750917, 0.60748947, 0.1338726, 0.78296524, 2.1780682, 1.2065879, -3.3496609)
+use_collision = true
+size = Vector3(0.76660156, 3.9052277, 2.414734)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Wall"]
+transform = Transform3D(0.7926122, -0.16691665, -0.58643436, 0.052182503, 0.97684014, -0.20750917, 0.60748947, 0.1338726, 0.78296524, 2.4694252, 0.99372894, -4.759754)
+use_collision = true
+size = Vector3(0.76660156, 1.9201298, 1.9954529)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Wall"]
+transform = Transform3D(0.86851674, 0.0043495, -0.495641, 0.19697294, 0.9145835, 0.35318357, 0.45484117, -0.40437368, 0.7934743, 1.065897, 0.5935446, -0.67643166)
+use_collision = true
+size = Vector3(0.76660156, 2.7434692, 2.6342773)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Wall"]
+transform = Transform3D(0.8837494, 0.22913724, -0.40802327, 0.28773, 0.42155886, 0.85994166, 0.36905044, -0.8773734, 0.30662274, 1.9925861, 0.5935446, -1.7950706)
+use_collision = true
+size = Vector3(0.76660156, 2.7434692, 2.6342773)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Wall"]
+transform = Transform3D(0.8420449, -0.3162501, -0.43697459, 0.22160989, 0.94139946, -0.25427634, 0.49178237, 0.11727411, 0.86278445, 0.23607063, 1.9499568, -0.66846275)
+use_collision = true
+size = Vector3(0.76660156, 2.7434692, 1.9550781)
 
 [connection signal="body_entered" from="House/Area3DHouse" to="." method="_on_area_3d_house_body_entered"]
 [connection signal="body_exited" from="House/Area3DHouse" to="." method="_on_area_3d_house_body_exited"]

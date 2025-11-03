@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://vs4t3q0uk5k7"]
+[gd_scene load_steps=29 format=3 uid="uid://vs4t3q0uk5k7"]
 
 [ext_resource type="Script" uid="uid://wqrdaq8ko3rk" path="res://scripts/scenes/level_4_4.gd" id="1_aac41"]
 [ext_resource type="PackedScene" uid="uid://byeuwjmfcnb3t" path="res://scenes/items/relic_5.tscn" id="1_n8lnq"]
@@ -16,6 +16,8 @@
 [ext_resource type="FontFile" uid="uid://d25dq4tmt7ywp" path="res://assets/font/NebulaSans-Black.ttf" id="13_x0omi"]
 [ext_resource type="PackedScene" uid="uid://iy0ywhoerl1x" path="res://assets/model/item/relics/relic_5.blend" id="14_x0omi"]
 [ext_resource type="FontFile" uid="uid://1qiyr01tsexv" path="res://assets/font/NebulaSans-Bold.ttf" id="16_5rbxa"]
+[ext_resource type="PackedScene" uid="uid://c8k8dm81jp0pu" path="res://assets/model/enviornment/mushroom_gray.blend" id="17_fejkj"]
+[ext_resource type="PackedScene" uid="uid://c60c2bj8ut5o4" path="res://assets/model/enviornment/mushroom.blend" id="18_if6bm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n8lnq"]
 albedo_color = Color(0.3420786, 0.30527073, 0.25008196, 1)
@@ -613,6 +615,87 @@ theme_override_font_sizes/font_size = 40
 horizontal_alignment = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Mushrooms" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.5, 3)
+
+[node name="mushroom_gray" parent="Mushrooms" instance=ExtResource("17_fejkj")]
+transform = Transform3D(0.62548757, 0.077564046, 0.7763691, -0.0071659014, 0.99557555, -0.09369082, -0.78020114, 0.053039093, 0.6232759, 6.9524636, -0.029850405, 2.374302)
+
+[node name="mushroom_gray2" parent="Mushrooms" instance=ExtResource("17_fejkj")]
+transform = Transform3D(-0.0011053979, -0.072470054, 0.9973699, 0.21117717, 0.9748608, 0.071068615, -0.9774471, 0.21070033, 0.014226377, 7.4451265, -0.005646167, 1.8104423)
+
+[node name="mushroom_gray3" parent="Mushrooms" instance=ExtResource("17_fejkj")]
+transform = Transform3D(0.61248267, -0.13691823, 0.778536, 0.12997243, 0.9889241, 0.07166771, -0.77972573, 0.05729302, 0.6234943, 7.5147824, -0.029650975, 1.190386)
+
+[node name="mushroom_gray9" parent="Mushrooms" instance=ExtResource("17_fejkj")]
+transform = Transform3D(-0.0011053979, -0.072470054, 0.9973699, 0.21117717, 0.9748608, 0.071068615, -0.9774471, 0.21070033, 0.014226377, 9.099851, -0.034921363, -3.1873271)
+
+[node name="mushroom_gray10" parent="Mushrooms" instance=ExtResource("17_fejkj")]
+transform = Transform3D(0.61248267, -0.13691823, 0.778536, 0.12997243, 0.9889241, 0.07166771, -0.77972573, 0.05729302, 0.6234943, 8.596197, 0, -3.4324975)
+
+[node name="mushroom_gray11" parent="Mushrooms" instance=ExtResource("17_fejkj")]
+transform = Transform3D(-0.0011053979, -0.072470054, 0.9973699, 0.21117717, 0.9748608, 0.071068615, -0.9774471, 0.21070033, 0.014226377, 8.743196, -0.034921363, -2.2522225)
+
+[node name="mushroom_gray12" parent="Mushrooms" instance=ExtResource("17_fejkj")]
+transform = Transform3D(-0.98423326, -0.13134369, 0.11846408, -0.122705355, 0.9894117, 0.07751144, -0.12739041, 0.061753143, -0.9899283, 6.7283306, -0.005718641, -4.2938232)
+
+[node name="mushroom_gray13" parent="Mushrooms" instance=ExtResource("17_fejkj")]
+transform = Transform3D(0.852831, -0.068767704, -0.517639, -0.048966393, 0.97639114, -0.21038643, 0.519886, 0.20477103, 0.8293294, 5.7838984, -0.029275198, -4.6268787)
+
+[node name="mushroom_gray14" parent="Mushrooms" instance=ExtResource("17_fejkj")]
+transform = Transform3D(-0.98423326, -0.13134369, 0.11846408, -0.122705355, 0.9894117, 0.07751144, -0.12739041, 0.061753143, -0.9899283, 6.548245, -0.035369616, -4.6213827)
+
+[node name="mushroom_gray4" parent="Mushrooms" instance=ExtResource("17_fejkj")]
+transform = Transform3D(0.852831, -0.068767704, -0.517639, -0.048966393, 0.97639114, -0.21038643, 0.519886, 0.20477103, 0.8293294, 8.059376, 0, 2.5470839)
+
+[node name="mushroom_gray5" parent="Mushrooms" instance=ExtResource("17_fejkj")]
+transform = Transform3D(-0.98423326, -0.13134369, 0.11846408, -0.122705355, 0.9894117, 0.07751144, -0.12739041, 0.061753143, -0.9899283, 6.694143, -0.035369616, 3.454715)
+
+[node name="mushroom_gray6" parent="Mushrooms" instance=ExtResource("17_fejkj")]
+transform = Transform3D(0.852831, -0.068767704, -0.517639, -0.048966393, 0.97639114, -0.21038643, 0.519886, 0.20477103, 0.8293294, 9.536253, -0.5, 2.9950118)
+
+[node name="mushroom_gray7" parent="Mushrooms" instance=ExtResource("17_fejkj")]
+transform = Transform3D(-0.7905689, -0.013825089, 0.6122168, 0.13864312, 0.9697445, 0.20093164, -0.596472, 0.24372992, -0.76473314, 9.921301, -0.5347398, 3.1063023)
+
+[node name="mushroom_gray8" parent="Mushrooms" instance=ExtResource("17_fejkj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.617685, -0.5, 2.6920066)
+
+[node name="mushroom_gray15" parent="Mushrooms" instance=ExtResource("17_fejkj")]
+transform = Transform3D(0.98044133, 0.087188795, 0.1764453, -0.048966408, 0.97639126, -0.21038646, -0.19062296, 0.1976317, 0.9615636, 2.5748405, -0.5, 5.9884195)
+
+[node name="mushroom_gray16" parent="Mushrooms" instance=ExtResource("17_fejkj")]
+transform = Transform3D(-0.9860523, 0.15403597, -0.063037634, 0.13864309, 0.96974444, 0.2009316, 0.09208104, 0.18938933, -0.9775747, 2.9343204, -0.5347398, 5.811157)
+
+[node name="mushroom_gray17" parent="Mushrooms" instance=ExtResource("17_fejkj")]
+transform = Transform3D(0.7388201, 0, 0.67390275, 0, 1, 0, -0.67390275, 0, 0.7388201, 3.1696281, -0.5, 5.0357723)
+
+[node name="mushroom_gray18" parent="Mushrooms" instance=ExtResource("17_fejkj")]
+transform = Transform3D(0.7388201, 0, 0.67390275, 0, 1, 0, -0.67390275, 0, 0.7388201, 10.969929, -0.5, -2.6869702)
+
+[node name="mushroom" parent="Mushrooms" instance=ExtResource("18_if6bm")]
+transform = Transform3D(-0.7905689, -0.013825089, 0.6122168, 0.13864312, 0.9697445, 0.20093164, -0.596472, 0.24372992, -0.76473314, 0.7846912, -0.034739792, 1.9045916)
+
+[node name="mushroom4" parent="Mushrooms" instance=ExtResource("18_if6bm")]
+transform = Transform3D(-0.51944447, 0, 0.8545042, 0.0061146524, 0.9999744, 0.003717035, -0.85448235, 0.00715579, -0.5194312, 0.4134817, -0.0057826894, -4.1054983)
+
+[node name="mushroom5" parent="Mushrooms" instance=ExtResource("18_if6bm")]
+transform = Transform3D(0.61248267, -0.13691823, 0.778536, 0.12997243, 0.9889241, 0.07166771, -0.77972573, 0.05729302, 0.6234943, 0.5311018, -0.029650975, -4.4962506)
+
+[node name="mushroom6" parent="Mushrooms" instance=ExtResource("18_if6bm")]
+transform = Transform3D(-0.0011053979, -0.072470054, 0.9973699, 0.21117717, 0.9748608, 0.071068615, -0.9774471, 0.21070033, 0.014226377, 1.4219446, -0.005646167, -4.4539247)
+
+[node name="mushroom7" parent="Mushrooms" instance=ExtResource("18_if6bm")]
+transform = Transform3D(0.61248267, -0.13691823, 0.778536, 0.12997243, 0.9889241, 0.07166771, -0.77972573, 0.05729302, 0.6234943, 0.031064648, -0.029650975, -3.0504744)
+
+[node name="mushroom8" parent="Mushrooms" instance=ExtResource("18_if6bm")]
+transform = Transform3D(0.852831, -0.068767704, -0.517639, -0.048966393, 0.97639114, -0.21038643, 0.519886, 0.20477103, 0.8293294, 3.020728, -0.029275198, -5.4109774)
+
+[node name="mushroom2" parent="Mushrooms" instance=ExtResource("18_if6bm")]
+transform = Transform3D(-0.98423326, -0.13134369, 0.11846408, -0.122705355, 0.9894117, 0.07751144, -0.12739041, 0.061753143, -0.9899283, 0.22189352, -0.0057184026, 2.469389)
+
+[node name="mushroom3" parent="Mushrooms" instance=ExtResource("18_if6bm")]
+transform = Transform3D(0.852831, -0.068767704, -0.517639, -0.048966393, 0.97639114, -0.21038643, 0.519886, 0.20477103, 0.8293294, 1.1378698, -0.029275317, 2.195066)
 
 [connection signal="body_entered" from="Spiral/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="MasterObelisk/FinalRelicInsert/Area3DLastInsert" to="." method="_on_area_3d_last_insert_body_entered"]
