@@ -277,26 +277,26 @@ func _handle_terminal_final_enter():
 			match index:
 				0:
 					if Globals.equipment[Globals.slot_active - 1] == "":
-						await _animate_text_typing("you dont have an\nactive weapon", 0.07)
+						await _animate_text_typing(tr("you dont have an\nactive weapon"), 0.07)
 					else:
-						await _animate_text_typing("this is a [" + Globals.equipment[Globals.slot_active - 1] + "],\nit deals damage", 0.07)
+						await _animate_text_typing(tr("this is a [") + Globals.equipment[Globals.slot_active - 1] + tr("],\nit deals damage"), 0.07)
 				1:
 					if Globals.shards >= 30:
 						await _animate_text_typing("your 30 shards are\nbeing transformed now", 0.12)
 						Globals.shards -= 30
 						Globals.item_info_dict[Globals.equipment[Globals.slot_active - 1]]["damage"] += 5
-						await _animate_text_typing("your [" + Globals.equipment[Globals.slot_active - 1] + "] now deals\nmore damage than before", 0.3)
+						await _animate_text_typing(tr("your [") + Globals.equipment[Globals.slot_active - 1] + tr("] now deals\nmore damage than before"), 0.3)
 					else:
-						await _animate_text_typing("do you even\nhave the shards", 0.23)
+						await _animate_text_typing(tr("do you even\nhave the shards"), 0.23)
 		"health":
 			match index:
 				0:
-					await _animate_text_typing("this is your health.\nyou have [" + str(Globals.health) + "] left", 0.07)
+					await _animate_text_typing(tr("this is your health.\nyou have [") + str(Globals.health) + tr("] left"), 0.07)
 				1:
 					if Globals.health >= Globals.health_max:
-						await _animate_text_typing("you dont need this.", 0.2)
+						await _animate_text_typing(tr("you dont need this."), 0.2)
 					elif Globals.shards >= 5:
-						await _animate_text_typing("your 5 shards are\nbeing transformed now", 0.12)
+						await _animate_text_typing(tr("your 5 shards are\nbeing transformed now"), 0.12)
 						
 						Globals.shards -= 5
 						if (Globals.health + healing_size) > Globals.health_max:
@@ -304,9 +304,9 @@ func _handle_terminal_final_enter():
 						else:
 							Globals.health += healing_size
 						
-						await _animate_text_typing("your character is now\nloaded with new health", 0.16)
+						await _animate_text_typing(tr("your character is now\nloaded with new health"), 0.16)
 					else:
-						await _animate_text_typing("do you even\nhave the shards", 0.23)
+						await _animate_text_typing(tr("do you even\nhave the shards"), 0.23)
 		"relic":
 			match index:
 				0:
@@ -314,15 +314,15 @@ func _handle_terminal_final_enter():
 						# todo all relic messages
 						match relic_num:
 							1:
-								await _animate_text_typing("yet to be the last.\nkey for the first.", 0.15)
+								await _animate_text_typing(tr("yet to be the last.\nkey for the first."), 0.15)
 							3:
-								await _animate_text_typing("the energy held can power cities for centuries", 0.15)
+								await _animate_text_typing(tr("the energy held can power cities for centuries"), 0.15)
 					else:
 						match relic_num:
 							1:
-								await _animate_text_typing("you dont have this relic\nit is found at your first enemy", 0.18)
+								await _animate_text_typing(tr("you dont have this relic\n") + tr("it is found at your first enemy"), 0.18)
 							3:
-								await _animate_text_typing("you dont have this relic\nit is held at the end of a path", 0.18)
+								await _animate_text_typing(tr("you dont have this relic\n") + tr("you dont have this relic\nit is held at the end of a path"), 0.18)
 	
 	ignore_input = false
 	
@@ -343,12 +343,12 @@ func _animate_text_typing(typing_string: String, keystroke_time_range: float):
 	dialogue_encrypted_response.text = ""
 	await get_tree().create_timer(0.2).timeout
 	
-	dialogue_encrypted_response.text = "[interface]\n"
+	dialogue_encrypted_response.text = tr("[interface]\n")
 	_internal_typing_func_dont_use_elsewhere(encrypted_typing_string, dialogue_encrypted_response, keystroke_time_range - 0.05)
 	
 	await get_tree().create_timer(1.0).timeout
 	
-	dialogue_response.text = "[translated]\n"
+	dialogue_response.text = tr("[translated]\n")
 	
 	#_internal_typing_func_dont_use_elsewhere(typing_string, dialogue_response, keystroke_time_range)
 	for i in range(typing_string.length()):

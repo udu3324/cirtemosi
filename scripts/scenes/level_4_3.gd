@@ -69,5 +69,5 @@ func _on_area_3d_door_body_exited(body: Node3D) -> void:
 
 func _on_area_3d_title_card_body_entered(body: Node3D) -> void:
 	if body.name.contains("Player") and !Globals.card_house_shown:
-		Globals._show_title_card("House in Ruins", "When progress was mutual.", 0.5)
+		Globals._show_title_card(tr("House in Ruins"), "When progress was mutual.", 0.5)
 		Globals.card_house_shown = true

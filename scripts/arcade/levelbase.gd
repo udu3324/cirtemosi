@@ -93,7 +93,7 @@ func _on_leaderboard_loaded(data) -> void:
 	else:
 		leaderboard_data = []
 	
-	leaderboard_label.text = "wave | time | player | shards \n"
+	leaderboard_label.text = tr("wave") + " | " + tr("time") + " | " + tr("player") + " | " + tr("shards") + " \n"
 	
 	for score in data:
 		var player_name = score.player_name
@@ -103,7 +103,7 @@ func _on_leaderboard_loaded(data) -> void:
 		var easy_mode = score.easy_mode
 		
 		#leaderboard_label.text += str(count) + " - " + player_name + " | wave " + str(wave) + " | " + time + " | " + str(shards) +  " shards"
-		leaderboard_label.text += String.num_int64(wave) + " | " + time + " - " + player_name + " - " + String.num_int64(shards) + " shards"
+		leaderboard_label.text += String.num_int64(wave) + " | " + time + " - " + player_name + " - " + String.num_int64(shards) + tr(" shards")
 		
 		if easy_mode:
 			leaderboard_label.text += " (easymode)"
@@ -129,7 +129,7 @@ func _process(delta: float) -> void:
 		wave_enemt_deaths = 0
 		wave_zert_deaths = 0
 	
-		Globals.arcade_title.text = "cleared!"
+		Globals.arcade_title.text = tr("cleared!")
 		
 		await get_tree().create_timer(2).timeout
 		Globals.arcade_title.text = ""
@@ -152,7 +152,7 @@ func _process(delta: float) -> void:
 			_start_wave(5)
 		else:
 			stop_timer = true
-			Globals.arcade_title.text = "finished!"
+			Globals.arcade_title.text = tr("finished!")
 			#Globals.arcade_description.text = "\n\n\nplease walk off the\nisland for now to\ngo back to the main\nmenu."
 			
 			await get_tree().create_timer(2.0).timeout
@@ -220,10 +220,10 @@ func _build_description():
 	Globals.arcade_description.text = ""
 	
 	if waves[on_wave]["enemts"] >= 1:
-		Globals.arcade_description.text += "enemt " + str(wave_enemt_deaths) + "/" + str(waves[on_wave]["enemts"]) + "\n"
+		Globals.arcade_description.text += tr("enemt") + " " + str(wave_enemt_deaths) + "/" + str(waves[on_wave]["enemts"]) + "\n"
 	
 	if waves[on_wave]["zerts"] >= 1:
-		Globals.arcade_description.text += "zert " + str(wave_zert_deaths) + "/" + str(waves[on_wave]["zerts"]) + "\n"
+		Globals.arcade_description.text += tr("zert") + " " + str(wave_zert_deaths) + "/" + str(waves[on_wave]["zerts"]) + "\n"
 
 # floor death area 3d handler - handles death of things
 func _on_area_3d_body_entered(body: Node3D) -> void:
@@ -259,7 +259,7 @@ func _start_wave(wave: int):
 	on_wave = wave
 	
 	
-	Globals.arcade_title.text = "wave " + str(wave)
+	Globals.arcade_title.text = tr("wave") + " " + str(wave)
 	Globals.arcade_description.text = ""
 	
 	# in case if the player forgets to pick up their weapon...
@@ -269,7 +269,7 @@ func _start_wave(wave: int):
 	
 	#print_debug("new wave spacer")
 	if waves[on_wave]["enemts"] != 0:
-		Globals.arcade_description.text += "enemt " + str(wave_enemt_deaths) + "/" + str(waves[on_wave]["enemts"]) + "\n"
+		Globals.arcade_description.text += tr("enemt") + " " + str(wave_enemt_deaths) + "/" + str(waves[on_wave]["enemts"]) + "\n"
 		
 		# kickstart wave
 		if waves[on_wave]["subsequent"]:
@@ -283,7 +283,7 @@ func _start_wave(wave: int):
 				_spawn_enemt_async_internal_func_dont_use(delay)
 
 	if waves[on_wave]["zerts"] != 0:
-		Globals.arcade_description.text += "zert " + str(wave_zert_deaths) + "/" + str(waves[on_wave]["zerts"]) + "\n"
+		Globals.arcade_description.text += tr("zert") + " " + str(wave_zert_deaths) + "/" + str(waves[on_wave]["zerts"]) + "\n"
 		
 		# kickstart wave
 		if waves[on_wave]["subsequent"]:

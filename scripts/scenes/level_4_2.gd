@@ -114,7 +114,7 @@ func _on_area_3d_switch_1_body_exited(body: Node3D) -> void:
 
 func _on_area_3d_title_card_body_entered(body: Node3D) -> void:
 	if body.name.contains("Player") and !Globals.card_structures_shown:
-		Globals._show_title_card("Structures", "What society depended on.", 0.5)
+		Globals._show_title_card(tr("Structures"), "What society depended on.", 0.5)
 		Globals.card_structures_shown = true
 	
 	if body.name.contains("Player"):

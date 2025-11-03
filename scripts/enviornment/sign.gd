@@ -5,6 +5,7 @@ extends Node3D
 @onready var sign_label: Label = $SubViewport/CenterContainer/Label
 @onready var control: HBoxContainer = $SubViewport/CenterContainer/HBoxContainer
 
+
 func _ready() -> void:
 	sign_label.text = text
 	sign_label.visible = false

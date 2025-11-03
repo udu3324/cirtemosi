@@ -199,6 +199,36 @@ text = "Gamma"
 [node name="HSeparator2" type="HSeparator" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
+[node name="VBoxContainer5" type="VBoxContainer" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer5"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer5/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_hs6tt")
+text = "English"
+
+[node name="Language" type="CheckButton" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer5/HBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../../../VBoxContainer/HBoxContainer/ScreenRelativeMovement")
+focus_neighbor_bottom = NodePath("../../../VBoxContainer3/HBoxContainer/MasterVolume")
+
+[node name="Label" type="Label" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer5/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_hs6tt")
+text = "日本語"
+
+[node name="Label" type="Label" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer5"]
+layout_mode = 2
+theme = ExtResource("3_xqk23")
+text = "This setting translates between English and Japanese
+この設定は英語と日本語の間で翻訳を行います"
+
+[node name="HSeparator4" type="HSeparator" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer"]
 modulate = Color(1, 1, 1, 0.425)
 layout_mode = 2
@@ -280,4 +310,5 @@ one_shot = true
 [connection signal="toggled" from="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer/EasyMode" to="." method="_on_easy_mode_toggled"]
 [connection signal="value_changed" from="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer3/HBoxContainer/MasterVolume" to="." method="_on_master_volume_value_changed"]
 [connection signal="value_changed" from="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer4/HBoxContainer/Gamma" to="." method="_on_gamma_value_changed"]
+[connection signal="toggled" from="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer5/HBoxContainer/Language" to="." method="_on_language_toggled"]
 [connection signal="timeout" from="HideTimer" to="." method="_on_hide_timer_timeout"]

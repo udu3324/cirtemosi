@@ -1,0 +1,771 @@
+# LANGUAGE translation for cirtemosi for the following files:
+# res://levels/level1.tscn
+# res://levels/level4.tscn
+# res://levels/level4_1.tscn
+# res://levels/level4_2.tscn
+# res://levels/level4_3.tscn
+# res://levels/level4_4.tscn
+# res://levels/arcade/levelbase.tscn
+# res://scripts/stage.gd
+# res://scripts/scenes/level_1.gd
+# res://scripts/scenes/level_2.gd
+# res://scripts/scenes/level_3.gd
+# res://scripts/scenes/level_4_1.gd
+# res://scripts/scenes/level_4.gd
+# res://scripts/scenes/level_4_2.gd
+# res://scripts/scenes/level_4_3.gd
+# res://scripts/scenes/level_4_4.gd
+# res://scripts/scenes/level_start_menu.gd
+# res://scripts/entities/interface/interface.gd
+# res://scripts/arcade/arcade_ui.gd
+# res://scripts/arcade/levelbase.gd
+# res://scenes/gui/arcade.tscn
+# res://scenes/gui/controller_hints.tscn
+# res://scenes/menu/loading.tscn
+# res://scenes/menu/pause.tscn
+# res://scenes/menu/reset.tscn
+# res://scenes/menu/start.tscn
+# res://scenes/panel/settings.tscn
+# res://scenes/panel/credits.tscn
+# res://scenes/enviornment/relic_insert.tscn
+# res://scripts/menu/loading.gd
+# res://scenes/enviornment/sign.tscn
+# res://entities/interface/interface_dialogue.tscn
+#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: cirtemosi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8-bit\n"
+
+#: levels/level1.tscn
+msgid "you fell down a cave"
+msgstr ""
+
+#: levels/level4.tscn
+msgid "to power on"
+msgstr ""
+
+#: levels/level4_1.tscn
+msgid "a hidden bow continued to the left"
+msgstr ""
+
+#: levels/level4_1.tscn
+msgid "let me know on slack if you found this lol"
+msgstr ""
+
+#: levels/level4_1.tscn
+msgid "two power sources required"
+msgstr ""
+
+#: levels/level4_2.tscn
+msgid "towering the zert, bottom hidden from high"
+msgstr ""
+
+#: levels/level4_2.tscn
+msgid "came down a piece of obelisk, off center from before"
+msgstr ""
+
+#: levels/level4_3.tscn
+msgid "~~~~~~"
+msgstr ""
+
+#: levels/level4_3.tscn
+msgid "the dewlling, once held a person that developed society"
+msgstr ""
+
+#: levels/level4_4.tscn
+msgid "to add the last relic"
+msgstr ""
+
+#: levels/arcade/levelbase.tscn
+msgid "arcade leaderboard"
+msgstr ""
+
+#: levels/arcade/levelbase.tscn
+msgid ""
+"can supoort ~16 lines\n"
+"\n"
+"if you see this, its either still loading\n"
+"\n"
+"or\n"
+"\n"
+"its broken :cry:"
+msgstr ""
+
+#: scripts/stage.gd
+#: scripts/scenes/level_4_4.gd
+#: scripts/entities/interface/interface.gd
+#: scripts/arcade/levelbase.gd
+msgid ""
+msgstr ""
+
+#: scripts/stage.gd
+msgid "The Cave"
+msgstr ""
+
+#: scripts/stage.gd
+msgid "cross the bridge"
+msgstr ""
+
+#: scripts/scenes/level_4_1.gd
+msgid "Ruins"
+msgstr ""
+
+#: scripts/scenes/level_4_2.gd
+msgid "Structures"
+msgstr ""
+
+#: scripts/scenes/level_4_3.gd
+msgid "House in Ruins"
+msgstr ""
+
+#: scripts/scenes/level_4_4.gd
+msgid "the relics have been found"
+msgstr ""
+
+#: scripts/scenes/level_4_4.gd
+msgid "put back in the obelisk"
+msgstr ""
+
+#: scripts/scenes/level_4_4.gd
+msgid "power lost from generations before return"
+msgstr ""
+
+#: scripts/scenes/level_4_4.gd
+msgid ""
+"you have been transcended\n"
+"back to the surface"
+msgstr ""
+
+#: scripts/scenes/level_4_4.gd
+msgid "Final Obelisk"
+msgstr ""
+
+#: scripts/entities/interface/interface.gd
+#: entities/interface/interface_dialogue.tscn
+msgid ">"
+msgstr ""
+
+#: scripts/entities/interface/interface.gd
+msgid ""
+"you dont have an\n"
+"active weapon"
+msgstr ""
+
+#: scripts/entities/interface/interface.gd
+msgid "this is a ["
+msgstr ""
+
+#: scripts/entities/interface/interface.gd
+msgid ""
+"],\n"
+"it deals damage"
+msgstr ""
+
+#: scripts/entities/interface/interface.gd
+msgid "your ["
+msgstr ""
+
+#: scripts/entities/interface/interface.gd
+msgid ""
+"] now deals\n"
+"more damage than before"
+msgstr ""
+
+#: scripts/entities/interface/interface.gd
+msgid ""
+"do you even\n"
+"have the shards"
+msgstr ""
+
+#: scripts/entities/interface/interface.gd
+msgid ""
+"this is your health.\n"
+"you have ["
+msgstr ""
+
+#: scripts/entities/interface/interface.gd
+msgid "] left"
+msgstr ""
+
+#: scripts/entities/interface/interface.gd
+msgid "you dont need this."
+msgstr ""
+
+#: scripts/entities/interface/interface.gd
+msgid ""
+"your 5 shards are\n"
+"being transformed now"
+msgstr ""
+
+#: scripts/entities/interface/interface.gd
+msgid ""
+"your character is now\n"
+"loaded with new health"
+msgstr ""
+
+#: scripts/entities/interface/interface.gd
+msgid ""
+"yet to be the last.\n"
+"key for the first."
+msgstr ""
+
+#: scripts/entities/interface/interface.gd
+msgid "the energy held can power cities for centuries"
+msgstr ""
+
+#: scripts/entities/interface/interface.gd
+msgid "you dont have this relic\n"
+msgstr ""
+
+#: scripts/entities/interface/interface.gd
+msgid "it is found at your first enemy"
+msgstr ""
+
+#: scripts/entities/interface/interface.gd
+msgid ""
+"you dont have this relic\n"
+"it is held at the end of a path"
+msgstr ""
+
+#: scripts/entities/interface/interface.gd
+msgid "[interface]\n"
+msgstr ""
+
+#: scripts/entities/interface/interface.gd
+msgid "[translated]\n"
+msgstr ""
+
+#: scripts/arcade/levelbase.gd
+msgid "wave"
+msgstr ""
+
+#: scripts/arcade/levelbase.gd
+msgid "time"
+msgstr ""
+
+#: scripts/arcade/levelbase.gd
+msgid "player"
+msgstr ""
+
+#: scripts/arcade/levelbase.gd
+msgid "shards"
+msgstr ""
+
+#: scripts/arcade/levelbase.gd
+msgid " shards"
+msgstr ""
+
+#: scripts/arcade/levelbase.gd
+msgid " (easymode)"
+msgstr ""
+
+#: scripts/arcade/levelbase.gd
+msgid "\n"
+msgstr ""
+
+#: scripts/arcade/levelbase.gd
+msgid "cleared!"
+msgstr ""
+
+#: scripts/arcade/levelbase.gd
+msgid "finished!"
+msgstr ""
+
+#: scripts/arcade/levelbase.gd
+msgid "enemt"
+msgstr ""
+
+#: scripts/arcade/levelbase.gd
+msgid "zert"
+msgstr ""
+
+#: scenes/gui/arcade.tscn
+msgid "enter a name to submit your score!"
+msgstr ""
+
+#: scenes/gui/arcade.tscn
+msgid "(3-16 chars)"
+msgstr ""
+
+#: scenes/gui/arcade.tscn
+msgid "1"
+msgstr ""
+
+#: scenes/gui/arcade.tscn
+msgid "2"
+msgstr ""
+
+#: scenes/gui/arcade.tscn
+msgid "3"
+msgstr ""
+
+#: scenes/gui/arcade.tscn
+msgid "4"
+msgstr ""
+
+#: scenes/gui/arcade.tscn
+msgid "5"
+msgstr ""
+
+#: scenes/gui/arcade.tscn
+msgid "6"
+msgstr ""
+
+#: scenes/gui/arcade.tscn
+msgid "7"
+msgstr ""
+
+#: scenes/gui/arcade.tscn
+msgid "8"
+msgstr ""
+
+#: scenes/gui/arcade.tscn
+msgid "9"
+msgstr ""
+
+#: scenes/gui/arcade.tscn
+msgid "0"
+msgstr ""
+
+#: scenes/gui/arcade.tscn
+msgid "q"
+msgstr ""
+
+#: scenes/gui/arcade.tscn
+msgid "w"
+msgstr ""
+
+#: scenes/gui/arcade.tscn
+msgid "e"
+msgstr ""
+
+#: scenes/gui/arcade.tscn
+msgid "r"
+msgstr ""
+
+#: scenes/gui/arcade.tscn
+msgid "t"
+msgstr ""
+
+#: scenes/gui/arcade.tscn
+msgid "y"
+msgstr ""
+
+#: scenes/gui/arcade.tscn
+msgid "u"
+msgstr ""
+
+#: scenes/gui/arcade.tscn
+msgid "i"
+msgstr ""
+
+#: scenes/gui/arcade.tscn
+msgid "o"
+msgstr ""
+
+#: scenes/gui/arcade.tscn
+msgid "p"
+msgstr ""
+
+#: scenes/gui/arcade.tscn
+msgid "a"
+msgstr ""
+
+#: scenes/gui/arcade.tscn
+msgid "s"
+msgstr ""
+
+#: scenes/gui/arcade.tscn
+msgid "d"
+msgstr ""
+
+#: scenes/gui/arcade.tscn
+msgid "f"
+msgstr ""
+
+#: scenes/gui/arcade.tscn
+msgid "g"
+msgstr ""
+
+#: scenes/gui/arcade.tscn
+msgid "h"
+msgstr ""
+
+#: scenes/gui/arcade.tscn
+msgid "j"
+msgstr ""
+
+#: scenes/gui/arcade.tscn
+msgid "k"
+msgstr ""
+
+#: scenes/gui/arcade.tscn
+msgid "l"
+msgstr ""
+
+#: scenes/gui/arcade.tscn
+msgid "_"
+msgstr ""
+
+#: scenes/gui/arcade.tscn
+msgid "z"
+msgstr ""
+
+#: scenes/gui/arcade.tscn
+msgid "x"
+msgstr ""
+
+#: scenes/gui/arcade.tscn
+msgid "c"
+msgstr ""
+
+#: scenes/gui/arcade.tscn
+msgid "v"
+msgstr ""
+
+#: scenes/gui/arcade.tscn
+msgid "b"
+msgstr ""
+
+#: scenes/gui/arcade.tscn
+msgid "n"
+msgstr ""
+
+#: scenes/gui/arcade.tscn
+msgid "m"
+msgstr ""
+
+#: scenes/gui/arcade.tscn
+msgid "←"
+msgstr ""
+
+#: scenes/gui/arcade.tscn
+msgid " cancel "
+msgstr ""
+
+#: scenes/gui/arcade.tscn
+msgid " submit "
+msgstr ""
+
+#: scenes/gui/arcade.tscn
+msgid " to navigate "
+msgstr ""
+
+#: scenes/gui/arcade.tscn
+msgid " to press down"
+msgstr ""
+
+#: scenes/gui/controller_hints.tscn
+msgid "Up"
+msgstr ""
+
+#: scenes/gui/controller_hints.tscn
+msgid "Left"
+msgstr ""
+
+#: scenes/gui/controller_hints.tscn
+msgid "Down"
+msgstr ""
+
+#: scenes/gui/controller_hints.tscn
+msgid "Right"
+msgstr ""
+
+#: scenes/gui/controller_hints.tscn
+msgid "Sprint"
+msgstr ""
+
+#: scenes/gui/controller_hints.tscn
+msgid "Attack/Use"
+msgstr ""
+
+#: scenes/gui/controller_hints.tscn
+msgid "Switch Equipment Slot"
+msgstr ""
+
+#: scenes/menu/loading.tscn
+msgid "loading..."
+msgstr ""
+
+#: scenes/menu/pause.tscn
+msgid "paused. for now."
+msgstr ""
+
+#: scenes/menu/pause.tscn
+msgid "go back"
+msgstr ""
+
+#: scenes/menu/pause.tscn
+#: scenes/menu/start.tscn
+msgid "settings (設定)"
+msgstr ""
+
+#: scenes/menu/pause.tscn
+#: scenes/menu/reset.tscn
+msgid "exit"
+msgstr ""
+
+#: scenes/menu/reset.tscn
+msgid "its alright. try again."
+msgstr ""
+
+#: scenes/menu/reset.tscn
+msgid "to last checkpoint\n"
+msgstr ""
+
+#: scenes/menu/start.tscn
+msgid "cirtemosi"
+msgstr ""
+
+#: scenes/menu/start.tscn
+msgid "story mode"
+msgstr ""
+
+#: scenes/menu/start.tscn
+msgid "arcade mode"
+msgstr ""
+
+#: scenes/menu/start.tscn
+msgid "credits"
+msgstr ""
+
+#: scenes/menu/start.tscn
+#: scenes/panel/settings.tscn
+#: scenes/panel/credits.tscn
+#: entities/interface/interface_dialogue.tscn
+msgid "or"
+msgstr ""
+
+#: scenes/menu/start.tscn
+msgid "to select        "
+msgstr ""
+
+#: scenes/menu/start.tscn
+#: entities/interface/interface_dialogue.tscn
+msgid "to enter"
+msgstr ""
+
+#: scenes/panel/settings.tscn
+msgid "Settings"
+msgstr ""
+
+#: scenes/panel/settings.tscn
+msgid "Screen Relative Movement"
+msgstr ""
+
+#: scenes/panel/settings.tscn
+msgid "Turn this off to make movement go relative to the world instead"
+msgstr ""
+
+#: scenes/panel/settings.tscn
+msgid "Easy Mode"
+msgstr ""
+
+#: scenes/panel/settings.tscn
+msgid "Make stamina easier to regenerate with enemies dealing less damage"
+msgstr ""
+
+#: scenes/panel/settings.tscn
+msgid "Master Volume"
+msgstr ""
+
+#: scenes/panel/settings.tscn
+msgid "Gamma"
+msgstr ""
+
+#: scenes/panel/settings.tscn
+msgid "English"
+msgstr ""
+
+#: scenes/panel/settings.tscn
+msgid "日本語"
+msgstr ""
+
+#: scenes/panel/settings.tscn
+msgid ""
+"This setting translates between English and Japanese\n"
+"この設定は英語と日本語の間で翻訳を行います"
+msgstr ""
+
+#: scenes/panel/settings.tscn
+msgid "to go up or down,"
+msgstr ""
+
+#: scenes/panel/settings.tscn
+msgid "to toggle a setting"
+msgstr ""
+
+#: scenes/panel/settings.tscn
+msgid "Press"
+msgstr ""
+
+#: scenes/panel/settings.tscn
+#: scenes/panel/credits.tscn
+#: entities/interface/interface_dialogue.tscn
+msgid "to exit"
+msgstr ""
+
+#: scenes/panel/credits.tscn
+msgid ".."
+msgstr ""
+
+#: scenes/panel/credits.tscn
+msgid "Credits"
+msgstr ""
+
+#: scenes/panel/credits.tscn
+msgid ""
+"\n"
+"\n"
+"\n"
+" - Development - \n"
+"\n"
+"Programming\n"
+"Music/Fx/Mixing\n"
+"3d/2d Assets\n"
+"\n"
+"Danny\n"
+"\n"
+"\n"
+"\n"
+"Database Leaderboard\n"
+"\n"
+"Armand\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+" - Extra Assets & Addons - \n"
+"\n"
+"Controller Icons\n"
+"rsubtil\n"
+"\n"
+"Prototype Textures\n"
+"Manonox\n"
+"\n"
+"Nebula Sans\n"
+"The Nebula Team\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+" - Honorable Mentions -\n"
+"\n"
+"These games below have really\n"
+"inspired me to make this.\n"
+"\n"
+"Tunic\n"
+"Andrew Shouldice\n"
+"\n"
+"Undertale\n"
+"Toby Fox\n"
+"\n"
+"Stray\n"
+"BlueTwelve Studio\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"These people below are really awesome\n"
+"and served as help/motivation in some way\n"
+"\n"
+"@frappecchino @julia do @xvcf @Armand\n"
+"@Noga @Ang @Calderon Jimenez\n"
+"@Lopa @Issac\n"
+"\n"
+"@Thomas @kl @tongyu\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"Thank you for playing!\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"❤️\n"
+"Made for Shiba\n"
+"with Love\n"
+"-\n"
+"Hack Club\n"
+"\n"
+msgstr ""
+
+#: scenes/enviornment/relic_insert.tscn
+msgid "to insert"
+msgstr ""
+
+#: scripts/menu/loading.gd
+msgid "loading"
+msgstr ""
+
+#: scenes/enviornment/sign.tscn
+#: entities/interface/interface_dialogue.tscn
+msgid "to interact"
+msgstr ""
+
+#: scenes/enviornment/sign.tscn
+msgid "placeholder"
+msgstr ""
+
+#: entities/interface/interface_dialogue.tscn
+msgid "><%*;^__."
+msgstr ""
+
+#: entities/interface/interface_dialogue.tscn
+msgid "*)_.#^_?"
+msgstr ""
+
+#: entities/interface/interface_dialogue.tscn
+msgid "x30 [@*+{["
+msgstr ""
+
+#: entities/interface/interface_dialogue.tscn
+msgid "$~;,-+*{%?"
+msgstr ""
+
+#: entities/interface/interface_dialogue.tscn
+msgid "@%*-{@"
+msgstr ""
+
+#: entities/interface/interface_dialogue.tscn
+msgid "x5 [@*+{["
+msgstr ""
+
+#: entities/interface/interface_dialogue.tscn
+msgid "#$~[%?"
+msgstr ""
+
+#: entities/interface/interface_dialogue.tscn
+msgid "+%-*)~`"
+msgstr ""
+
+#: entities/interface/interface_dialogue.tscn
+msgid "><@*{ *)[ *){?"
+msgstr ""
+
+#: entities/interface/interface_dialogue.tscn
+msgid "to navigate"
+msgstr ""

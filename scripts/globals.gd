@@ -1,7 +1,7 @@
 extends Node
 
 
-var debug_mode: bool = false
+var debug_mode: bool = true
 var debug_mode_relic_give: int = 0
 
 # gui
@@ -146,6 +146,8 @@ func translate_to_interface(text: String) -> String:
 	for c in text.to_lower():
 		if interface_lang_dict.has(c):
 			result += interface_lang_dict[c]
+		elif TranslationServer.get_locale() == "ja":
+			result += getSymbolForJapanseseChar(c)
 		else:
 			result += c
 	
@@ -247,3 +249,22 @@ var interface_lang_dict = {
 	"y": ",.",
 	"z": "}",
 }
+
+const SYMBOLS = [
+	"!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_",
+	"+", "=", "{", "}", "[", "]", ":", ";", "<", ">", "?", "/", "~", "|"
+]
+
+func getSymbolForJapanseseChar(character: String):
+	var code = character.unicode_at(0)
+	
+	# Unicode ranges:
+	# Hiragana: 3040–309F
+	# Katakana: 30A0–30FF
+	# Kanji (CJK Unified Ideographs): 4E00–9FFF
+	if (code >= 0x3040 and code <= 0x309F) or \
+	   (code >= 0x30A0 and code <= 0x30FF) or \
+	   (code >= 0x4E00 and code <= 0x9FFF):
+		return SYMBOLS[code % SYMBOLS.size()]
+	
+	return character

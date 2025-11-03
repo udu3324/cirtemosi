@@ -21,4 +21,4 @@ func _dots():
 	#print_debug("adding dots")
 	dots_number += 1
 	var count = dots_number % 3 + 1
-	label.text = "loading" + ".".repeat(count)
+	label.text = tr("loading") + ".".repeat(count)

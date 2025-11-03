@@ -101,3 +101,10 @@ func _on_gamma_value_changed(value: float) -> void:
 func _on_hide_timer_timeout() -> void:
 	blocker.visible = true
 	Globals.gamma_preview = false
+
+
+func _on_language_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		TranslationServer.set_locale("ja")
+	else:
+		TranslationServer.set_locale("en")

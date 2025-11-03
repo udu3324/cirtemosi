@@ -75,7 +75,7 @@ layout_mode = 2
 focus_neighbor_top = NodePath("../BackButton")
 focus_neighbor_bottom = NodePath("../ExitButton")
 theme = ExtResource("1_nesnr")
-text = "settings"
+text = "settings (設定)"
 
 [node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2

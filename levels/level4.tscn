@@ -405,6 +405,9 @@ shape = SubResource("BoxShape3D_3cb6x")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.993451, 1, -17.17958)
 line_path_length = 1.5
 line_path_angle = 130
+instant_despawn = false
+vision_range = 6.5
+vision_cone = 30.0
 
 [node name="Floor" type="CSGPolygon3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
