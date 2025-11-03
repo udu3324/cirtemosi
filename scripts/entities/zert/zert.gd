@@ -288,6 +288,9 @@ func _physics_process(delta: float) -> void:
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	
+	if !is_instance_valid(model):
+		return
+	
 	# check if player is inside of attack cone + in distance
 	#print_debug("quicvk maffs", (rad_to_deg(angle_y) - rad_to_deg(model.rotation.y)))
 	var to_point = (Globals.player_pos - global_position).normalized()

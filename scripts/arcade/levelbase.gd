@@ -58,6 +58,30 @@ extends Node3D
 		"zert_delay": 0,
 		"weapon_damage": 25
 	},
+	6: { # spawn a zert and enemts
+		"subsequent": false,
+		"enemts": 3,
+		"enemt_delay": 1.0,
+		"zerts": 2,
+		"zert_delay": 0,
+		"weapon_damage": 25
+	},
+	7: { # spawn a zert and enemts but more
+		"subsequent": false,
+		"enemts": 1,
+		"enemt_delay": 0.0,
+		"zerts": 4,
+		"zert_delay": 0,
+		"weapon_damage": 25
+	},
+	8: { # spawn everything
+		"subsequent": false,
+		"enemts": 4,
+		"enemt_delay": 0.0,
+		"zerts": 4,
+		"zert_delay": 0,
+		"weapon_damage": 50
+	},
 }
 
 var leaderboard_data
@@ -82,6 +106,11 @@ func _ready() -> void:
 	island_2.visible = false
 	island_3.visible = false
 	island_4.visible = false
+	
+	island_1.global_position.y = 10.0
+	island_2.global_position.y = 10.0
+	island_3.global_position.y = 10.0
+	island_4.global_position.y = 10.0
 
 func _on_leaderboard_loaded(data) -> void:
 	
@@ -150,6 +179,12 @@ func _process(delta: float) -> void:
 			Globals.equipment[1] = "bow"
 			Globals.slot_active = 2
 			_start_wave(5)
+		elif on_wave == 5:
+			_start_wave(6)
+		elif on_wave == 6:
+			_start_wave(7)
+		elif on_wave == 7:
+			_start_wave(8)
 		else:
 			stop_timer = true
 			Globals.arcade_title.text = tr("finished!")
@@ -178,6 +213,7 @@ func _process(delta: float) -> void:
 		wave_zert_deaths += 1
 		island_populated[0] = false
 		island_1.visible = false
+		island_1.global_position.y = 10.0
 		_zert_death_reward()
 		_build_description()
 	
@@ -186,6 +222,7 @@ func _process(delta: float) -> void:
 		wave_zert_deaths += 1
 		island_populated[1] = false
 		island_2.visible = false
+		island_2.global_position.y = 10.0
 		_zert_death_reward()
 		_build_description()
 	
@@ -194,6 +231,7 @@ func _process(delta: float) -> void:
 		wave_zert_deaths += 1
 		island_populated[2] = false
 		island_3.visible = false
+		island_3.global_position.y = 10.0
 		_zert_death_reward()
 		_build_description()
 	
@@ -202,6 +240,7 @@ func _process(delta: float) -> void:
 		wave_zert_deaths += 1
 		island_populated[3] = false
 		island_4.visible = false
+		island_4.global_position.y = 10.0
 		_zert_death_reward()
 		_build_description()
 
@@ -345,6 +384,7 @@ func _spawn_zert_at_island(island: int):
 	
 	match island:
 		1:
+			island_1.global_position.y = 0.0
 			zert.global_transform.origin = island_1_spawnpoint.global_position
 			zert.line_path_angle = 90
 			zert.array_death_log = 1
@@ -352,6 +392,7 @@ func _spawn_zert_at_island(island: int):
 			
 			island_1.visible = true
 		2:
+			island_2.global_position.y = 0.0
 			zert.global_transform.origin = island_2_spawnpoint.global_position
 			zert.line_path_angle = 0
 			zert.array_death_log = 2
@@ -359,6 +400,7 @@ func _spawn_zert_at_island(island: int):
 			
 			island_2.visible = true
 		3:
+			island_3.global_position.y = 0.0
 			zert.global_transform.origin = island_3_spawnpoint.global_position
 			zert.line_path_angle = 270
 			zert.array_death_log = 3
@@ -366,6 +408,7 @@ func _spawn_zert_at_island(island: int):
 			
 			island_3.visible = true
 		4:
+			island_4.global_position.y = 0.0
 			zert.global_transform.origin = island_4_spawnpoint.global_position
 			zert.line_path_angle = 180
 			zert.array_death_log = 4
